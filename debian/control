@@ -1,7 +1,7 @@
 Source: resolvconf
 Section: net
 Priority: optional
-Maintainer: Thomas Hood <jdthood@yahoo.co.uk>
+Maintainer: Resolvconf maintainers <resolvconf-devel@lists.alioth.debian.org>
 Uploaders: Marc Haber <mh+debian-packages@zugschlus.de>
 Build-Depends: debhelper (>= 4.1.68)
 Standards-Version: 3.6.2.1
