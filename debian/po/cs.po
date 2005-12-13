@@ -1,0 +1,319 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: resolvconf 1.26\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-07-30 16:33+0200\n"
+"PO-Revision-Date: 2005-01-27 12:40+0100\n"
+"Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
+"Language-Team: Czech <provoz@debian.cz>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid "A rogue pppconfig PPP hook script is present"
+msgstr "Je pøítomen PPP skript balíku pppconfig"
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid ""
+"Certain versions of the pppconfig package contain scripts /etc/ppp/ip-up."
+"d/0dns-up and /etc/ppp/ip-down.d/0dns-down (run by pppd after a PPP "
+"interface is brought up or down) that overwrite /etc/resolv.conf. These "
+"scripts must be modified, disabled or deleted so that they will not "
+"interfere with the operation of resolvconf."
+msgstr ""
+"Nìkteré verze balíku pppconfig obsahují skripty /etc/ppp/ip-up.d/0dns-up a /"
+"etc/ppp/ip-down.d/0dns-down (spou¹tí je pppd poté, co je PPP rozhraní "
+"nahozeno resp. shozeno), které pøepisují /etc/resolv.conf. Tyto skripty musí "
+"být upraveny, zakázány nebo smazány, aby nekolidovaly s èinností programu "
+"resolvconf."
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid ""
+"A non-empty executable script /etc/ppp/ip-up.d/0dns-up and/or /etc/ppp/ip-"
+"down.d/0dns-down has been detected that appears to overwrite /etc/resolv."
+"conf. Each one that does so must be modified, disabled or deleted. The best "
+"way to disable it is to remove its execute permission. The best way to "
+"delete it is to purge the pppconfig package."
+msgstr ""
+"Byl rozpoznán neprázdný spustitelný skript /etc/ppp/ip-up.d/0dns-up a/nebo /"
+"etc/ppp/ip-down.d/0dns-down, který vypadá, ¾e pøepisuje /etc/resolv.conf. "
+"Ka¾dý takový skript musí být upraven, zakázán nebo smazán. Nejjednodu¹eji ho "
+"zaká¾ete tak, ¾e mu zru¹íte práva na spou¹tìní. Nejlep¹í cesta, jak se ho "
+"zbavit, je odstranìní balíku pppconfig s parametrem --purge."
+
+#. Type: note
+#. Description
+#: ../templates:20
+msgid "A rogue pppoeconf PPP hook script is present"
+msgstr "Je pøítomen PPP skript balíku pppoeconf"
+
+#. Type: note
+#. Description
+#: ../templates:20
+msgid ""
+"Versions of the pppoeconf package prior to version 1.0 contain a script /etc/"
+"ppp/ip-up.d/000usepeerdns (run by pppd after a PPP interface is brought up) "
+"that overwrites /etc/resolv.conf. The script must be modified, disabled or "
+"deleted so that it will not interfere with the operation of resolvconf. "
+"Contrary to Debian policy, merely removing the pppoeconf package does not "
+"disable the script."
+msgstr ""
+"Døívìj¹í verze balíku pppoeconf obsahují skript /etc/ppp/ip-up."
+"d/000usepeerdns (spou¹tí jej pppd poté, co je PPP rozhraní nahozeno), který "
+"pøepisuje soubor /etc/resolv.conf. Skript musí být upraven, zakázán nebo "
+"smazán, aby nekolidoval s èinností programu resolvconf. V rozporu s "
+"politikou Debianu prosté odstranìní balíku pppoeconf tento skript nezaká¾e."
+
+#. Type: note
+#. Description
+#: ../templates:20
+msgid ""
+"A non-empty executable script /etc/ppp/ip-up.d/000usepeerdns has been "
+"detected. It must be modified, disabled or deleted. The best way to modify "
+"it is to upgrade the pppoeconf package to version 1.0 or later and to allow "
+"dpkg to install the new version of the script. The best way to disable it is "
+"to remove its execute permission. The best way to delete it is to purge the "
+"pppoeconf package."
+msgstr ""
+"Byl rozpoznán neprázdný spustitelný skript /etc/ppp/ip-up.d/000usepeerdns. "
+"Tento skript musí být upraven, zakázán nebo smazán. Nejjednodu¹eji jej "
+"upravíte tak, ¾e aktualizujete balík pppoeconf na verzi 1.0 nebo pozdìj¹í a "
+"povolíte dpkg, aby nainstaloval novou verzi skriptu. Zakázání skriptu "
+"dosáhnete tak, ¾e mu zru¹íte práva na spou¹tìní. Nejlep¹í cesta, jak se "
+"skriptu zbavit, je odstranìní balíku pppoeconf s parametrem --purge."
+
+#. Type: note
+#. Description
+#: ../templates:38
+msgid "A rogue xisp PPP hook script is present"
+msgstr "Je pøítomen PPP skript balíku xisp"
+
+#. Type: note
+#. Description
+#: ../templates:38
+msgid ""
+"The xisp package contains scripts /etc/ppp/ip-up.d/0xisp-dns and /etc/ppp/ip-"
+"down.d/0xisp-dns (run by pppd after a PPP interface is brought up or down) "
+"that overwrite /etc/resolv.conf. The scripts must be modified, disabled or "
+"deleted so that they will not interfere with the operation of resolvconf. "
+"Contrary to Debian policy, merely removing the xisp package does not disable "
+"the scripts."
+msgstr ""
+"Balík xisp obsahuje skripty /etc/ppp/ip-up.d/0xisp-dns a /etc/ppp/ip-down."
+"d/0xisp-dns (spou¹tí je pppd poté, co je PPP rozhraní nahozeno resp. "
+"shozeno), které pøepisují /etc/resolv.conf. Tyto skripty musí být upraveny, "
+"zakázány nebo smazány, aby nekolidovaly s èinností programu resolvconf. V "
+"rozporu s politikou Debianu prosté odstranìní balíku xisp tyto skripty "
+"nezaká¾e."
+
+#. Type: note
+#. Description
+#: ../templates:38
+msgid ""
+"A non-empty executable script /etc/ppp/ip-up.d/0xisp-dns and/or /etc/ppp/ip-"
+"down.d/0xisp-dns has been detected. Each one must be modified, disabled or "
+"deleted. The best way to disable it is to remove its execute permission. The "
+"best way to delete it is to purge the xisp package."
+msgstr ""
+"Byly rozpoznány neprázdné spustitelné skripty /etc/ppp/ip-up.d/0xisp-dns a /"
+"etc/ppp/ip-down.d/0xisp-dns. Oba skripty musí být upraveny, zakázány nebo "
+"smazány. Nejjednodu¹eji je zaká¾ete tak, ¾e jim zru¹íte práva na spou¹tìní. "
+"Nejlep¹í cesta, jak se jich zbavit, je odstranìní balíku xisp s parametrem --"
+"purge."
+
+#. Type: boolean
+#. Description
+#: ../templates:55
+msgid "Disable rogue hook scripts?"
+msgstr "Zakázat nezbedné skripty?"
+
+#. Type: boolean
+#. Description
+#: ../templates:55
+msgid ""
+"Certain packages contain hook scripts which, contrary to Debian policy, "
+"modify the resolver configuration file even when the packages that own them "
+"are removed. Packages known to contain such rogue hook scripts are: "
+"pppconfig (<< 2.2.0 and 2.3), pppoeconf (<< 1.0), totd (<< 1.4-4) and xisp. "
+"Although the resolvconf package is marked as conflicting with these packages "
+"so that they are removed before resolvconf is installed, their rogue hook "
+"scripts may remain behind."
+msgstr ""
+"Urèité balíky obsahují skripty, které, v rozporu s politikou Debianu, mìní "
+"konfiguraèní soubor resolveru i kdy¾ u¾ jsou balíky, je¾ je vlastní, "
+"odstranìny. Mezi takové balíky patøí pppconfig (<< 2.2.0 a 2.3), pppoeconf "
+"(<< 1.0), totd (<< 1.4-4) a xisp. Pøesto¾e je balík resolvconf oznaèen jako "
+"konfliktní se zmínìnými balíky, tudí¾ bude nainstalován a¾ po jejich "
+"odstranìní, v systému stále mohou zùstat nezbedné skripty."
+
+#. Type: boolean
+#. Description
+#: ../templates:55
+msgid ""
+"If you agree then the post-installation process will disable rogue hook "
+"scripts by removing their execute permissions."
+msgstr ""
+"Budete-li souhlasit, poinstalaèní proces zaká¾e pozùstalé skripty tím, ¾e "
+"jim odebere právo spou¹tìní."
+
+#. Type: boolean
+#. Description
+#: ../templates:55
+msgid ""
+"If you do not agree then you should disable the rogue scripts manually, "
+"otherwise resolvconf will not work properly."
+msgstr ""
+"Jestli¾e nebudete souhlasit, mìli byste nezbedné skripty zakázat ruènì, "
+"proto¾e jinak nebude resolvconf pracovat správnì."
+
+#. Type: boolean
+#. Description
+#: ../templates:73
+msgid "Prepare /etc/resolv.conf for dynamic updates?"
+msgstr "Pøipravit /etc/resolv.conf pro dynamické aktualizace?"
+
+#. Type: boolean
+#. Description
+#: ../templates:73
+#, fuzzy
+msgid ""
+"This package contains the infrastructure required for dynamic updating of "
+"the resolver configuration file. Part of the necessary infrastructure is a "
+"symbolic link from /etc/resolv.conf to /etc/resolvconf/run/resolv.conf. If "
+"you agree then this link will be created. The existing /etc/resolv.conf file "
+"will be preserved as /etc/resolvconf/resolv.conf.d/original; it will be "
+"restored if this package is removed."
+msgstr ""
+"Tento balík obsahuje infrastrukturu vy¾adovanou pro dynamické aktualizace "
+"konfiguraèního souboru resolveru. Souèástí infrastruktury je i symbolický "
+"odkaz z /etc/resolv.conf na /etc/resolvconf/run/resolv.conf. Pokud budete "
+"souhlasit, odkaz se vytvoøí automaticky. Stávající /etc/resolv.conf bude "
+"zachován jako /etc/resolvconf/resolv.conf.d/original a pøi odstranìní balíku "
+"bude obnoven."
+
+#. Type: boolean
+#. Description
+#: ../templates:73
+msgid ""
+"If you wish to prevent future installations from recreating the symbolic "
+"link then you can run dpkg-reconfigure later to withdraw your agreement."
+msgstr ""
+"Jestli¾e nechcete, aby budoucí instalace vnovu vytváøely symbolický odkaz, "
+"mù¾ete pozdìji spustit dpkg-reconfigure a zmìnit své rozhodnutí."
+
+#. Type: boolean
+#. Description
+#: ../templates:73
+msgid ""
+"If you do not agree then the necessary symbolic link will not be created and "
+"consequently your resolver configuration file will not be dynamically "
+"updated. In order to activate dynamic updating you will have to configure "
+"resolvconf manually following the straightforward instructions in the README "
+"file. If you choose not to configure resolvconf at all then you should "
+"remove the package because its presence causes some programs to deviate from "
+"their default behavior."
+msgstr ""
+"Nebudete-li souhlasit, pak se nezbytný symbolicý odkaz nevytvoøí, v dùsledku "
+"èeho¾ nebude konfiguraèní soubor resolveru aktualizován dynamicky. Pro "
+"aktivování dynamických aktualizací postupujte dle instrukcí v souboru "
+"README. Rozhodnete-li se resolvconf nenastavovat vùbec, mìli byste balík "
+"radìji odstranit, proto¾e jeho pøítomnost zpùsobí, ¾e se nìkteré programy "
+"budou chovat jinak ne¾ obvykle."
+
+#. Type: boolean
+#. Description
+#: ../templates:73
+msgid "However you decide, you should read the README file."
+msgstr "Jakkoliv se rozhodnete, mìli byste si pøeèíst soubor README."
+
+#. Type: note
+#. Description
+#: ../templates:96
+msgid "Remember to reconfigure network interfaces"
+msgstr "<ezapomeòte penastavit sí»ovaá rozhraní"
+
+#. Type: note
+#. Description
+#: ../templates:96
+msgid ""
+"Once resolvconf is installed, interface configurers supply nameserver "
+"information to it (which it then makes available to the C Library resolver "
+"and to DNS caches). However, they do this only when they bring up "
+"interfaces. Therefore for resolvconf's nameserver information to be up to "
+"date after initial installation it is necessary to reconfigure interfaces -- "
+"that is, to take them down and then to bring them up again -- and to restart "
+"DNS caches."
+msgstr ""
+"Po instalaci resolvconfu v¹e funguje tak, ¾e programy pro nastavení sí»ových "
+"rozhraní pøedají resolvconfu informace o jmenných serverech (a ten tuto "
+"informaci pøedá resolveru knihovny libc a cachovacím DNS serverùm). To se "
+"v¹ak dìje pouze pøi nahození rozhraní. Aby tedy byly informace resolvconfu "
+"platné hned po instalaci, je nutné znovu nastavit sí»ová rozhraní -- to "
+"znamená je shodit a znovu nahodit -- a restartovat DNS cache."
+
+#. Type: boolean
+#. Description
+#: ../templates:108
+msgid "Append original file to dynamic file?"
+msgstr "Pøipojit pùvodní soubor k dynamickému souboru?"
+
+#. Type: boolean
+#. Description
+#: ../templates:108
+msgid ""
+"If your original static resolver configuration file (/etc/resolv.conf) "
+"contains nameserver addresses then those addresses should be listed on \"dns-"
+"nameservers\" lines in /etc/network/interfaces as described in the README. "
+"Until you have modified /etc/network/interfaces and reconfigured the "
+"affected interfaces resolvconf will not include those addresses in the "
+"dynamically generated resolver configuration file. Without those addresses "
+"you may have trouble resolving domain names. A TEMPORARY solution is to "
+"append the whole original resolver configuration file to the end of the "
+"dynamically generated file. This will be done if there is a symbolic link "
+"from /etc/resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/"
+"original. If you agree then this symbolic link will be created, provided "
+"that no /etc/resolvconf/resolv.conf.d/tail already exists."
+msgstr ""
+"Pokud vá¹ pùvodní statický konfiguraèní soubor (/etc/resolv.conf) obsahuje "
+"adresy jmenných serverù, pak by mìly být tyto adresy vypsány na øádcích "
+"\"dns-nameservers\" v souboru /etc/network/interfaces, jak je popsáno v "
+"README. Dokud neupravíte /etc/network/interfaces a znovu nenakonfigurujete "
+"pøíslu¹ná rozhraní, neobjeví se pøíslu¹né adresy v dynamicky generovaném "
+"konfiguraèním souboru souboru resolveru. Bez tìchto adres mù¾ete mít "
+"problémy s pøekladem doménových jmen. DOÈASNÉ øe¹ení je pøipojit celý "
+"pùvodní konfiguraèní soubor resolveru na konec dynamicky generovaného "
+"souboru. To se provede tak, ¾e se vytvoøí symbolický odkaz /etc/resolvconf/"
+"resolv.conf.d/tail na /etc/resolvconf/resolv.conf.d/original. Budete-li "
+"souhlasit, program vytvoøí tento symbolický odkaz (pokud ji¾ neexistuje)."
+
+#. Type: boolean
+#. Description
+#: ../templates:108
+msgid ""
+"After you have modified /etc/network/interfaces to add the required \"dns-"
+"nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "
+"symbolic link to /dev/null."
+msgstr ""
+"A¾ do souboru /etc/network/interfaces pøidáte po¾adované øádky \"dns-"
+"nameservers\", mìli byste pøesmìrovat symbolický odkaz /etc/resolvconf/"
+"resolv.conf.d/tail na /dev/null."

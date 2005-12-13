@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+remove)
+	/etc/init.d/resolvconf disable-updates
+	;;
+# *)
+	# deconfigure, upgrade, failed-upgrade
+esac
+
+#DEBHELPER#
+

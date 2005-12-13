@@ -1,0 +1,331 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: resolvconf 1.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-07-30 16:33+0200\n"
+"PO-Revision-Date: 2003-12-15 10:21+0100\n"
+"Last-Translator: Tim Dijkstra <tim@famdijkstra.org>\n"
+"Language-Team: Dutch <debian-l10n-dutch@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-15\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid "A rogue pppconfig PPP hook script is present"
+msgstr "Een schadelijk PPP-haak-script van pppconfig is aanwezig."
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid ""
+"Certain versions of the pppconfig package contain scripts /etc/ppp/ip-up."
+"d/0dns-up and /etc/ppp/ip-down.d/0dns-down (run by pppd after a PPP "
+"interface is brought up or down) that overwrite /etc/resolv.conf. These "
+"scripts must be modified, disabled or deleted so that they will not "
+"interfere with the operation of resolvconf."
+msgstr ""
+"Bepaalde versies van het pakket pppconfig bevatten scripts /etc/ppp/ip-up."
+"d/0dns-up en /etc/ppp/ip-down.d/0dns-down (die worden uitgevoerd door pppd "
+"nadat een PPP-interface op of neer is gebracht) die /etc/resolv.conf "
+"overschrijven. Deze scripts moeten dus worden aangepast, uitgezet of "
+"verwijderd, zodat ze de werking van resolvconf niet verstoren."
+
+#. Type: note
+#. Description
+#: ../templates:3
+msgid ""
+"A non-empty executable script /etc/ppp/ip-up.d/0dns-up and/or /etc/ppp/ip-"
+"down.d/0dns-down has been detected that appears to overwrite /etc/resolv."
+"conf. Each one that does so must be modified, disabled or deleted. The best "
+"way to disable it is to remove its execute permission. The best way to "
+"delete it is to purge the pppconfig package."
+msgstr ""
+"Er is een niet-leeg, uitvoerbaar script /etc/ppp/ip-up.d/0dns-up en/of /etc/"
+"ppp/ip-down.d/0dns-down aangetroffen die schijnt /etc/resolv.conf over te "
+"schrijven. Elk script die dat werkelijk doet dient te worden aangepast, "
+"uitgezet of verwijderd. De beste manier om het script uit te zetten is door "
+"zijn uitvoer-permissie te verwijderen. De beste manier om het script te "
+"verwijderen is het pppconfig pakket te wissen (purge)."
+
+#. Type: note
+#. Description
+#: ../templates:20
+msgid "A rogue pppoeconf PPP hook script is present"
+msgstr "Een schadelijk PPP-haak-script van pppoeconf is aanwezig."
+
+#. Type: note
+#. Description
+#: ../templates:20
+msgid ""
+"Versions of the pppoeconf package prior to version 1.0 contain a script /etc/"
+"ppp/ip-up.d/000usepeerdns (run by pppd after a PPP interface is brought up) "
+"that overwrites /etc/resolv.conf. The script must be modified, disabled or "
+"deleted so that it will not interfere with the operation of resolvconf. "
+"Contrary to Debian policy, merely removing the pppoeconf package does not "
+"disable the script."
+msgstr ""
+"Versies van het pakket pppoeconf vroeger dan 1.0 bevatten het script /etc/"
+"ppp/ip-up.d/000usepeerdns (dat wordt uitgevoerd door pppd nadat een PPP-"
+"interface op is gebracht) dat /etc/resolv.conf overschrijft. Dit script moet "
+"dus worden aangepast, uitgezet of verwijderd, zodat het de werking van "
+"resolvconf niet verstoort. Ondanks dat Debian-beleid dit eist, zal het "
+"verwijderen (remove) van het pakket pppoeconf dit script niet uitzetten."
+
+#. Type: note
+#. Description
+#: ../templates:20
+msgid ""
+"A non-empty executable script /etc/ppp/ip-up.d/000usepeerdns has been "
+"detected. It must be modified, disabled or deleted. The best way to modify "
+"it is to upgrade the pppoeconf package to version 1.0 or later and to allow "
+"dpkg to install the new version of the script. The best way to disable it is "
+"to remove its execute permission. The best way to delete it is to purge the "
+"pppoeconf package."
+msgstr ""
+"Er is een niet-leeg, uitvoerbaar script /etc/ppp/ip-up.d/000usepeerdns "
+"aangetroffen. Het dient te worden aangepast, uitgezet of verwijderd. De "
+"beste manier om het aan te passen is door het pakket pppoeconf op te "
+"waarderen tot versie 1.0 of later en dpkg de nieuwste versies van dit script "
+"te laten installeren. De beste manier om het script uit te zetten is door "
+"zijn uitvoer-permissie te verwijderen. De beste manier om het script te "
+"verwijderen is het pppoeconf pakket te wissen (purge)."
+
+#. Type: note
+#. Description
+#: ../templates:38
+msgid "A rogue xisp PPP hook script is present"
+msgstr "Een schadelijk PPP-haak-script van xisp is aanwezig."
+
+#. Type: note
+#. Description
+#: ../templates:38
+msgid ""
+"The xisp package contains scripts /etc/ppp/ip-up.d/0xisp-dns and /etc/ppp/ip-"
+"down.d/0xisp-dns (run by pppd after a PPP interface is brought up or down) "
+"that overwrite /etc/resolv.conf. The scripts must be modified, disabled or "
+"deleted so that they will not interfere with the operation of resolvconf. "
+"Contrary to Debian policy, merely removing the xisp package does not disable "
+"the scripts."
+msgstr ""
+"Het pakket xisp bevat de scripts /etc/ppp/ip-up.d/0xisp-dns en /etc/ppp/ip-"
+"down.d/0xisp-dns (die worden uitgevoerd door pppd nadat een PPP-interface op "
+"of neer is gebracht) die /etc/resolv.conf overschrijven. Deze scripts moeten "
+"dus worden aangepast, uitgezet of verwijderd, zodat ze de werking van "
+"resolvconf niet verstoren. Ondanks dat Debian-beleid dit eist, zal het "
+"verwijderen (remove) van het pakket xisp deze scripts niet uitzetten."
+
+#. Type: note
+#. Description
+#: ../templates:38
+msgid ""
+"A non-empty executable script /etc/ppp/ip-up.d/0xisp-dns and/or /etc/ppp/ip-"
+"down.d/0xisp-dns has been detected. Each one must be modified, disabled or "
+"deleted. The best way to disable it is to remove its execute permission. The "
+"best way to delete it is to purge the xisp package."
+msgstr ""
+"Er is een niet-leeg, uitvoerbaar script /etc/ppp/ip-up.d/0xisp-dns en/of /"
+"etc/ppp/ip-down.d/0xisp-dns aangetroffen. Deze scripts dienen te worden "
+"aangepast, uitgezet of verwijderd. De beste manier om het script uit te "
+"zetten is door zijn uitvoer-permissie te verwijderen. De beste manier om het "
+"script te verwijderen is het xisp pakket te wissen (purge)."
+
+#. Type: boolean
+#. Description
+#: ../templates:55
+msgid "Disable rogue hook scripts?"
+msgstr "Zet schadelijke haak-scripts uit?"
+
+#. Type: boolean
+#. Description
+#: ../templates:55
+msgid ""
+"Certain packages contain hook scripts which, contrary to Debian policy, "
+"modify the resolver configuration file even when the packages that own them "
+"are removed. Packages known to contain such rogue hook scripts are: "
+"pppconfig (<< 2.2.0 and 2.3), pppoeconf (<< 1.0), totd (<< 1.4-4) and xisp. "
+"Although the resolvconf package is marked as conflicting with these packages "
+"so that they are removed before resolvconf is installed, their rogue hook "
+"scripts may remain behind."
+msgstr ""
+"Sommige pakketten bevatten haak-scripts die, in strijd met Debian-beleid, de "
+"resolver-configuratiebestanden wijzigen zelfs als de pakketten die ze hebben "
+"geïnstalleerd zijn verwijderd. Pakketten waarvan bekend zijn dat ze zulke "
+"scripts bevatten zijn: pppconfig (<< 2.2.0 en 2.3), pppoeconf (<< 1.0), totd "
+"(<< 1.4-4) en xisp. Ondanks het feit dat resolvconf aangeeft dat het "
+"strijdig is met deze pakketten, zodat ze worden verwijderd voordat "
+"resolvconf wordt geïnstalleerd, blijven de schadelijke haak-scripts soms "
+"achter."
+
+#. Type: boolean
+#. Description
+#: ../templates:55
+msgid ""
+"If you agree then the post-installation process will disable rogue hook "
+"scripts by removing their execute permissions."
+msgstr ""
+"Als u toestemt dan zal het post-installatieproces de schadelijke haak-"
+"scripts uitzetten door hun uitvoer-permissies te verwijderen."
+
+#. Type: boolean
+#. Description
+#: ../templates:55
+msgid ""
+"If you do not agree then you should disable the rogue scripts manually, "
+"otherwise resolvconf will not work properly."
+msgstr ""
+"Als u niet toestemt dient u de schadelijke scripts handmatig te verwijderen, "
+"anders zal resolvconf niet goed werken."
+
+#. Type: boolean
+#. Description
+#: ../templates:73
+msgid "Prepare /etc/resolv.conf for dynamic updates?"
+msgstr "/etc/resolv.conf klaar maken voor automatische bijwerkingen?"
+
+#. Type: boolean
+#. Description
+#: ../templates:73
+msgid ""
+"This package contains the infrastructure required for dynamic updating of "
+"the resolver configuration file. Part of the necessary infrastructure is a "
+"symbolic link from /etc/resolv.conf to /etc/resolvconf/run/resolv.conf. If "
+"you agree then this link will be created. The existing /etc/resolv.conf file "
+"will be preserved as /etc/resolvconf/resolv.conf.d/original; it will be "
+"restored if this package is removed."
+msgstr ""
+"Dit pakket bevat de infrastructuur om automatisch bijwerken van het resolver-"
+"configuratiebestand mogelijk te maken. Een gedeelte van de noodzakelijke "
+"infrastructuur is een symbolische koppeling van /etc/resolv.conf naar /etc/"
+"resolvconf/run/resolv.conf. Als u toestemt zal deze koppeling gemaakt "
+"worden. Het bestaande /etc/resolv.conf bestand zal worden bewaard als /etc/"
+"resolvconf/resolv.conf.d/original; het zal worden teruggeplaatst als het "
+"pakket wordt verwijderd."
+
+#. Type: boolean
+#. Description
+#: ../templates:73
+msgid ""
+"If you wish to prevent future installations from recreating the symbolic "
+"link then you can run dpkg-reconfigure later to withdraw your agreement."
+msgstr ""
+"Als u wilt voorkomen dat tijdens een toekomstige installatie de symbolische "
+"koppeling wordt gemaakt, kunt u dpkg-reconfigure uitvoeren en uw toestemming "
+"intrekken."
+
+#. Type: boolean
+#. Description
+#: ../templates:73
+msgid ""
+"If you do not agree then the necessary symbolic link will not be created and "
+"consequently your resolver configuration file will not be dynamically "
+"updated. In order to activate dynamic updating you will have to configure "
+"resolvconf manually following the straightforward instructions in the README "
+"file. If you choose not to configure resolvconf at all then you should "
+"remove the package because its presence causes some programs to deviate from "
+"their default behavior."
+msgstr ""
+"Als u niet toestemt, zal de noodzakelijke symbolische koppeling niet worden "
+"gemaakt; uw resolver-configuratiebestand zal dus niet automatisch worden "
+"bijgewerkt. Om automatisch bijwerken in te schakelen dient u resolvconf aan "
+"de hand van de aanwijzingen in het README-bestand handmatig in te stellen. "
+"Als u ervoor kiest om resolvconf helemaal niet in te stellen dient u het "
+"pakket te verwijderen; de aanwezigheid zorgt er namelijk voor dat sommige "
+"programma's afwijken van hun standaardgedrag."
+
+#. Type: boolean
+#. Description
+#: ../templates:73
+msgid "However you decide, you should read the README file."
+msgstr ""
+"Wat u ook beslist, het wordt aanbevolen om het README-bestand te lezen."
+
+#. Type: note
+#. Description
+#: ../templates:96
+msgid "Remember to reconfigure network interfaces"
+msgstr "Vergeet niet netwerk-interfaces opnieuw in te stellen"
+
+#. Type: note
+#. Description
+#: ../templates:96
+msgid ""
+"Once resolvconf is installed, interface configurers supply nameserver "
+"information to it (which it then makes available to the C Library resolver "
+"and to DNS caches). However, they do this only when they bring up "
+"interfaces. Therefore for resolvconf's nameserver information to be up to "
+"date after initial installation it is necessary to reconfigure interfaces -- "
+"that is, to take them down and then to bring them up again -- and to restart "
+"DNS caches."
+msgstr ""
+"Nadat resolvconf is geïnstalleerd zullen programma's die een netwerk-"
+"interface configureren informatie omtrent naamservers aan resolvconf "
+"doorgeven. (Op zijn beurt zal resolvconf deze informatie beschikbaar maken "
+"aan de C-bibliotheekresolver en aan DNS-caches.) Dit gebeurt echter alleen "
+"als een interface op wordt gebracht. Om na de installatie resolvconf van "
+"actuele informatie te voorzien, dienen de netwerk-interfaces opnieuw te "
+"worden ingesteld -- dat betekent neerbrengen met het ifdown-commando en weer "
+"op met het ifup-commando -- en de DNS-caches te worden herstart."
+
+#. Type: boolean
+#. Description
+#: ../templates:108
+msgid "Append original file to dynamic file?"
+msgstr "Originele bestand aan het eind van dynamische bestand toevoegen?"
+
+#. Type: boolean
+#. Description
+#: ../templates:108
+msgid ""
+"If your original static resolver configuration file (/etc/resolv.conf) "
+"contains nameserver addresses then those addresses should be listed on \"dns-"
+"nameservers\" lines in /etc/network/interfaces as described in the README. "
+"Until you have modified /etc/network/interfaces and reconfigured the "
+"affected interfaces resolvconf will not include those addresses in the "
+"dynamically generated resolver configuration file. Without those addresses "
+"you may have trouble resolving domain names. A TEMPORARY solution is to "
+"append the whole original resolver configuration file to the end of the "
+"dynamically generated file. This will be done if there is a symbolic link "
+"from /etc/resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/"
+"original. If you agree then this symbolic link will be created, provided "
+"that no /etc/resolvconf/resolv.conf.d/tail already exists."
+msgstr ""
+"Als uw originele statische resolver-configuratiebestand (/etc/resolv.conf) "
+"naamserver-adressen bevatte, dan dienen die adressen te worden genoemd op "
+"\"dns-nameservers\"-regels in /etc/network/interfaces, zoals wordt "
+"beschreven in de README. Tot op het moment waarop /etc/network/interfaces is "
+"aangepast en u de betreffende netwerk-interfaces opnieuw heeft ingesteld, "
+"zal resolvconf deze adressen niet in het automatisch gegenereerde resolver-"
+"configuratiebestand opnemen. Zonder deze adressen kunt u problemen krijgen "
+"met het opzoeken van domeinnamen. Een TIJDELIJKE oplossing is het originele "
+"bestand in zijn geheel toevoegen aan het eind van het dynamisch gegenereerde "
+"bestand. Dit zal worden gedaan als er een symbolische koppeling is van /etc/"
+"resolvconf/resolv.conf.d/tail naar /etc/resolvconf/resolv.conf.d/original. "
+"Als u toestemt dan zal deze symbolische koppeling worden gemaakt, op "
+"voorwaarde dat /etc/resolvconf/resolv.conf.d/tail nog niet bestaat."
+
+#. Type: boolean
+#. Description
+#: ../templates:108
+msgid ""
+"After you have modified /etc/network/interfaces to add the required \"dns-"
+"nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "
+"symbolic link to /dev/null."
+msgstr ""
+"Nadat u /etc/network/interfaces heeft bewerkt om de benodigde \"dns-"
+"nameservers\"-regels toe te voegen dient u de symbolische koppeling /etc/"
+"resolvconf/resolv.conf.d/tail naar /dev/null te laten wijzen."

@@ -1,0 +1,125 @@
+Template: resolvconf/bad-pppconfig-hook
+Type: note
+_Description: A rogue pppconfig PPP hook script is present
+ Certain versions of the pppconfig package contain scripts
+ /etc/ppp/ip-up.d/0dns-up and /etc/ppp/ip-down.d/0dns-down
+ (run by pppd after a PPP interface is brought up or down)
+ that overwrite /etc/resolv.conf.
+ These scripts must be modified, disabled or deleted
+ so that they will not interfere with the operation of resolvconf.
+ .
+ A non-empty executable script /etc/ppp/ip-up.d/0dns-up and/or
+ /etc/ppp/ip-down.d/0dns-down has been detected that appears to
+ overwrite /etc/resolv.conf. Each one that does so must be
+ modified, disabled or deleted.
+ The best way to disable it is to remove its execute permission.
+ The best way to delete it is to purge the pppconfig package.
+
+Template: resolvconf/bad-pppoeconf-hook
+Type: note
+_Description: A rogue pppoeconf PPP hook script is present
+ Versions of the pppoeconf package prior to version 1.0 contain a script
+ /etc/ppp/ip-up.d/000usepeerdns (run by pppd after a PPP interface
+ is brought up) that overwrites /etc/resolv.conf.
+ The script must be modified, disabled or deleted so that it will not interfere with
+ the operation of resolvconf. Contrary to Debian policy, merely removing
+ the pppoeconf package does not disable the script.
+ .
+ A non-empty executable script /etc/ppp/ip-up.d/000usepeerdns has been
+ detected.
+ It must be modified, disabled or deleted.
+ The best way to modify it is to upgrade the pppoeconf package to version
+ 1.0 or later and to allow dpkg to install the new version of the script.
+ The best way to disable it is to remove its execute permission.
+ The best way to delete it is to purge the pppoeconf package.
+
+Template: resolvconf/bad-xisp-hook
+Type: note
+_Description: A rogue xisp PPP hook script is present
+ The xisp package contains scripts /etc/ppp/ip-up.d/0xisp-dns and
+ /etc/ppp/ip-down.d/0xisp-dns (run by pppd after a PPP interface is
+ brought up or down) that overwrite /etc/resolv.conf. The scripts
+ must be modified, disabled or deleted so that they will not
+ interfere with the operation of resolvconf. Contrary to Debian policy,
+ merely removing the xisp package does not disable the scripts.
+ .
+ A non-empty executable script /etc/ppp/ip-up.d/0xisp-dns and/or
+ /etc/ppp/ip-down.d/0xisp-dns has been detected.
+ Each one must be modified, disabled or deleted.
+ The best way to disable it is to remove its execute permission.
+ The best way to delete it is to purge the xisp package.
+
+Template: resolvconf/disable-bad-hooks
+Type: boolean
+Default: true
+_Description: Disable rogue hook scripts?
+ Certain packages contain hook scripts which, contrary to Debian policy,
+ modify the resolver configuration file even when the packages that own
+ them are removed. Packages known to contain such rogue hook scripts are:
+ pppconfig (<< 2.2.0 and 2.3), pppoeconf (<< 1.0), totd (<< 1.4-4) and xisp.
+ Although the resolvconf package is marked as conflicting
+ with these packages so that they are removed before resolvconf is
+ installed, their rogue hook scripts may remain behind.
+ .
+ If you agree then the post-installation process will disable rogue
+ hook scripts by removing their execute permissions.
+ .
+ If you do not agree then you should disable the rogue scripts
+ manually, otherwise resolvconf will not work properly.
+
+Template: resolvconf/linkify-resolvconf
+Type: boolean
+Default: true
+_Description: Prepare /etc/resolv.conf for dynamic updates?
+ This package contains the infrastructure required for dynamic updating of
+ the resolver configuration file. Part of the necessary infrastructure is
+ a symbolic link from /etc/resolv.conf to /etc/resolvconf/run/resolv.conf.
+ If you agree then this link will be created. The existing /etc/resolv.conf
+ file will be preserved as /etc/resolvconf/resolv.conf.d/original; it will
+ be restored if this package is removed.
+ .
+ If you wish to prevent future installations from recreating the symbolic
+ link then you can run dpkg-reconfigure later to withdraw your agreement.
+ .
+ If you do not agree then the necessary symbolic link will not be created
+ and consequently your resolver configuration file will not be dynamically
+ updated. In order to activate dynamic updating you will have to configure
+ resolvconf manually following the straightforward instructions in the
+ README file. If you choose not to configure resolvconf at all then you
+ should remove the package because its presence causes some programs to
+ deviate from their default behavior.
+ .
+ However you decide, you should read the README file.
+
+Template: resolvconf/downup-interfaces
+Type: note
+_Description: Remember to reconfigure network interfaces
+ Once resolvconf is installed, interface configurers supply nameserver
+ information to it (which it then makes available to the C Library resolver
+ and to DNS caches). However, they do this only when they bring up interfaces.
+ Therefore for resolvconf's nameserver information to be up to date after
+ initial installation it is necessary to reconfigure interfaces --
+ that is, to take them down and then to bring them up again -- and to restart
+ DNS caches.
+
+Template: resolvconf/link-tail-to-original
+Type: boolean
+Default: false
+_Description: Append original file to dynamic file?
+ If your original static resolver configuration file (/etc/resolv.conf)
+ contains nameserver addresses then those addresses should be listed on
+ "dns-nameservers" lines in /etc/network/interfaces as described in the
+ README. Until you have modified /etc/network/interfaces and reconfigured
+ the affected interfaces resolvconf will not include those addresses in the
+ dynamically generated resolver configuration file. Without those addresses
+ you may have trouble resolving domain names. A TEMPORARY solution is to
+ append the whole original resolver configuration file to the end of
+ the dynamically generated file. This will be done if there is a symbolic
+ link from /etc/resolvconf/resolv.conf.d/tail to
+ /etc/resolvconf/resolv.conf.d/original. If you agree then this symbolic
+ link will be created, provided that no /etc/resolvconf/resolv.conf.d/tail
+ already exists.
+ .
+ After you have modified /etc/network/interfaces to add the required
+ "dns-nameservers" lines you should point the
+ /etc/resolvconf/resolv.conf.d/tail symbolic link to /dev/null.

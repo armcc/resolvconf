@@ -1,0 +1,104 @@
+#!/bin/sh
+#
+# /etc/resolvconf/update.d/dnscache
+#
+# Script to update every forwarding djbdns dnscache instance running
+# on the local machine
+#
+# this script sets up every FORWARDONLY dnscache managed by
+# daemontools on this machine to use the dynamically-offered
+# nameservers for the default '@'
+# 
+# Assumption: On entry, PWD contains the resolv.conf-type files
+#
+# Licensed under the GNU GPL.  See /usr/share/common-licenses/GPL.
+#
+# History
+# Jul 2005: written by Daniel Kahn Gillmor <dkg-debian.org@fifthhorseman.net>
+#
+#  (large chunks and basic theory lifted from Thomas Hood's
+#   scripts for updating the libc resolver and bind)
+#
+# if no nameservers are offered, we ask the dnscache instances to fall
+# back to the root nameservers listed in /etc/dnsroots.global
+
+set -e
+PATH=/bin:/sbin
+
+[ -x /usr/bin/dnscache ] || exit 0
+[ -x /lib/resolvconf/list-records ] || exit 1
+
+# we'll only manage caches actually managed by daemontools:
+if [ -d /var/lib/svscan ] ; then
+## daemontools is built "the debian way":
+    SERVICEDIR=/var/lib/svscan
+elif [ -d /service ] ; then
+## it's built "the djb way":
+    SERVICEDIR=/service
+else
+    ## we don't know where to look for the daemontools services
+    exit 0
+fi
+
+ETC=/etc
+ETCRESOLVCONF="${ETC}/resolvconf"
+TMPFILE="${ETCRESOLVCONF}/run/dnscache_new.$$"
+DEFAULTROOTS="${ETC}/dnsroots.global"
+
+
+CACHES=""
+for SVC in $SERVICEDIR/* ; do
+  if [ -f $SVC/run ] && \
+      (grep -q dnscache $SVC/run) && \
+      [ -d $SVC/root ] && \
+      [ -d $SVC/root/servers ] && \
+      [ -d $SVC/root/ip ] && \
+      [ -s $SVC/env/FORWARDONLY ] ; then
+      CACHES="$SVC $CACHES"
+  fi
+done
+
+
+
+# Stores arguments (minus duplicates) in RSLT, separated by spaces
+# Doesn't work properly if an argument itself contain whitespace
+uniquify()
+{
+	RSLT=""
+	while [ "$1" ] ; do
+		for E in $RSLT ; do
+			[ "$1" = "$E" ] && { shift ; continue 2 ; }
+		done
+		RSLT="${RSLT:+$RSLT }$1"
+		shift
+	done
+}
+
+RSLVCNFFILES="$(/lib/resolvconf/list-records)"
+
+### Compile list of nameservers ###
+NMSRVRS=""
+if [ "$RSLVCNFFILES" ] ; then
+	uniquify $(sed -n 's/^[[:space:]]*nameserver[[:space:]]\+//p' $RSLVCNFFILES)
+	NMSRVRS="$RSLT"
+fi
+
+
+# if no nameservers were present, use the default root nameservers
+# provided by the djbdns package:
+if [ -z "$NMSRVRS" ] && [ -e "$DEFAULTROOTS" ] ; then
+    cp "$DEFAULTROOTS" "$TMPFILE"
+else
+    : > "$TMPFILE"
+    for N in $NMSRVRS ; do
+	echo "$N" >> "$TMPFILE"
+    done
+fi
+
+for CACHE in $CACHES ; do
+    cp "$TMPFILE"  "$CACHE/root/servers/@"
+    ## restart the cache if it's already running:
+    [ -x /command/svc ] && /command/svc -t "$CACHE"
+done
+
+rm -f "$TMPFILE"
