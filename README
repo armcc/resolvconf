@@ -128,16 +128,24 @@ managing the resolv.conf file in an way that avoids the above problems.
 
 HOWTO
 ~~~~~
-Resolvconf works with most interface configurers in Debian:
+Resolvconf works with most interface configurers in Debian
+('(*)' below meaning "with some manual configuration"): 
+
    ppp
    dhcp3-client, dhcp-client, dhcpcd, pump, udhcpc
    ifupdown, laptop-net
+
 DNS caches:
-   bind9 in forwarding-only mode, dnsmasq, pdnsd
-DNS recursing nameserver:
-   bind9
+
+   bind9(*), djbdns dnscache, dnsmasq, pdnsd, totd
+
+DNS recursing nameservers:
+
+   bind9(*), pdns-recursor(*)
+
 and with any program that uses a DNS client library that consults
 /etc/resolv.conf to obtain its list of nameservers:
+
    the GNU C Library resolver library
    adns
    the djbdns resolver library

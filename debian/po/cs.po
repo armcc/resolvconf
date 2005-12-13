@@ -16,18 +16,18 @@ msgstr ""
 "Project-Id-Version: resolvconf 1.26\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-07-30 16:33+0200\n"
-"PO-Revision-Date: 2005-01-27 12:40+0100\n"
+"PO-Revision-Date: 2005-08-10 17:48+0200\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
-"Language-Team: Czech <provoz@debian.cz>\n"
+"Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: note
 #. Description
 #: ../templates:3
 msgid "A rogue pppconfig PPP hook script is present"
-msgstr "Je pøítomen PPP skript balíku pppconfig"
+msgstr "Je pÅ™Ã­tomen PPP skript balÃ­ku pppconfig"
 
 #. Type: note
 #. Description
@@ -39,10 +39,10 @@ msgid ""
 "scripts must be modified, disabled or deleted so that they will not "
 "interfere with the operation of resolvconf."
 msgstr ""
-"Nìkteré verze balíku pppconfig obsahují skripty /etc/ppp/ip-up.d/0dns-up a /"
-"etc/ppp/ip-down.d/0dns-down (spou¹tí je pppd poté, co je PPP rozhraní "
-"nahozeno resp. shozeno), které pøepisují /etc/resolv.conf. Tyto skripty musí "
-"bıt upraveny, zakázány nebo smazány, aby nekolidovaly s èinností programu "
+"NÄ›kterÃ© verze balÃ­ku pppconfig obsahujÃ­ skripty /etc/ppp/ip-up.d/0dns-up a /"
+"etc/ppp/ip-down.d/0dns-down (spouÅ¡tÃ­ je pppd potÃ©, co je PPP rozhranÃ­ "
+"nahozeno resp. shozeno), kterÃ© pÅ™episujÃ­ /etc/resolv.conf. Tyto skripty musÃ­ "
+"bÃ½t upraveny, zakÃ¡zÃ¡ny nebo smazÃ¡ny, aby nekolidovaly s ÄinnostÃ­ programu "
 "resolvconf."
 
 #. Type: note
@@ -55,17 +55,17 @@ msgid ""
 "way to disable it is to remove its execute permission. The best way to "
 "delete it is to purge the pppconfig package."
 msgstr ""
-"Byl rozpoznán neprázdnı spustitelnı skript /etc/ppp/ip-up.d/0dns-up a/nebo /"
-"etc/ppp/ip-down.d/0dns-down, kterı vypadá, ¾e pøepisuje /etc/resolv.conf. "
-"Ka¾dı takovı skript musí bıt upraven, zakázán nebo smazán. Nejjednodu¹eji ho "
-"zaká¾ete tak, ¾e mu zru¹íte práva na spou¹tìní. Nejlep¹í cesta, jak se ho "
-"zbavit, je odstranìní balíku pppconfig s parametrem --purge."
+"Byl rozpoznÃ¡n neprÃ¡zdnÃ½ spustitelnÃ½ skript /etc/ppp/ip-up.d/0dns-up a/nebo /"
+"etc/ppp/ip-down.d/0dns-down, kterÃ½ vypadÃ¡, Å¾e pÅ™episuje /etc/resolv.conf. "
+"KaÅ¾dÃ½ takovÃ½ skript musÃ­ bÃ½t upraven, zakÃ¡zÃ¡n nebo smazÃ¡n. NejjednoduÅ¡eji ho "
+"zakÃ¡Å¾ete tak, Å¾e mu zruÅ¡Ã­te prÃ¡va na spouÅ¡tÄ›nÃ­. NejlepÅ¡Ã­ cesta, jak se ho "
+"zbavit, je odstranÄ›nÃ­ balÃ­ku pppconfig s parametrem --purge."
 
 #. Type: note
 #. Description
 #: ../templates:20
 msgid "A rogue pppoeconf PPP hook script is present"
-msgstr "Je pøítomen PPP skript balíku pppoeconf"
+msgstr "Je pÅ™Ã­tomen PPP skript balÃ­ku pppoeconf"
 
 #. Type: note
 #. Description
@@ -78,11 +78,11 @@ msgid ""
 "Contrary to Debian policy, merely removing the pppoeconf package does not "
 "disable the script."
 msgstr ""
-"Døívìj¹í verze balíku pppoeconf obsahují skript /etc/ppp/ip-up."
-"d/000usepeerdns (spou¹tí jej pppd poté, co je PPP rozhraní nahozeno), kterı "
-"pøepisuje soubor /etc/resolv.conf. Skript musí bıt upraven, zakázán nebo "
-"smazán, aby nekolidoval s èinností programu resolvconf. V rozporu s "
-"politikou Debianu prosté odstranìní balíku pppoeconf tento skript nezaká¾e."
+"DÅ™Ã­vÄ›jÅ¡Ã­ verze balÃ­ku pppoeconf obsahujÃ­ skript /etc/ppp/ip-up."
+"d/000usepeerdns (spouÅ¡tÃ­ jej pppd potÃ©, co je PPP rozhranÃ­ nahozeno), kterÃ½ "
+"pÅ™episuje soubor /etc/resolv.conf. Skript musÃ­ bÃ½t upraven, zakÃ¡zÃ¡n nebo "
+"smazÃ¡n, aby nekolidoval s ÄinnostÃ­ programu resolvconf. V rozporu s "
+"politikou Debianu prostÃ© odstranÄ›nÃ­ balÃ­ku pppoeconf tento skript nezakÃ¡Å¾e."
 
 #. Type: note
 #. Description
@@ -95,18 +95,18 @@ msgid ""
 "to remove its execute permission. The best way to delete it is to purge the "
 "pppoeconf package."
 msgstr ""
-"Byl rozpoznán neprázdnı spustitelnı skript /etc/ppp/ip-up.d/000usepeerdns. "
-"Tento skript musí bıt upraven, zakázán nebo smazán. Nejjednodu¹eji jej "
-"upravíte tak, ¾e aktualizujete balík pppoeconf na verzi 1.0 nebo pozdìj¹í a "
-"povolíte dpkg, aby nainstaloval novou verzi skriptu. Zakázání skriptu "
-"dosáhnete tak, ¾e mu zru¹íte práva na spou¹tìní. Nejlep¹í cesta, jak se "
-"skriptu zbavit, je odstranìní balíku pppoeconf s parametrem --purge."
+"Byl rozpoznÃ¡n neprÃ¡zdnÃ½ spustitelnÃ½ skript /etc/ppp/ip-up.d/000usepeerdns. "
+"Tento skript musÃ­ bÃ½t upraven, zakÃ¡zÃ¡n nebo smazÃ¡n. NejjednoduÅ¡eji jej "
+"upravÃ­te tak, Å¾e aktualizujete balÃ­k pppoeconf na verzi 1.0 nebo pozdÄ›jÅ¡Ã­ a "
+"povolÃ­te dpkg, aby nainstaloval novou verzi skriptu. ZakÃ¡zÃ¡nÃ­ skriptu "
+"dosÃ¡hnete tak, Å¾e mu zruÅ¡Ã­te prÃ¡va na spouÅ¡tÄ›nÃ­. NejlepÅ¡Ã­ cesta, jak se "
+"skriptu zbavit, je odstranÄ›nÃ­ balÃ­ku pppoeconf s parametrem --purge."
 
 #. Type: note
 #. Description
 #: ../templates:38
 msgid "A rogue xisp PPP hook script is present"
-msgstr "Je pøítomen PPP skript balíku xisp"
+msgstr "Je pÅ™Ã­tomen PPP skript balÃ­ku xisp"
 
 #. Type: note
 #. Description
@@ -119,12 +119,12 @@ msgid ""
 "Contrary to Debian policy, merely removing the xisp package does not disable "
 "the scripts."
 msgstr ""
-"Balík xisp obsahuje skripty /etc/ppp/ip-up.d/0xisp-dns a /etc/ppp/ip-down."
-"d/0xisp-dns (spou¹tí je pppd poté, co je PPP rozhraní nahozeno resp. "
-"shozeno), které pøepisují /etc/resolv.conf. Tyto skripty musí bıt upraveny, "
-"zakázány nebo smazány, aby nekolidovaly s èinností programu resolvconf. V "
-"rozporu s politikou Debianu prosté odstranìní balíku xisp tyto skripty "
-"nezaká¾e."
+"BalÃ­k xisp obsahuje skripty /etc/ppp/ip-up.d/0xisp-dns a /etc/ppp/ip-down."
+"d/0xisp-dns (spouÅ¡tÃ­ je pppd potÃ©, co je PPP rozhranÃ­ nahozeno resp. "
+"shozeno), kterÃ© pÅ™episujÃ­ /etc/resolv.conf. Tyto skripty musÃ­ bÃ½t upraveny, "
+"zakÃ¡zÃ¡ny nebo smazÃ¡ny, aby nekolidovaly s ÄinnostÃ­ programu resolvconf. V "
+"rozporu s politikou Debianu prostÃ© odstranÄ›nÃ­ balÃ­ku xisp tyto skripty "
+"nezakÃ¡Å¾e."
 
 #. Type: note
 #. Description
@@ -135,17 +135,17 @@ msgid ""
 "deleted. The best way to disable it is to remove its execute permission. The "
 "best way to delete it is to purge the xisp package."
 msgstr ""
-"Byly rozpoznány neprázdné spustitelné skripty /etc/ppp/ip-up.d/0xisp-dns a /"
-"etc/ppp/ip-down.d/0xisp-dns. Oba skripty musí bıt upraveny, zakázány nebo "
-"smazány. Nejjednodu¹eji je zaká¾ete tak, ¾e jim zru¹íte práva na spou¹tìní. "
-"Nejlep¹í cesta, jak se jich zbavit, je odstranìní balíku xisp s parametrem --"
+"Byly rozpoznÃ¡ny neprÃ¡zdnÃ© spustitelnÃ© skripty /etc/ppp/ip-up.d/0xisp-dns a /"
+"etc/ppp/ip-down.d/0xisp-dns. Oba skripty musÃ­ bÃ½t upraveny, zakÃ¡zÃ¡ny nebo "
+"smazÃ¡ny. NejjednoduÅ¡eji je zakÃ¡Å¾ete tak, Å¾e jim zruÅ¡Ã­te prÃ¡va na spouÅ¡tÄ›nÃ­. "
+"NejlepÅ¡Ã­ cesta, jak se jich zbavit, je odstranÄ›nÃ­ balÃ­ku xisp s parametrem --"
 "purge."
 
 #. Type: boolean
 #. Description
 #: ../templates:55
 msgid "Disable rogue hook scripts?"
-msgstr "Zakázat nezbedné skripty?"
+msgstr "ZakÃ¡zat nezbednÃ© skripty?"
 
 #. Type: boolean
 #. Description
@@ -159,12 +159,12 @@ msgid ""
 "so that they are removed before resolvconf is installed, their rogue hook "
 "scripts may remain behind."
 msgstr ""
-"Urèité balíky obsahují skripty, které, v rozporu s politikou Debianu, mìní "
-"konfiguraèní soubor resolveru i kdy¾ u¾ jsou balíky, je¾ je vlastní, "
-"odstranìny. Mezi takové balíky patøí pppconfig (<< 2.2.0 a 2.3), pppoeconf "
-"(<< 1.0), totd (<< 1.4-4) a xisp. Pøesto¾e je balík resolvconf oznaèen jako "
-"konfliktní se zmínìnımi balíky, tudí¾ bude nainstalován a¾ po jejich "
-"odstranìní, v systému stále mohou zùstat nezbedné skripty."
+"UrÄitÃ© balÃ­ky obsahujÃ­ skripty, kterÃ©, v rozporu s politikou Debianu, mÄ›nÃ­ "
+"konfiguraÄnÃ­ soubor resolveru i kdyÅ¾ uÅ¾ jsou balÃ­ky, jeÅ¾ je vlastnÃ­, "
+"odstranÄ›ny. Mezi takovÃ© balÃ­ky patÅ™Ã­ pppconfig (<< 2.2.0 a 2.3), pppoeconf "
+"(<< 1.0), totd (<< 1.4-4) a xisp. PÅ™estoÅ¾e je balÃ­k resolvconf oznaÄen jako "
+"konfliktnÃ­ se zmÃ­nÄ›nÃ½mi balÃ­ky, tudÃ­Å¾ bude nainstalovÃ¡n aÅ¾ po jejich "
+"odstranÄ›nÃ­, v systÃ©mu stÃ¡le mohou zÅ¯stat nezbednÃ© skripty."
 
 #. Type: boolean
 #. Description
@@ -173,8 +173,8 @@ msgid ""
 "If you agree then the post-installation process will disable rogue hook "
 "scripts by removing their execute permissions."
 msgstr ""
-"Budete-li souhlasit, poinstalaèní proces zaká¾e pozùstalé skripty tím, ¾e "
-"jim odebere právo spou¹tìní."
+"Budete-li souhlasit, poinstalaÄnÃ­ proces zakÃ¡Å¾e pozÅ¯stalÃ© skripty tÃ­m, Å¾e "
+"jim odebere prÃ¡vo spouÅ¡tÄ›nÃ­."
 
 #. Type: boolean
 #. Description
@@ -183,19 +183,18 @@ msgid ""
 "If you do not agree then you should disable the rogue scripts manually, "
 "otherwise resolvconf will not work properly."
 msgstr ""
-"Jestli¾e nebudete souhlasit, mìli byste nezbedné skripty zakázat ruènì, "
-"proto¾e jinak nebude resolvconf pracovat správnì."
+"JestliÅ¾e nebudete souhlasit, mÄ›li byste nezbednÃ© skripty zakÃ¡zat ruÄnÄ›, "
+"protoÅ¾e jinak nebude resolvconf pracovat sprÃ¡vnÄ›."
 
 #. Type: boolean
 #. Description
 #: ../templates:73
 msgid "Prepare /etc/resolv.conf for dynamic updates?"
-msgstr "Pøipravit /etc/resolv.conf pro dynamické aktualizace?"
+msgstr "PÅ™ipravit /etc/resolv.conf pro dynamickÃ© aktualizace?"
 
 #. Type: boolean
 #. Description
 #: ../templates:73
-#, fuzzy
 msgid ""
 "This package contains the infrastructure required for dynamic updating of "
 "the resolver configuration file. Part of the necessary infrastructure is a "
@@ -204,11 +203,11 @@ msgid ""
 "will be preserved as /etc/resolvconf/resolv.conf.d/original; it will be "
 "restored if this package is removed."
 msgstr ""
-"Tento balík obsahuje infrastrukturu vy¾adovanou pro dynamické aktualizace "
-"konfiguraèního souboru resolveru. Souèástí infrastruktury je i symbolickı "
+"Tento balÃ­k obsahuje infrastrukturu vyÅ¾adovanou pro dynamickÃ© aktualizace "
+"konfiguraÄnÃ­ho souboru resolveru. SouÄÃ¡stÃ­ infrastruktury je i symbolickÃ½ "
 "odkaz z /etc/resolv.conf na /etc/resolvconf/run/resolv.conf. Pokud budete "
-"souhlasit, odkaz se vytvoøí automaticky. Stávající /etc/resolv.conf bude "
-"zachován jako /etc/resolvconf/resolv.conf.d/original a pøi odstranìní balíku "
+"souhlasit, odkaz se vytvoÅ™Ã­ automaticky. StÃ¡vajÃ­cÃ­ /etc/resolv.conf bude "
+"zachovÃ¡n jako /etc/resolvconf/resolv.conf.d/original a pÅ™i odstranÄ›nÃ­ balÃ­ku "
 "bude obnoven."
 
 #. Type: boolean
@@ -218,8 +217,8 @@ msgid ""
 "If you wish to prevent future installations from recreating the symbolic "
 "link then you can run dpkg-reconfigure later to withdraw your agreement."
 msgstr ""
-"Jestli¾e nechcete, aby budoucí instalace vnovu vytváøely symbolickı odkaz, "
-"mù¾ete pozdìji spustit dpkg-reconfigure a zmìnit své rozhodnutí."
+"JestliÅ¾e nechcete, aby budoucÃ­ instalace znovu vytvÃ¡Å™ely symbolickÃ½ odkaz, "
+"mÅ¯Å¾ete pozdÄ›ji spustit dpkg-reconfigure a zmÄ›nit svÃ© rozhodnutÃ­."
 
 #. Type: boolean
 #. Description
@@ -233,24 +232,24 @@ msgid ""
 "remove the package because its presence causes some programs to deviate from "
 "their default behavior."
 msgstr ""
-"Nebudete-li souhlasit, pak se nezbytnı symbolicı odkaz nevytvoøí, v dùsledku "
-"èeho¾ nebude konfiguraèní soubor resolveru aktualizován dynamicky. Pro "
-"aktivování dynamickıch aktualizací postupujte dle instrukcí v souboru "
-"README. Rozhodnete-li se resolvconf nenastavovat vùbec, mìli byste balík "
-"radìji odstranit, proto¾e jeho pøítomnost zpùsobí, ¾e se nìkteré programy "
-"budou chovat jinak ne¾ obvykle."
+"Nebudete-li souhlasit, pak se nezbytnÃ½ symbolickÃ½ odkaz nevytvoÅ™Ã­, v "
+"dÅ¯sledku ÄehoÅ¾ nebude konfiguraÄnÃ­ soubor resolveru aktualizovÃ¡n dynamicky. "
+"Pro aktivovÃ¡nÃ­ dynamickÃ½ch aktualizacÃ­ postupujte dle instrukcÃ­ v souboru "
+"README. Rozhodnete-li se resolvconf nenastavovat vÅ¯bec, mÄ›li byste balÃ­k "
+"radÄ›ji odstranit, protoÅ¾e jeho pÅ™Ã­tomnost zpÅ¯sobÃ­, Å¾e se nÄ›kterÃ© programy "
+"budou chovat jinak neÅ¾ obvykle."
 
 #. Type: boolean
 #. Description
 #: ../templates:73
 msgid "However you decide, you should read the README file."
-msgstr "Jakkoliv se rozhodnete, mìli byste si pøeèíst soubor README."
+msgstr "Jakkoliv se rozhodnete, mÄ›li byste si pÅ™eÄÃ­st soubor README."
 
 #. Type: note
 #. Description
 #: ../templates:96
 msgid "Remember to reconfigure network interfaces"
-msgstr "<ezapomeòte penastavit sí»ovaá rozhraní"
+msgstr "NezapomeÅˆte pÅ™enastavit sÃ­Å¥ovÃ¡ rozhranÃ­"
 
 #. Type: note
 #. Description
@@ -264,18 +263,18 @@ msgid ""
 "that is, to take them down and then to bring them up again -- and to restart "
 "DNS caches."
 msgstr ""
-"Po instalaci resolvconfu v¹e funguje tak, ¾e programy pro nastavení sí»ovıch "
-"rozhraní pøedají resolvconfu informace o jmennıch serverech (a ten tuto "
-"informaci pøedá resolveru knihovny libc a cachovacím DNS serverùm). To se "
-"v¹ak dìje pouze pøi nahození rozhraní. Aby tedy byly informace resolvconfu "
-"platné hned po instalaci, je nutné znovu nastavit sí»ová rozhraní -- to "
-"znamená je shodit a znovu nahodit -- a restartovat DNS cache."
+"Po instalaci resolvconfu vÅ¡e funguje tak, Å¾e programy pro nastavenÃ­ sÃ­Å¥ovÃ½ch "
+"rozhranÃ­ pÅ™edajÃ­ resolvconfu informace o jmennÃ½ch serverech (a ten tuto "
+"informaci pÅ™edÃ¡ resolveru knihovny libc a cachovacÃ­m DNS serverÅ¯m). To se "
+"vÅ¡ak dÄ›je pouze pÅ™i nahozenÃ­ rozhranÃ­. Aby tedy byly informace resolvconfu "
+"platnÃ© hned po instalaci, je nutnÃ© znovu nastavit sÃ­Å¥ovÃ¡ rozhranÃ­ -- to "
+"znamenÃ¡ je shodit a znovu nahodit -- a restartovat DNS cache."
 
 #. Type: boolean
 #. Description
 #: ../templates:108
 msgid "Append original file to dynamic file?"
-msgstr "Pøipojit pùvodní soubor k dynamickému souboru?"
+msgstr "PÅ™ipojit pÅ¯vodnÃ­ soubor k dynamickÃ©mu souboru?"
 
 #. Type: boolean
 #. Description
@@ -294,17 +293,17 @@ msgid ""
 "original. If you agree then this symbolic link will be created, provided "
 "that no /etc/resolvconf/resolv.conf.d/tail already exists."
 msgstr ""
-"Pokud vá¹ pùvodní statickı konfiguraèní soubor (/etc/resolv.conf) obsahuje "
-"adresy jmennıch serverù, pak by mìly bıt tyto adresy vypsány na øádcích "
-"\"dns-nameservers\" v souboru /etc/network/interfaces, jak je popsáno v "
-"README. Dokud neupravíte /etc/network/interfaces a znovu nenakonfigurujete "
-"pøíslu¹ná rozhraní, neobjeví se pøíslu¹né adresy v dynamicky generovaném "
-"konfiguraèním souboru souboru resolveru. Bez tìchto adres mù¾ete mít "
-"problémy s pøekladem doménovıch jmen. DOÈASNÉ øe¹ení je pøipojit celı "
-"pùvodní konfiguraèní soubor resolveru na konec dynamicky generovaného "
-"souboru. To se provede tak, ¾e se vytvoøí symbolickı odkaz /etc/resolvconf/"
+"Pokud vÃ¡Å¡ pÅ¯vodnÃ­ statickÃ½ konfiguraÄnÃ­ soubor (/etc/resolv.conf) obsahuje "
+"adresy jmennÃ½ch serverÅ¯, pak by mÄ›ly bÃ½t tyto adresy vypsÃ¡ny na Å™Ã¡dcÃ­ch "
+"\"dns-nameservers\" v souboru /etc/network/interfaces, jak je popsÃ¡no v "
+"README. Dokud neupravÃ­te /etc/network/interfaces a znovu nenakonfigurujete "
+"pÅ™Ã­sluÅ¡nÃ¡ rozhranÃ­, neobjevÃ­ se pÅ™Ã­sluÅ¡nÃ© adresy v dynamicky generovanÃ©m "
+"konfiguraÄnÃ­m souboru souboru resolveru. Bez tÄ›chto adres mÅ¯Å¾ete mÃ­t "
+"problÃ©my s pÅ™ekladem domÃ©novÃ½ch jmen. DOÄŒASNÃ‰ Å™eÅ¡enÃ­ je pÅ™ipojit celÃ½ "
+"pÅ¯vodnÃ­ konfiguraÄnÃ­ soubor resolveru na konec dynamicky generovanÃ©ho "
+"souboru. To se provede tak, Å¾e se vytvoÅ™Ã­ symbolickÃ½ odkaz /etc/resolvconf/"
 "resolv.conf.d/tail na /etc/resolvconf/resolv.conf.d/original. Budete-li "
-"souhlasit, program vytvoøí tento symbolickı odkaz (pokud ji¾ neexistuje)."
+"souhlasit, program vytvoÅ™Ã­ tento symbolickÃ½ odkaz (pokud jiÅ¾ neexistuje)."
 
 #. Type: boolean
 #. Description
@@ -314,6 +313,6 @@ msgid ""
 "nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "
 "symbolic link to /dev/null."
 msgstr ""
-"A¾ do souboru /etc/network/interfaces pøidáte po¾adované øádky \"dns-"
-"nameservers\", mìli byste pøesmìrovat symbolickı odkaz /etc/resolvconf/"
+"AÅ¾ do souboru /etc/network/interfaces pÅ™idÃ¡te poÅ¾adovanÃ© Å™Ã¡dky \"dns-"
+"nameservers\", mÄ›li byste pÅ™esmÄ›rovat symbolickÃ½ odkaz /etc/resolvconf/"
 "resolv.conf.d/tail na /dev/null."
