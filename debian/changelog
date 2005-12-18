@@ -1,4 +1,4 @@
-resolvconf (1.34~1) UNRELEASED; urgency=low
+resolvconf (1.34) unstable; urgency=low
 
   [ Thomas Hood ]
   * Tweak README
@@ -6,7 +6,7 @@ resolvconf (1.34~1) UNRELEASED; urgency=low
   * Update FSF address
   * Use latest lsb init-functions in initscript
 
- -- Thomas Hood <jdthood@yahoo.co.uk>  Mon,  1 Aug 2005 16:12:49 +0200
+ -- Marc Haber <mh+debian-packages@zugschlus.de>  Sun, 18 Dec 2005 16:15:29 +0000
 
 resolvconf (1.33) unstable; urgency=medium
 
