@@ -1,0 +1,6 @@
+                     MAINTAINER NOTES
+                     for resolvconf
+
+When changing conffiles, update the license reference to refer
+to /usr/share/doc/resolvconf/copyright.
+
