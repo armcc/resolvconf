@@ -24,7 +24,7 @@ binary-indep: build
 	install -p --owner=root --group=root --mode=0755 bin/list-records $(DESTDIR)/lib/resolvconf
 	dh_installdebconf
 	dh_installdocs README
-	dh_installman man/resolvconf.8 man/interface-order.5
+	dh_installman
 	dh_installchangelogs
 	dh_installinit --no-start -- start 38 S . stop 89 0 6 .
 	dh_installppp --name=000resolvconf

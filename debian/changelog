@@ -1,7 +1,10 @@
-resolvconf (1.35~3) UNRELEASED; urgency=low
+resolvconf (1.35~4) UNRELEASED; urgency=low
 
-  [ Daniel Nylander ]
+  [ Daniel Nylander / TH ]
   * Add sv.po
+
+  [ Yuri Kozlov / TH ]
+  * Add ru.po; add ru translations of manpages  (Closes: #350383)
 
   [ Thomas Hood ]
   * Relicense with GPL version option
