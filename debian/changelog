@@ -1,4 +1,4 @@
-resolvconf (1.35~4) UNRELEASED; urgency=low
+resolvconf (1.35~5) unstable; urgency=low
 
   [ Daniel Nylander / TH ]
   * Add sv.po
@@ -7,6 +7,7 @@ resolvconf (1.35~4) UNRELEASED; urgency=low
   * Add ru.po; add ru translations of manpages  (Closes: #350383)
 
   [ Thomas Hood ]
+  * DH_COMPAT=5
   * Relicense with GPL version option
 
  -- Thomas Hood <jdthood@yahoo.co.uk>  Wed, 11 Jan 2006 23:53:47 +0100
