@@ -1,4 +1,4 @@
-resolvconf (1.35~5) unstable; urgency=low
+resolvconf (1.35~6) unstable; urgency=low
 
   [ Daniel Nylander / TH ]
   * Add sv.po
@@ -9,6 +9,9 @@ resolvconf (1.35~5) unstable; urgency=low
   [ Thomas Hood ]
   * DH_COMPAT=5
   * Relicense with GPL version option
+  * Remove /lib/init from initscript PATH since standard readlink
+    program with -f option now works as required
+  * Depend on coreutils >= 5.94-1 to get revised readlink program
 
  -- Thomas Hood <jdthood@yahoo.co.uk>  Wed, 11 Jan 2006 23:53:47 +0100
 

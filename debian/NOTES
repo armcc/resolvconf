@@ -1,6 +1,11 @@
                      MAINTAINER NOTES
                      for resolvconf
 
-When changing conffiles, update the license reference to refer
-to /usr/share/doc/resolvconf/copyright.
+TODO
+----
+When changing conffiles, update the license reference to refer to
+/usr/share/doc/resolvconf/copyright.
 
+Dependencies
+------------
+* Depend on coreutils >= 5.94 for the sake of the updated readlink program
