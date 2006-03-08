@@ -11,19 +11,16 @@
 # 
 # Assumption: On entry, PWD contains the resolv.conf-type files
 #
-# Licensed under the GNU GPL.  See /usr/share/common-licenses/GPL.
-#
-# History
-# Jul 2005: written by Daniel Kahn Gillmor <dkg-debian.org@fifthhorseman.net>
-#
-#  (large chunks and basic theory lifted from Thomas Hood's
-#   scripts for updating the libc resolver and bind)
-#
-# if no nameservers are offered, we ask the dnscache instances to fall
+# If no nameservers are offered, we ask the dnscache instances to fall
 # back to the root nameservers listed in /etc/dnsroots.global
+#
+# Licensed under the GNU GPL.  See /usr/share/doc/resolvconf/copyright.
+#
+# Written by Daniel Kahn Gillmor <dkg-debian.org@fifthhorseman.net>
+# based on other scripts by Thomas Hood
 
 set -e
-PATH=/bin:/sbin
+PATH=/sbin:/bin
 
 [ -x /usr/bin/dnscache ] || exit 0
 [ -x /lib/resolvconf/list-records ] || exit 1

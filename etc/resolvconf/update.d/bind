@@ -9,13 +9,12 @@
 #
 # Assumption: On entry, PWD contains the resolv.conf-type files
 #
-# Licensed under the GNU GPL.  See /usr/share/common-licenses/GPL.
+# Licensed under the GNU GPL.  See /usr/share/doc/resolvconf/copyright.
 #
-# History
-# June 2003 - April 2005: Written by Thomas Hood <jdthood@yahoo.co.uk>
+# Written by Thomas Hood <jdthood@yahoo.co.uk>
 
 set -e
-PATH=/bin:/sbin
+PATH=/sbin:/bin
 
 [ -x /usr/sbin/named ] || exit 0
 [ -x /lib/resolvconf/list-records ] || exit 1

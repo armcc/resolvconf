@@ -12,7 +12,7 @@ set -e
 
 echo_usage() { echo "Usage: resolvconf (-u|-d IFACE|-a IFACE)" ; }
 
-PATH=/bin:/sbin
+PATH=/sbin:/bin
 MYNAME="${0##*/}"
 # Note that /etc/resolvconf/run may be a symlink
 RUN_DIR=/etc/resolvconf/run

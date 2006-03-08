@@ -6,9 +6,13 @@
 # Assumption: On entry, PWD contains the resolv.conf-type files
 #
 # This script is part of the resolvconf package
+#
+# Licensed under the GNU GPL.  See /usr/share/doc/resolvconf/copyright.
+#
+# Written by Thomas Hood <jdthood@yahoo.co.uk>
 
 set -e
-PATH=/bin:/sbin
+PATH=/sbin:/bin
 
 [ -x /lib/resolvconf/list-records ] || exit 1
 
