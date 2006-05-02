@@ -1,4 +1,4 @@
-resolvconf (1.35~6) unstable; urgency=low
+resolvconf (1.35) unstable; urgency=low
 
   [ Daniel Nylander / TH ]
   * Add sv.po
