@@ -8,4 +8,4 @@ When changing conffiles, update the license reference to refer to
 
 Dependencies
 ------------
-* Depend on coreutils >= 5.94 for the sake of the updated readlink program
+* Depend on coreutils >= 5.93 for the sake of the updated readlink program
