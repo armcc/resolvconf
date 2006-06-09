@@ -25,16 +25,16 @@ PATH=/sbin:/bin
 [ -x /usr/bin/dnscache ] || exit 0
 [ -x /lib/resolvconf/list-records ] || exit 1
 
-# we'll only manage caches actually managed by daemontools:
+# We'll only manage caches actually managed by daemontools
 if [ -d /var/lib/svscan ] ; then
-## daemontools is built "the debian way":
-    SERVICEDIR=/var/lib/svscan
+	# daemontools is built "the debian way"
+	SERVICEDIR=/var/lib/svscan
 elif [ -d /service ] ; then
-## it's built "the djb way":
-    SERVICEDIR=/service
+	# It's built "the djb way"
+	SERVICEDIR=/service
 else
-    ## we don't know where to look for the daemontools services
-    exit 0
+	# We don't know where to look for the daemontools services
+	exit 0
 fi
 
 ETC=/etc
@@ -45,14 +45,14 @@ DEFAULTROOTS="${ETC}/dnsroots.global"
 
 CACHES=""
 for SVC in $SERVICEDIR/* ; do
-  if [ -f $SVC/run ] && \
-      (grep -q dnscache $SVC/run) && \
-      [ -d $SVC/root ] && \
-      [ -d $SVC/root/servers ] && \
-      [ -d $SVC/root/ip ] && \
-      [ -s $SVC/env/FORWARDONLY ] ; then
-      CACHES="$SVC $CACHES"
-  fi
+	if [ -f $SVC/run ] && \
+		(grep -q dnscache $SVC/run) && \
+		[ -d $SVC/root ] && \
+		[ -d $SVC/root/servers ] && \
+		[ -d $SVC/root/ip ] && \
+		[ -s $SVC/env/FORWARDONLY ] ; then
+			CACHES="$SVC $CACHES"
+	fi
 done
 
 
@@ -81,21 +81,24 @@ if [ "$RSLVCNFFILES" ] ; then
 fi
 
 
-# if no nameservers were present, use the default root nameservers
+# If no nameservers were present, use the default root nameservers
 # provided by the djbdns package:
 if [ -z "$NMSRVRS" ] && [ -e "$DEFAULTROOTS" ] ; then
-    cp "$DEFAULTROOTS" "$TMPFILE"
+	cp "$DEFAULTROOTS" "$TMPFILE"
 else
-    : > "$TMPFILE"
-    for N in $NMSRVRS ; do
-	echo "$N" >> "$TMPFILE"
-    done
+	: > "$TMPFILE"
+	for N in $NMSRVRS ; do
+		echo "$N" >> "$TMPFILE"
+	done
 fi
 
+SVC_CMD="$(which svc)" || :
+[ ! "$SVC_CMD" ] && [ -x /command/svc ] && SVC_CMD=/command/svc
+
 for CACHE in $CACHES ; do
-    cp "$TMPFILE"  "$CACHE/root/servers/@"
-    ## restart the cache if it's already running:
-    [ -x /command/svc ] && /command/svc -t "$CACHE"
+	cp "$TMPFILE" "$CACHE/root/servers/@"
+	# Restart the cache if it's already running:
+	[ "$SVC_CMD" ] && $SVC_CMD -t "$CACHE"
 done
 
 rm -f "$TMPFILE"
