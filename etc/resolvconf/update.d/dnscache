@@ -20,7 +20,7 @@
 # based on other scripts by Thomas Hood
 
 set -e
-PATH=/sbin:/bin
+PATH=/usr/sbin:/usr/bin:/sbin:/bin
 
 [ -x /usr/bin/dnscache ] || exit 0
 [ -x /lib/resolvconf/list-records ] || exit 1
@@ -92,7 +92,7 @@ else
 	done
 fi
 
-SVC_CMD="$(which svc)" || :
+SVC_CMD="$(which svc 2>/dev/null)" || :
 [ ! "$SVC_CMD" ] && [ -x /command/svc ] && SVC_CMD=/command/svc
 
 for CACHE in $CACHES ; do
