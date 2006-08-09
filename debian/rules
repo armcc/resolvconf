@@ -16,12 +16,15 @@ clean:
 build:
 	dh_testdir
 
+binary-arch:
+
 binary-indep: build
 	dh_testroot
-	dh_installdirs etc sbin lib/resolvconf etc/network/if-up.d etc/network/if-down.d
+	dh_installdirs etc sbin lib/resolvconf etc/network/if-up.d etc/network/if-down.d usr/share/lintian/overrides
 	cp -a etc $(DESTDIR)
 	install -p --owner=root --group=root --mode=0755 bin/resolvconf $(DESTDIR)/sbin
 	install -p --owner=root --group=root --mode=0755 bin/list-records $(DESTDIR)/lib/resolvconf
+	install -p --owner=root --group=root --mode=0644 debian/lintian-overrides $(DESTDIR)/usr/share/lintian/overrides/resolvconf
 	dh_installdebconf
 	dh_installdocs README
 	dh_installman
