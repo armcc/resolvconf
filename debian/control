@@ -2,9 +2,9 @@ Source: resolvconf
 Section: net
 Priority: optional
 Maintainer: resolvconf maintainers <resolvconf-devel@lists.alioth.debian.org>
-Uploaders: Eric Evans <eevans@sym-link.com>, Daniel Kahn Gillmor <dkg@fifthhorseman.net>, Marc Haber <mh+debian-packages@zugschlus.de>, Thomas Hood <jdthood@yahoo.co.uk>
+Uploaders: Eric Evans <eevans@sym-link.com>, Daniel Kahn Gillmor <dkg@fifthhorseman.net>, Marc Haber <mh+debian-packages@zugschlus.de>, Thomas Hood <jdthood@yahoo.co.uk>, Marco Nenciarini <mnencia@debian.org>
 Build-Depends: debhelper (>= 5)
-Standards-Version: 3.6.2.1
+Standards-Version: 3.7.2.1
 
 Package: resolvconf
 Architecture: all

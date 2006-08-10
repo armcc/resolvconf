@@ -24,8 +24,8 @@ is_active()
 	[ -s "$1" ] \
 	&& [ -x "$1" ] \
 	&& ! { \
-            [ "$(cat "$1" | wc --chars)" -lt 11 ] \
-            && [ "$(cat "$1")" = '#!/bin/sh' ] ; \
+		[ "$(cat "$1" | wc --chars)" -lt 11 ] \
+		&& [ "$(cat "$1")" = '#!/bin/sh' ] ; \
 	} \
 	&& ! grep -q resolvconf "$1" > /dev/null
 }
@@ -184,9 +184,14 @@ if [ "$TIME_TO_CHANGE_LINKIFICATION" = yes ] ; then
 
 	fi
 fi
-
-### Enable updates ###
-/etc/init.d/resolvconf enable-updates
-
+								
 db_stop
 
+### Enable updates ###
+if [ -x "/etc/init.d/resolvconf" ] ; then
+	if which invoke-rc.d >/dev/null 2>&1 ; then
+		invoke-rc.d resolvconf enable-updates || :
+	else
+		/etc/init.d/resolvconf enable-updates
+	fi
+fi

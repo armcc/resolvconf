@@ -4,10 +4,11 @@ resolvconf (1.36) unstable; urgency=low
   * Update dnscache update script to handle runit too.
     (Closes: #380119)
 
-  [ Thomas Hood ]
-  * Address lintian errors
+  [ Marco Nenciarini / TH ]
+  * Modified postinst and prerm scripts to use invoke-rc.d if available
+  * Bumped standards version to 3.7.2.1
 
- -- Thomas Hood <jdthood@yahoo.co.uk>  Fri, 28 Jul 2006 12:00:00 +0200
+ -- Marco Nenciarini <mnencia@debian.org>  Wed,  9 Aug 2006 16:50:50 +0200
 
 resolvconf (1.35) unstable; urgency=low
 
