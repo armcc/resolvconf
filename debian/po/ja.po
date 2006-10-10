@@ -15,8 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.36\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-30 16:33+0200\n"
+"Report-Msgid-Bugs-To: resolvconf-devel@lists.alioth.debian.org\n"
+"POT-Creation-Date: 2006-10-10 15:06+0200\n"
 "PO-Revision-Date: 2006-10-09 00:52+0900\n"
 "Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
@@ -26,13 +26,13 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:1001
 msgid "A rogue pppconfig PPP hook script is present"
 msgstr "問題になりそうな pppconfig の PPP フックスクリプトが存在しています。"
 
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:1001
 msgid ""
 "Certain versions of the pppconfig package contain scripts /etc/ppp/ip-up."
 "d/0dns-up and /etc/ppp/ip-down.d/0dns-down (run by pppd after a PPP "
@@ -48,7 +48,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:1001
 msgid ""
 "A non-empty executable script /etc/ppp/ip-up.d/0dns-up and/or /etc/ppp/ip-"
 "down.d/0dns-down has been detected that appears to overwrite /etc/resolv."
@@ -64,13 +64,13 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:20
+#: ../templates:2001
 msgid "A rogue pppoeconf PPP hook script is present"
 msgstr "問題になりそうな pppoeconf の PPP フックスクリプトが存在しています"
 
 #. Type: note
 #. Description
-#: ../templates:20
+#: ../templates:2001
 msgid ""
 "Versions of the pppoeconf package prior to version 1.0 contain a script /etc/"
 "ppp/ip-up.d/000usepeerdns (run by pppd after a PPP interface is brought up) "
@@ -88,7 +88,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:20
+#: ../templates:2001
 msgid ""
 "A non-empty executable script /etc/ppp/ip-up.d/000usepeerdns has been "
 "detected. It must be modified, disabled or deleted. The best way to modify "
@@ -106,13 +106,13 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:38
+#: ../templates:3001
 msgid "A rogue xisp PPP hook script is present"
 msgstr "問題になりそうな xisp の PPP フックスクリプトが存在しています。"
 
 #. Type: note
 #. Description
-#: ../templates:38
+#: ../templates:3001
 msgid ""
 "The xisp package contains scripts /etc/ppp/ip-up.d/0xisp-dns and /etc/ppp/ip-"
 "down.d/0xisp-dns (run by pppd after a PPP interface is brought up or down) "
@@ -130,7 +130,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:38
+#: ../templates:3001
 msgid ""
 "A non-empty executable script /etc/ppp/ip-up.d/0xisp-dns and/or /etc/ppp/ip-"
 "down.d/0xisp-dns has been detected. Each one must be modified, disabled or "
@@ -145,13 +145,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:55
+#: ../templates:4001
 msgid "Disable rogue hook scripts?"
 msgstr "問題になりそうなフックスクリプトを無効にしますか?"
 
 #. Type: boolean
 #. Description
-#: ../templates:55
+#: ../templates:4001
 msgid ""
 "Certain packages contain hook scripts which, contrary to Debian policy, "
 "modify the resolver configuration file even when the packages that own them "
@@ -171,7 +171,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:55
+#: ../templates:4001
 msgid ""
 "If you agree then the post-installation process will disable rogue hook "
 "scripts by removing their execute permissions."
@@ -181,7 +181,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:55
+#: ../templates:4001
 msgid ""
 "If you do not agree then you should disable the rogue scripts manually, "
 "otherwise resolvconf will not work properly."
@@ -191,13 +191,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid "Prepare /etc/resolv.conf for dynamic updates?"
 msgstr "/etc/resolv.conf を動的更新するようにしますか?"
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid ""
 "This package contains the infrastructure required for dynamic updating of "
 "the resolver configuration file. Part of the necessary infrastructure is a "
@@ -215,7 +215,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid ""
 "If you wish to prevent future installations from recreating the symbolic "
 "link then you can run dpkg-reconfigure later to withdraw your agreement."
@@ -225,7 +225,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid ""
 "If you do not agree then the necessary symbolic link will not be created and "
 "consequently your resolver configuration file will not be dynamically "
@@ -244,19 +244,19 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid "However you decide, you should read the README file."
 msgstr "いずれにせよ、README ファイルを読むべきです。"
 
 #. Type: note
 #. Description
-#: ../templates:96
+#: ../templates:6001
 msgid "Remember to reconfigure network interfaces"
 msgstr "ネットワークインターフェイスの再設定を忘れないで下さい"
 
 #. Type: note
 #. Description
-#: ../templates:96
+#: ../templates:6001
 msgid ""
 "Once resolvconf is installed, interface configurers supply nameserver "
 "information to it (which it then makes available to the C Library resolver "
@@ -270,18 +270,18 @@ msgstr ""
 "報を提供します (C ライブラリのリゾルバと DNS キャッシュで利用可能になりま"
 "す)。しかし、これはインターフェイスが起動された時のみです。そのため、"
 "resolvconf のネームサーバ情報を初期インストール後に更新するには、インターフェ"
-"イスの再設定−つまり、インターフェイスを一旦ダウンし、その後再度アップする"
-"−とDNS キャッシュの再起動が必要になります。"
+"イスの再設定−つまり、インターフェイスを一旦ダウンし、その後再度アップする−と"
+"DNS キャッシュの再起動が必要になります。"
 
 #. Type: boolean
 #. Description
-#: ../templates:108
+#: ../templates:7001
 msgid "Append original file to dynamic file?"
 msgstr "更新されるファイルにオリジナルのファイルを追加しますか?"
 
 #. Type: boolean
 #. Description
-#: ../templates:108
+#: ../templates:7001
 msgid ""
 "If your original static resolver configuration file (/etc/resolv.conf) "
 "contains nameserver addresses then those addresses should be listed on \"dns-"
@@ -300,17 +300,17 @@ msgstr ""
 "を含んでいた場合、README に書いてあるように、そのアドレスは /etc/network/"
 "interfaces の \"dns-nameservers\" 行に記述すべきです。/etc/network/"
 "interfaces を編集して影響を受けるインターフェイスを再設定するまで、"
-"resolvconf は動的に生成するリゾルバ設定ファイルにはこのアドレスを含めません。こ"
-"のアドレス設定がないとドメイン名の解決に問題が残るでしょう。「一時的な」解決方法"
-"は、元々の静的なリゾルバ設定ファイルを動的に生成したファイルの最後に丸ごと含"
-"めることです。 /etc/resolvconf/resolv.conf.d/tail から /etc/resolvconf/"
+"resolvconf は動的に生成するリゾルバ設定ファイルにはこのアドレスを含めません。"
+"このアドレス設定がないとドメイン名の解決に問題が残るでしょう。「一時的な」解"
+"決方法は、元々の静的なリゾルバ設定ファイルを動的に生成したファイルの最後に丸"
+"ごと含めることです。 /etc/resolvconf/resolv.conf.d/tail から /etc/resolvconf/"
 "resolv.conf.d/original へのシンボリックリンクが存在していた場合、これが実行さ"
 "れます。ここで「はい」と答えると、/etc/resolvconf/resolv.conf.d/tail がまだ存"
 "在していなければ、このシンボリックリンクが作成されるでしょう。"
 
 #. Type: boolean
 #. Description
-#: ../templates:108
+#: ../templates:7001
 msgid ""
 "After you have modified /etc/network/interfaces to add the required \"dns-"
 "nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "

@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.29\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-30 16:33+0200\n"
+"Report-Msgid-Bugs-To: resolvconf-devel@lists.alioth.debian.org\n"
+"POT-Creation-Date: 2006-10-10 15:06+0200\n"
 "PO-Revision-Date: 2005-07-31 14:59+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
@@ -18,13 +18,13 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:1001
 msgid "A rogue pppconfig PPP hook script is present"
 msgstr "Gặp một tập lệnh móc PPP pppconfig độc."
 
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:1001
 msgid ""
 "Certain versions of the pppconfig package contain scripts /etc/ppp/ip-up."
 "d/0dns-up and /etc/ppp/ip-down.d/0dns-down (run by pppd after a PPP "
@@ -40,7 +40,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:1001
 msgid ""
 "A non-empty executable script /etc/ppp/ip-up.d/0dns-up and/or /etc/ppp/ip-"
 "down.d/0dns-down has been detected that appears to overwrite /etc/resolv."
@@ -56,13 +56,13 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:20
+#: ../templates:2001
 msgid "A rogue pppoeconf PPP hook script is present"
 msgstr "Gặp một tập lệnh móc PPP pppoeconf độc."
 
 #. Type: note
 #. Description
-#: ../templates:20
+#: ../templates:2001
 msgid ""
 "Versions of the pppoeconf package prior to version 1.0 contain a script /etc/"
 "ppp/ip-up.d/000usepeerdns (run by pppd after a PPP interface is brought up) "
@@ -80,7 +80,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:20
+#: ../templates:2001
 msgid ""
 "A non-empty executable script /etc/ppp/ip-up.d/000usepeerdns has been "
 "detected. It must be modified, disabled or deleted. The best way to modify "
@@ -98,13 +98,13 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:38
+#: ../templates:3001
 msgid "A rogue xisp PPP hook script is present"
 msgstr "Gặp một tập lệnh móc PPP xisp độc."
 
 #. Type: note
 #. Description
-#: ../templates:38
+#: ../templates:3001
 msgid ""
 "The xisp package contains scripts /etc/ppp/ip-up.d/0xisp-dns and /etc/ppp/ip-"
 "down.d/0xisp-dns (run by pppd after a PPP interface is brought up or down) "
@@ -122,7 +122,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:38
+#: ../templates:3001
 msgid ""
 "A non-empty executable script /etc/ppp/ip-up.d/0xisp-dns and/or /etc/ppp/ip-"
 "down.d/0xisp-dns has been detected. Each one must be modified, disabled or "
@@ -136,13 +136,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:55
+#: ../templates:4001
 msgid "Disable rogue hook scripts?"
 msgstr "Vô hiệu hóa mọi tập lệnh móc độc không?"
 
 #. Type: boolean
 #. Description
-#: ../templates:55
+#: ../templates:4001
 msgid ""
 "Certain packages contain hook scripts which, contrary to Debian policy, "
 "modify the resolver configuration file even when the packages that own them "
@@ -161,7 +161,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:55
+#: ../templates:4001
 msgid ""
 "If you agree then the post-installation process will disable rogue hook "
 "scripts by removing their execute permissions."
@@ -171,7 +171,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:55
+#: ../templates:4001
 msgid ""
 "If you do not agree then you should disable the rogue scripts manually, "
 "otherwise resolvconf will not work properly."
@@ -181,13 +181,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid "Prepare /etc/resolv.conf for dynamic updates?"
 msgstr "Chuẩn bị tập tin «/etc/resolv.conf» để cập nhật động không?"
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid ""
 "This package contains the infrastructure required for dynamic updating of "
 "the resolver configuration file. Part of the necessary infrastructure is a "
@@ -205,7 +205,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid ""
 "If you wish to prevent future installations from recreating the symbolic "
 "link then you can run dpkg-reconfigure later to withdraw your agreement."
@@ -215,7 +215,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid ""
 "If you do not agree then the necessary symbolic link will not be created and "
 "consequently your resolver configuration file will not be dynamically "
@@ -235,19 +235,19 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid "However you decide, you should read the README file."
 msgstr "Trong bất cứ trường hợp nào, bạn nên đọc tập tin «README» (Đọc đi)."
 
 #. Type: note
 #. Description
-#: ../templates:96
+#: ../templates:6001
 msgid "Remember to reconfigure network interfaces"
 msgstr "Nhớ để cấu hình lại các giao diện mạng."
 
 #. Type: note
 #. Description
-#: ../templates:96
+#: ../templates:6001
 msgid ""
 "Once resolvconf is installed, interface configurers supply nameserver "
 "information to it (which it then makes available to the C Library resolver "
@@ -266,13 +266,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:108
+#: ../templates:7001
 msgid "Append original file to dynamic file?"
 msgstr "Phụ thêm tập tin gốc vào tập tin động không?"
 
 #. Type: boolean
 #. Description
-#: ../templates:108
+#: ../templates:7001
 msgid ""
 "If your original static resolver configuration file (/etc/resolv.conf) "
 "contains nameserver addresses then those addresses should be listed on \"dns-"
@@ -303,7 +303,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:108
+#: ../templates:7001
 msgid ""
 "After you have modified /etc/network/interfaces to add the required \"dns-"
 "nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "

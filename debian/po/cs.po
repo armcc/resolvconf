@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.26\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-30 16:33+0200\n"
+"Report-Msgid-Bugs-To: resolvconf-devel@lists.alioth.debian.org\n"
+"POT-Creation-Date: 2006-10-10 15:06+0200\n"
 "PO-Revision-Date: 2005-08-10 17:48+0200\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
@@ -25,13 +25,13 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:1001
 msgid "A rogue pppconfig PPP hook script is present"
 msgstr "Je přítomen PPP skript balíku pppconfig"
 
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:1001
 msgid ""
 "Certain versions of the pppconfig package contain scripts /etc/ppp/ip-up."
 "d/0dns-up and /etc/ppp/ip-down.d/0dns-down (run by pppd after a PPP "
@@ -47,7 +47,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3
+#: ../templates:1001
 msgid ""
 "A non-empty executable script /etc/ppp/ip-up.d/0dns-up and/or /etc/ppp/ip-"
 "down.d/0dns-down has been detected that appears to overwrite /etc/resolv."
@@ -63,13 +63,13 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:20
+#: ../templates:2001
 msgid "A rogue pppoeconf PPP hook script is present"
 msgstr "Je přítomen PPP skript balíku pppoeconf"
 
 #. Type: note
 #. Description
-#: ../templates:20
+#: ../templates:2001
 msgid ""
 "Versions of the pppoeconf package prior to version 1.0 contain a script /etc/"
 "ppp/ip-up.d/000usepeerdns (run by pppd after a PPP interface is brought up) "
@@ -86,7 +86,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:20
+#: ../templates:2001
 msgid ""
 "A non-empty executable script /etc/ppp/ip-up.d/000usepeerdns has been "
 "detected. It must be modified, disabled or deleted. The best way to modify "
@@ -104,13 +104,13 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:38
+#: ../templates:3001
 msgid "A rogue xisp PPP hook script is present"
 msgstr "Je přítomen PPP skript balíku xisp"
 
 #. Type: note
 #. Description
-#: ../templates:38
+#: ../templates:3001
 msgid ""
 "The xisp package contains scripts /etc/ppp/ip-up.d/0xisp-dns and /etc/ppp/ip-"
 "down.d/0xisp-dns (run by pppd after a PPP interface is brought up or down) "
@@ -128,7 +128,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:38
+#: ../templates:3001
 msgid ""
 "A non-empty executable script /etc/ppp/ip-up.d/0xisp-dns and/or /etc/ppp/ip-"
 "down.d/0xisp-dns has been detected. Each one must be modified, disabled or "
@@ -143,13 +143,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:55
+#: ../templates:4001
 msgid "Disable rogue hook scripts?"
 msgstr "Zakázat nezbedné skripty?"
 
 #. Type: boolean
 #. Description
-#: ../templates:55
+#: ../templates:4001
 msgid ""
 "Certain packages contain hook scripts which, contrary to Debian policy, "
 "modify the resolver configuration file even when the packages that own them "
@@ -168,7 +168,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:55
+#: ../templates:4001
 msgid ""
 "If you agree then the post-installation process will disable rogue hook "
 "scripts by removing their execute permissions."
@@ -178,7 +178,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:55
+#: ../templates:4001
 msgid ""
 "If you do not agree then you should disable the rogue scripts manually, "
 "otherwise resolvconf will not work properly."
@@ -188,13 +188,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid "Prepare /etc/resolv.conf for dynamic updates?"
 msgstr "Připravit /etc/resolv.conf pro dynamické aktualizace?"
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid ""
 "This package contains the infrastructure required for dynamic updating of "
 "the resolver configuration file. Part of the necessary infrastructure is a "
@@ -212,7 +212,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid ""
 "If you wish to prevent future installations from recreating the symbolic "
 "link then you can run dpkg-reconfigure later to withdraw your agreement."
@@ -222,7 +222,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid ""
 "If you do not agree then the necessary symbolic link will not be created and "
 "consequently your resolver configuration file will not be dynamically "
@@ -241,19 +241,19 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:73
+#: ../templates:5001
 msgid "However you decide, you should read the README file."
 msgstr "Jakkoliv se rozhodnete, měli byste si přečíst soubor README."
 
 #. Type: note
 #. Description
-#: ../templates:96
+#: ../templates:6001
 msgid "Remember to reconfigure network interfaces"
 msgstr "Nezapomeňte přenastavit síťová rozhraní"
 
 #. Type: note
 #. Description
-#: ../templates:96
+#: ../templates:6001
 msgid ""
 "Once resolvconf is installed, interface configurers supply nameserver "
 "information to it (which it then makes available to the C Library resolver "
@@ -272,13 +272,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:108
+#: ../templates:7001
 msgid "Append original file to dynamic file?"
 msgstr "Připojit původní soubor k dynamickému souboru?"
 
 #. Type: boolean
 #. Description
-#: ../templates:108
+#: ../templates:7001
 msgid ""
 "If your original static resolver configuration file (/etc/resolv.conf) "
 "contains nameserver addresses then those addresses should be listed on \"dns-"
@@ -307,7 +307,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:108
+#: ../templates:7001
 msgid ""
 "After you have modified /etc/network/interfaces to add the required \"dns-"
 "nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "
