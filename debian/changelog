@@ -1,3 +1,9 @@
+resolvconf (1.37~unreleased1) unstable; urgency=low
+
+  * Update ja.po thanks to Hideki Yamane  (Closes: #391953)
+
+ -- Thomas Hood <jdthood@yahoo.co.uk>  Tue, 10 Oct 2006 15:00:22 +0200
+
 resolvconf (1.36) unstable; urgency=low
 
   [ D.K. Gillmor / TH ]

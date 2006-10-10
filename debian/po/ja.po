@@ -14,21 +14,21 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf 1.28\n"
+"Project-Id-Version: resolvconf 1.36\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-07-30 16:33+0200\n"
-"PO-Revision-Date: 2005-05-22 23:20+0900\n"
-"Last-Translator: Hideki Yamane <henrich@samba.gr.jp>\n"
+"PO-Revision-Date: 2006-10-09 00:52+0900\n"
+"Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=EUC-JP\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: note
 #. Description
 #: ../templates:3
 msgid "A rogue pppconfig PPP hook script is present"
-msgstr "����ˤʤꤽ���� pppconfig �� PPP �եå�������ץȤ�¸�ߤ��Ƥ��ޤ���"
+msgstr "問題になりそうな pppconfig の PPP フックスクリプトが存在しています。"
 
 #. Type: note
 #. Description
@@ -40,11 +40,11 @@ msgid ""
 "scripts must be modified, disabled or deleted so that they will not "
 "interfere with the operation of resolvconf."
 msgstr ""
-"��������С������� pppconfig �ѥå������ϡ�/etc/resolv.conf ���񤭤��� /"
-"etc/ppp/ip-up.d/0dns-up ����� /etc/ppp/ip-down.d/0dns-down ������ץȤ�ޤ�"
-"�Ǥ��ޤ���(������ pppd �ˤ�ä� PPP ���󥿡��ե����������Ϥޤ�����ߤ����"
-"�˼¹Ԥ���ޤ�)��resolvconf ��ư��˴��Ĥ��ʤ��褦�ˡ������Υ�����ץȤϽ�"
-"����̵���������뤤�Ϻ����Ԥ�ɬ�פ�����ޤ���"
+"ある特定バージョンの pppconfig パッケージは、/etc/resolv.conf を上書きする /"
+"etc/ppp/ip-up.d/0dns-up および /etc/ppp/ip-down.d/0dns-down スクリプトを含ん"
+"でいます。(これらは pppd によって PPP インターフェイスが開始または停止する際"
+"に実行されます)。resolvconf の動作に干渉しないように、これらのスクリプトは修"
+"正・無効化、あるいは削除を行う必要があります。"
 
 #. Type: note
 #. Description
@@ -56,17 +56,17 @@ msgid ""
 "way to disable it is to remove its execute permission. The best way to "
 "delete it is to purge the pppconfig package."
 msgstr ""
-"/etc/resolv.conf ���񤭤���Ǥ����������Ǥʤ��¹Բ�ǽ�ʥ�����ץ� /etc/ppp/"
-"ip-up.d/0dns-up ����� /etc/ppp/ip-down.d/0dns-down �����Ф���ޤ��������줾"
-"�졢�������롦̵���ˤ��롢���뤤�Ϻ����Ԥ�ɬ�פ�����ޤ���̵���ˤ���Τ˺�"
-"���ɤ���ˡ�ϡ��¹Ը��¤������뤳�ȡ������ơ��������Τ˺Ǥ��ɤ���ˡ�ϡ�"
-"pppconfig �ѥå����������˺�� (purge) ���뤳�ȤǤ���"
+"/etc/resolv.conf を上書きするであろう、空でない実行可能なスクリプト /etc/ppp/"
+"ip-up.d/0dns-up および /etc/ppp/ip-down.d/0dns-down が検出されました。それぞ"
+"れ、修正する・無効にする、あるいは削除を行う必要があります。無効にするのに最"
+"も良い方法は、実行権限を削除すること。そして、削除するのに最も良い方法は、"
+"pppconfig パッケージを完全に削除 (purge) することです。"
 
 #. Type: note
 #. Description
 #: ../templates:20
 msgid "A rogue pppoeconf PPP hook script is present"
-msgstr "����ˤʤꤽ���� pppoeconf �� PPP �եå�������ץȤ�¸�ߤ��Ƥ��ޤ�"
+msgstr "問題になりそうな pppoeconf の PPP フックスクリプトが存在しています"
 
 #. Type: note
 #. Description
@@ -79,12 +79,12 @@ msgid ""
 "Contrary to Debian policy, merely removing the pppoeconf package does not "
 "disable the script."
 msgstr ""
-"�С������ 1.0 ������ pppoeconf �ѥå������� /etc/resolv.conf ���񤭤��� /"
-"etc/ppp/ip-up.d/000usepeerdns ������ץȤ�ޤ�Ǥ��ޤ� (����ϡ�pppd �ˤ��"
-"�� PPP ���󥿡��ե���������ư������˼¹Ԥ���ޤ�)��resolvconf ��ư��˴��Ĥ�"
-"�ʤ��褦�ˡ������Υ�����ץȤϽ�����̵���������뤤�Ϻ����Ԥ�ɬ�פ������"
-"����Debian �ݥꥷ����ȿ���ơ�ñ��� pppoeconf �ѥå������κ���Ǥϥ�����ץ�"
-"��̵���ˤ���ޤ���"
+"バージョン 1.0 以前の pppoeconf パッケージは /etc/resolv.conf を上書きする /"
+"etc/ppp/ip-up.d/000usepeerdns スクリプトを含んでいます (これは、pppd によっ"
+"て PPP インターフェイスが起動した後に実行されます)。resolvconf の動作に干渉し"
+"ないように、これらのスクリプトは修正・無効化、あるいは削除を行う必要がありま"
+"す。Debian ポリシーに反して、単純に pppoeconf パッケージの削除ではスクリプト"
+"は無効にされません。"
 
 #. Type: note
 #. Description
@@ -97,18 +97,18 @@ msgid ""
 "to remove its execute permission. The best way to delete it is to purge the "
 "pppoeconf package."
 msgstr ""
-"���Ǥʤ��¹Բ�ǽ�ʥ�����ץ� /etc/ppp/ip-up.d/000usepeerdns �����Ф���ޤ�"
-"����������Ф��Ƥϡ��������롦̵���ˤ��롢�ޤ��Ϻ����Ԥ�ɬ�פ�����ޤ�����"
-"����Ԥ��Τ˺Ǥ��ɤ���ˡ�ϡ�pppoeconf �ѥå�������С������ 1.0 �ʹߤ˥��å�"
-"���졼�ɤ���dpkg �˿������С������Υ�����ץȤ򥤥󥹥ȡ��뤵���뤳�ȤǤ���"
-"̵���ˤ���Τ˺Ǥ��ɤ���ˡ�ϡ��¹Ը��¤������뤳�ȡ������ơ��������Τ˺�"
-"���ɤ���ˡ�ϡ�pppoeconf �ѥå����������˺�� (purge) ���뤳�ȤǤ���"
+"空でない実行可能なスクリプト /etc/ppp/ip-up.d/000usepeerdns が検出されまし"
+"た。これに対しては、修正する・無効にする、または削除を行う必要があります。修"
+"正を行うのに最も良い方法は、pppoeconf パッケージをバージョン 1.0 以降にアップ"
+"グレードし、dpkg に新しいバージョンのスクリプトをインストールさせることです。"
+"無効にするのに最も良い方法は、実行権限を削除すること。そして、削除するのに最"
+"も良い方法は、pppoeconf パッケージを完全に削除 (purge) することです。"
 
 #. Type: note
 #. Description
 #: ../templates:38
 msgid "A rogue xisp PPP hook script is present"
-msgstr "����ˤʤꤽ���� xisp �� PPP �եå�������ץȤ�¸�ߤ��Ƥ��ޤ���"
+msgstr "問題になりそうな xisp の PPP フックスクリプトが存在しています。"
 
 #. Type: note
 #. Description
@@ -121,12 +121,12 @@ msgid ""
 "Contrary to Debian policy, merely removing the xisp package does not disable "
 "the scripts."
 msgstr ""
-"xisp �ѥå������ϡ�/etc/resolv.conf ���񤭤��� /etc/ppp/ip-up.d/0xisp-dns "
-"����� /etc/ppp/ip-down.d/0xisp-dns ������ץȤ�ޤ�Ǥ��ޤ� (������ PPP ��"
-"�󥿡��ե���������ư����ߤ��줿��� pppd �ˤ�äƼ¹Ԥ���ޤ�)��resolvconf "
-"��ư��˴��Ĥ��ʤ��褦�ˡ������Υ�����ץȤϽ�����̵���������뤤�Ϻ�����"
-"��ɬ�פ�����ޤ���Debian �ݥꥷ����ȿ���ơ�ñ��� xisp �ѥå������κ���Ǥϥ�"
-"����ץȤ�̵���ˤ���ޤ���"
+"xisp パッケージは、/etc/resolv.conf を上書きする /etc/ppp/ip-up.d/0xisp-dns "
+"および /etc/ppp/ip-down.d/0xisp-dns スクリプトを含んでいます (これらは PPP イ"
+"ンターフェイスが起動・停止された後に pppd によって実行されます)。resolvconf "
+"の動作に干渉しないように、これらのスクリプトは修正・無効化、あるいは削除を行"
+"う必要があります。Debian ポリシーに反して、単純に xisp パッケージの削除ではス"
+"クリプトは無効にされません。"
 
 #. Type: note
 #. Description
@@ -137,17 +137,17 @@ msgid ""
 "deleted. The best way to disable it is to remove its execute permission. The "
 "best way to delete it is to purge the xisp package."
 msgstr ""
-"���Ǥʤ��¹Բ�ǽ�ʥ�����ץ� /etc/ppp/ip-up.d/0xisp-dns ����� /etc/ppp/ip-"
-"down.d/0xisp-dns �����Ф���ޤ��������줾�졢�������롦̵���ˤ��롢���뤤�Ϻ�"
-"����Ԥ�ɬ�פ�����ޤ���̵���ˤ���Τ˺Ǥ��ɤ���ˡ�ϡ��¹Ը��¤������뤳"
-"�ȡ������ơ��������Τ˺Ǥ��ɤ���ˡ�ϡ�xisp �ѥå����������˺�� (purge) "
-"���뤳�ȤǤ���"
+"空でない実行可能なスクリプト /etc/ppp/ip-up.d/0xisp-dns および /etc/ppp/ip-"
+"down.d/0xisp-dns が検出されました。それぞれ、修正する・無効にする、あるいは削"
+"除を行う必要があります。無効にするのに最も良い方法は、実行権限を削除するこ"
+"と。そして、削除するのに最も良い方法は、xisp パッケージを完全に削除 (purge) "
+"することです。"
 
 #. Type: boolean
 #. Description
 #: ../templates:55
 msgid "Disable rogue hook scripts?"
-msgstr "����ˤʤꤽ���ʥեå�������ץȤ�̵���ˤ��ޤ���?"
+msgstr "問題になりそうなフックスクリプトを無効にしますか?"
 
 #. Type: boolean
 #. Description
@@ -161,13 +161,13 @@ msgid ""
 "so that they are removed before resolvconf is installed, their rogue hook "
 "scripts may remain behind."
 msgstr ""
-"�եå�������ץȤ�ޤ�Ǥ�������Υѥå������ϡ�Debian �ݥꥷ����ȿ����������"
-"�ץȤ�ޤ�ѥå���������������ݤ˥꥾�������ե�������ѹ����ޤ������Τ�"
-"��������Τ��륹����ץȤ�ޤ�Ǥ���ѥå������� pppconfig (<< 2.2.0 ����� "
-"2.3)��pppoeconf (<< 1.0)��totd (<< 1.4-4)�������� xisp �Ǥ���resolvconf �ѥ�"
-"�������Ϥ����Υѥå������Ⱦ��� (conflict) ����褦�����ꤵ��Ƥ���Τǡ�"
-"resolvconf �����󥹥ȡ��뤵������ˤ����Υѥå������Ϻ������ޤ����������"
-"������ץȤϻĤä��ޤޤ��⤷��ޤ���"
+"フックスクリプトを含んでいる一部のパッケージは、Debian ポリシーに反し、スクリ"
+"プトを含むパッケージが削除される際にリゾルバ設定ファイルを変更します。そのよ"
+"うな問題のあるスクリプトを含んでいるパッケージは pppconfig (<< 2.2.0 および "
+"2.3)、pppoeconf (<< 1.0)、totd (<< 1.4-4)、そして xisp です。resolvconf パッ"
+"ケージはこれらのパッケージと衝突 (conflict) するように設定されているので、"
+"resolvconf がインストールされる前にこれらのパッケージは削除されますが、問題の"
+"スクリプトは残ったままかもしれません。"
 
 #. Type: boolean
 #. Description
@@ -176,8 +176,8 @@ msgid ""
 "If you agree then the post-installation process will disable rogue hook "
 "scripts by removing their execute permissions."
 msgstr ""
-"�����ǡ֤Ϥ��פ�������ȡ�����ˤʤꤽ���ʥեå�������ץȤ� post-install ��"
-"�˼¹Ը��¤����뤳�Ȥ�̵���ˤ��ޤ���"
+"ここで「はい」と答えると、問題になりそうなフックスクリプトを post-install 時"
+"に実行権限を取り去ることで無効にします。"
 
 #. Type: boolean
 #. Description
@@ -186,19 +186,18 @@ msgid ""
 "If you do not agree then you should disable the rogue scripts manually, "
 "otherwise resolvconf will not work properly."
 msgstr ""
-"�֤������פ����������ϡ�����ˤʤꤽ���ʥ�����ץȤ��ư��̵���ˤ���ɬ�פ�"
-"����ޤ�������ʤ���� resolvconf ��������ư��ʤ��Ǥ��礦��"
+"「いいえ」と答えた場合は、問題になりそうなスクリプトを手動で無効にする必要が"
+"あります。さもなければ resolvconf は正しく動作しないでしょう。"
 
 #. Type: boolean
 #. Description
 #: ../templates:73
 msgid "Prepare /etc/resolv.conf for dynamic updates?"
-msgstr "/etc/resolv.conf ��ưŪ��������褦�ˤ��ޤ���?"
+msgstr "/etc/resolv.conf を動的更新するようにしますか?"
 
 #. Type: boolean
 #. Description
 #: ../templates:73
-#, fuzzy
 msgid ""
 "This package contains the infrastructure required for dynamic updating of "
 "the resolver configuration file. Part of the necessary infrastructure is a "
@@ -207,12 +206,12 @@ msgid ""
 "will be preserved as /etc/resolvconf/resolv.conf.d/original; it will be "
 "restored if this package is removed."
 msgstr ""
-"���Υѥå������ϡ��꥾�������ե������ưŪ������ɬ�פȤ������Ȥߤ�ޤ��"
-"���ޤ���ɬ�פȤʤ���Ȥߤΰ�Ĥ� /etc/resolv.conf ���� /etc/resolvconf/run/"
-"resolv.conf �ؤΥ���ܥ�å���󥯤Ǥ��������ǡ֤Ϥ��פ�������Ȥ��Υ�󥯤�"
-"��������ޤ������Ǥˤ��� /etc/resolv.conf �ե������ /etc/resolvconf/resolv."
-"conf.d/original �Ȥ�����¸����ޤ������Υե�����ϡ��ѥå������������˺����"
-"���ݤ˸����ᤵ��ޤ���"
+"このパッケージは、リゾルバ設定ファイルの動的更新に必要とされる仕組みを含んで"
+"います。必要となる仕組みの一つは /etc/resolv.conf から /etc/resolvconf/run/"
+"resolv.conf へのシンボリックリンクです。ここで「はい」と答えるとこのリンクが"
+"作成されます。すでにある /etc/resolv.conf ファイルは /etc/resolvconf/resolv."
+"conf.d/original として保存されます (このファイルは、パッケージが削除される際"
+"に元に戻されます)。"
 
 #. Type: boolean
 #. Description
@@ -221,8 +220,8 @@ msgid ""
 "If you wish to prevent future installations from recreating the symbolic "
 "link then you can run dpkg-reconfigure later to withdraw your agreement."
 msgstr ""
-"����Υ��󥹥ȡ���κݤˤϡ�����ܥ�å���󥯤κ������򤷤����ʤ��ʤä���"
-"�硢dpkg-reconfigure ���ۤɼ¹Ԥ���з������ä��ޤ���"
+"今後のインストールの際には、シンボリックリンクの再生成をしたくなくなった場"
+"合、dpkg-reconfigure を後ほど実行すれば決定を取り消せます。"
 
 #. Type: boolean
 #. Description
@@ -236,24 +235,24 @@ msgid ""
 "remove the package because its presence causes some programs to deviate from "
 "their default behavior."
 msgstr ""
-"�����ǡ֤������פ�������ȡ�ɬ�פʥ���ܥ�å���󥯤Ϻ������줺�����äƥ꥾"
-"�������ե������ưŪ�ˤϹ�������ޤ���ưŪ������ͭ���ˤ���ˤϡ�README "
-"�ե�����λؼ��˽��ä� resolvconf ���ư�����ꤹ��ɬ�פ�����ޤ���resolvconf "
-"���������ꤷ�ʤ��Τ���������ϡ����Υѥå�������¸�ߤ��뤬�Τˤ����Ĥ��Υ�"
-"������ब�̾�Ȥϰ�ä���ư�򤹤�褦�ˤʤ뤿�ᡢ�ѥå�������������ɬ�פ�"
-"����ޤ���"
+"ここで「いいえ」と答えると、必要なシンボリックリンクは作成されず、従ってリゾ"
+"ルバ設定ファイルは動的には更新されません。動的更新を有効にするには、README "
+"ファイルの指示に従って resolvconf を手動で設定する必要があります。resolvconf "
+"を全く設定しないのを選んだ場合は、このパッケージが存在するが故にいくつかのプ"
+"ログラムが通常とは違った挙動をするようになるため、パッケージを削除する必要が"
+"あります。"
 
 #. Type: boolean
 #. Description
 #: ../templates:73
 msgid "However you decide, you should read the README file."
-msgstr "������ˤ��衢README �ե�������ɤ�٤��Ǥ���"
+msgstr "いずれにせよ、README ファイルを読むべきです。"
 
 #. Type: note
 #. Description
 #: ../templates:96
 msgid "Remember to reconfigure network interfaces"
-msgstr "�ͥåȥ�����󥿡��ե������κ������˺��ʤ��ǲ�����"
+msgstr "ネットワークインターフェイスの再設定を忘れないで下さい"
 
 #. Type: note
 #. Description
@@ -267,18 +266,18 @@ msgid ""
 "that is, to take them down and then to bring them up again -- and to restart "
 "DNS caches."
 msgstr ""
-"��ö resolvconf �����󥹥ȡ��뤵���ȡ����󥿡��ե���������ǥ͡��ॵ���о�"
-"����󶡤��ޤ� (C �饤�֥��Υ꥾��Ф� DNS ����å�������Ѳ�ǽ�ˤʤ��"
-"��)��������������ϥ��󥿡��ե���������ư���줿���ΤߤǤ������Τ��ᡢ"
-"resolvconf �Υ͡��ॵ���о���������󥹥ȡ����˹�������ˤϡ����󥿡��ե�"
-"�����κ�����ݤĤޤꡢ���󥿡��ե��������ö�����󤷡����θ���٥��åפ���"
-"�ݤ�DNS ����å���κƵ�ư��ɬ�פˤʤ�ޤ���"
+"一旦 resolvconf がインストールされると、インターフェイス設定でネームサーバ情"
+"報を提供します (C ライブラリのリゾルバと DNS キャッシュで利用可能になりま"
+"す)。しかし、これはインターフェイスが起動された時のみです。そのため、"
+"resolvconf のネームサーバ情報を初期インストール後に更新するには、インターフェ"
+"イスの再設定−つまり、インターフェイスを一旦ダウンし、その後再度アップする"
+"−とDNS キャッシュの再起動が必要になります。"
 
 #. Type: boolean
 #. Description
 #: ../templates:108
 msgid "Append original file to dynamic file?"
-msgstr "���������ե�����˥��ꥸ�ʥ�Υե�������ɲä��ޤ���?"
+msgstr "更新されるファイルにオリジナルのファイルを追加しますか?"
 
 #. Type: boolean
 #. Description
@@ -297,17 +296,17 @@ msgid ""
 "original. If you agree then this symbolic link will be created, provided "
 "that no /etc/resolvconf/resolv.conf.d/tail already exists."
 msgstr ""
-"��������Ū�ʥ꥾�������ե����� (/etc/resolv.conf) ���͡��ॵ���ФΥ��ɥ쥹"
-"��ޤ�Ǥ�����硢README �˽񤤤Ƥ���褦�ˡ����Υ��ɥ쥹��  /etc/network/"
-"interfaces �� \"dns-nameservers\" �Ԥ˵��Ҥ��٤��Ǥ���/etc/network/"
-"interfaces ���Խ����Ʊƶ�������륤�󥿡��ե�����������ꤹ��ޤǡ�"
-"resolvconf ��ưŪ����������꥾�������ե�����ˤ��Υ��ɥ쥹��ޤ�ޤ��󡣤�"
-"�Υ��ɥ쥹���ʤ��ȥɥᥤ��̾�β��˶�ϫ����Ǥ��礦���ְ��Ū�ʡײ����ˡ"
-"�ϡ���������Ū�ʥ꥾�������ե������ưŪ�����������ե�����κǸ�˴ݤ��ȴ�"
-"��뤳�ȤǤ��� /etc/resolvconf/resolv.conf.d/tail ���� /etc/resolvconf/"
-"resolv.conf.d/original �ؤΥ���ܥ�å���󥯤�¸�ߤ��Ƥ�����硢���줬�¹Ԥ�"
-"��ޤ��������ǡ֤Ϥ��פ�������ȡ�/etc/resolvconf/resolv.conf.d/tail ���ޤ�¸"
-"�ߤ��Ƥ��ʤ���С����Υ���ܥ�å���󥯤����������Ǥ��礦��"
+"元々の静的なリゾルバ設定ファイル (/etc/resolv.conf) がネームサーバのアドレス"
+"を含んでいた場合、README に書いてあるように、そのアドレスは /etc/network/"
+"interfaces の \"dns-nameservers\" 行に記述すべきです。/etc/network/"
+"interfaces を編集して影響を受けるインターフェイスを再設定するまで、"
+"resolvconf は動的に生成するリゾルバ設定ファイルにはこのアドレスを含めません。こ"
+"のアドレス設定がないとドメイン名の解決に問題が残るでしょう。「一時的な」解決方法"
+"は、元々の静的なリゾルバ設定ファイルを動的に生成したファイルの最後に丸ごと含"
+"めることです。 /etc/resolvconf/resolv.conf.d/tail から /etc/resolvconf/"
+"resolv.conf.d/original へのシンボリックリンクが存在していた場合、これが実行さ"
+"れます。ここで「はい」と答えると、/etc/resolvconf/resolv.conf.d/tail がまだ存"
+"在していなければ、このシンボリックリンクが作成されるでしょう。"
 
 #. Type: boolean
 #. Description
@@ -317,6 +316,6 @@ msgid ""
 "nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "
 "symbolic link to /dev/null."
 msgstr ""
-"/etc/network/interfaces ��ɬ�פ� \"dns-nameservers\" �Ԥ�ä����塢����ܥ��"
-"����� /etc/resolvconf/resolv.conf.d/tail �� /dev/null ��ؤ��褦�ˤ���ɬ��"
-"������ޤ���"
+"/etc/network/interfaces に必要な \"dns-nameservers\" 行を加えた後、シンボリッ"
+"クリンク /etc/resolvconf/resolv.conf.d/tail が /dev/null を指すようにする必要"
+"があります。"
