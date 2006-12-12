@@ -7,6 +7,8 @@
 
 # Don't use set -e; check return status instead
 
+[ -x /sbin/resolvconf ] || exit 0
+
 MYNAME="${0##*/}"
 PATH=/sbin:/bin
 RUN_DIR=/etc/resolvconf/run
