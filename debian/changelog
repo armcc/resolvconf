@@ -1,4 +1,4 @@
-resolvconf (1.37~unreleased2) unstable; urgency=low
+resolvconf (1.37) unstable; urgency=low
 
   * initscript: Don't do anything if resolvconf is removed
     (Closes: #393323)
