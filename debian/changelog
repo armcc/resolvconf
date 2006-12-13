@@ -3,7 +3,8 @@ resolvconf (1.37) unstable; urgency=low
   * initscript: Don't do anything if resolvconf is removed
     (Closes: #393323)
   * Update ja.po thanks to Hideki Yamane  (Closes: #391953)
-  * Add es.po thanks to Javier Fernández-Sanguino Peña  (Closes #402678)
+  * Add es.po thanks to Javier Fernández-Sanguino Peña
+    (Closes: #402678)
 
  -- Thomas Hood <jdthood@yahoo.co.uk>  Tue, 10 Oct 2006 15:00:22 +0200
 
