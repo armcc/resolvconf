@@ -1,12 +1,16 @@
-resolvconf (1.37) unstable; urgency=low
+resolvconf (1.37) unstable; urgency=high
 
+  [ Thomas Hood ]
   * initscript: Don't do anything if resolvconf is removed
     (Closes: #393323)
   * Update ja.po thanks to Hideki Yamane  (Closes: #391953)
   * Add es.po thanks to Javier Fernández-Sanguino Peña
     (Closes: #402678)
 
- -- Thomas Hood <jdthood@yahoo.co.uk>  Tue, 10 Oct 2006 15:00:22 +0200
+  [ Marco Nenciarini ]
+  * Urgency set to high due to RC bug fix.
+
+ -- Marco Nenciarini <mnencia@debian.org>  Wed, 13 Dec 2006 15:13:02 +0100
 
 resolvconf (1.36) unstable; urgency=low
 
