@@ -1,3 +1,11 @@
+resolvconf (1.38) unstable; urgency=low
+
+  UNRELEASED
+  [ Thomas Hood ]
+  * Add gl.po, thanks to Jacobo Tarrio
+
+ -- Thomas Hood <jdthood@yahoo.co.uk>  Tue, 27 Feb 2007 14:03:21 +0100
+
 resolvconf (1.37) unstable; urgency=high
 
   [ Thomas Hood ]
