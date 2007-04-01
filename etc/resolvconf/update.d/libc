@@ -134,12 +134,16 @@ mv -f "$TMPFILE" "$DYNAMICRSLVCNFFILE"
 
 # Restart nscd
 NSCD_RESTARTED=""
+NSCD_PIDFILE=""
+[ -s /var/run/nscd.pid ] && NSCD_PIDFILE="/var/run/nscd.pid"
+[ -s /var/run/nscd/nscd.pid ] && NSCD_PIDFILE="/var/run/nscd/nscd.pid"
 if \
-	[ -x /usr/sbin/nscd ] \
+	[ "$NSCD_PIDFILE" ] \
+	&& [ -x /usr/sbin/nscd ] \
 	&& [ -x /etc/init.d/nscd ] \
 	&& [ -s /etc/nscd.conf ] \
 	&& grep -q '[[:space:]]*enable-cache[[:space:]]\+hosts[[:space:]]\+yes' /etc/nscd.conf \
-	&& start-stop-daemon --stop --quiet --pidfile=/var/run/nscd.pid --exec /usr/sbin/nscd --retry=TERM/3/HUP/5 \
+	&& start-stop-daemon --stop --quiet --pidfile="$NSCD_PIDFILE" --exec /usr/sbin/nscd --retry=TERM/3/HUP/5 \
 	&& start-stop-daemon --stop --quiet --oknodo --exec /usr/sbin/nscd --retry=0/5
 then
 	echo "Stopped Name Service Cache Daemon: nscd."
