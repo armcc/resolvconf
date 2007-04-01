@@ -3,6 +3,7 @@ resolvconf (1.38) unstable; urgency=low
   UNRELEASED
   [ Thomas Hood ]
   * Add gl.po, thanks to Jacobo Tarrio
+  * Add pt.po, thanks to Miguel Figueiredo  (Closes: #413752)
 
  -- Thomas Hood <jdthood@yahoo.co.uk>  Tue, 27 Feb 2007 14:03:21 +0100
 
