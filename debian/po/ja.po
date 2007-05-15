@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.36\n"
 "Report-Msgid-Bugs-To: resolvconf-devel@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-10-10 15:06+0200\n"
+"POT-Creation-Date: 2007-05-15 10:48+0200\n"
 "PO-Revision-Date: 2006-10-09 00:52+0900\n"
 "Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
@@ -24,180 +24,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Type: note
+#. Type: boolean
 #. Description
 #: ../templates:1001
-msgid "A rogue pppconfig PPP hook script is present"
-msgstr "問題になりそうな pppconfig の PPP フックスクリプトが存在しています。"
-
-#. Type: note
-#. Description
-#: ../templates:1001
-msgid ""
-"Certain versions of the pppconfig package contain scripts /etc/ppp/ip-up."
-"d/0dns-up and /etc/ppp/ip-down.d/0dns-down (run by pppd after a PPP "
-"interface is brought up or down) that overwrite /etc/resolv.conf. These "
-"scripts must be modified, disabled or deleted so that they will not "
-"interfere with the operation of resolvconf."
-msgstr ""
-"ある特定バージョンの pppconfig パッケージは、/etc/resolv.conf を上書きする /"
-"etc/ppp/ip-up.d/0dns-up および /etc/ppp/ip-down.d/0dns-down スクリプトを含ん"
-"でいます。(これらは pppd によって PPP インターフェイスが開始または停止する際"
-"に実行されます)。resolvconf の動作に干渉しないように、これらのスクリプトは修"
-"正・無効化、あるいは削除を行う必要があります。"
-
-#. Type: note
-#. Description
-#: ../templates:1001
-msgid ""
-"A non-empty executable script /etc/ppp/ip-up.d/0dns-up and/or /etc/ppp/ip-"
-"down.d/0dns-down has been detected that appears to overwrite /etc/resolv."
-"conf. Each one that does so must be modified, disabled or deleted. The best "
-"way to disable it is to remove its execute permission. The best way to "
-"delete it is to purge the pppconfig package."
-msgstr ""
-"/etc/resolv.conf を上書きするであろう、空でない実行可能なスクリプト /etc/ppp/"
-"ip-up.d/0dns-up および /etc/ppp/ip-down.d/0dns-down が検出されました。それぞ"
-"れ、修正する・無効にする、あるいは削除を行う必要があります。無効にするのに最"
-"も良い方法は、実行権限を削除すること。そして、削除するのに最も良い方法は、"
-"pppconfig パッケージを完全に削除 (purge) することです。"
-
-#. Type: note
-#. Description
-#: ../templates:2001
-msgid "A rogue pppoeconf PPP hook script is present"
-msgstr "問題になりそうな pppoeconf の PPP フックスクリプトが存在しています"
-
-#. Type: note
-#. Description
-#: ../templates:2001
-msgid ""
-"Versions of the pppoeconf package prior to version 1.0 contain a script /etc/"
-"ppp/ip-up.d/000usepeerdns (run by pppd after a PPP interface is brought up) "
-"that overwrites /etc/resolv.conf. The script must be modified, disabled or "
-"deleted so that it will not interfere with the operation of resolvconf. "
-"Contrary to Debian policy, merely removing the pppoeconf package does not "
-"disable the script."
-msgstr ""
-"バージョン 1.0 以前の pppoeconf パッケージは /etc/resolv.conf を上書きする /"
-"etc/ppp/ip-up.d/000usepeerdns スクリプトを含んでいます (これは、pppd によっ"
-"て PPP インターフェイスが起動した後に実行されます)。resolvconf の動作に干渉し"
-"ないように、これらのスクリプトは修正・無効化、あるいは削除を行う必要がありま"
-"す。Debian ポリシーに反して、単純に pppoeconf パッケージの削除ではスクリプト"
-"は無効にされません。"
-
-#. Type: note
-#. Description
-#: ../templates:2001
-msgid ""
-"A non-empty executable script /etc/ppp/ip-up.d/000usepeerdns has been "
-"detected. It must be modified, disabled or deleted. The best way to modify "
-"it is to upgrade the pppoeconf package to version 1.0 or later and to allow "
-"dpkg to install the new version of the script. The best way to disable it is "
-"to remove its execute permission. The best way to delete it is to purge the "
-"pppoeconf package."
-msgstr ""
-"空でない実行可能なスクリプト /etc/ppp/ip-up.d/000usepeerdns が検出されまし"
-"た。これに対しては、修正する・無効にする、または削除を行う必要があります。修"
-"正を行うのに最も良い方法は、pppoeconf パッケージをバージョン 1.0 以降にアップ"
-"グレードし、dpkg に新しいバージョンのスクリプトをインストールさせることです。"
-"無効にするのに最も良い方法は、実行権限を削除すること。そして、削除するのに最"
-"も良い方法は、pppoeconf パッケージを完全に削除 (purge) することです。"
-
-#. Type: note
-#. Description
-#: ../templates:3001
-msgid "A rogue xisp PPP hook script is present"
-msgstr "問題になりそうな xisp の PPP フックスクリプトが存在しています。"
-
-#. Type: note
-#. Description
-#: ../templates:3001
-msgid ""
-"The xisp package contains scripts /etc/ppp/ip-up.d/0xisp-dns and /etc/ppp/ip-"
-"down.d/0xisp-dns (run by pppd after a PPP interface is brought up or down) "
-"that overwrite /etc/resolv.conf. The scripts must be modified, disabled or "
-"deleted so that they will not interfere with the operation of resolvconf. "
-"Contrary to Debian policy, merely removing the xisp package does not disable "
-"the scripts."
-msgstr ""
-"xisp パッケージは、/etc/resolv.conf を上書きする /etc/ppp/ip-up.d/0xisp-dns "
-"および /etc/ppp/ip-down.d/0xisp-dns スクリプトを含んでいます (これらは PPP イ"
-"ンターフェイスが起動・停止された後に pppd によって実行されます)。resolvconf "
-"の動作に干渉しないように、これらのスクリプトは修正・無効化、あるいは削除を行"
-"う必要があります。Debian ポリシーに反して、単純に xisp パッケージの削除ではス"
-"クリプトは無効にされません。"
-
-#. Type: note
-#. Description
-#: ../templates:3001
-msgid ""
-"A non-empty executable script /etc/ppp/ip-up.d/0xisp-dns and/or /etc/ppp/ip-"
-"down.d/0xisp-dns has been detected. Each one must be modified, disabled or "
-"deleted. The best way to disable it is to remove its execute permission. The "
-"best way to delete it is to purge the xisp package."
-msgstr ""
-"空でない実行可能なスクリプト /etc/ppp/ip-up.d/0xisp-dns および /etc/ppp/ip-"
-"down.d/0xisp-dns が検出されました。それぞれ、修正する・無効にする、あるいは削"
-"除を行う必要があります。無効にするのに最も良い方法は、実行権限を削除するこ"
-"と。そして、削除するのに最も良い方法は、xisp パッケージを完全に削除 (purge) "
-"することです。"
-
-#. Type: boolean
-#. Description
-#: ../templates:4001
-msgid "Disable rogue hook scripts?"
-msgstr "問題になりそうなフックスクリプトを無効にしますか?"
-
-#. Type: boolean
-#. Description
-#: ../templates:4001
-msgid ""
-"Certain packages contain hook scripts which, contrary to Debian policy, "
-"modify the resolver configuration file even when the packages that own them "
-"are removed. Packages known to contain such rogue hook scripts are: "
-"pppconfig (<< 2.2.0 and 2.3), pppoeconf (<< 1.0), totd (<< 1.4-4) and xisp. "
-"Although the resolvconf package is marked as conflicting with these packages "
-"so that they are removed before resolvconf is installed, their rogue hook "
-"scripts may remain behind."
-msgstr ""
-"フックスクリプトを含んでいる一部のパッケージは、Debian ポリシーに反し、スクリ"
-"プトを含むパッケージが削除される際にリゾルバ設定ファイルを変更します。そのよ"
-"うな問題のあるスクリプトを含んでいるパッケージは pppconfig (<< 2.2.0 および "
-"2.3)、pppoeconf (<< 1.0)、totd (<< 1.4-4)、そして xisp です。resolvconf パッ"
-"ケージはこれらのパッケージと衝突 (conflict) するように設定されているので、"
-"resolvconf がインストールされる前にこれらのパッケージは削除されますが、問題の"
-"スクリプトは残ったままかもしれません。"
-
-#. Type: boolean
-#. Description
-#: ../templates:4001
-msgid ""
-"If you agree then the post-installation process will disable rogue hook "
-"scripts by removing their execute permissions."
-msgstr ""
-"ここで「はい」と答えると、問題になりそうなフックスクリプトを post-install 時"
-"に実行権限を取り去ることで無効にします。"
-
-#. Type: boolean
-#. Description
-#: ../templates:4001
-msgid ""
-"If you do not agree then you should disable the rogue scripts manually, "
-"otherwise resolvconf will not work properly."
-msgstr ""
-"「いいえ」と答えた場合は、問題になりそうなスクリプトを手動で無効にする必要が"
-"あります。さもなければ resolvconf は正しく動作しないでしょう。"
-
-#. Type: boolean
-#. Description
-#: ../templates:5001
 msgid "Prepare /etc/resolv.conf for dynamic updates?"
 msgstr "/etc/resolv.conf を動的更新するようにしますか?"
 
 #. Type: boolean
 #. Description
-#: ../templates:5001
+#: ../templates:1001
 msgid ""
 "This package contains the infrastructure required for dynamic updating of "
 "the resolver configuration file. Part of the necessary infrastructure is a "
@@ -215,7 +50,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:5001
+#: ../templates:1001
 msgid ""
 "If you wish to prevent future installations from recreating the symbolic "
 "link then you can run dpkg-reconfigure later to withdraw your agreement."
@@ -225,7 +60,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:5001
+#: ../templates:1001
 msgid ""
 "If you do not agree then the necessary symbolic link will not be created and "
 "consequently your resolver configuration file will not be dynamically "
@@ -244,19 +79,19 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:5001
+#: ../templates:1001
 msgid "However you decide, you should read the README file."
 msgstr "いずれにせよ、README ファイルを読むべきです。"
 
 #. Type: note
 #. Description
-#: ../templates:6001
+#: ../templates:2001
 msgid "Remember to reconfigure network interfaces"
 msgstr "ネットワークインターフェイスの再設定を忘れないで下さい"
 
 #. Type: note
 #. Description
-#: ../templates:6001
+#: ../templates:2001
 msgid ""
 "Once resolvconf is installed, interface configurers supply nameserver "
 "information to it (which it then makes available to the C Library resolver "
@@ -275,13 +110,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:7001
+#: ../templates:3001
 msgid "Append original file to dynamic file?"
 msgstr "更新されるファイルにオリジナルのファイルを追加しますか?"
 
 #. Type: boolean
 #. Description
-#: ../templates:7001
+#: ../templates:3001
 msgid ""
 "If your original static resolver configuration file (/etc/resolv.conf) "
 "contains nameserver addresses then those addresses should be listed on \"dns-"
@@ -310,7 +145,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:7001
+#: ../templates:3001
 msgid ""
 "After you have modified /etc/network/interfaces to add the required \"dns-"
 "nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "
@@ -319,3 +154,131 @@ msgstr ""
 "/etc/network/interfaces に必要な \"dns-nameservers\" 行を加えた後、シンボリッ"
 "クリンク /etc/resolvconf/resolv.conf.d/tail が /dev/null を指すようにする必要"
 "があります。"
+
+#~ msgid "A rogue pppconfig PPP hook script is present"
+#~ msgstr ""
+#~ "問題になりそうな pppconfig の PPP フックスクリプトが存在しています。"
+
+#~ msgid ""
+#~ "Certain versions of the pppconfig package contain scripts /etc/ppp/ip-up."
+#~ "d/0dns-up and /etc/ppp/ip-down.d/0dns-down (run by pppd after a PPP "
+#~ "interface is brought up or down) that overwrite /etc/resolv.conf. These "
+#~ "scripts must be modified, disabled or deleted so that they will not "
+#~ "interfere with the operation of resolvconf."
+#~ msgstr ""
+#~ "ある特定バージョンの pppconfig パッケージは、/etc/resolv.conf を上書きす"
+#~ "る /etc/ppp/ip-up.d/0dns-up および /etc/ppp/ip-down.d/0dns-down スクリプト"
+#~ "を含んでいます。(これらは pppd によって PPP インターフェイスが開始または停"
+#~ "止する際に実行されます)。resolvconf の動作に干渉しないように、これらのスク"
+#~ "リプトは修正・無効化、あるいは削除を行う必要があります。"
+
+#~ msgid ""
+#~ "A non-empty executable script /etc/ppp/ip-up.d/0dns-up and/or /etc/ppp/ip-"
+#~ "down.d/0dns-down has been detected that appears to overwrite /etc/resolv."
+#~ "conf. Each one that does so must be modified, disabled or deleted. The "
+#~ "best way to disable it is to remove its execute permission. The best way "
+#~ "to delete it is to purge the pppconfig package."
+#~ msgstr ""
+#~ "/etc/resolv.conf を上書きするであろう、空でない実行可能なスクリプト /etc/"
+#~ "ppp/ip-up.d/0dns-up および /etc/ppp/ip-down.d/0dns-down が検出されました。"
+#~ "それぞれ、修正する・無効にする、あるいは削除を行う必要があります。無効にす"
+#~ "るのに最も良い方法は、実行権限を削除すること。そして、削除するのに最も良い"
+#~ "方法は、pppconfig パッケージを完全に削除 (purge) することです。"
+
+#~ msgid "A rogue pppoeconf PPP hook script is present"
+#~ msgstr "問題になりそうな pppoeconf の PPP フックスクリプトが存在しています"
+
+#~ msgid ""
+#~ "Versions of the pppoeconf package prior to version 1.0 contain a script /"
+#~ "etc/ppp/ip-up.d/000usepeerdns (run by pppd after a PPP interface is "
+#~ "brought up) that overwrites /etc/resolv.conf. The script must be "
+#~ "modified, disabled or deleted so that it will not interfere with the "
+#~ "operation of resolvconf. Contrary to Debian policy, merely removing the "
+#~ "pppoeconf package does not disable the script."
+#~ msgstr ""
+#~ "バージョン 1.0 以前の pppoeconf パッケージは /etc/resolv.conf を上書きす"
+#~ "る /etc/ppp/ip-up.d/000usepeerdns スクリプトを含んでいます (これは、pppd "
+#~ "によって PPP インターフェイスが起動した後に実行されます)。resolvconf の動"
+#~ "作に干渉しないように、これらのスクリプトは修正・無効化、あるいは削除を行う"
+#~ "必要があります。Debian ポリシーに反して、単純に pppoeconf パッケージの削除"
+#~ "ではスクリプトは無効にされません。"
+
+#~ msgid ""
+#~ "A non-empty executable script /etc/ppp/ip-up.d/000usepeerdns has been "
+#~ "detected. It must be modified, disabled or deleted. The best way to "
+#~ "modify it is to upgrade the pppoeconf package to version 1.0 or later and "
+#~ "to allow dpkg to install the new version of the script. The best way to "
+#~ "disable it is to remove its execute permission. The best way to delete it "
+#~ "is to purge the pppoeconf package."
+#~ msgstr ""
+#~ "空でない実行可能なスクリプト /etc/ppp/ip-up.d/000usepeerdns が検出されまし"
+#~ "た。これに対しては、修正する・無効にする、または削除を行う必要があります。"
+#~ "修正を行うのに最も良い方法は、pppoeconf パッケージをバージョン 1.0 以降に"
+#~ "アップグレードし、dpkg に新しいバージョンのスクリプトをインストールさせる"
+#~ "ことです。無効にするのに最も良い方法は、実行権限を削除すること。そして、削"
+#~ "除するのに最も良い方法は、pppoeconf パッケージを完全に削除 (purge) するこ"
+#~ "とです。"
+
+#~ msgid "A rogue xisp PPP hook script is present"
+#~ msgstr "問題になりそうな xisp の PPP フックスクリプトが存在しています。"
+
+#~ msgid ""
+#~ "The xisp package contains scripts /etc/ppp/ip-up.d/0xisp-dns and /etc/ppp/"
+#~ "ip-down.d/0xisp-dns (run by pppd after a PPP interface is brought up or "
+#~ "down) that overwrite /etc/resolv.conf. The scripts must be modified, "
+#~ "disabled or deleted so that they will not interfere with the operation of "
+#~ "resolvconf. Contrary to Debian policy, merely removing the xisp package "
+#~ "does not disable the scripts."
+#~ msgstr ""
+#~ "xisp パッケージは、/etc/resolv.conf を上書きする /etc/ppp/ip-up.d/0xisp-"
+#~ "dns および /etc/ppp/ip-down.d/0xisp-dns スクリプトを含んでいます (これら"
+#~ "は PPP インターフェイスが起動・停止された後に pppd によって実行されます)。"
+#~ "resolvconf の動作に干渉しないように、これらのスクリプトは修正・無効化、あ"
+#~ "るいは削除を行う必要があります。Debian ポリシーに反して、単純に xisp パッ"
+#~ "ケージの削除ではスクリプトは無効にされません。"
+
+#~ msgid ""
+#~ "A non-empty executable script /etc/ppp/ip-up.d/0xisp-dns and/or /etc/ppp/"
+#~ "ip-down.d/0xisp-dns has been detected. Each one must be modified, "
+#~ "disabled or deleted. The best way to disable it is to remove its execute "
+#~ "permission. The best way to delete it is to purge the xisp package."
+#~ msgstr ""
+#~ "空でない実行可能なスクリプト /etc/ppp/ip-up.d/0xisp-dns および /etc/ppp/"
+#~ "ip-down.d/0xisp-dns が検出されました。それぞれ、修正する・無効にする、ある"
+#~ "いは削除を行う必要があります。無効にするのに最も良い方法は、実行権限を削除"
+#~ "すること。そして、削除するのに最も良い方法は、xisp パッケージを完全に削除 "
+#~ "(purge) することです。"
+
+#~ msgid "Disable rogue hook scripts?"
+#~ msgstr "問題になりそうなフックスクリプトを無効にしますか?"
+
+#~ msgid ""
+#~ "Certain packages contain hook scripts which, contrary to Debian policy, "
+#~ "modify the resolver configuration file even when the packages that own "
+#~ "them are removed. Packages known to contain such rogue hook scripts are: "
+#~ "pppconfig (<< 2.2.0 and 2.3), pppoeconf (<< 1.0), totd (<< 1.4-4) and "
+#~ "xisp. Although the resolvconf package is marked as conflicting with these "
+#~ "packages so that they are removed before resolvconf is installed, their "
+#~ "rogue hook scripts may remain behind."
+#~ msgstr ""
+#~ "フックスクリプトを含んでいる一部のパッケージは、Debian ポリシーに反し、ス"
+#~ "クリプトを含むパッケージが削除される際にリゾルバ設定ファイルを変更します。"
+#~ "そのような問題のあるスクリプトを含んでいるパッケージは pppconfig (<< "
+#~ "2.2.0 および 2.3)、pppoeconf (<< 1.0)、totd (<< 1.4-4)、そして xisp です。"
+#~ "resolvconf パッケージはこれらのパッケージと衝突 (conflict) するように設定"
+#~ "されているので、resolvconf がインストールされる前にこれらのパッケージは削"
+#~ "除されますが、問題のスクリプトは残ったままかもしれません。"
+
+#~ msgid ""
+#~ "If you agree then the post-installation process will disable rogue hook "
+#~ "scripts by removing their execute permissions."
+#~ msgstr ""
+#~ "ここで「はい」と答えると、問題になりそうなフックスクリプトを post-install "
+#~ "時に実行権限を取り去ることで無効にします。"
+
+#~ msgid ""
+#~ "If you do not agree then you should disable the rogue scripts manually, "
+#~ "otherwise resolvconf will not work properly."
+#~ msgstr ""
+#~ "「いいえ」と答えた場合は、問題になりそうなスクリプトを手動で無効にする必要"
+#~ "があります。さもなければ resolvconf は正しく動作しないでしょう。"

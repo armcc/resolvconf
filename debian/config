@@ -5,17 +5,6 @@ set -e
 
 . /usr/share/debconf/confmodule
 
-is_active()
-{
-	[ -s "$1" ] \
-	&& [ -x "$1" ] \
-	&& ! { \
-            [ "$(cat "$1" | wc --chars)" -lt 11 ] \
-            && [ "$(cat "$1")" = '#!/bin/sh' ] ; \
-	} \
-	&& ! grep -q resolvconf "$1" > /dev/null
-}
-
 adequate_eni()
 {
 	# Assume that if _any_ dns-nameservers line appears in
@@ -27,32 +16,6 @@ adequate_eni()
 
 case $1 in
 configure|reconfigure)
-	NOTIFIED_ABOUT_BAD_PPPCONFIG_HOOK=no
-	if is_active /etc/ppp/ip-up.d/0dns-up ; then
-		db_input low resolvconf/bad-pppconfig-hook || :
-		NOTIFIED_ABOUT_BAD_PPPCONFIG_HOOK=yes
-	fi
-	if is_active /etc/ppp/ip-down.d/0dns-down ; then
-		if [ "$NOTIFIED_ABOUT_BAD_PPPCONFIG_HOOK" != yes ] ; then
-			db_input low resolvconf/bad-pppconfig-hook || :
-		fi
-	fi
-	if is_active /etc/ppp/ip-up.d/000usepeerdns ; then
-		db_input low resolvconf/bad-pppoeconf-hook || :
-	fi
-	NOTIFIED_ABOUT_BAD_XISP_HOOK=no
-	if is_active /etc/ppp/ip-up.d/0xisp-dns ; then
-		db_input low resolvconf/bad-xisp-hook || :
-		NOTIFIED_ABOUT_BAD_XISP_HOOK=yes
-	fi
-	if is_active /etc/ppp/ip-down.d/0xisp-dns ; then
-		if [ "$NOTIFIED_ABOUT_BAD_XISP_HOOK" != yes ] ; then
-			db_input low resolvconf/bad-xisp-hook || :
-		fi
-	fi
-	db_input low resolvconf/disable-bad-hooks || :
-	db_go || :
-
 	db_input low resolvconf/linkify-resolvconf || :
 	db_go || :
 	db_get resolvconf/linkify-resolvconf

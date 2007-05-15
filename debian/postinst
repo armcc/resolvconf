@@ -9,50 +9,6 @@ MYNAME=resolvconf.postinst
 report() { echo "${MYNAME}: $*" ; }
 report_err() { report "Error: $*" >&2 ; }
 
-### Disable rogue hook scripts ###
-# This should be kept in sync with the config script
-
-db_get resolvconf/disable-bad-hooks
-if [ "$RET" = "true" ] ; then
-	PERMITTED_TO_DISABLE_BAD_HOOKS=yes
-else
-	PERMITTED_TO_DISABLE_BAD_HOOKS=""
-fi
-
-is_active()
-{
-	[ -s "$1" ] \
-	&& [ -x "$1" ] \
-	&& ! { \
-		[ "$(cat "$1" | wc --chars)" -lt 11 ] \
-		&& [ "$(cat "$1")" = '#!/bin/sh' ] ; \
-	} \
-	&& ! grep -q resolvconf "$1" > /dev/null
-}
-
-case "$1" in
-configure|reconfigure)
-	for F in /etc/ppp/ip-up.d/0dns-up \
-	         /etc/ppp/ip-down.d/0dns-down \
-	         /etc/ppp/ip-up.d/000usepeerdns \
-	         /etc/ppp/ip-up.d/0xisp-dns \
-	         /etc/ppp/ip-down.d/0xisp-dns
-	do
-		if is_active "$F" ; then
-			if [ "$PERMITTED_TO_DISABLE_BAD_HOOKS" = yes ] ; then
-				chmod ugo-x "$F"
-			else
-				report "Script $F must be disabled or deleted."
-				report "It is recommended that you do: chmod ugo-x $F"
-			fi
-		fi
-	done
-	;;
-# *)
-	# In other modes we don't need to do anything
-	# because we didn't take any action in the prerm
-esac
-
 ### Create /etc/resolvconf/run ###
 case "$1" in
 configure|reconfigure)

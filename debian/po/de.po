@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.15\n"
 "Report-Msgid-Bugs-To: resolvconf-devel@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2006-10-10 15:06+0200\n"
+"POT-Creation-Date: 2007-05-15 10:48+0200\n"
 "PO-Revision-Date: 2004-06-10 10:19-0200\n"
 "Last-Translator: Helge Kreutzmann <kreutzm@itp.uni-hannover.de>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
@@ -23,186 +23,15 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Type: note
+#. Type: boolean
 #. Description
 #: ../templates:1001
-msgid "A rogue pppconfig PPP hook script is present"
-msgstr "Ein vandalierendes pppconfig-PPP-Einhäng-Skript ist vorhanden"
-
-#. Type: note
-#. Description
-#: ../templates:1001
-msgid ""
-"Certain versions of the pppconfig package contain scripts /etc/ppp/ip-up."
-"d/0dns-up and /etc/ppp/ip-down.d/0dns-down (run by pppd after a PPP "
-"interface is brought up or down) that overwrite /etc/resolv.conf. These "
-"scripts must be modified, disabled or deleted so that they will not "
-"interfere with the operation of resolvconf."
-msgstr ""
-"Bestimmte Versionen des pppconfig-Paketes enthalten die Skripte /etc/ppp/ip-"
-"up.d/0dns-up und /etc/ppp/ip-down.d/0dns-down (welche vom pppd ausgeführt "
-"werden, nachdem die PPP-Schnittstelle hoch oder runtergefahren wurde) die /"
-"etc/resolv.conf überschreiben. Diese Skripte müssen modifiziert, deaktiviert "
-"oder gelöscht werden, so daß sie nicht mit der Arbeit von resolvconf "
-"interferieren."
-
-#. Type: note
-#. Description
-#: ../templates:1001
-msgid ""
-"A non-empty executable script /etc/ppp/ip-up.d/0dns-up and/or /etc/ppp/ip-"
-"down.d/0dns-down has been detected that appears to overwrite /etc/resolv."
-"conf. Each one that does so must be modified, disabled or deleted. The best "
-"way to disable it is to remove its execute permission. The best way to "
-"delete it is to purge the pppconfig package."
-msgstr ""
-"Ein nicht-leeres, ausführbares Skript /etc/ppp/ip-up.d/0dns-up und/oder /etc/"
-"ppp/ip-down.d/0dns-down wurde erkannt, das /etc/resolv.conf zu überschreiben "
-"scheint. Jedes das dies macht, muß modifiziert, deaktiviert oder gelöscht "
-"werden. Der beste Weg es zu deaktivieren, ist es, das Ausführrecht zu "
-"entfernen. Der beste Weg es zu löschen, ist es, das pppconfig-Paket komplett "
-"zu löschen."
-
-#. Type: note
-#. Description
-#: ../templates:2001
-msgid "A rogue pppoeconf PPP hook script is present"
-msgstr "Ein vandalierendes pppoeconf-PPP-Einhäng-Skript ist vorhanden"
-
-#. Type: note
-#. Description
-#: ../templates:2001
-msgid ""
-"Versions of the pppoeconf package prior to version 1.0 contain a script /etc/"
-"ppp/ip-up.d/000usepeerdns (run by pppd after a PPP interface is brought up) "
-"that overwrites /etc/resolv.conf. The script must be modified, disabled or "
-"deleted so that it will not interfere with the operation of resolvconf. "
-"Contrary to Debian policy, merely removing the pppoeconf package does not "
-"disable the script."
-msgstr ""
-"Versionen des pppoeconf-Paketes vor Version 1.0 enthalten ein Skript /etc/"
-"ppp/ip-up.d/000usepeerdns (welches vom pppd ausgeführt wird, nachdem die PPP-"
-"Schnittstelle hochgefahren wurde) das /etc/resolv.conf überschreibt.  Das "
-"Skript muß modifiziert, deaktiviert oder gelöscht werden, so das es nicht "
-"mit der Arbeit von resolvconf interferiert. Entgegen den Debian-Richtlinien "
-"reicht das Entfernen des Pakets nicht aus, um das Skript zu deaktivieren."
-
-#. Type: note
-#. Description
-#: ../templates:2001
-msgid ""
-"A non-empty executable script /etc/ppp/ip-up.d/000usepeerdns has been "
-"detected. It must be modified, disabled or deleted. The best way to modify "
-"it is to upgrade the pppoeconf package to version 1.0 or later and to allow "
-"dpkg to install the new version of the script. The best way to disable it is "
-"to remove its execute permission. The best way to delete it is to purge the "
-"pppoeconf package."
-msgstr ""
-"Ein nicht-leeres, ausführbares Skript /etc/ppp/ip-up.d/000usepeerdns wurde "
-"erkannt. Es muß modifiziert, deaktiviert oder gelöscht werden. Der beste Weg "
-"es zu modifizieren, ist pppoeconf auf Version 1.0 oder Neuer zu "
-"aktualisieren und dpkg zu erlauben, die neue Version des Skriptes zu "
-"installieren. Der beste Weg es zu deaktivieren, ist es, das Aufführrecht zu "
-"entfernen. Der beste Weg es zu löschen, ist es, das pppoeconf-Paket komplett "
-"zu löschen."
-
-#. Type: note
-#. Description
-#: ../templates:3001
-msgid "A rogue xisp PPP hook script is present"
-msgstr "Ein vandalierendes xisp-PPP-Einhäng-Skript ist vorhanden"
-
-#. Type: note
-#. Description
-#: ../templates:3001
-msgid ""
-"The xisp package contains scripts /etc/ppp/ip-up.d/0xisp-dns and /etc/ppp/ip-"
-"down.d/0xisp-dns (run by pppd after a PPP interface is brought up or down) "
-"that overwrite /etc/resolv.conf. The scripts must be modified, disabled or "
-"deleted so that they will not interfere with the operation of resolvconf. "
-"Contrary to Debian policy, merely removing the xisp package does not disable "
-"the scripts."
-msgstr ""
-"Das xisp-Paket enthält die Skripte /etc/ppp/ip-up.d/0xisp-dns und /etc/ppp/"
-"ip-down.d/0xisp-dns (welche vom pppd ausgeführt werden, nachdem die PPP-"
-"Schnittstelle hoch oder runtergefahren wurde) die /etc/resolv.conf "
-"überschreiben. Die Skripte müssen modifiziert, deaktiviert oder gelöscht "
-"werden, so daß sie nicht mit der Arbeit von resolvconf interferieren. "
-"Entgegen den Debian-Richtlinien reicht das Entfernen des Pakets nicht aus, "
-"um die Skripte zu deaktivieren."
-
-#. Type: note
-#. Description
-#: ../templates:3001
-msgid ""
-"A non-empty executable script /etc/ppp/ip-up.d/0xisp-dns and/or /etc/ppp/ip-"
-"down.d/0xisp-dns has been detected. Each one must be modified, disabled or "
-"deleted. The best way to disable it is to remove its execute permission. The "
-"best way to delete it is to purge the xisp package."
-msgstr ""
-"Ein nicht-leeres, ausführbares Skript /etc/ppp/ip-up.d/0xisp-dns und/oder /"
-"etc/ppp/ip-down.d/0xisp-dns wurde erkannt. Jedes davon muß modifiziert, "
-"deaktiviert oder gelöscht werden. Der beste Weg es zu deaktivieren, ist es, "
-"das Ausführrecht zu entfernen. Der beste Weg es zu löschen, ist es, das xisp-"
-"Paket komplett zu löschen."
-
-#. Type: boolean
-#. Description
-#: ../templates:4001
-msgid "Disable rogue hook scripts?"
-msgstr "Vandalierende Einhäng-Skripte deaktivieren?"
-
-#. Type: boolean
-#. Description
-#: ../templates:4001
-msgid ""
-"Certain packages contain hook scripts which, contrary to Debian policy, "
-"modify the resolver configuration file even when the packages that own them "
-"are removed. Packages known to contain such rogue hook scripts are: "
-"pppconfig (<< 2.2.0 and 2.3), pppoeconf (<< 1.0), totd (<< 1.4-4) and xisp. "
-"Although the resolvconf package is marked as conflicting with these packages "
-"so that they are removed before resolvconf is installed, their rogue hook "
-"scripts may remain behind."
-msgstr ""
-"Einige Pakete enthalten Einhäng-Skripte, die entgegen den Debian-Richtlinien "
-"die resolver-Konfigurationsdateien selbst dann verändern, wenn die Pakete, "
-"zu denen sie gehören, entfernt würden. Pakete, von denen solche "
-"vandalierende Einhäng-Skripte bekannt sind, sind: pppconfig (<< 2.2.0 und "
-"2.3), pppoeconf (<< 1.0), totd (<< 1.4-4) und xisp. Obwohl das resolvconf-"
-"Paket als Konflikt zu diesen gekennzeichnet ist, so daß diese vor der "
-"Installation von resolvconf entfernt werden, können ihre vandalierende "
-"Einhäng-Skripte zurückbleiben."
-
-#. Type: boolean
-#. Description
-#: ../templates:4001
-msgid ""
-"If you agree then the post-installation process will disable rogue hook "
-"scripts by removing their execute permissions."
-msgstr ""
-"Falls Sie dem zustimmen, wird der Post-Installationsprozess diese "
-"vandalierende Einhäng-Skripte durch entfernen ihrer Ausführrechte "
-"deaktivieren."
-
-#. Type: boolean
-#. Description
-#: ../templates:4001
-msgid ""
-"If you do not agree then you should disable the rogue scripts manually, "
-"otherwise resolvconf will not work properly."
-msgstr ""
-"Falls Sie nicht zustimmen, sollten Sie die vandalierende Skripte manuell "
-"deaktivieren da andernfalls resolvconf nicht korrekt funktionieren wird."
-
-#. Type: boolean
-#. Description
-#: ../templates:5001
 msgid "Prepare /etc/resolv.conf for dynamic updates?"
 msgstr "/etc/resolv.conf für dynamische Aktualisierungen vorbereiten?"
 
 #. Type: boolean
 #. Description
-#: ../templates:5001
+#: ../templates:1001
 msgid ""
 "This package contains the infrastructure required for dynamic updating of "
 "the resolver configuration file. Part of the necessary infrastructure is a "
@@ -221,7 +50,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:5001
+#: ../templates:1001
 msgid ""
 "If you wish to prevent future installations from recreating the symbolic "
 "link then you can run dpkg-reconfigure later to withdraw your agreement."
@@ -232,7 +61,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:5001
+#: ../templates:1001
 msgid ""
 "If you do not agree then the necessary symbolic link will not be created and "
 "consequently your resolver configuration file will not be dynamically "
@@ -252,20 +81,20 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:5001
+#: ../templates:1001
 msgid "However you decide, you should read the README file."
 msgstr ""
 "Wie auch immer Sie sich entscheiden sollten sie die README-Datei lesen."
 
 #. Type: note
 #. Description
-#: ../templates:6001
+#: ../templates:2001
 msgid "Remember to reconfigure network interfaces"
 msgstr "Denken Sie daran, die Netzwerk-Schnittstelle zu rekonfigurieren"
 
 #. Type: note
 #. Description
-#: ../templates:6001
+#: ../templates:2001
 msgid ""
 "Once resolvconf is installed, interface configurers supply nameserver "
 "information to it (which it then makes available to the C Library resolver "
@@ -286,13 +115,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:7001
+#: ../templates:3001
 msgid "Append original file to dynamic file?"
 msgstr "Die ursprüngliche Datei an die dynamische Datei anhängen?"
 
 #. Type: boolean
 #. Description
-#: ../templates:7001
+#: ../templates:3001
 msgid ""
 "If your original static resolver configuration file (/etc/resolv.conf) "
 "contains nameserver addresses then those addresses should be listed on \"dns-"
@@ -323,7 +152,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:7001
+#: ../templates:3001
 msgid ""
 "After you have modified /etc/network/interfaces to add the required \"dns-"
 "nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "
@@ -332,3 +161,136 @@ msgstr ""
 "Nachdem Sie /etc/network/interfaces geändert haben um die benötigte \"dns-"
 "nameservers\"-Zeile einzufügen sollten Sie den symbolischen Link von /etc/"
 "resolvconf/resolv.conf.d/tail auf /dev/null zeigen lassen."
+
+#~ msgid "A rogue pppconfig PPP hook script is present"
+#~ msgstr "Ein vandalierendes pppconfig-PPP-Einhäng-Skript ist vorhanden"
+
+#~ msgid ""
+#~ "Certain versions of the pppconfig package contain scripts /etc/ppp/ip-up."
+#~ "d/0dns-up and /etc/ppp/ip-down.d/0dns-down (run by pppd after a PPP "
+#~ "interface is brought up or down) that overwrite /etc/resolv.conf. These "
+#~ "scripts must be modified, disabled or deleted so that they will not "
+#~ "interfere with the operation of resolvconf."
+#~ msgstr ""
+#~ "Bestimmte Versionen des pppconfig-Paketes enthalten die Skripte /etc/ppp/"
+#~ "ip-up.d/0dns-up und /etc/ppp/ip-down.d/0dns-down (welche vom pppd "
+#~ "ausgeführt werden, nachdem die PPP-Schnittstelle hoch oder runtergefahren "
+#~ "wurde) die /etc/resolv.conf überschreiben. Diese Skripte müssen "
+#~ "modifiziert, deaktiviert oder gelöscht werden, so daß sie nicht mit der "
+#~ "Arbeit von resolvconf interferieren."
+
+#~ msgid ""
+#~ "A non-empty executable script /etc/ppp/ip-up.d/0dns-up and/or /etc/ppp/ip-"
+#~ "down.d/0dns-down has been detected that appears to overwrite /etc/resolv."
+#~ "conf. Each one that does so must be modified, disabled or deleted. The "
+#~ "best way to disable it is to remove its execute permission. The best way "
+#~ "to delete it is to purge the pppconfig package."
+#~ msgstr ""
+#~ "Ein nicht-leeres, ausführbares Skript /etc/ppp/ip-up.d/0dns-up und/oder /"
+#~ "etc/ppp/ip-down.d/0dns-down wurde erkannt, das /etc/resolv.conf zu "
+#~ "überschreiben scheint. Jedes das dies macht, muß modifiziert, deaktiviert "
+#~ "oder gelöscht werden. Der beste Weg es zu deaktivieren, ist es, das "
+#~ "Ausführrecht zu entfernen. Der beste Weg es zu löschen, ist es, das "
+#~ "pppconfig-Paket komplett zu löschen."
+
+#~ msgid "A rogue pppoeconf PPP hook script is present"
+#~ msgstr "Ein vandalierendes pppoeconf-PPP-Einhäng-Skript ist vorhanden"
+
+#~ msgid ""
+#~ "Versions of the pppoeconf package prior to version 1.0 contain a script /"
+#~ "etc/ppp/ip-up.d/000usepeerdns (run by pppd after a PPP interface is "
+#~ "brought up) that overwrites /etc/resolv.conf. The script must be "
+#~ "modified, disabled or deleted so that it will not interfere with the "
+#~ "operation of resolvconf. Contrary to Debian policy, merely removing the "
+#~ "pppoeconf package does not disable the script."
+#~ msgstr ""
+#~ "Versionen des pppoeconf-Paketes vor Version 1.0 enthalten ein Skript /etc/"
+#~ "ppp/ip-up.d/000usepeerdns (welches vom pppd ausgeführt wird, nachdem die "
+#~ "PPP-Schnittstelle hochgefahren wurde) das /etc/resolv.conf überschreibt.  "
+#~ "Das Skript muß modifiziert, deaktiviert oder gelöscht werden, so das es "
+#~ "nicht mit der Arbeit von resolvconf interferiert. Entgegen den Debian-"
+#~ "Richtlinien reicht das Entfernen des Pakets nicht aus, um das Skript zu "
+#~ "deaktivieren."
+
+#~ msgid ""
+#~ "A non-empty executable script /etc/ppp/ip-up.d/000usepeerdns has been "
+#~ "detected. It must be modified, disabled or deleted. The best way to "
+#~ "modify it is to upgrade the pppoeconf package to version 1.0 or later and "
+#~ "to allow dpkg to install the new version of the script. The best way to "
+#~ "disable it is to remove its execute permission. The best way to delete it "
+#~ "is to purge the pppoeconf package."
+#~ msgstr ""
+#~ "Ein nicht-leeres, ausführbares Skript /etc/ppp/ip-up.d/000usepeerdns "
+#~ "wurde erkannt. Es muß modifiziert, deaktiviert oder gelöscht werden. Der "
+#~ "beste Weg es zu modifizieren, ist pppoeconf auf Version 1.0 oder Neuer zu "
+#~ "aktualisieren und dpkg zu erlauben, die neue Version des Skriptes zu "
+#~ "installieren. Der beste Weg es zu deaktivieren, ist es, das Aufführrecht "
+#~ "zu entfernen. Der beste Weg es zu löschen, ist es, das pppoeconf-Paket "
+#~ "komplett zu löschen."
+
+#~ msgid "A rogue xisp PPP hook script is present"
+#~ msgstr "Ein vandalierendes xisp-PPP-Einhäng-Skript ist vorhanden"
+
+#~ msgid ""
+#~ "The xisp package contains scripts /etc/ppp/ip-up.d/0xisp-dns and /etc/ppp/"
+#~ "ip-down.d/0xisp-dns (run by pppd after a PPP interface is brought up or "
+#~ "down) that overwrite /etc/resolv.conf. The scripts must be modified, "
+#~ "disabled or deleted so that they will not interfere with the operation of "
+#~ "resolvconf. Contrary to Debian policy, merely removing the xisp package "
+#~ "does not disable the scripts."
+#~ msgstr ""
+#~ "Das xisp-Paket enthält die Skripte /etc/ppp/ip-up.d/0xisp-dns und /etc/"
+#~ "ppp/ip-down.d/0xisp-dns (welche vom pppd ausgeführt werden, nachdem die "
+#~ "PPP-Schnittstelle hoch oder runtergefahren wurde) die /etc/resolv.conf "
+#~ "überschreiben. Die Skripte müssen modifiziert, deaktiviert oder gelöscht "
+#~ "werden, so daß sie nicht mit der Arbeit von resolvconf interferieren. "
+#~ "Entgegen den Debian-Richtlinien reicht das Entfernen des Pakets nicht "
+#~ "aus, um die Skripte zu deaktivieren."
+
+#~ msgid ""
+#~ "A non-empty executable script /etc/ppp/ip-up.d/0xisp-dns and/or /etc/ppp/"
+#~ "ip-down.d/0xisp-dns has been detected. Each one must be modified, "
+#~ "disabled or deleted. The best way to disable it is to remove its execute "
+#~ "permission. The best way to delete it is to purge the xisp package."
+#~ msgstr ""
+#~ "Ein nicht-leeres, ausführbares Skript /etc/ppp/ip-up.d/0xisp-dns und/"
+#~ "oder /etc/ppp/ip-down.d/0xisp-dns wurde erkannt. Jedes davon muß "
+#~ "modifiziert, deaktiviert oder gelöscht werden. Der beste Weg es zu "
+#~ "deaktivieren, ist es, das Ausführrecht zu entfernen. Der beste Weg es zu "
+#~ "löschen, ist es, das xisp-Paket komplett zu löschen."
+
+#~ msgid "Disable rogue hook scripts?"
+#~ msgstr "Vandalierende Einhäng-Skripte deaktivieren?"
+
+#~ msgid ""
+#~ "Certain packages contain hook scripts which, contrary to Debian policy, "
+#~ "modify the resolver configuration file even when the packages that own "
+#~ "them are removed. Packages known to contain such rogue hook scripts are: "
+#~ "pppconfig (<< 2.2.0 and 2.3), pppoeconf (<< 1.0), totd (<< 1.4-4) and "
+#~ "xisp. Although the resolvconf package is marked as conflicting with these "
+#~ "packages so that they are removed before resolvconf is installed, their "
+#~ "rogue hook scripts may remain behind."
+#~ msgstr ""
+#~ "Einige Pakete enthalten Einhäng-Skripte, die entgegen den Debian-"
+#~ "Richtlinien die resolver-Konfigurationsdateien selbst dann verändern, "
+#~ "wenn die Pakete, zu denen sie gehören, entfernt würden. Pakete, von denen "
+#~ "solche vandalierende Einhäng-Skripte bekannt sind, sind: pppconfig (<< "
+#~ "2.2.0 und 2.3), pppoeconf (<< 1.0), totd (<< 1.4-4) und xisp. Obwohl das "
+#~ "resolvconf-Paket als Konflikt zu diesen gekennzeichnet ist, so daß diese "
+#~ "vor der Installation von resolvconf entfernt werden, können ihre "
+#~ "vandalierende Einhäng-Skripte zurückbleiben."
+
+#~ msgid ""
+#~ "If you agree then the post-installation process will disable rogue hook "
+#~ "scripts by removing their execute permissions."
+#~ msgstr ""
+#~ "Falls Sie dem zustimmen, wird der Post-Installationsprozess diese "
+#~ "vandalierende Einhäng-Skripte durch entfernen ihrer Ausführrechte "
+#~ "deaktivieren."
+
+#~ msgid ""
+#~ "If you do not agree then you should disable the rogue scripts manually, "
+#~ "otherwise resolvconf will not work properly."
+#~ msgstr ""
+#~ "Falls Sie nicht zustimmen, sollten Sie die vandalierende Skripte manuell "
+#~ "deaktivieren da andernfalls resolvconf nicht korrekt funktionieren wird."
