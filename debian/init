@@ -1,6 +1,13 @@
 #!/bin/sh
 #
-# resolvconf  --  Nameserver information manager
+### BEGIN INIT INFO
+# Provides:          resolvconf
+# Default-Start:     S
+# Default-Stop:      0 6
+# Short-Description: Nameserver information manager
+# Description:       This service manages the list of nameserver addresses
+#                    used by the libc resolver and name service caches
+### END INIT INFO
 #
 # This script is part of the resolvconf package
 # See /usr/share/doc/resolvconf/copyright
