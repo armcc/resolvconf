@@ -4,6 +4,8 @@
 # Provides:          resolvconf
 # Default-Start:     S
 # Default-Stop:      0 6
+# Required-Start:    S
+# Required-Stop:
 # Short-Description: Nameserver information manager
 # Description:       This service manages the list of nameserver addresses
 #                    used by the libc resolver and name service caches
