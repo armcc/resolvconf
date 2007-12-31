@@ -398,7 +398,7 @@ Technical overview
   + run/
     Directory where run time files are stored.  This can be replaced by
     a symlink to a directory on another filesystem if the admin so
-    desires -- e.g., to /dev/shm/resolvconf/ .
+    desires -- e.g., to /lib/init/rw/resolvconf/ .
   + update.d/
     Scripts to run when nameserver information is updated
   + update-libc.d/

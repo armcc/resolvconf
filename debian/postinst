@@ -8,6 +8,7 @@ set -e
 MYNAME=resolvconf.postinst
 report() { echo "${MYNAME}: $*" ; }
 report_err() { report "Error: $*" >&2 ; }
+report_info() { report "Info: $*" >&2 ; }
 
 ### Create /etc/resolvconf/run ###
 case "$1" in
@@ -22,6 +23,18 @@ configure|reconfigure)
 		if [ -z "$RUN_CANONICALPATH" ] ; then
 			report_err "Deleting /etc/resolvconf/run symlink whose canonical path could not be determined"
 			rm -f /etc/resolvconf/run
+		elif [ "$RUN_CANONICALPATH" = "/dev/shm/resolvconf" ] && \
+			[ -d /lib/init/rw ] \
+			&& [ -w /lib/init/rw ] \
+			&& [ -r /proc/mounts ] \
+			&& grep -qs "^tmpfs[[:space:]]\+/lib/init/rw[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts \
+			&& { [ -d /lib/init/rw/resolvconf ] || mkdir -v /lib/init/rw/resolvconf ; } \
+			&& { [ -d /lib/init/rw/resolvconf/interface ] || mkdir -v /lib/init/rw/resolvconf/interface ; }
+			then
+			report_info "Migrating /dev/shm/resolvconf to /lib/init/rw/resolvconf"
+			cp -a /dev/shm/resolvconf/* /lib/init/rw/resolvconf
+			rm -f /etc/resolvconf/run
+			ln -s /lib/init/rw/resolvconf /etc/resolvconf/run
 		fi
 	fi
 	# Delete it if it isn't a directory or a link to one
@@ -43,17 +56,16 @@ configure|reconfigure)
 		mkdir -v "${RUN_CANONICALPATH}/interface"
 	else
 		# It's a nonexistent
-		# Use /dev/shm if possible
+		# Use /lib/init/rw if possible
 		if \
-			[ -d /dev/shm ] \
-			&& [ -w /dev/shm ] \
+			[ -d /lib/init/rw ] \
+			&& [ -w /lib/init/rw ] \
 			&& [ -r /proc/mounts ] \
-			&& grep -qs "^tmpfs[[:space:]]\+/dev/shm[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts \
-			&& ! grep -qs '[[:space:]]/dev[[:space:]]devfs[[:space:]]' /proc/mounts \
-			&& { [ -d /dev/shm/resolvconf ] || mkdir -v /dev/shm/resolvconf ; } \
-			&& { [ -d /dev/shm/resolvconf/interface ] || mkdir -v /dev/shm/resolvconf/interface ; }
+			&& grep -qs "^tmpfs[[:space:]]\+/lib/init/rw[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts \
+			&& { [ -d /lib/init/rw/resolvconf ] || mkdir -v /lib/init/rw/resolvconf ; } \
+			&& { [ -d /lib/init/rw/resolvconf/interface ] || mkdir -v /lib/init/rw/resolvconf/interface ; }
 		then
-			ln -s /dev/shm/resolvconf /etc/resolvconf/run
+			ln -s /lib/init/rw/resolvconf /etc/resolvconf/run
 		else
 			mkdir -v /etc/resolvconf/run
 			mkdir -v /etc/resolvconf/run/interface

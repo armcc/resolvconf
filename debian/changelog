@@ -11,6 +11,14 @@ resolvconf (1.38) unstable; urgency=low
   * Add gl.po, thanks to Jacobo Tarrio  (Closes: #412511)
   * Add pt.po, thanks to Miguel Figueiredo  (Closes: #413752)
 
+  [ Daniel Kahn Gillmor ]
+  * debian/postinst:
+    - Use /lib/init/rw instead of /dev/shm.
+      + Migrate existing users of /dev/shm/resolvconf to /lib/init/rw.
+      + Add report_info() function.
+  * README: Use /lib/init/rw instead of /dev/shm.
+  * Closes: #431181  (Thanks, Roger Leigh!)
+
  -- Thomas Hood <jdthood@yahoo.co.uk>  Tue, 27 Feb 2007 14:03:21 +0100
 
 resolvconf (1.37) unstable; urgency=high
