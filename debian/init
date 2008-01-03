@@ -2,10 +2,10 @@
 #
 ### BEGIN INIT INFO
 # Provides:          resolvconf
+# Required-Start:    $local_fs
+# Required-Stop:     $local_fs
 # Default-Start:     S
 # Default-Stop:      0 6
-# Required-Start:    mountall
-# Required-Stop:
 # Short-Description: Nameserver information manager
 # Description:       This service manages the list of nameserver addresses
 #                    used by the libc resolver and name service caches
