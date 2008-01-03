@@ -23,14 +23,15 @@ configure|reconfigure)
 		if [ -z "$RUN_CANONICALPATH" ] ; then
 			report_err "Deleting /etc/resolvconf/run symlink whose canonical path could not be determined"
 			rm -f /etc/resolvconf/run
-		elif [ "$RUN_CANONICALPATH" = "/dev/shm/resolvconf" ] && \
-			[ -d /lib/init/rw ] \
+		elif \
+			[ "$RUN_CANONICALPATH" = "/dev/shm/resolvconf" ] \
+			&& [ -d /lib/init/rw ] \
 			&& [ -w /lib/init/rw ] \
 			&& [ -r /proc/mounts ] \
 			&& grep -qs "^tmpfs[[:space:]]\+/lib/init/rw[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts \
 			&& { [ -d /lib/init/rw/resolvconf ] || mkdir -v /lib/init/rw/resolvconf ; } \
 			&& { [ -d /lib/init/rw/resolvconf/interface ] || mkdir -v /lib/init/rw/resolvconf/interface ; }
-			then
+		then
 			report_info "Migrating /dev/shm/resolvconf to /lib/init/rw/resolvconf"
 			cp -a /dev/shm/resolvconf/* /lib/init/rw/resolvconf
 			rm -f /etc/resolvconf/run
