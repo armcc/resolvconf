@@ -1,11 +1,10 @@
 resolvconf (1.38) unstable; urgency=low
 
-  UNRELEASED
   [ Thomas Hood ]
   * Remove ru versions of man pages which failed lexgrog check
   * Add initscript lsb header  (Closes: #451751)
   * Eliminate obsolete checks for old bad hook scripts
-    (Addresses but does not close #388956)
+    (Addresses but does not close # 388956)
   * New nscd pidfile location is /var/run/nscd/nscd.pid
     (Closes: #415783)  Thanks to Bob Knock.
   * Add gl.po, thanks to Jacobo Tarrio  (Closes: #412511)
