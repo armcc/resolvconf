@@ -104,7 +104,7 @@ SV_CMD="$(which sv)" || :
 for CACHE in $CACHES ; do
 	cp "$TMPFILE" "$CACHE/root/servers/@"
 	# Restart the cache if it's already running:
-	if [ `dirname "$CACHE"`x == '/var/servicex' ]; then
+	if [ `dirname "$CACHE"`x = '/var/servicex' ]; then
 	    # this is managed by runit
 	    [ "$SV_CMD" ] && "$SV_CMD" t "$CACHE"
 	else
