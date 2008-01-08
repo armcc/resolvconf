@@ -1,3 +1,11 @@
+resolvconf (1.39) UNRELEASED; urgency=low
+
+  [ Daniel Kahn Gillmor ]
+  * Removed bashism from dnscache script (Closes: #459566)
+    Thanks, Jeff King!
+
+ -- Marco Nenciarini <mnencia@debian.org>  Tue, 08 Jan 2008 18:09:12 +0100
+
 resolvconf (1.38) unstable; urgency=low
 
   [ Thomas Hood ]
@@ -13,8 +21,6 @@ resolvconf (1.38) unstable; urgency=low
   [ Daniel Kahn Gillmor ]
   * Use /lib/init/rw instead of /dev/shm  (Closes: #431181)
     Thanks, Roger Leigh!
-  * Removed bashism from dnscache script (Closes: #459566)
-    Thanks, Jeff King!
 
  -- Thomas Hood <jdthood@yahoo.co.uk>  Tue, 31 Dec 2007 12:00:00 +0100
 
