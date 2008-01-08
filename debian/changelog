@@ -13,8 +13,6 @@ resolvconf (1.38) unstable; urgency=low
   [ Daniel Kahn Gillmor ]
   * Use /lib/init/rw instead of /dev/shm  (Closes: #431181)
     Thanks, Roger Leigh!
-  * Removed bashism from dnscache script (Closes: #459566)
-    Thanks, Jeff King!
 
  -- Thomas Hood <jdthood@yahoo.co.uk>  Tue, 31 Dec 2007 12:00:00 +0100
 
