@@ -38,7 +38,8 @@ CACHES=""
 for SERVICEDIR in /var/lib/svscan /service /var/service ; do
 	# We'll only manage caches actually managed by daemontools or runit.
 	if [ -d "$SERVICEDIR" ] ; then
-		for SVC in $(ls "$SERVICEDIR") ; do
+		cd "$SERVICEDIR"
+		for SVC in * ; do
 			SVC="$SERVICEDIR/$SVC"
 			if \
 				[ -d "$SVC" ] \
@@ -108,7 +109,7 @@ for CACHE in $CACHES ; do
 		[ "$SV_CMD" ] && "$SV_CMD" t "$CACHE"
 	else
 		# this is probably managed by daemontools
-		[ "$SVC_CMD" ] && $SVC_CMD -t "$CACHE"
+		[ "$SVC_CMD" ] && "$SVC_CMD" -t "$CACHE"
 	fi
 done
 
