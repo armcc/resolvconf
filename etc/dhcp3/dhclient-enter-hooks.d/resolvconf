@@ -3,10 +3,10 @@
 #
 # Licensed under the GNU GPL.  See /usr/share/common-licenses/GPL.
 #
-# History
-# June 2003: Written by Thomas Hood <jdthood@yahoo.co.uk>
 
-# Be careful about changing the environment
+# Tips:
+# * Be careful about changing the environment since this is sourced
+# * This script fragment uses bash features
 
 if [ -x /sbin/resolvconf ] ; then
 	# Do stuff now
@@ -27,7 +27,11 @@ if [ -x /sbin/resolvconf ] ; then
 			make_resolv_conf() {
 				R=""
 				if [ "$new_domain_name_servers" ] && [ "$new_domain_name" ] ; then
-					R="${R}search $new_domain_name
+					R="${R}domain $new_domain_name
+"
+				fi
+				if [ "$new_domain_name_servers" ] && [ "$new_domain_search" ] ; then
+					R="${R}search ${new_domain_search/\\032/ }
 "
 				fi
 				for nameserver in $new_domain_name_servers ; do

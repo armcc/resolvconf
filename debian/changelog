@@ -7,6 +7,9 @@ resolvconf (1.39) UNRELEASED; urgency=low
   [ Thomas Hood ]
   * Clean up dnscache script
   * Add pere to Uploaders
+  * Change dhcp3 dhclient hook script so that it sends domain name
+    and domain search strings separately to resolvconf preceded by
+    the "domain" and "search" keywords, respectively.
 
  -- Marco Nenciarini <mnencia@debian.org>  Tue, 08 Jan 2008 18:09:12 +0100
 
