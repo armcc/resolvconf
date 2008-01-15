@@ -31,6 +31,9 @@ if [ -x /sbin/resolvconf ] ; then
 "
 				fi
 				if [ "$new_domain_name_servers" ] && [ "$new_domain_search" ] ; then
+					# The replacement below works around a bug with dhclient 3.1.0 which
+					# separates items with the four characters backslash-zero-three-two
+					# instead of with a space
 					R="${R}search ${new_domain_search/\\032/ }
 "
 				fi
