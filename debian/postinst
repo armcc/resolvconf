@@ -33,9 +33,9 @@ configure|reconfigure)
 			&& { [ -d /lib/init/rw/resolvconf/interface ] || mkdir -v /lib/init/rw/resolvconf/interface ; }
 		then
 			report_info "Migrating /dev/shm/resolvconf to /lib/init/rw/resolvconf"
-			cp -a /dev/shm/resolvconf/* /lib/init/rw/resolvconf
-			rm -f /etc/resolvconf/run
-			ln -s /lib/init/rw/resolvconf /etc/resolvconf/run
+			F="$(echo /dev/shm/resolvconf/*)"
+			[ "$F" ] && [ "$F" != '/dev/shm/resolvconf/*' ] && cp -a /dev/shm/resolvconf/* /lib/init/rw/resolvconf
+			ln -sf /lib/init/rw/resolvconf /etc/resolvconf/run
 		fi
 	fi
 	# Delete it if it isn't a directory or a link to one

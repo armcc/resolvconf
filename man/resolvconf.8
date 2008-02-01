@@ -35,9 +35,49 @@ and
 to DNS caches such as
 .BR dnsmasq (8)
 (for the loopback interface).
-However, the administrator can also run
+These hook scripts furnish
 .B resolvconf
-from the command line to add or delete auxiliary nameserver information.
+with information about nameservers.
+For example, a DHCP client gets one or more nameserver addresses during
+its negotiation with the DHCP server;
+its hook script provides this information to 
+.B resolvconf.
+.PP
+The
+.BR ifup (8)
+program can be used to configure network interfaces
+as determined by options set in
+/etc/network/interfaces(5).
+To make 
+.B ifup
+supply nameserver information to
+.B resolvconf
+when it configures an interface, add
+.B dns\-
+lines to the relevant
+.B iface
+stanza in /etc/network/interfaces.
+To add nameserver addresses add a line like the following.
+.TP 3
+.B dns\-nameservers 11.22.33.44 55.66.77.88
+.PP
+Note the 's' at the end of the option name
+and note that one or more addresses can be given.
+For each other
+.BR resolv.conf (5)
+configuration option you can specify that option with a
+.B dns\-
+prefix in /etc/network/interfaces.
+For example,
+.TP 3
+.B dns\-search foo.org bar.com
+.PP
+See the resolvconf package's README file for more detailed information.
+.PP
+The administrator can run
+.B resolvconf
+from the command line to add or delete nameserver information,
+but this is not normally necessary.
 .SH CLIENTS
 Nameserver information provided to
 .B resolvconf
@@ -55,7 +95,7 @@ whither to forward queries.
 The most important piece of
 software that subscribes to the notification service is the set of functions
 that make up the GNU C Library
-.BR resolver (3).
+.IR resolver (3).
 When nameserver information is updated the script
 /etc/resolvconf/update.d/libc writes a new resolver configuration
 file to /etc/resolvconf/run/resolv.conf and then runs the scripts in
@@ -84,7 +124,7 @@ Examples of packages that do this are
 and
 .BR squid (8).
 .PP
-Hook scripts will find the files containing nameserver
+Client hook scripts will find the files containing nameserver
 information in the current directory.
 .SH OPTIONS
 .TP
