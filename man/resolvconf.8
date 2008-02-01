@@ -38,15 +38,15 @@ to DNS caches such as
 These hook scripts furnish
 .B resolvconf
 with information about nameservers.
-For example, a DHCP client gets one or more nameserver addresses during
-its negotiation with the DHCP server;
-its hook script provides this information to 
+For example, a DHCP client receives one or more nameserver addresses
+during its negotiation with the DHCP server;
+its hook script forwards this information to 
 .B resolvconf.
 .PP
 The
 .BR ifup (8)
 program can be used to configure network interfaces
-as determined by options set in
+according to settings in
 /etc/network/interfaces(5).
 To make 
 .B ifup
@@ -57,20 +57,36 @@ when it configures an interface, add
 lines to the relevant
 .B iface
 stanza in /etc/network/interfaces.
-To add nameserver addresses add a line like the following.
-.TP 3
-.B dns\-nameservers 11.22.33.44 55.66.77.88
+To add nameserver addresses add a line beginning with
+.BR dns\-nameservers .
 .PP
-Note the 's' at the end of the option name
-and note that one or more addresses can be given.
+.EX
+    dns\-nameservers 11.22.33.44 55.66.77.88
+.EE
+.PP
+Note that one or more addresses can be given,
+and note the `s' at the end of the option name.
+(Contrast with the 
+.BR resolv.conf (5)
+option
+.BR nameserver .)
 For each other
 .BR resolv.conf (5)
-configuration option you can specify that option with a
+configuration option
+you can include, in the stanza,
+one line beginning with that option name with a
 .B dns\-
-prefix in /etc/network/interfaces.
-For example,
-.TP 3
-.B dns\-search foo.org bar.com
+prefix.
+The resulting stanza might look like the following example.
+.PP
+.EX
+    iface eth0 inet static
+        address 192.168.3.3
+        netmask 255.255.255.0
+        gateway 192.168.3.1
+        dns\-nameservers 192.168.3.45 192.168.8.10
+        dns\-search foo.org bar.com
+.EE
 .PP
 See the resolvconf package's README file for more detailed information.
 .PP
