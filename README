@@ -355,7 +355,7 @@ you won't have to modify the default interface-order file.
 Using a static file to order the entries is obviously not very flexible;
 however, it is adequate in most usage situations.  Situations for which
 it is not adequate are generally situations in which it is better to use
-a local cacheing nameserver that can do things like monitoring and load
+a local caching nameserver that can do things like monitoring and load
 balancing.
 
 Objectives

@@ -13,6 +13,9 @@ resolvconf (1.39) UNRELEASED; urgency=low
   * Check before migrating files from /dev/shm/resolvconf/* (Closes: #463463)
   * Add information about dns- options to resolvconf.8  (Closes: #305884)
   * Add debian/compat, make lintian happy
+  * Add a variable giving the admin the ability to disable the not-always-
+    popular "truncate the nameserver list after 127.*" feature
+    (Closes: #339418, #404041, #425444, #462946)
 
  -- Marco Nenciarini <mnencia@debian.org>  Wed, 16 Jan 2008 12:00:00 +0100
 

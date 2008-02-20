@@ -164,8 +164,40 @@ the update scripts as described in the CLIENTS section.
 .TP
 \fB\-u\fR
 Just run the update scripts.
+.SH ENVIRONMENT VARIABLES
+The following variables can be set in /etc/default/resolvconf.
+.TP
+.B REPORT_ABSENT_SYMLINK
+If set to "yes" then
+.B resolvconf
+will print a message when /etc/resolv.conf is not a symbolic link
+to the
+.BR resolvconf -generated
+resolv.conf file.
+The default is "yes".
+.TP
+.B TRUNCATE_NAMESERVER_LIST_AFTER_127
+If set to "yes" then the update.d/libc script will include
+no more nameserver addresses after the first address
+that starts with "127."
+This is usually the preferable behavior
+if the nameserver at 127.* is a local caching nameserver.
+When an interface is brought up the local caching nameserver
+is informed by resolvconf of any new nameserver addresses
+and the additional name service is made available to applications
+that make use of the resolver and the local caching nameserver;
+the applications themselves do not need to be notified of the change.
+A disadvantage of this mode of operation is that applications have
+no secondary or tertiary nameserver address to fall back on should
+the local caching nameserver crash.
+Insofar as a local nameserver crash can be regarded
+as an unlikely event,
+this is a relatively minor disadvantage.
+The default is "yes".
 .SH FILES
 .TP
+.I /etc/default/resolvconf
+See the ENVIRONMENT VARIABLES section.
 .I /etc/resolvconf/run
 This is either a directory where nameserver information can be stored
 or a symbolic link to such a directory.
@@ -196,7 +228,7 @@ does not check the sanity of the information provided to it.
 .SH AUTHOR
 Written by Thomas Hood <jdthood@yahoo.co.uk>.
 .SH COPYRIGHT
-Copyright \(co 2004 Thomas Hood
+Copyright \(co 2008 Thomas Hood
 .br
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

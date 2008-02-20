@@ -20,7 +20,8 @@ PATH=/sbin:/bin
 # /etc/resolv.conf is not a symbolic link
 
 # Default value
-REPORT_ABSENT_SYMLINK=yes
+REPORT_ABSENT_SYMLINK=y
+TRUNCATE_NAMESERVER_LIST_AFTER_127=y
 
 # Default override
 [ -r /etc/default/resolvconf ] && . /etc/default/resolvconf
@@ -78,7 +79,7 @@ uniquify_nameserver_list()
 			[ "$1" = "$E" ] && { shift ; continue 2 ; }
 		done
 		NMSRVRS="${NMSRVRS:+$NMSRVRS }$1"
-		case "$1" in (127.*) return 0 ;; esac
+		case "$TRUNCATE_NAMESERVER_LIST_AFTER_127" in (y|Y|yes|YES|Yes) case "$1" in (127.*) return 0 ;; esac ;; esac
 		N=$(($N + 1))
 		[ "$N" = 3 ] && return 0
 		shift
