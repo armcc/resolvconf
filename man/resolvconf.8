@@ -18,7 +18,7 @@ and run the update scripts in \fI/etc/resolvconf/update.d/\fR
 if the nameserver information has changed.
 .PP
 With \fB\-u\fR, just run the update scripts.
-.SH SERVERS
+.SH PUBLICATION
 Normally
 .B resolvconf
 is run only by hook scripts attached to network interface configurers
@@ -26,7 +26,7 @@ such as
 .BR pppd (8) 
 (for ppp interfaces),
 to DHCP clients such as
-.BR dhclient3 (8),
+.BR dhclient (8),
 to
 .BR ifup (8) 
 and
@@ -38,9 +38,13 @@ to DNS caches such as
 These hook scripts furnish
 .B resolvconf
 with information about nameservers.
-For example, a DHCP client receives one or more nameserver addresses
+For example,
+.B dhclient
+receives one or more nameserver addresses
 during its negotiation with the DHCP server;
-its hook script forwards this information to 
+its hook script
+/etc/dhcp3/dhclient-enter-hooks.d/resolvconf
+publishes this information to 
 .B resolvconf.
 .PP
 The
@@ -50,7 +54,7 @@ according to settings in
 /etc/network/interfaces(5).
 To make 
 .B ifup
-supply nameserver information to
+publish nameserver information to
 .B resolvconf
 when it configures an interface, add
 .B dns\-
@@ -70,7 +74,7 @@ and note the `s' at the end of the option name.
 .BR resolv.conf (5)
 option
 .BR nameserver .)
-For each other
+For each other valid
 .BR resolv.conf (5)
 configuration option
 you can include, in the stanza,
@@ -90,11 +94,11 @@ The resulting stanza might look like the following example.
 .PP
 See the resolvconf package's README file for more detailed information.
 .PP
-The administrator can run
+The administrator \fIcan\fR run
 .B resolvconf
 from the command line to add or delete nameserver information,
 but this is not normally necessary.
-.SH CLIENTS
+.SH SUBSCRIPTION
 Nameserver information provided to
 .B resolvconf
 is stored for use by subscribers to \fBresolvconf\fR's notification service.
@@ -132,9 +136,9 @@ should work with
 Subscribers that need to know only when the resolver configuration file
 has changed should install a script in /etc/resolvconf/update-libc.d/
 rather than in /etc/resolvconf/update.d/.
-(This is important for synchronization purposes:
+This is important for synchronization purposes:
 scripts in update-libc.d/ are run \fIafter\fR resolv.conf has been updated;
-the same is not necessarily true of scripts in update.d/.)
+the same is not necessarily true of scripts in update.d/.
 Examples of packages that do this are
 .BR fetchmail (1)
 and
@@ -174,6 +178,7 @@ will print a message when /etc/resolv.conf is not a symbolic link
 to the
 .BR resolvconf -generated
 resolv.conf file.
+Set to "no" to prevent the printing of this message.
 The default is "yes".
 .TP
 .B TRUNCATE_NAMESERVER_LIST_AFTER_127
@@ -181,9 +186,12 @@ If set to "yes" then the update.d/libc script will include
 no more nameserver addresses after the first address
 that starts with "127."
 This is usually the preferable behavior
-if the nameserver at 127.* is a local caching nameserver.
+if the nameserver at 127.* is a local caching nameserver
+since it inhibits unnecessary changes to resolv.conf.
 When an interface is brought up the local caching nameserver
-is informed by resolvconf of any new nameserver addresses
+is informed by
+.B resolvconf
+of any new nameserver addresses
 and the additional name service is made available to applications
 that make use of the resolver and the local caching nameserver;
 the applications themselves do not need to be notified of the change.
@@ -193,6 +201,7 @@ the local caching nameserver crash.
 Insofar as a local nameserver crash can be regarded
 as an unlikely event,
 this is a relatively minor disadvantage.
+Set to "no" to disable this truncation feature.
 The default is "yes".
 .SH FILES
 .TP
