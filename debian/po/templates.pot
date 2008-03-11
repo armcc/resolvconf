@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: resolvconf-devel@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2007-05-15 10:48+0200\n"
+"Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
+"POT-Creation-Date: 2008-02-11 07:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,97 +18,100 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
 msgid "Prepare /etc/resolv.conf for dynamic updates?"
 msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
 msgid ""
-"This package contains the infrastructure required for dynamic updating of "
-"the resolver configuration file. Part of the necessary infrastructure is a "
-"symbolic link from /etc/resolv.conf to /etc/resolvconf/run/resolv.conf. If "
-"you agree then this link will be created. The existing /etc/resolv.conf file "
-"will be preserved as /etc/resolvconf/resolv.conf.d/original; it will be "
-"restored if this package is removed."
+"The resolvconf package contains the infrastructure required for dynamic "
+"updating of the resolver configuration file. Part of the necessary "
+"infrastructure is a symbolic link from /etc/resolv.conf to /etc/resolvconf/"
+"run/resolv.conf. If you choose this option then this link will be created; "
+"the existing /etc/resolv.conf file will be preserved as /etc/resolvconf/"
+"resolv.conf.d/original, and will be restored if this package is removed."
 msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
 msgid ""
-"If you wish to prevent future installations from recreating the symbolic "
-"link then you can run dpkg-reconfigure later to withdraw your agreement."
+"Declining this option will prevent future installations from recreating the "
+"symbolic link and therefore the resolver configuration file will not be "
+"dynamically updated. Dynamic updating can then be activated following "
+"instructions in the README file."
 msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
 msgid ""
-"If you do not agree then the necessary symbolic link will not be created and "
-"consequently your resolver configuration file will not be dynamically "
-"updated. In order to activate dynamic updating you will have to configure "
-"resolvconf manually following the straightforward instructions in the README "
-"file. If you choose not to configure resolvconf at all then you should "
-"remove the package because its presence causes some programs to deviate from "
-"their default behavior."
-msgstr ""
-
-#. Type: boolean
-#. Description
-#: ../templates:1001
-msgid "However you decide, you should read the README file."
+"The presence of resolvconf can affect the behavior of other programs, so it "
+"should not be left installed if unconfigured."
 msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:2001
-msgid "Remember to reconfigure network interfaces"
+#: ../templates:3001
+msgid "Network interfaces reconfiguration mandatory"
 msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:2001
+#: ../templates:3001
 msgid ""
-"Once resolvconf is installed, interface configurers supply nameserver "
-"information to it (which it then makes available to the C Library resolver "
+"Once resolvconf is installed, interface configurers supply name server "
+"information to it (which it then makes available to the C library resolver "
 "and to DNS caches). However, they do this only when they bring up "
-"interfaces. Therefore for resolvconf's nameserver information to be up to "
-"date after initial installation it is necessary to reconfigure interfaces -- "
-"that is, to take them down and then to bring them up again -- and to restart "
+"interfaces. Therefore for resolvconf's name server information to be up to "
+"date after initial installation it is necessary to reconfigure interfaces "
+"(that is, to take them down and then to bring them up again) and to restart "
 "DNS caches."
 msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid "Append original file to dynamic file?"
 msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid ""
-"If your original static resolver configuration file (/etc/resolv.conf) "
-"contains nameserver addresses then those addresses should be listed on \"dns-"
-"nameservers\" lines in /etc/network/interfaces as described in the README. "
-"Until you have modified /etc/network/interfaces and reconfigured the "
-"affected interfaces resolvconf will not include those addresses in the "
-"dynamically generated resolver configuration file. Without those addresses "
-"you may have trouble resolving domain names. A TEMPORARY solution is to "
-"append the whole original resolver configuration file to the end of the "
-"dynamically generated file. This will be done if there is a symbolic link "
-"from /etc/resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/"
-"original. If you agree then this symbolic link will be created, provided "
-"that no /etc/resolvconf/resolv.conf.d/tail already exists."
+"If the original static resolver configuration file (/etc/resolv.conf) "
+"contains name server addresses, those addresses should be listed on \"dns-"
+"nameservers\" lines in /etc/network/interfaces. For more information, please "
+"consult the resolvconf(8) man page and the README file."
 msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid ""
-"After you have modified /etc/network/interfaces to add the required \"dns-"
-"nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "
-"symbolic link to /dev/null."
+"Until /etc/network/interfaces has been edited and the affected interfaces "
+"brought down and up again, the name server addresses will not be included in "
+"the dynamically generated resolver configuration file."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:4001
+msgid ""
+"If you choose this option, a temporary workaround will be put in place: a "
+"symbolic link will be created (if it does not already exist) from /etc/"
+"resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/original. "
+"This will cause the whole of that original resolver configuration file to be "
+"appended to the dynamically generated file."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:4001
+msgid ""
+"After the required \"dns-nameservers\" lines have been added to /etc/network/"
+"interfaces, the /etc/resolvconf/resolv.conf.d/tail link should be replaced "
+"by one to /dev/null."
 msgstr ""

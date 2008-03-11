@@ -1,278 +1,152 @@
 # Vietnamese translation for resolvconf.
-# Copyright © 2005 Free Software Foundation, Inc.
-# Clytie Siddall <clytie@riverland.net.au>, 2005.
-# 
+# Copyright © 2008 Free Software Foundation, Inc.
+# Clytie Siddall <clytie@riverland.net.au>, 2005-2008.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf 1.29\n"
-"Report-Msgid-Bugs-To: resolvconf-devel@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2007-05-15 10:48+0200\n"
-"PO-Revision-Date: 2005-07-31 14:59+0930\n"
+"Project-Id-Version: resolvconf 1.39\n"
+"Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
+"POT-Creation-Date: 2008-02-11 07:44+0100\n"
+"PO-Revision-Date: 2008-02-12 22:24+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
-"Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: LocFactoryEditor 1.2.2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.7b3\n"
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
 msgid "Prepare /etc/resolv.conf for dynamic updates?"
-msgstr "Chuẩn bị tập tin «/etc/resolv.conf» để cập nhật động không?"
+msgstr "Chuẩn bị tập tin « /etc/resolv.conf » để cập nhật động không?"
 
 #. Type: boolean
-#. Description
-#: ../templates:1001
-msgid ""
-"This package contains the infrastructure required for dynamic updating of "
-"the resolver configuration file. Part of the necessary infrastructure is a "
-"symbolic link from /etc/resolv.conf to /etc/resolvconf/run/resolv.conf. If "
-"you agree then this link will be created. The existing /etc/resolv.conf file "
-"will be preserved as /etc/resolvconf/resolv.conf.d/original; it will be "
-"restored if this package is removed."
-msgstr ""
-"Gói tin này chứa hạ tầng cơ sở cần thiết để cập nhật động tập tin cấu hình "
-"tháo gỡ. Phần của hạ tầng cơ sở cần thiết là một liên kết tượng trưng từ «/"
-"etc/resolv.conf» đến «/etc/resolvconf/run/resolv.conf». Nếu bạn chấp nhận "
-"thì sẽ tạo liên kết này. Tập tin «/etc/resolv.conf» tồn tại sẽ được bảo quản "
-"là «/etc/resolvconf/resolv.conf.d/original» và sẽ được phục hồi nếu gói tin "
-"này bị loại bỏ."
-
-#. Type: boolean
-#. Description
-#: ../templates:1001
-msgid ""
-"If you wish to prevent future installations from recreating the symbolic "
-"link then you can run dpkg-reconfigure later to withdraw your agreement."
-msgstr ""
-"Nếu bạn muốn ngăn cản việc cài đặt sau nào tạo lại liên kết tượng trưng ấy "
-"thì có thể chạy lệnh «dpkg-reconfigure» sau này để rút sự chấp nhận này."
-
-#. Type: boolean
-#. Description
-#: ../templates:1001
-msgid ""
-"If you do not agree then the necessary symbolic link will not be created and "
-"consequently your resolver configuration file will not be dynamically "
-"updated. In order to activate dynamic updating you will have to configure "
-"resolvconf manually following the straightforward instructions in the README "
-"file. If you choose not to configure resolvconf at all then you should "
-"remove the package because its presence causes some programs to deviate from "
-"their default behavior."
-msgstr ""
-"Nếu bạn không chấp nhận thì trình này sẽ không tạo liên kết tượng trưng cần "
-"thiết, vì vậy tập tin cấu hình tháo gỡ của bạn sẽ không được cập nhật động. "
-"Để hoạt hóa khả năng cập nhật động, bạn sẽ cần phải tự cấu hình trình "
-"resolvconf, theo những hướng dẫn thẳng thắn trong tập tin «README» (Đọc đi). "
-"Nếu bạn chọn không cấu hình trình resolvconf bằng cách nào cả, thì bạn nên "
-"loại bỏ gói tin này vì sự hiện diện của nó gây ra một số chương trình xử sự "
-"bất thường."
-
-#. Type: boolean
-#. Description
-#: ../templates:1001
-msgid "However you decide, you should read the README file."
-msgstr "Trong bất cứ trường hợp nào, bạn nên đọc tập tin «README» (Đọc đi)."
-
-#. Type: note
-#. Description
-#: ../templates:2001
-msgid "Remember to reconfigure network interfaces"
-msgstr "Nhớ để cấu hình lại các giao diện mạng."
-
-#. Type: note
 #. Description
 #: ../templates:2001
 msgid ""
-"Once resolvconf is installed, interface configurers supply nameserver "
-"information to it (which it then makes available to the C Library resolver "
-"and to DNS caches). However, they do this only when they bring up "
-"interfaces. Therefore for resolvconf's nameserver information to be up to "
-"date after initial installation it is necessary to reconfigure interfaces -- "
-"that is, to take them down and then to bring them up again -- and to restart "
-"DNS caches."
+"The resolvconf package contains the infrastructure required for dynamic "
+"updating of the resolver configuration file. Part of the necessary "
+"infrastructure is a symbolic link from /etc/resolv.conf to /etc/resolvconf/"
+"run/resolv.conf. If you choose this option then this link will be created; "
+"the existing /etc/resolv.conf file will be preserved as /etc/resolvconf/"
+"resolv.conf.d/original, and will be restored if this package is removed."
 msgstr ""
-"Một khi đã cài đặt trình resolvconf, bộ cấu hình giao diện sẽ cung cấp cho "
-"nó thông tin về máy phục vụ tên (mà nó lần lượt cung cấp cho trình tháo gỡ "
-"thư viên C và bộ nhớ tạm DNS). Tuy nhiên, bộ ấy làm như thế chỉ khi bật giao "
-"diện. Vì vậy để cập nhật thông tin về máy phục vụ tên của trình resolvconf "
-"sau khi cài đặt ban đầu, cần phải cấu hình lại giao diện — tức là, tắt rồi "
-"bật mỗi điều — và khởi chạy lại các bộ nhớ tạm DNS."
+"Gói resolveconf chứa cơ sở hạ tầng cần thiết để cập nhật động tập tin cấu "
+"hình của phần mềm giải quyết. Một phần của cơ sở hạ tầng cần thiết là một "
+"liên kết tượng trưng từ « /etc/resolv.conf » đến « /etc/resolvconf/run/resolv."
+"conf ». Bật tùy chọn này thì liên kết này sẽ được tạo; tập tin « /etc/resolv."
+"conf » đã tồn tại sẽ được bảo tồn dưới dạng « /etc/resolvconf/resolv.conf.d/"
+"original » và sẽ cũng được phục hồi nếu gói này bị gỡ bỏ."
 
 #. Type: boolean
+#. Description
+#: ../templates:2001
+msgid ""
+"Declining this option will prevent future installations from recreating the "
+"symbolic link and therefore the resolver configuration file will not be "
+"dynamically updated. Dynamic updating can then be activated following "
+"instructions in the README file."
+msgstr ""
+"Tắt tùy chọn này thì ngăn cản bản cài đặt tương lại tạo liên kết tượng "
+"trưng, do đó tập tin cấu hình phần mềm giải quyết sẽ không được cập nhật "
+"động. Tuy nhiên, vẫn còn có thể kích hoạt chức năng cập nhật đông tùy theo "
+"hướng dẫn trong tập tin Đọc Đi (README)."
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid ""
+"The presence of resolvconf can affect the behavior of other programs, so it "
+"should not be left installed if unconfigured."
+msgstr ""
+"Sự có mặt của resolvconf có thể ảnh hưởng đến ứng xử của các chương trình "
+"khác, vì vậy bạn không nên để lại bản cài đặt của nó nếu nó chưa được cấu "
+"hình."
+
+#. Type: note
 #. Description
 #: ../templates:3001
+msgid "Network interfaces reconfiguration mandatory"
+msgstr "Bắt buộc phải cấu hình lại các giao diện mạng"
+
+#. Type: note
+#. Description
+#: ../templates:3001
+msgid ""
+"Once resolvconf is installed, interface configurers supply name server "
+"information to it (which it then makes available to the C library resolver "
+"and to DNS caches). However, they do this only when they bring up "
+"interfaces. Therefore for resolvconf's name server information to be up to "
+"date after initial installation it is necessary to reconfigure interfaces "
+"(that is, to take them down and then to bring them up again) and to restart "
+"DNS caches."
+msgstr ""
+"Một khi resolvconf được cài đặt, các phần mềm cấu hình giao diện sẽ cung cấp "
+"cho nó thông tin về máy phục vụ tên (mà nó lần lượt cung cấp cho phần mềm "
+"giải quyết của thư viện C và cho các bộ nhớ tạm DNS). Tuy nhiên, thông tin "
+"này chỉ được cung cấp bởi phần mềm cấu hình giao diện trong khi kích hoạt "
+"giao diện. Vì vậy để resolvconf bảo tồn thông tin hiện thời về các máy phục "
+"vụ tên, cũng cần phải cấu hình lại các giao diện (tức là tắt rồi bật lại) và "
+"khởi chạy lại các bộ nhớ tạm DNS."
+
+#. Type: boolean
+#. Description
+#: ../templates:4001
 msgid "Append original file to dynamic file?"
 msgstr "Phụ thêm tập tin gốc vào tập tin động không?"
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid ""
-"If your original static resolver configuration file (/etc/resolv.conf) "
-"contains nameserver addresses then those addresses should be listed on \"dns-"
-"nameservers\" lines in /etc/network/interfaces as described in the README. "
-"Until you have modified /etc/network/interfaces and reconfigured the "
-"affected interfaces resolvconf will not include those addresses in the "
-"dynamically generated resolver configuration file. Without those addresses "
-"you may have trouble resolving domain names. A TEMPORARY solution is to "
-"append the whole original resolver configuration file to the end of the "
-"dynamically generated file. This will be done if there is a symbolic link "
-"from /etc/resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/"
-"original. If you agree then this symbolic link will be created, provided "
-"that no /etc/resolvconf/resolv.conf.d/tail already exists."
+"If the original static resolver configuration file (/etc/resolv.conf) "
+"contains name server addresses, those addresses should be listed on \"dns-"
+"nameservers\" lines in /etc/network/interfaces. For more information, please "
+"consult the resolvconf(8) man page and the README file."
 msgstr ""
-"Nếu tập tin cấu hình tháo gỡ tĩnh của bạn («/etc/resolv.conf») có chứa địa "
-"chỉ máy phục vụ tên nào, thì các địa chỉ này nên được liệt kê trên dòng «dns-"
-"nameservers» (máy phục vụ tên DNS) trong «/etc/network/interfaces», như được "
-"diễn tả trong tập tin «README» (Đọc đi). Cho đến khi bạn đã sửa đổi «/etc/"
-"network/interfaces» và cấu hình lại các giao diện liên quan, trình "
-"resolvconf sẽ không bao gồm những địa chỉ này trong tập tin cấu hình tháo gỡ "
-"được tạo ra một cách động. Nếu không có những địa chỉ này, bạn có thể gặp "
-"khó khăn tháo gỡ tên miền. Một cách giải quyết TẠM THỜI là phụ thêm tập tin "
-"cấu hình tháo gỡ gốc vào kết thức của tập tin được tạo ra một cách động. Sẽ "
-"làm như thế nếu có một liên kết tượng trưng từ «/etc/resolvconf/resolv.conf."
-"d/tail» đến «/etc/resolvconf/resolv.conf.d/original». Nếu bạn chấp nhận thì "
-"liên kết tượng trưng này sẽ được tạo, nếu chưa có «/etc/resolvconf/resolv."
-"conf.d/tail»."
+"Nếu tập tin cấu hình phần mềm giải quyết tĩnh gốc (/etc/resolv.conf) chứa "
+"địa chỉ của máy phục vụ tên thì các tên đó nên được liệt kê theo dòng « dns-"
+"nameservers » trong tập tin « /etc/network/interfaces ». Để tìm thêm thông "
+"tin, xem trang hướng dẫn (man) resolvconf(8) và tập tin Đọc Đi (README)."
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid ""
-"After you have modified /etc/network/interfaces to add the required \"dns-"
-"nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "
-"symbolic link to /dev/null."
+"Until /etc/network/interfaces has been edited and the affected interfaces "
+"brought down and up again, the name server addresses will not be included in "
+"the dynamically generated resolver configuration file."
 msgstr ""
-"Sau khi bạn đã sửa đổi «/etc/network/interfaces» để thêm những dòng «dns-"
-"nameservers» cần thiết, bạn nên chỉ liên kết tượng trưng «/etc/resolvconf/"
-"resolv.conf.d/tail» tới «/dev/null». "
+"Đến khi tập tin « /etc/network/interfaces » đã được chỉnh sửa, và các giao "
+"diện bị ảnh hưởng được tắt rồi bật lại, những địa chỉ máy phục vụ tên sẽ "
+"không được liệt kê trong tập tin cấu hình phần mềm giải quyết được tạo động."
 
-#~ msgid "A rogue pppconfig PPP hook script is present"
-#~ msgstr "Gặp một tập lệnh móc PPP pppconfig độc."
+#. Type: boolean
+#. Description
+#: ../templates:4001
+msgid ""
+"If you choose this option, a temporary workaround will be put in place: a "
+"symbolic link will be created (if it does not already exist) from /etc/"
+"resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/original. "
+"This will cause the whole of that original resolver configuration file to be "
+"appended to the dynamically generated file."
+msgstr ""
+"Bật tùy chọn này thì dùng một sự khắc phục tạm thời: một liên kết tượng "
+"trưng sẽ được tạo (nếu chưa có) từ tập tin « /etc/resolvconf/resolv.conf.d/"
+"tail » đến tập tin « /etc/resolvconf/resolv.conf.d/original ». Liên kết này "
+"sẽ gây ra phụ thêm toàn bộ tập tin cấu hình phần mềm giải quyết gốc vào tập "
+"tin được tạo ra động."
 
-#~ msgid ""
-#~ "Certain versions of the pppconfig package contain scripts /etc/ppp/ip-up."
-#~ "d/0dns-up and /etc/ppp/ip-down.d/0dns-down (run by pppd after a PPP "
-#~ "interface is brought up or down) that overwrite /etc/resolv.conf. These "
-#~ "scripts must be modified, disabled or deleted so that they will not "
-#~ "interfere with the operation of resolvconf."
-#~ msgstr ""
-#~ "Một số phiên bản gói tin «pppconfig» chứa tập lệnh «/etc/ppp/ip-up.d/0dns-"
-#~ "up» và «/etc/ppp/ip-down.d/0dns-down» (mà trình nền «pppd» chạy sau khi "
-#~ "giao diện PPP bật hay tắt) sẽ ghi đè lên tập tin cấu hình «/etc/resolv."
-#~ "conf». Những tập lệnh này phải bị sửa đổi, bị vô hiệu hóa hay bị xóa bỏ, "
-#~ "để ngăn cản chúng xung đột với thao tác của «resolvconf»."
-
-#~ msgid ""
-#~ "A non-empty executable script /etc/ppp/ip-up.d/0dns-up and/or /etc/ppp/ip-"
-#~ "down.d/0dns-down has been detected that appears to overwrite /etc/resolv."
-#~ "conf. Each one that does so must be modified, disabled or deleted. The "
-#~ "best way to disable it is to remove its execute permission. The best way "
-#~ "to delete it is to purge the pppconfig package."
-#~ msgstr ""
-#~ "Mới phát hiện một tập lệnh thực thị không phải rỗng «/etc/ppp/ip-up."
-#~ "d/0dns-up» và/hay «/etc/ppp/ip-down.d/0dns-down», và hình như nó ghi đè "
-#~ "lên tập tin cấu hình «/etc/resolv.conf». Mỗi tập lệnh làm như thế phải bị "
-#~ "sửa đổi, bị vô hiệu hóa hay bị xóa bỏ. Cách hữu ích để vô hiệu hóa nó là "
-#~ "loại bỏ quyền thực thị của nó. Cách hữu ích nhất để xóa bỏ nó là tẩy gói "
-#~ "tin «pppconfig»."
-
-#~ msgid "A rogue pppoeconf PPP hook script is present"
-#~ msgstr "Gặp một tập lệnh móc PPP pppoeconf độc."
-
-#~ msgid ""
-#~ "Versions of the pppoeconf package prior to version 1.0 contain a script /"
-#~ "etc/ppp/ip-up.d/000usepeerdns (run by pppd after a PPP interface is "
-#~ "brought up) that overwrites /etc/resolv.conf. The script must be "
-#~ "modified, disabled or deleted so that it will not interfere with the "
-#~ "operation of resolvconf. Contrary to Debian policy, merely removing the "
-#~ "pppoeconf package does not disable the script."
-#~ msgstr ""
-#~ "Phiên bản gói tin «pppoeconf» trước phiên bản 1.0 chứa một tập lệnh «/etc/"
-#~ "ppp/ip-up.d/000usepeerdns» (mà trình nền «pppd» chạy sau khi giao diện "
-#~ "PPP bật) sẽ ghi đè lên tập tin cấu hình «/etc/resolv.conf». Tập lệnh này "
-#~ "phải bị sửa đổi, bị vô hiệu hóa hay bị xóa bỏ, để ngăn cản nó xung đột "
-#~ "với thao tác của «resolvconf». Trái với chính sách Debian, đơn giản loại "
-#~ "bỏ gói tin «pppoeconf» không vô hiệu hóa tập lệnh ấy."
-
-#~ msgid ""
-#~ "A non-empty executable script /etc/ppp/ip-up.d/000usepeerdns has been "
-#~ "detected. It must be modified, disabled or deleted. The best way to "
-#~ "modify it is to upgrade the pppoeconf package to version 1.0 or later and "
-#~ "to allow dpkg to install the new version of the script. The best way to "
-#~ "disable it is to remove its execute permission. The best way to delete it "
-#~ "is to purge the pppoeconf package."
-#~ msgstr ""
-#~ "Mới phát hiện một tập lệnh thực thị không phải rỗng «/etc/ppp/ip-up."
-#~ "d/000usepeerdns». Nó phải bị sửa đổi, bị vô hiệu hóa hay bị xóa bỏ. Cách "
-#~ "hữu ích nhất để sửa đổi nó là nâng cấp gói tin «pppoeconf» lên phiên bản "
-#~ "1.0 hay sau, và cho phép trình «dpkg» cài đặt phiên bản mới của tập lệnh "
-#~ "ấy. Cách hữu ích để vô hiệu hóa nó là loại bỏ quyền thực thị của nó. Cách "
-#~ "hữu ích nhất để xóa bỏ nó là tẩy gói tin «pppoeconf»."
-
-#~ msgid "A rogue xisp PPP hook script is present"
-#~ msgstr "Gặp một tập lệnh móc PPP xisp độc."
-
-#~ msgid ""
-#~ "The xisp package contains scripts /etc/ppp/ip-up.d/0xisp-dns and /etc/ppp/"
-#~ "ip-down.d/0xisp-dns (run by pppd after a PPP interface is brought up or "
-#~ "down) that overwrite /etc/resolv.conf. The scripts must be modified, "
-#~ "disabled or deleted so that they will not interfere with the operation of "
-#~ "resolvconf. Contrary to Debian policy, merely removing the xisp package "
-#~ "does not disable the scripts."
-#~ msgstr ""
-#~ "Gói tin «xisp» chứa tập lệnh «/etc/ppp/ip-up.d/0xisp-dns» và «/etc/ppp/ip-"
-#~ "down.d/0xisp-dns» (mà trình nền «pppd» chạy sau khi giao diện PPP bật hay "
-#~ "tắt) sẽ ghi đè lên tập tin cấu hình «/etc/resolv.conf». Tập lệnh này phải "
-#~ "bị sửa đổi, bị vô hiệu hóa hay bị xóa bỏ, để ngăn cản nó xung đột với "
-#~ "thao tác của «resolvconf». Trái với chính sách Debian, đơn giản loại bỏ "
-#~ "gói tin «xisp» không vô hiệu hóa tập lệnh ấy."
-
-#~ msgid ""
-#~ "A non-empty executable script /etc/ppp/ip-up.d/0xisp-dns and/or /etc/ppp/"
-#~ "ip-down.d/0xisp-dns has been detected. Each one must be modified, "
-#~ "disabled or deleted. The best way to disable it is to remove its execute "
-#~ "permission. The best way to delete it is to purge the xisp package."
-#~ msgstr ""
-#~ "Mới phát hiện một tập lệnh thực thị không phải rỗng «/etc/ppp/ip-up."
-#~ "d/0xisp-dns» và/hay «/etc/ppp/ip-down.d/0xisp-dns». Mỗi tập lệnh phải bị "
-#~ "sửa đổi, bị vô hiệu hóa hay bị xóa bỏ. Cách hữu ích để vô hiệu hóa nó là "
-#~ "loại bỏ quyền thực thị của nó. Cách hữu ích nhất để xóa bỏ nó là tẩy gói "
-#~ "tin «xisp»."
-
-#~ msgid "Disable rogue hook scripts?"
-#~ msgstr "Vô hiệu hóa mọi tập lệnh móc độc không?"
-
-#~ msgid ""
-#~ "Certain packages contain hook scripts which, contrary to Debian policy, "
-#~ "modify the resolver configuration file even when the packages that own "
-#~ "them are removed. Packages known to contain such rogue hook scripts are: "
-#~ "pppconfig (<< 2.2.0 and 2.3), pppoeconf (<< 1.0), totd (<< 1.4-4) and "
-#~ "xisp. Although the resolvconf package is marked as conflicting with these "
-#~ "packages so that they are removed before resolvconf is installed, their "
-#~ "rogue hook scripts may remain behind."
-#~ msgstr ""
-#~ "Một số gói tin chứa tập lệnh móc mà, trái với chính sách Debian, sửa đổi "
-#~ "tập tin cấu hình tháo gỡ, ngay cả khi gói tin sở hữu chúng bị loại bỏ. "
-#~ "Gói tin được biết là chứa tập lệnh móc độc như thế là: «pppconfig» (<< "
-#~ "2.2.0 và 2.3), «pppoeconf» (<< 1.0), «totd» (<< 1.4-4) và «xisp». Dù gói "
-#~ "tin «resolvconf» được đánh dấu có xung đột với những gói tin ấy, để loại "
-#~ "bỏ chúng trước khi cài đặt «resolvconf», tập lệnh móc độc ấy có thể còn "
-#~ "lại."
-
-#~ msgid ""
-#~ "If you agree then the post-installation process will disable rogue hook "
-#~ "scripts by removing their execute permissions."
-#~ msgstr ""
-#~ "Nếu bạn chấp nhận thì tiến trình hậu cài đặt sẽ vô hiệu hóa mọi tập lệnh "
-#~ "móc độc bằng cách loại bỏ quyền thực thị của chúng."
-
-#~ msgid ""
-#~ "If you do not agree then you should disable the rogue scripts manually, "
-#~ "otherwise resolvconf will not work properly."
-#~ msgstr ""
-#~ "Nếu bạn không chấp nhận thì bạn nên tự vô hiệu hóa những tập lệnh độc ấy, "
-#~ "nếu không thì trình resolvconf sẽ không hoạt động cho đúng."
+#. Type: boolean
+#. Description
+#: ../templates:4001
+msgid ""
+"After the required \"dns-nameservers\" lines have been added to /etc/network/"
+"interfaces, the /etc/resolvconf/resolv.conf.d/tail link should be replaced "
+"by one to /dev/null."
+msgstr ""
+"Sau khi các dòng « dns-nameservers » cần thiết đã được thêm vào tập tin « /etc/"
+"network/interfaces », liên kết « /etc/resolvconf/resolv.conf.d/tail » nên bị "
+"thay thế bằng một liên kết tới « /dev/null »."

@@ -14,9 +14,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.26\n"
-"Report-Msgid-Bugs-To: resolvconf-devel@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2007-05-15 10:48+0200\n"
-"PO-Revision-Date: 2005-08-10 17:48+0200\n"
+"Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
+"POT-Creation-Date: 2008-02-11 07:44+0100\n"
+"PO-Revision-Date: 2008-02-17 14:04+0100\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -25,134 +25,138 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
 msgid "Prepare /etc/resolv.conf for dynamic updates?"
 msgstr "Připravit /etc/resolv.conf pro dynamické aktualizace?"
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
-msgid ""
-"This package contains the infrastructure required for dynamic updating of "
-"the resolver configuration file. Part of the necessary infrastructure is a "
-"symbolic link from /etc/resolv.conf to /etc/resolvconf/run/resolv.conf. If "
-"you agree then this link will be created. The existing /etc/resolv.conf file "
-"will be preserved as /etc/resolvconf/resolv.conf.d/original; it will be "
-"restored if this package is removed."
-msgstr ""
-"Tento balík obsahuje infrastrukturu vyžadovanou pro dynamické aktualizace "
-"konfiguračního souboru resolveru. Součástí infrastruktury je i symbolický "
-"odkaz z /etc/resolv.conf na /etc/resolvconf/run/resolv.conf. Pokud budete "
-"souhlasit, odkaz se vytvoří automaticky. Stávající /etc/resolv.conf bude "
-"zachován jako /etc/resolvconf/resolv.conf.d/original a při odstranění balíku "
-"bude obnoven."
-
-#. Type: boolean
-#. Description
-#: ../templates:1001
-msgid ""
-"If you wish to prevent future installations from recreating the symbolic "
-"link then you can run dpkg-reconfigure later to withdraw your agreement."
-msgstr ""
-"Jestliže nechcete, aby budoucí instalace znovu vytvářely symbolický odkaz, "
-"můžete později spustit dpkg-reconfigure a změnit své rozhodnutí."
-
-#. Type: boolean
-#. Description
-#: ../templates:1001
-msgid ""
-"If you do not agree then the necessary symbolic link will not be created and "
-"consequently your resolver configuration file will not be dynamically "
-"updated. In order to activate dynamic updating you will have to configure "
-"resolvconf manually following the straightforward instructions in the README "
-"file. If you choose not to configure resolvconf at all then you should "
-"remove the package because its presence causes some programs to deviate from "
-"their default behavior."
-msgstr ""
-"Nebudete-li souhlasit, pak se nezbytný symbolický odkaz nevytvoří, v "
-"důsledku čehož nebude konfigurační soubor resolveru aktualizován dynamicky. "
-"Pro aktivování dynamických aktualizací postupujte dle instrukcí v souboru "
-"README. Rozhodnete-li se resolvconf nenastavovat vůbec, měli byste balík "
-"raději odstranit, protože jeho přítomnost způsobí, že se některé programy "
-"budou chovat jinak než obvykle."
-
-#. Type: boolean
-#. Description
-#: ../templates:1001
-msgid "However you decide, you should read the README file."
-msgstr "Jakkoliv se rozhodnete, měli byste si přečíst soubor README."
-
-#. Type: note
-#. Description
 #: ../templates:2001
-msgid "Remember to reconfigure network interfaces"
-msgstr "Nezapomeňte přenastavit síťová rozhraní"
+msgid ""
+"The resolvconf package contains the infrastructure required for dynamic "
+"updating of the resolver configuration file. Part of the necessary "
+"infrastructure is a symbolic link from /etc/resolv.conf to /etc/resolvconf/"
+"run/resolv.conf. If you choose this option then this link will be created; "
+"the existing /etc/resolv.conf file will be preserved as /etc/resolvconf/"
+"resolv.conf.d/original, and will be restored if this package is removed."
+msgstr ""
+"Balík resolvconf obsahuje infrastrukturu vyžadovanou pro dynamické "
+"aktualizace konfiguračního souboru resolveru. Součástí infrastruktury je i "
+"symbolický odkaz z /etc/resolv.conf na /etc/resolvconf/run/resolv.conf. "
+"Pokud budete souhlasit, odkaz se vytvoří automaticky. Stávající /etc/resolv."
+"conf bude zachován jako /etc/resolvconf/resolv.conf.d/original a při "
+"odstranění balíku bude obnoven."
 
-#. Type: note
+#. Type: boolean
 #. Description
 #: ../templates:2001
 msgid ""
-"Once resolvconf is installed, interface configurers supply nameserver "
-"information to it (which it then makes available to the C Library resolver "
+"Declining this option will prevent future installations from recreating the "
+"symbolic link and therefore the resolver configuration file will not be "
+"dynamically updated. Dynamic updating can then be activated following "
+"instructions in the README file."
+msgstr ""
+"Zamítnutí této volby zabrání budoucím instalacím, aby vytvářely symbolický "
+"odkaz, v důsledku čehož nebude konfigurační soubor resolveru aktualizován "
+"dynamicky. Pro aktivování dynamických aktualizací postupujte dle instrukcí v "
+"souboru README."
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid ""
+"The presence of resolvconf can affect the behavior of other programs, so it "
+"should not be left installed if unconfigured."
+msgstr ""
+"Přítomnost resolvconfu může ovlivnit chování ostatních programů, takže pokud "
+"balík nenastavíte, měli byste jej raději odinstalovat."
+
+#. Type: note
+#. Description
+#: ../templates:3001
+msgid "Network interfaces reconfiguration mandatory"
+msgstr "Povinné nastavení síťových rozhraní"
+
+#. Type: note
+#. Description
+#: ../templates:3001
+msgid ""
+"Once resolvconf is installed, interface configurers supply name server "
+"information to it (which it then makes available to the C library resolver "
 "and to DNS caches). However, they do this only when they bring up "
-"interfaces. Therefore for resolvconf's nameserver information to be up to "
-"date after initial installation it is necessary to reconfigure interfaces -- "
-"that is, to take them down and then to bring them up again -- and to restart "
+"interfaces. Therefore for resolvconf's name server information to be up to "
+"date after initial installation it is necessary to reconfigure interfaces "
+"(that is, to take them down and then to bring them up again) and to restart "
 "DNS caches."
 msgstr ""
 "Po instalaci resolvconfu vše funguje tak, že programy pro nastavení síťových "
-"rozhraní předají resolvconfu informace o jmenných serverech (a ten tuto "
-"informaci předá resolveru knihovny libc a cachovacím DNS serverům). To se "
+"rozhraní předají resolvconfu informace o jmenných serverech (a ten tyto "
+"informace předá resolveru knihovny libc a cachovacím DNS serverům). To se "
 "však děje pouze při nahození rozhraní. Aby tedy byly informace resolvconfu "
-"platné hned po instalaci, je nutné znovu nastavit síťová rozhraní -- to "
-"znamená je shodit a znovu nahodit -- a restartovat DNS cache."
+"platné hned po instalaci, je nutné znovu nastavit síťová rozhraní (to "
+"znamená je shodit a znovu nahodit) a restartovat DNS cache."
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid "Append original file to dynamic file?"
 msgstr "Připojit původní soubor k dynamickému souboru?"
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid ""
-"If your original static resolver configuration file (/etc/resolv.conf) "
-"contains nameserver addresses then those addresses should be listed on \"dns-"
-"nameservers\" lines in /etc/network/interfaces as described in the README. "
-"Until you have modified /etc/network/interfaces and reconfigured the "
-"affected interfaces resolvconf will not include those addresses in the "
-"dynamically generated resolver configuration file. Without those addresses "
-"you may have trouble resolving domain names. A TEMPORARY solution is to "
-"append the whole original resolver configuration file to the end of the "
-"dynamically generated file. This will be done if there is a symbolic link "
-"from /etc/resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/"
-"original. If you agree then this symbolic link will be created, provided "
-"that no /etc/resolvconf/resolv.conf.d/tail already exists."
+"If the original static resolver configuration file (/etc/resolv.conf) "
+"contains name server addresses, those addresses should be listed on \"dns-"
+"nameservers\" lines in /etc/network/interfaces. For more information, please "
+"consult the resolvconf(8) man page and the README file."
 msgstr ""
 "Pokud váš původní statický konfigurační soubor (/etc/resolv.conf) obsahuje "
-"adresy jmenných serverů, pak by měly být tyto adresy vypsány na řádcích "
-"\"dns-nameservers\" v souboru /etc/network/interfaces, jak je popsáno v "
-"README. Dokud neupravíte /etc/network/interfaces a znovu nenakonfigurujete "
-"příslušná rozhraní, neobjeví se příslušné adresy v dynamicky generovaném "
-"konfiguračním souboru souboru resolveru. Bez těchto adres můžete mít "
-"problémy s překladem doménových jmen. DOČASNÉ řešení je připojit celý "
-"původní konfigurační soubor resolveru na konec dynamicky generovaného "
-"souboru. To se provede tak, že se vytvoří symbolický odkaz /etc/resolvconf/"
-"resolv.conf.d/tail na /etc/resolvconf/resolv.conf.d/original. Budete-li "
-"souhlasit, program vytvoří tento symbolický odkaz (pokud již neexistuje)."
+"adresy jmenných serverů, pak by měly být tyto adresy vypsány na řádcích „dns-"
+"nameservers“ v souboru /etc/network/interfaces. Více informací naleznete v "
+"manuálové stránce resolvconf(8) a souboru README."
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid ""
-"After you have modified /etc/network/interfaces to add the required \"dns-"
-"nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "
-"symbolic link to /dev/null."
+"Until /etc/network/interfaces has been edited and the affected interfaces "
+"brought down and up again, the name server addresses will not be included in "
+"the dynamically generated resolver configuration file."
 msgstr ""
-"Až do souboru /etc/network/interfaces přidáte požadované řádky \"dns-"
-"nameservers\", měli byste přesměrovat symbolický odkaz /etc/resolvconf/"
-"resolv.conf.d/tail na /dev/null."
+"Dokud neupravíte /etc/network/interfaces a znovu nenakonfigurujete postižená "
+"rozhraní, neobjeví se adresy jmenných serverů v dynamicky generovaném "
+"konfiguračním souboru souboru resolveru."
+
+#. Type: boolean
+#. Description
+#: ../templates:4001
+msgid ""
+"If you choose this option, a temporary workaround will be put in place: a "
+"symbolic link will be created (if it does not already exist) from /etc/"
+"resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/original. "
+"This will cause the whole of that original resolver configuration file to be "
+"appended to the dynamically generated file."
+msgstr ""
+"Vyberete-li tuto možnost, použije se dočasné řešení: vytvoří se symbolický "
+"odkaz z /etc/resolvconf/resolv.conf.d/tail na /etc/resolvconf/resolv.conf.d/"
+"original (pokud již neexisuje). To způsobí, že se na konec dynamicky "
+"generovaného souboru připojí celý původní konfigurační soubor resolveru."
+
+#. Type: boolean
+#. Description
+#: ../templates:4001
+msgid ""
+"After the required \"dns-nameservers\" lines have been added to /etc/network/"
+"interfaces, the /etc/resolvconf/resolv.conf.d/tail link should be replaced "
+"by one to /dev/null."
+msgstr ""
+"Až do souboru /etc/network/interfaces přidáte požadované řádky „dns-"
+"nameservers“, měli byste přesměrovat symbolický odkaz /etc/resolvconf/resolv."
+"conf.d/tail na /dev/null."
+
+#~ msgid "Remember to reconfigure network interfaces"
+#~ msgstr "Nezapomeňte přenastavit síťová rozhraní"
 
 #~ msgid "A rogue pppconfig PPP hook script is present"
 #~ msgstr "Je přítomen PPP skript balíku pppconfig"

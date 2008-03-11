@@ -1,4 +1,4 @@
-resolvconf (1.39~2) UNRELEASED; urgency=low
+resolvconf (1.39~3) UNRELEASED; urgency=low
 
   [ Daniel Kahn Gillmor ]
   * Removed bashism from dnscache script (Closes: #459566)
@@ -16,8 +16,21 @@ resolvconf (1.39~2) UNRELEASED; urgency=low
   * Add pere to Uploaders list
   * Check before migrating files from /dev/shm/resolvconf/* (Closes: #463463)
   * Add debian/compat, make lintian happy
+  * Debconf templates and debian/control reviewed by the debian-l10n-english
+    team as part of the Smith review project. (Closes: #464499)
+  * [Debconf translation updates]
+  * Galician. Closes: #465305
+  * Indonesian. Closes: #465411
+  * Vietnamese. Closes: #465436
+  * German. Closes: #466099
+  * Czech. Closes: #466307
+  * Portuguese. Closes: #466464
+  * Finnish. Closes: #466607
+  * Russian. Closes: #467443
+  * French. Closes: #467530
+  * Dutch. Closes: #468249
 
- -- Marco Nenciarini <mnencia@debian.org>  Wed, 16 Jan 2008 12:00:00 +0100
+ -- Marco Nenciarini <mnencia@debian.org>  Wed, 11 Feb 2008 12:00:00 +0100
 
 resolvconf (1.38) unstable; urgency=low
 

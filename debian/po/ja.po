@@ -15,8 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.36\n"
-"Report-Msgid-Bugs-To: resolvconf-devel@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2007-05-15 10:48+0200\n"
+"Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
+"POT-Creation-Date: 2008-02-11 07:44+0100\n"
 "PO-Revision-Date: 2006-10-09 00:52+0900\n"
 "Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
@@ -26,20 +26,28 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
 msgid "Prepare /etc/resolv.conf for dynamic updates?"
 msgstr "/etc/resolv.conf を動的更新するようにしますか?"
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
+#, fuzzy
+#| msgid ""
+#| "This package contains the infrastructure required for dynamic updating of "
+#| "the resolver configuration file. Part of the necessary infrastructure is "
+#| "a symbolic link from /etc/resolv.conf to /etc/resolvconf/run/resolv.conf. "
+#| "If you agree then this link will be created. The existing /etc/resolv."
+#| "conf file will be preserved as /etc/resolvconf/resolv.conf.d/original; it "
+#| "will be restored if this package is removed."
 msgid ""
-"This package contains the infrastructure required for dynamic updating of "
-"the resolver configuration file. Part of the necessary infrastructure is a "
-"symbolic link from /etc/resolv.conf to /etc/resolvconf/run/resolv.conf. If "
-"you agree then this link will be created. The existing /etc/resolv.conf file "
-"will be preserved as /etc/resolvconf/resolv.conf.d/original; it will be "
-"restored if this package is removed."
+"The resolvconf package contains the infrastructure required for dynamic "
+"updating of the resolver configuration file. Part of the necessary "
+"infrastructure is a symbolic link from /etc/resolv.conf to /etc/resolvconf/"
+"run/resolv.conf. If you choose this option then this link will be created; "
+"the existing /etc/resolv.conf file will be preserved as /etc/resolvconf/"
+"resolv.conf.d/original, and will be restored if this package is removed."
 msgstr ""
 "このパッケージは、リゾルバ設定ファイルの動的更新に必要とされる仕組みを含んで"
 "います。必要となる仕組みの一つは /etc/resolv.conf から /etc/resolvconf/run/"
@@ -50,55 +58,47 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
 msgid ""
-"If you wish to prevent future installations from recreating the symbolic "
-"link then you can run dpkg-reconfigure later to withdraw your agreement."
+"Declining this option will prevent future installations from recreating the "
+"symbolic link and therefore the resolver configuration file will not be "
+"dynamically updated. Dynamic updating can then be activated following "
+"instructions in the README file."
 msgstr ""
-"今後のインストールの際には、シンボリックリンクの再生成をしたくなくなった場"
-"合、dpkg-reconfigure を後ほど実行すれば決定を取り消せます。"
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
 msgid ""
-"If you do not agree then the necessary symbolic link will not be created and "
-"consequently your resolver configuration file will not be dynamically "
-"updated. In order to activate dynamic updating you will have to configure "
-"resolvconf manually following the straightforward instructions in the README "
-"file. If you choose not to configure resolvconf at all then you should "
-"remove the package because its presence causes some programs to deviate from "
-"their default behavior."
+"The presence of resolvconf can affect the behavior of other programs, so it "
+"should not be left installed if unconfigured."
 msgstr ""
-"ここで「いいえ」と答えると、必要なシンボリックリンクは作成されず、従ってリゾ"
-"ルバ設定ファイルは動的には更新されません。動的更新を有効にするには、README "
-"ファイルの指示に従って resolvconf を手動で設定する必要があります。resolvconf "
-"を全く設定しないのを選んだ場合は、このパッケージが存在するが故にいくつかのプ"
-"ログラムが通常とは違った挙動をするようになるため、パッケージを削除する必要が"
-"あります。"
-
-#. Type: boolean
-#. Description
-#: ../templates:1001
-msgid "However you decide, you should read the README file."
-msgstr "いずれにせよ、README ファイルを読むべきです。"
 
 #. Type: note
 #. Description
-#: ../templates:2001
-msgid "Remember to reconfigure network interfaces"
-msgstr "ネットワークインターフェイスの再設定を忘れないで下さい"
+#: ../templates:3001
+msgid "Network interfaces reconfiguration mandatory"
+msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:2001
+#: ../templates:3001
+#, fuzzy
+#| msgid ""
+#| "Once resolvconf is installed, interface configurers supply nameserver "
+#| "information to it (which it then makes available to the C Library "
+#| "resolver and to DNS caches). However, they do this only when they bring "
+#| "up interfaces. Therefore for resolvconf's nameserver information to be up "
+#| "to date after initial installation it is necessary to reconfigure "
+#| "interfaces -- that is, to take them down and then to bring them up again "
+#| "-- and to restart DNS caches."
 msgid ""
-"Once resolvconf is installed, interface configurers supply nameserver "
-"information to it (which it then makes available to the C Library resolver "
+"Once resolvconf is installed, interface configurers supply name server "
+"information to it (which it then makes available to the C library resolver "
 "and to DNS caches). However, they do this only when they bring up "
-"interfaces. Therefore for resolvconf's nameserver information to be up to "
-"date after initial installation it is necessary to reconfigure interfaces -- "
-"that is, to take them down and then to bring them up again -- and to restart "
+"interfaces. Therefore for resolvconf's name server information to be up to "
+"date after initial installation it is necessary to reconfigure interfaces "
+"(that is, to take them down and then to bring them up again) and to restart "
 "DNS caches."
 msgstr ""
 "一旦 resolvconf がインストールされると、インターフェイス設定でネームサーバ情"
@@ -110,50 +110,113 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid "Append original file to dynamic file?"
 msgstr "更新されるファイルにオリジナルのファイルを追加しますか?"
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid ""
-"If your original static resolver configuration file (/etc/resolv.conf) "
-"contains nameserver addresses then those addresses should be listed on \"dns-"
-"nameservers\" lines in /etc/network/interfaces as described in the README. "
-"Until you have modified /etc/network/interfaces and reconfigured the "
-"affected interfaces resolvconf will not include those addresses in the "
-"dynamically generated resolver configuration file. Without those addresses "
-"you may have trouble resolving domain names. A TEMPORARY solution is to "
-"append the whole original resolver configuration file to the end of the "
-"dynamically generated file. This will be done if there is a symbolic link "
-"from /etc/resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/"
-"original. If you agree then this symbolic link will be created, provided "
-"that no /etc/resolvconf/resolv.conf.d/tail already exists."
+"If the original static resolver configuration file (/etc/resolv.conf) "
+"contains name server addresses, those addresses should be listed on \"dns-"
+"nameservers\" lines in /etc/network/interfaces. For more information, please "
+"consult the resolvconf(8) man page and the README file."
 msgstr ""
-"元々の静的なリゾルバ設定ファイル (/etc/resolv.conf) がネームサーバのアドレス"
-"を含んでいた場合、README に書いてあるように、そのアドレスは /etc/network/"
-"interfaces の \"dns-nameservers\" 行に記述すべきです。/etc/network/"
-"interfaces を編集して影響を受けるインターフェイスを再設定するまで、"
-"resolvconf は動的に生成するリゾルバ設定ファイルにはこのアドレスを含めません。"
-"このアドレス設定がないとドメイン名の解決に問題が残るでしょう。「一時的な」解"
-"決方法は、元々の静的なリゾルバ設定ファイルを動的に生成したファイルの最後に丸"
-"ごと含めることです。 /etc/resolvconf/resolv.conf.d/tail から /etc/resolvconf/"
-"resolv.conf.d/original へのシンボリックリンクが存在していた場合、これが実行さ"
-"れます。ここで「はい」と答えると、/etc/resolvconf/resolv.conf.d/tail がまだ存"
-"在していなければ、このシンボリックリンクが作成されるでしょう。"
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid ""
-"After you have modified /etc/network/interfaces to add the required \"dns-"
-"nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "
-"symbolic link to /dev/null."
+"Until /etc/network/interfaces has been edited and the affected interfaces "
+"brought down and up again, the name server addresses will not be included in "
+"the dynamically generated resolver configuration file."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:4001
+msgid ""
+"If you choose this option, a temporary workaround will be put in place: a "
+"symbolic link will be created (if it does not already exist) from /etc/"
+"resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/original. "
+"This will cause the whole of that original resolver configuration file to be "
+"appended to the dynamically generated file."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:4001
+#, fuzzy
+#| msgid ""
+#| "After you have modified /etc/network/interfaces to add the required \"dns-"
+#| "nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/"
+#| "tail symbolic link to /dev/null."
+msgid ""
+"After the required \"dns-nameservers\" lines have been added to /etc/network/"
+"interfaces, the /etc/resolvconf/resolv.conf.d/tail link should be replaced "
+"by one to /dev/null."
 msgstr ""
 "/etc/network/interfaces に必要な \"dns-nameservers\" 行を加えた後、シンボリッ"
 "クリンク /etc/resolvconf/resolv.conf.d/tail が /dev/null を指すようにする必要"
 "があります。"
+
+#~ msgid ""
+#~ "If you wish to prevent future installations from recreating the symbolic "
+#~ "link then you can run dpkg-reconfigure later to withdraw your agreement."
+#~ msgstr ""
+#~ "今後のインストールの際には、シンボリックリンクの再生成をしたくなくなった場"
+#~ "合、dpkg-reconfigure を後ほど実行すれば決定を取り消せます。"
+
+#~ msgid ""
+#~ "If you do not agree then the necessary symbolic link will not be created "
+#~ "and consequently your resolver configuration file will not be dynamically "
+#~ "updated. In order to activate dynamic updating you will have to configure "
+#~ "resolvconf manually following the straightforward instructions in the "
+#~ "README file. If you choose not to configure resolvconf at all then you "
+#~ "should remove the package because its presence causes some programs to "
+#~ "deviate from their default behavior."
+#~ msgstr ""
+#~ "ここで「いいえ」と答えると、必要なシンボリックリンクは作成されず、従ってリ"
+#~ "ゾルバ設定ファイルは動的には更新されません。動的更新を有効にするには、"
+#~ "README ファイルの指示に従って resolvconf を手動で設定する必要があります。"
+#~ "resolvconf を全く設定しないのを選んだ場合は、このパッケージが存在するが故"
+#~ "にいくつかのプログラムが通常とは違った挙動をするようになるため、パッケージ"
+#~ "を削除する必要があります。"
+
+#~ msgid "However you decide, you should read the README file."
+#~ msgstr "いずれにせよ、README ファイルを読むべきです。"
+
+#~ msgid "Remember to reconfigure network interfaces"
+#~ msgstr "ネットワークインターフェイスの再設定を忘れないで下さい"
+
+#~ msgid ""
+#~ "If your original static resolver configuration file (/etc/resolv.conf) "
+#~ "contains nameserver addresses then those addresses should be listed on "
+#~ "\"dns-nameservers\" lines in /etc/network/interfaces as described in the "
+#~ "README. Until you have modified /etc/network/interfaces and reconfigured "
+#~ "the affected interfaces resolvconf will not include those addresses in "
+#~ "the dynamically generated resolver configuration file. Without those "
+#~ "addresses you may have trouble resolving domain names. A TEMPORARY "
+#~ "solution is to append the whole original resolver configuration file to "
+#~ "the end of the dynamically generated file. This will be done if there is "
+#~ "a symbolic link from /etc/resolvconf/resolv.conf.d/tail to /etc/"
+#~ "resolvconf/resolv.conf.d/original. If you agree then this symbolic link "
+#~ "will be created, provided that no /etc/resolvconf/resolv.conf.d/tail "
+#~ "already exists."
+#~ msgstr ""
+#~ "元々の静的なリゾルバ設定ファイル (/etc/resolv.conf) がネームサーバのアドレ"
+#~ "スを含んでいた場合、README に書いてあるように、そのアドレスは /etc/"
+#~ "network/interfaces の \"dns-nameservers\" 行に記述すべきです。/etc/"
+#~ "network/interfaces を編集して影響を受けるインターフェイスを再設定するま"
+#~ "で、resolvconf は動的に生成するリゾルバ設定ファイルにはこのアドレスを含め"
+#~ "ません。このアドレス設定がないとドメイン名の解決に問題が残るでしょう。「一"
+#~ "時的な」解決方法は、元々の静的なリゾルバ設定ファイルを動的に生成したファイ"
+#~ "ルの最後に丸ごと含めることです。 /etc/resolvconf/resolv.conf.d/tail から /"
+#~ "etc/resolvconf/resolv.conf.d/original へのシンボリックリンクが存在していた"
+#~ "場合、これが実行されます。ここで「はい」と答えると、/etc/resolvconf/"
+#~ "resolv.conf.d/tail がまだ存在していなければ、このシンボリックリンクが作成"
+#~ "されるでしょう。"
 
 #~ msgid "A rogue pppconfig PPP hook script is present"
 #~ msgstr ""

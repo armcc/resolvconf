@@ -9,277 +9,153 @@
 #            /usr/share/doc/po-debconf/README-trans
 #         or http://www.debian.org/intl/l10n/po-debconf/README-trans#
 #    Developers do not need to manually edit POT or PO files.
-# Yuri Kozlov <kozlov.y@gmail.com>, 2006.
 #
+# Yuri Kozlov <kozlov.y@gmail.com>, 2006, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf-1.34\n"
-"Report-Msgid-Bugs-To: resolvconf-devel@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2007-05-15 10:48+0200\n"
-"PO-Revision-Date: 2006-01-29 11:28+0300\n"
+"Project-Id-Version: resolvconf-1.39\n"
+"Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
+"POT-Creation-Date: 2008-02-11 07:44+0100\n"
+"PO-Revision-Date: 2008-02-11 20:58+0300\n"
 "Last-Translator: Yuri Kozlov <kozlov.y@gmail.com>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
 msgid "Prepare /etc/resolv.conf for dynamic updates?"
 msgstr "Включить динамическое обновление /etc/resolv.conf?"
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
 msgid ""
-"This package contains the infrastructure required for dynamic updating of "
-"the resolver configuration file. Part of the necessary infrastructure is a "
-"symbolic link from /etc/resolv.conf to /etc/resolvconf/run/resolv.conf. If "
-"you agree then this link will be created. The existing /etc/resolv.conf file "
-"will be preserved as /etc/resolvconf/resolv.conf.d/original; it will be "
-"restored if this package is removed."
+"The resolvconf package contains the infrastructure required for dynamic "
+"updating of the resolver configuration file. Part of the necessary "
+"infrastructure is a symbolic link from /etc/resolv.conf to /etc/resolvconf/"
+"run/resolv.conf. If you choose this option then this link will be created; "
+"the existing /etc/resolv.conf file will be preserved as /etc/resolvconf/"
+"resolv.conf.d/original, and will be restored if this package is removed."
 msgstr ""
-"Данный пакет содержит инфраструктуру динамического обновления файла "
+"Пакет resolvconf содержит инфраструктуру для динамического обновления файла "
 "настройки определителя имён. Одной из необходимых частей инфраструктуры "
 "является символическая ссылка /etc/resolv.conf на /etc/resolvconf/run/resolv."
 "conf. Если вы ответите утвердительно, то такая ссылка будет создана. "
 "Существующий файл /etc/resolv.conf будет сохранён под именем /etc/resolvconf/"
-"resolv.conf.d/original; он будет восстановлен при удалении пакета."
+"resolv.conf.d/original, и будет восстановлен при удалении пакета."
 
 #. Type: boolean
-#. Description
-#: ../templates:1001
-msgid ""
-"If you wish to prevent future installations from recreating the symbolic "
-"link then you can run dpkg-reconfigure later to withdraw your agreement."
-msgstr ""
-"Если в будущем вы захотите отказаться от создания символической ссылки, то "
-"можете запустить dpkg-reconfigure и отменить своё согласие."
-
-#. Type: boolean
-#. Description
-#: ../templates:1001
-msgid ""
-"If you do not agree then the necessary symbolic link will not be created and "
-"consequently your resolver configuration file will not be dynamically "
-"updated. In order to activate dynamic updating you will have to configure "
-"resolvconf manually following the straightforward instructions in the README "
-"file. If you choose not to configure resolvconf at all then you should "
-"remove the package because its presence causes some programs to deviate from "
-"their default behavior."
-msgstr ""
-"Если вы не согласитесь, то необходимая символическая ссылка не будет создана "
-"и следовательно файл настройки определителя имён не будет динамически "
-"обновляться. Чтобы включить динамическое обновление нужно настроить "
-"resolvconf вручную согласно простым инструкциям из файла README. Если вы не "
-"хотите настраивать resolvconf, то должны удалить этот пакет, так как его "
-"наличие в системе влияет на некоторые программы заставляя их изменять своё "
-"поведение по умолчанию."
-
-#. Type: boolean
-#. Description
-#: ../templates:1001
-msgid "However you decide, you should read the README file."
-msgstr "Однако решать вам, прочитайте файл README."
-
-#. Type: note
-#. Description
-#: ../templates:2001
-msgid "Remember to reconfigure network interfaces"
-msgstr "Не забудьте перенастроить сетевые интерфейсы"
-
-#. Type: note
 #. Description
 #: ../templates:2001
 msgid ""
-"Once resolvconf is installed, interface configurers supply nameserver "
-"information to it (which it then makes available to the C Library resolver "
+"Declining this option will prevent future installations from recreating the "
+"symbolic link and therefore the resolver configuration file will not be "
+"dynamically updated. Dynamic updating can then be activated following "
+"instructions in the README file."
+msgstr ""
+"В случае отрицательного ответа символическая ссылка не будет создана при "
+"будущих установках и следовательно файл настройки определителя имён не будет "
+"динамически обновляться. Чтобы включить динамическое обновление, можно "
+"настроить resolvconf вручную следуя простым инструкциям из файла README."
+
+#. Type: boolean
+#. Description
+#: ../templates:2001
+msgid ""
+"The presence of resolvconf can affect the behavior of other programs, so it "
+"should not be left installed if unconfigured."
+msgstr ""
+"Присутствие в системе ненастроенного пакета resolvconf может повлиять на "
+"другие программы, поэтому лучше его удалить."
+
+#. Type: note
+#. Description
+#: ../templates:3001
+msgid "Network interfaces reconfiguration mandatory"
+msgstr "Обязательная перенастройка сетевых интерфейсов"
+
+#. Type: note
+#. Description
+#: ../templates:3001
+msgid ""
+"Once resolvconf is installed, interface configurers supply name server "
+"information to it (which it then makes available to the C library resolver "
 "and to DNS caches). However, they do this only when they bring up "
-"interfaces. Therefore for resolvconf's nameserver information to be up to "
-"date after initial installation it is necessary to reconfigure interfaces -- "
-"that is, to take them down and then to bring them up again -- and to restart "
+"interfaces. Therefore for resolvconf's name server information to be up to "
+"date after initial installation it is necessary to reconfigure interfaces "
+"(that is, to take them down and then to bring them up again) and to restart "
 "DNS caches."
 msgstr ""
 "После установки resolvconf, настройщики интерфейсов предоставляют ему "
-"информацию о серверах имён (которая затем становится доступна C библиотеке "
-"resolver и кеширующим DNS). Однако, они делают это только при активации "
+"информацию о серверах имён (которая затем становится доступна C-библиотеке "
+"resolver и кеширующим DNS). Однако, они делают это только в момент активации "
 "интерфейсов. Поэтому, чтобы синхронизировать информацию о серверах имён для "
-"resolvconf после начальной установки необходимо перенастроить интерфейсы, то "
-"есть, деактивировать их и тут же активировать заново, а также перезапустить "
-"кеширующие DNS."
+"resolvconf после начальной установки, необходимо перенастроить интерфейсы "
+"(то есть, деактивировать их и тут же активировать заново), а также "
+"перезапустить кеширующие DNS."
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid "Append original file to dynamic file?"
 msgstr "Добавить имеющийся файл в динамически обновляемый файл?"
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid ""
-"If your original static resolver configuration file (/etc/resolv.conf) "
-"contains nameserver addresses then those addresses should be listed on \"dns-"
-"nameservers\" lines in /etc/network/interfaces as described in the README. "
-"Until you have modified /etc/network/interfaces and reconfigured the "
-"affected interfaces resolvconf will not include those addresses in the "
-"dynamically generated resolver configuration file. Without those addresses "
-"you may have trouble resolving domain names. A TEMPORARY solution is to "
-"append the whole original resolver configuration file to the end of the "
-"dynamically generated file. This will be done if there is a symbolic link "
-"from /etc/resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/"
-"original. If you agree then this symbolic link will be created, provided "
-"that no /etc/resolvconf/resolv.conf.d/tail already exists."
+"If the original static resolver configuration file (/etc/resolv.conf) "
+"contains name server addresses, those addresses should be listed on \"dns-"
+"nameservers\" lines in /etc/network/interfaces. For more information, please "
+"consult the resolvconf(8) man page and the README file."
 msgstr ""
 "Если ваш статический файл настройки определителя имён (/etc/resolv.conf) "
 "содержит адреса серверов имён, то эти адреса должны быть записаны в строках "
-"\"dns-nameservers\" в файле /etc/network/interfaces согласно файлу README. "
-"Пока вы не измените /etc/network/interfaces и не перенастроите "
-"соответствующие интерфейсы resolvconf не включит эти адреса в динамически "
-"создаваемый файл настройки определителя имён. Без этих адресов у вас могут "
-"возникнуть проблемы с определением имён компьютеров. ВРЕМЕННЫМ решением "
-"является добавление всего имеющегося файла настройки определителя имён в "
-"конец динамически создаваемого файла. Это будет сделано, если есть "
-"символическая ссылка /etc/resolvconf/resolv.conf.d/tail на /etc/resolvconf/"
-"resolv.conf.d/original. Если вы ответите утвердительно, то такая ссылка "
-"будет создана, если файл /etc/resolvconf/resolv.conf.d/tail уже не "
-"существует."
+"\"dns-nameservers\" в файл /etc/network/interfaces. Подробней об этом "
+"написано на странице руководства resolvconf(8) и в файле README."
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid ""
-"After you have modified /etc/network/interfaces to add the required \"dns-"
-"nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "
-"symbolic link to /dev/null."
+"Until /etc/network/interfaces has been edited and the affected interfaces "
+"brought down and up again, the name server addresses will not be included in "
+"the dynamically generated resolver configuration file."
+msgstr ""
+"Пока файл /etc/network/interfaces не будет отредактирован и задействованные "
+"интерфейсы не будут перезапущены, адреса серверов имён не будут добавляться "
+"в динамически создаваемый файл настройки определителя."
+
+#. Type: boolean
+#. Description
+#: ../templates:4001
+msgid ""
+"If you choose this option, a temporary workaround will be put in place: a "
+"symbolic link will be created (if it does not already exist) from /etc/"
+"resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/original. "
+"This will cause the whole of that original resolver configuration file to be "
+"appended to the dynamically generated file."
+msgstr ""
+"Если вы ответите утвердительно, то будет активировано временное решение: "
+"будет создана символическая ссылка (если её ещё не было) /etc/resolvconf/"
+"resolv.conf.d/tail на файл /etc/resolvconf/resolv.conf.d/original. Это "
+"приведёт к добавлению всего содержимого имеющего файла настройки "
+"определителя в динамически создаваемый файл."
+
+#. Type: boolean
+#. Description
+#: ../templates:4001
+msgid ""
+"After the required \"dns-nameservers\" lines have been added to /etc/network/"
+"interfaces, the /etc/resolvconf/resolv.conf.d/tail link should be replaced "
+"by one to /dev/null."
 msgstr ""
 "После добавления в /etc/network/interfaces необходимых строк \"dns-"
-"nameservers\" нужно изменить символическую ссылку /etc/resolvconf/resolv."
-"conf.d/tail, чтобы она указывала в /dev/null."
-
-#~ msgid "A rogue pppconfig PPP hook script is present"
-#~ msgstr "Обнаружен неконтролируемый обработчик pppconfig PPP"
-
-#~ msgid ""
-#~ "Certain versions of the pppconfig package contain scripts /etc/ppp/ip-up."
-#~ "d/0dns-up and /etc/ppp/ip-down.d/0dns-down (run by pppd after a PPP "
-#~ "interface is brought up or down) that overwrite /etc/resolv.conf. These "
-#~ "scripts must be modified, disabled or deleted so that they will not "
-#~ "interfere with the operation of resolvconf."
-#~ msgstr ""
-#~ "Некоторые версии пакета pppconfig содержат сценарии /etc/ppp/ip-up.d/0dns-"
-#~ "up и /etc/ppp/ip-down.d/0dns-down (запускаемые pppd после активации или "
-#~ "деактивации PPP интерфейса), которые перезаписывают /etc/resolv.conf. Эти "
-#~ "сценарии должны быть изменены, выключены или удалены для того, чтобы не "
-#~ "мешать работе resolvconf."
-
-#~ msgid ""
-#~ "A non-empty executable script /etc/ppp/ip-up.d/0dns-up and/or /etc/ppp/ip-"
-#~ "down.d/0dns-down has been detected that appears to overwrite /etc/resolv."
-#~ "conf. Each one that does so must be modified, disabled or deleted. The "
-#~ "best way to disable it is to remove its execute permission. The best way "
-#~ "to delete it is to purge the pppconfig package."
-#~ msgstr ""
-#~ "Обнаружен не пустой исполняемый сценарий /etc/ppp/ip-up.d/0dns-up и/или /"
-#~ "etc/ppp/ip-down.d/0dns-down, который вероятно перезаписывает /etc/resolv."
-#~ "conf. Если это так, то его нужно изменить, выключить или удалить. Для "
-#~ "выключения отлично подходит способ удаления прав исполнения со сценария. "
-#~ "При удалении лучше всего вычищать пакет pppconfig целиком."
-
-#~ msgid "A rogue pppoeconf PPP hook script is present"
-#~ msgstr "Обнаружен неконтролируемый обработчик pppoeconf PPP"
-
-#~ msgid ""
-#~ "Versions of the pppoeconf package prior to version 1.0 contain a script /"
-#~ "etc/ppp/ip-up.d/000usepeerdns (run by pppd after a PPP interface is "
-#~ "brought up) that overwrites /etc/resolv.conf. The script must be "
-#~ "modified, disabled or deleted so that it will not interfere with the "
-#~ "operation of resolvconf. Contrary to Debian policy, merely removing the "
-#~ "pppoeconf package does not disable the script."
-#~ msgstr ""
-#~ "Все версии пакета pppoeconf до 1.0 содержат сценарий /etc/ppp/ip-up."
-#~ "d/000usepeerdns (запускаемый pppd после активации PPP интерфейса), "
-#~ "который перезаписывает /etc/resolv.conf. Этот сценарий должен быть "
-#~ "изменён, выключен или удалён для того, чтобы не мешать работе resolvconf. "
-#~ "Вопреки политике Debian, простое удаление пакета pppoeconf не блокирует "
-#~ "этот сценарий."
-
-#~ msgid ""
-#~ "A non-empty executable script /etc/ppp/ip-up.d/000usepeerdns has been "
-#~ "detected. It must be modified, disabled or deleted. The best way to "
-#~ "modify it is to upgrade the pppoeconf package to version 1.0 or later and "
-#~ "to allow dpkg to install the new version of the script. The best way to "
-#~ "disable it is to remove its execute permission. The best way to delete it "
-#~ "is to purge the pppoeconf package."
-#~ msgstr ""
-#~ "Обнаружен не пустой исполняемый сценарий /etc/ppp/ip-up.d/000usepeerdns. "
-#~ "Он должен быть изменён, выключен или удалён. Для изменения лучше обновить "
-#~ "пакет pppoeconf до версии 1.0 или более новой и разрешить dpkg установить "
-#~ "новую версию сценария. Для выключения отлично подходит способ удаления "
-#~ "прав исполнения со сценария. При удалении лучше всего вычищать пакет "
-#~ "pppoeconf целиком."
-
-#~ msgid "A rogue xisp PPP hook script is present"
-#~ msgstr "Обнаружен неконтролируемый обработчик xisp PPP"
-
-#~ msgid ""
-#~ "The xisp package contains scripts /etc/ppp/ip-up.d/0xisp-dns and /etc/ppp/"
-#~ "ip-down.d/0xisp-dns (run by pppd after a PPP interface is brought up or "
-#~ "down) that overwrite /etc/resolv.conf. The scripts must be modified, "
-#~ "disabled or deleted so that they will not interfere with the operation of "
-#~ "resolvconf. Contrary to Debian policy, merely removing the xisp package "
-#~ "does not disable the scripts."
-#~ msgstr ""
-#~ "Пакет xisp содержит сценарии /etc/ppp/ip-up.d/0xisp-dns и /etc/ppp/ip-"
-#~ "down.d/0xisp-dns (запускаемые pppd после активации или деактивации PPP "
-#~ "интерфейса), которые перезаписывают /etc/resolv.conf. Эти сценарии должны "
-#~ "быть изменены, выключены или удалены для того, чтобы не мешать работе "
-#~ "resolvconf. Вопреки политике Debian, простое удаление пакета xisp не "
-#~ "блокирует этот сценарий."
-
-#~ msgid ""
-#~ "A non-empty executable script /etc/ppp/ip-up.d/0xisp-dns and/or /etc/ppp/"
-#~ "ip-down.d/0xisp-dns has been detected. Each one must be modified, "
-#~ "disabled or deleted. The best way to disable it is to remove its execute "
-#~ "permission. The best way to delete it is to purge the xisp package."
-#~ msgstr ""
-#~ "Обнаружен не пустой исполняемый сценарий /etc/ppp/ip-up.d/0xisp-dns и/"
-#~ "или /etc/ppp/ip-down.d/0xisp-dns. Его нужно изменить, выключить или "
-#~ "удалить. Для выключения отлично подходит способ удаления прав исполнения "
-#~ "со сценария. При удалении лучше всего вычищать пакет xisp целиком."
-
-#~ msgid "Disable rogue hook scripts?"
-#~ msgstr "Заблокировать неконтролируемые обработчики?"
-
-#~ msgid ""
-#~ "Certain packages contain hook scripts which, contrary to Debian policy, "
-#~ "modify the resolver configuration file even when the packages that own "
-#~ "them are removed. Packages known to contain such rogue hook scripts are: "
-#~ "pppconfig (<< 2.2.0 and 2.3), pppoeconf (<< 1.0), totd (<< 1.4-4) and "
-#~ "xisp. Although the resolvconf package is marked as conflicting with these "
-#~ "packages so that they are removed before resolvconf is installed, their "
-#~ "rogue hook scripts may remain behind."
-#~ msgstr ""
-#~ "Некоторые пакеты содержат обработчики, которые вопреки политике Debian, "
-#~ "изменяют файл настройки определителя имён, даже когда пакеты содержащие "
-#~ "их, были удалены. Известные таким поведением пакеты: pppconfig (<< 2.2.0 "
-#~ "и 2.3), pppoeconf (<< 1.0), totd (<< 1.4-4) и xisp. Хотя пакет resolvconf "
-#~ "настроен как конфликтующий с этими пакетами и они будут удалены перед "
-#~ "установкой resolvconf, их неконтролируемые обработчики могут остаться в "
-#~ "системе."
-
-#~ msgid ""
-#~ "If you agree then the post-installation process will disable rogue hook "
-#~ "scripts by removing their execute permissions."
-#~ msgstr ""
-#~ "Если вы ответите утвердительно, то завершающий процесс установки "
-#~ "заблокирует неконтролируемые обработчики удалив их права исполнения."
-
-#~ msgid ""
-#~ "If you do not agree then you should disable the rogue scripts manually, "
-#~ "otherwise resolvconf will not work properly."
-#~ msgstr ""
-#~ "Если вы ответите отрицательно, то вы должны самостоятельно выключить "
-#~ "неконтролируемые обработчики, иначе resolvconf будет работать неправильно."
+"nameservers\", нужно изменить символическую ссылку /etc/resolvconf/resolv."
+"conf.d/tail, чтобы она указывала на /dev/null."

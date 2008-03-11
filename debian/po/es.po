@@ -32,8 +32,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.36\n"
-"Report-Msgid-Bugs-To: resolvconf-devel@lists.alioth.debian.org\n"
-"POT-Creation-Date: 2007-05-15 10:48+0200\n"
+"Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
+"POT-Creation-Date: 2008-02-11 07:44+0100\n"
 "PO-Revision-Date: 2006-12-09 00:15+0100\n"
 "Last-Translator: Javier Fernández-Sanguino <jfs@debian.org>\n"
 "Language-Team: Debian Spanish <debian-l10n-spanish@lists.debian.org>\n"
@@ -43,21 +43,29 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
 msgid "Prepare /etc/resolv.conf for dynamic updates?"
 msgstr ""
 "¿Preparar «/etc/resolv.conf» para poder tener actualizaciones dinámicas?"
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
+#, fuzzy
+#| msgid ""
+#| "This package contains the infrastructure required for dynamic updating of "
+#| "the resolver configuration file. Part of the necessary infrastructure is "
+#| "a symbolic link from /etc/resolv.conf to /etc/resolvconf/run/resolv.conf. "
+#| "If you agree then this link will be created. The existing /etc/resolv."
+#| "conf file will be preserved as /etc/resolvconf/resolv.conf.d/original; it "
+#| "will be restored if this package is removed."
 msgid ""
-"This package contains the infrastructure required for dynamic updating of "
-"the resolver configuration file. Part of the necessary infrastructure is a "
-"symbolic link from /etc/resolv.conf to /etc/resolvconf/run/resolv.conf. If "
-"you agree then this link will be created. The existing /etc/resolv.conf file "
-"will be preserved as /etc/resolvconf/resolv.conf.d/original; it will be "
-"restored if this package is removed."
+"The resolvconf package contains the infrastructure required for dynamic "
+"updating of the resolver configuration file. Part of the necessary "
+"infrastructure is a symbolic link from /etc/resolv.conf to /etc/resolvconf/"
+"run/resolv.conf. If you choose this option then this link will be created; "
+"the existing /etc/resolv.conf file will be preserved as /etc/resolvconf/"
+"resolv.conf.d/original, and will be restored if this package is removed."
 msgstr ""
 "Este paquete incluye la infraestructura necesaria para poder actualizar de "
 "forma automática el fichero de configuración de resolución. Un enlace "
@@ -68,57 +76,47 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
 msgid ""
-"If you wish to prevent future installations from recreating the symbolic "
-"link then you can run dpkg-reconfigure later to withdraw your agreement."
+"Declining this option will prevent future installations from recreating the "
+"symbolic link and therefore the resolver configuration file will not be "
+"dynamically updated. Dynamic updating can then be activated following "
+"instructions in the README file."
 msgstr ""
-"Puede ejecutar «dpkg-reconfigure» más adelante para cancelar su "
-"consentimiento si desea que las instalaciones futuras no recreen el enlace "
-"simbólico."
 
 #. Type: boolean
 #. Description
-#: ../templates:1001
+#: ../templates:2001
 msgid ""
-"If you do not agree then the necessary symbolic link will not be created and "
-"consequently your resolver configuration file will not be dynamically "
-"updated. In order to activate dynamic updating you will have to configure "
-"resolvconf manually following the straightforward instructions in the README "
-"file. If you choose not to configure resolvconf at all then you should "
-"remove the package because its presence causes some programs to deviate from "
-"their default behavior."
+"The presence of resolvconf can affect the behavior of other programs, so it "
+"should not be left installed if unconfigured."
 msgstr ""
-"El enlace simbólico necesario no se creará y, por tanto, su fichero de "
-"configuración de resolución no podrá actualizarse de forma automática si no "
-"da su consentimiento. Para poder activar las actualizaciones dinámicas "
-"deberá configurar de forma manual a resolvconf siguiendo las indicaciones en "
-"el fichero README. Si desea no configurar resolvconf, todo lo que tiene que "
-"hacer es eliminar el paquete porque si está instalado algunos programas "
-"tendrán un comportamiento distinto del habitual."
-
-#. Type: boolean
-#. Description
-#: ../templates:1001
-msgid "However you decide, you should read the README file."
-msgstr "Debería leer el fichero README decida lo que decida."
 
 #. Type: note
 #. Description
-#: ../templates:2001
-msgid "Remember to reconfigure network interfaces"
-msgstr "Recuerde que debe reconfigurar sus interfaces de red"
+#: ../templates:3001
+msgid "Network interfaces reconfiguration mandatory"
+msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:2001
+#: ../templates:3001
+#, fuzzy
+#| msgid ""
+#| "Once resolvconf is installed, interface configurers supply nameserver "
+#| "information to it (which it then makes available to the C Library "
+#| "resolver and to DNS caches). However, they do this only when they bring "
+#| "up interfaces. Therefore for resolvconf's nameserver information to be up "
+#| "to date after initial installation it is necessary to reconfigure "
+#| "interfaces -- that is, to take them down and then to bring them up again "
+#| "-- and to restart DNS caches."
 msgid ""
-"Once resolvconf is installed, interface configurers supply nameserver "
-"information to it (which it then makes available to the C Library resolver "
+"Once resolvconf is installed, interface configurers supply name server "
+"information to it (which it then makes available to the C library resolver "
 "and to DNS caches). However, they do this only when they bring up "
-"interfaces. Therefore for resolvconf's nameserver information to be up to "
-"date after initial installation it is necessary to reconfigure interfaces -- "
-"that is, to take them down and then to bring them up again -- and to restart "
+"interfaces. Therefore for resolvconf's name server information to be up to "
+"date after initial installation it is necessary to reconfigure interfaces "
+"(that is, to take them down and then to bring them up again) and to restart "
 "DNS caches."
 msgstr ""
 "Los configuradores de los interfaces proveen la información de los "
@@ -132,53 +130,118 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid "Append original file to dynamic file?"
 msgstr "¿Añadir el fichero original al final del fichero dinámico?"
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid ""
-"If your original static resolver configuration file (/etc/resolv.conf) "
-"contains nameserver addresses then those addresses should be listed on \"dns-"
-"nameservers\" lines in /etc/network/interfaces as described in the README. "
-"Until you have modified /etc/network/interfaces and reconfigured the "
-"affected interfaces resolvconf will not include those addresses in the "
-"dynamically generated resolver configuration file. Without those addresses "
-"you may have trouble resolving domain names. A TEMPORARY solution is to "
-"append the whole original resolver configuration file to the end of the "
-"dynamically generated file. This will be done if there is a symbolic link "
-"from /etc/resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/"
-"original. If you agree then this symbolic link will be created, provided "
-"that no /etc/resolvconf/resolv.conf.d/tail already exists."
+"If the original static resolver configuration file (/etc/resolv.conf) "
+"contains name server addresses, those addresses should be listed on \"dns-"
+"nameservers\" lines in /etc/network/interfaces. For more information, please "
+"consult the resolvconf(8) man page and the README file."
 msgstr ""
-"Si su fichero de configuración de resolución original («/etc/resolv.conf») "
-"contiene direcciones de servidores de nombres, deberá incluir estas "
-"direcciones en las líneas «dns-nameservers» en el fichero «/etc/network/"
-"interfaces» tal y como se describe en el README. No se incluirían estas "
-"direcciones en el fichero de configuración de resolución generado "
-"dinámicamente hasta que no haya modificado el fichero «/etc/network/"
-"interfaces» y haya reconfigurado los interfaces que pudieran estar "
-"afectados. Sin estas direcciones tendrá problemas para poder resolver "
-"nombres de dominio. Una solución TEMPORAL consiste en incorporar al final "
-"del fichero generado de forma dinámica toda la información de resolución "
-"original. Esto se hace si de forma automática si se crea un enlace simbólico "
-"de «/etc/resolvconf/resolv.conf.d/tail» a «/etc/resolvconf/resolv.conf.d/"
-"original». Este enlace simbólico se creará si usted lo autoriza, siempre y "
-"cuando no exista ya un fichero «/etc/resolvconf/resolv.conf.d/tail»."
 
 #. Type: boolean
 #. Description
-#: ../templates:3001
+#: ../templates:4001
 msgid ""
-"After you have modified /etc/network/interfaces to add the required \"dns-"
-"nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/tail "
-"symbolic link to /dev/null."
+"Until /etc/network/interfaces has been edited and the affected interfaces "
+"brought down and up again, the name server addresses will not be included in "
+"the dynamically generated resolver configuration file."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:4001
+msgid ""
+"If you choose this option, a temporary workaround will be put in place: a "
+"symbolic link will be created (if it does not already exist) from /etc/"
+"resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/original. "
+"This will cause the whole of that original resolver configuration file to be "
+"appended to the dynamically generated file."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:4001
+#, fuzzy
+#| msgid ""
+#| "After you have modified /etc/network/interfaces to add the required \"dns-"
+#| "nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/"
+#| "tail symbolic link to /dev/null."
+msgid ""
+"After the required \"dns-nameservers\" lines have been added to /etc/network/"
+"interfaces, the /etc/resolvconf/resolv.conf.d/tail link should be replaced "
+"by one to /dev/null."
 msgstr ""
 "Debería hacer apuntar el enlace simbólico «/etc/resolvconf/resolv.conf.d/"
 "tail» a «/dev/null» una vez haya modificado «/etc/network/interfaces» y "
 "añadido las líneas «dns-nameservers» que sean necesarias."
+
+#~ msgid ""
+#~ "If you wish to prevent future installations from recreating the symbolic "
+#~ "link then you can run dpkg-reconfigure later to withdraw your agreement."
+#~ msgstr ""
+#~ "Puede ejecutar «dpkg-reconfigure» más adelante para cancelar su "
+#~ "consentimiento si desea que las instalaciones futuras no recreen el "
+#~ "enlace simbólico."
+
+#~ msgid ""
+#~ "If you do not agree then the necessary symbolic link will not be created "
+#~ "and consequently your resolver configuration file will not be dynamically "
+#~ "updated. In order to activate dynamic updating you will have to configure "
+#~ "resolvconf manually following the straightforward instructions in the "
+#~ "README file. If you choose not to configure resolvconf at all then you "
+#~ "should remove the package because its presence causes some programs to "
+#~ "deviate from their default behavior."
+#~ msgstr ""
+#~ "El enlace simbólico necesario no se creará y, por tanto, su fichero de "
+#~ "configuración de resolución no podrá actualizarse de forma automática si "
+#~ "no da su consentimiento. Para poder activar las actualizaciones dinámicas "
+#~ "deberá configurar de forma manual a resolvconf siguiendo las indicaciones "
+#~ "en el fichero README. Si desea no configurar resolvconf, todo lo que "
+#~ "tiene que hacer es eliminar el paquete porque si está instalado algunos "
+#~ "programas tendrán un comportamiento distinto del habitual."
+
+#~ msgid "However you decide, you should read the README file."
+#~ msgstr "Debería leer el fichero README decida lo que decida."
+
+#~ msgid "Remember to reconfigure network interfaces"
+#~ msgstr "Recuerde que debe reconfigurar sus interfaces de red"
+
+#~ msgid ""
+#~ "If your original static resolver configuration file (/etc/resolv.conf) "
+#~ "contains nameserver addresses then those addresses should be listed on "
+#~ "\"dns-nameservers\" lines in /etc/network/interfaces as described in the "
+#~ "README. Until you have modified /etc/network/interfaces and reconfigured "
+#~ "the affected interfaces resolvconf will not include those addresses in "
+#~ "the dynamically generated resolver configuration file. Without those "
+#~ "addresses you may have trouble resolving domain names. A TEMPORARY "
+#~ "solution is to append the whole original resolver configuration file to "
+#~ "the end of the dynamically generated file. This will be done if there is "
+#~ "a symbolic link from /etc/resolvconf/resolv.conf.d/tail to /etc/"
+#~ "resolvconf/resolv.conf.d/original. If you agree then this symbolic link "
+#~ "will be created, provided that no /etc/resolvconf/resolv.conf.d/tail "
+#~ "already exists."
+#~ msgstr ""
+#~ "Si su fichero de configuración de resolución original («/etc/resolv.conf») "
+#~ "contiene direcciones de servidores de nombres, deberá incluir estas "
+#~ "direcciones en las líneas «dns-nameservers» en el fichero «/etc/network/"
+#~ "interfaces» tal y como se describe en el README. No se incluirían estas "
+#~ "direcciones en el fichero de configuración de resolución generado "
+#~ "dinámicamente hasta que no haya modificado el fichero «/etc/network/"
+#~ "interfaces» y haya reconfigurado los interfaces que pudieran estar "
+#~ "afectados. Sin estas direcciones tendrá problemas para poder resolver "
+#~ "nombres de dominio. Una solución TEMPORAL consiste en incorporar al final "
+#~ "del fichero generado de forma dinámica toda la información de resolución "
+#~ "original. Esto se hace si de forma automática si se crea un enlace "
+#~ "simbólico de «/etc/resolvconf/resolv.conf.d/tail» a «/etc/resolvconf/resolv."
+#~ "conf.d/original». Este enlace simbólico se creará si usted lo autoriza, "
+#~ "siempre y cuando no exista ya un fichero «/etc/resolvconf/resolv.conf.d/"
+#~ "tail»."
 
 # hook script? programa «anzuelo» ? o guión de arranqe?
 #~ msgid "A rogue pppconfig PPP hook script is present"
@@ -206,11 +269,11 @@ msgstr ""
 #~ "to delete it is to purge the pppconfig package."
 #~ msgstr ""
 #~ "Se ha detectado un programa ejecutable y no vacío «/etc/ppp/ip-up.d/0dns-"
-#~ "up» y/o «/etc/ppp/ip-down.d/0dns-down» que parece que sobreescribe/n «/"
-#~ "etc/resolv.conf». Debe modificarse, deshabilitarse o borrarse cada "
-#~ "programa que hace esto. La mejor forma de deshabilitarlos es quitar los "
-#~ "permisos de ejecución al programa. La mejor forma de borrarlos es purgar "
-#~ "el paquete pppconfig."
+#~ "up» y/o «/etc/ppp/ip-down.d/0dns-down» que parece que sobreescribe/n «/etc/"
+#~ "resolv.conf». Debe modificarse, deshabilitarse o borrarse cada programa "
+#~ "que hace esto. La mejor forma de deshabilitarlos es quitar los permisos "
+#~ "de ejecución al programa. La mejor forma de borrarlos es purgar el "
+#~ "paquete pppconfig."
 
 #~ msgid "A rogue pppoeconf PPP hook script is present"
 #~ msgstr "Se ha encontrado un programa «anzuelo» PPP de pppoeconf"
