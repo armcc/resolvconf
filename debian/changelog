@@ -1,4 +1,4 @@
-resolvconf (1.39~3) UNRELEASED; urgency=low
+resolvconf (1.39) unstable; urgency=low
 
   [ Daniel Kahn Gillmor ]
   * Removed bashism from dnscache script (Closes: #459566)
@@ -30,7 +30,7 @@ resolvconf (1.39~3) UNRELEASED; urgency=low
   * French. Closes: #467530
   * Dutch. Closes: #468249
 
- -- Marco Nenciarini <mnencia@debian.org>  Wed, 11 Feb 2008 12:00:00 +0100
+ -- Marco Nenciarini <mnencia@debian.org>  Thu, 13 Mar 2008 12:48:18 +0100
 
 resolvconf (1.38) unstable; urgency=low
 
