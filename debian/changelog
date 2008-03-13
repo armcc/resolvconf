@@ -1,3 +1,9 @@
+resolvconf (1.40) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Marco Nenciarini <mnencia@debian.org>  Thu, 13 Mar 2008 13:14:44 +0100
+
 resolvconf (1.39) unstable; urgency=low
 
   [ Daniel Kahn Gillmor ]
