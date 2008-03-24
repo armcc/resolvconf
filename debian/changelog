@@ -2,6 +2,13 @@ resolvconf (1.40) UNRELEASED; urgency=low
 
   * NOT RELEASED YET
 
+  [ Daniel Kahn Gillmor ]
+  * update.d/dnscache: moved runit service directory from /var/service to
+    /etc/service, tracking #461478.  Added Conflicts: runit (<< 1.8.0-3)
+    to make sure the system uses the same path.
+  * update.d/dnscache: changing directories back from $SERVICEDIR after
+    scanning so that list-records works properly.
+
  -- Marco Nenciarini <mnencia@debian.org>  Thu, 13 Mar 2008 13:14:44 +0100
 
 resolvconf (1.39) unstable; urgency=low

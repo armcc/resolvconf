@@ -35,9 +35,10 @@ CACHES=""
 # /service: daemontools, built "the djb way"
 # /var/service: runit
 
-for SERVICEDIR in /var/lib/svscan /service /var/service ; do
+for SERVICEDIR in /var/lib/svscan /service /etc/service ; do
 	# We'll only manage caches actually managed by daemontools or runit.
 	if [ -d "$SERVICEDIR" ] ; then
+		OLDCWD=`pwd`
 		cd "$SERVICEDIR"
 		for SVC in * ; do
 			SVC="$SERVICEDIR/$SVC"
@@ -53,6 +54,7 @@ for SERVICEDIR in /var/lib/svscan /service /var/service ; do
 				CACHES="$SVC $CACHES"
 			fi
 		done
+		cd "$OLDCWD"
 	fi
 done
 
@@ -104,9 +106,9 @@ SV_CMD="$(which sv)" || :
 for CACHE in $CACHES ; do
 	cp "$TMPFILE" "$CACHE/root/servers/@"
 	# Restart the cache if it's already running:
-	if [ "$(dirname "$CACHE")" = "/var/service" ]; then
+	if [ "$(dirname "$CACHE")" = "/etc/service" ]; then
 		# this is managed by runit
-		[ "$SV_CMD" ] && "$SV_CMD" t "$CACHE"
+		[ "$SV_CMD" ] && "$SV_CMD" restart "$CACHE"
 	else
 		# this is probably managed by daemontools
 		[ "$SVC_CMD" ] && "$SVC_CMD" -t "$CACHE"
