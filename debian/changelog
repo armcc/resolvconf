@@ -9,6 +9,12 @@ resolvconf (1.40) UNRELEASED; urgency=low
   * update.d/dnscache: changing directories back from $SERVICEDIR after
     scanning so that list-records works properly.
 
+  [ Thomas Hood ]
+  * Overwrite /etc/resolvconf/run symlink by means of "ln -nsf" rather
+    than by means of "ln -sf" since the latter just puts the new symlink
+    IN the run directory.  Thanks to Karl Chen for pointing this out.
+    (Closes: #475528)
+
  -- Marco Nenciarini <mnencia@debian.org>  Thu, 13 Mar 2008 13:14:44 +0100
 
 resolvconf (1.39) unstable; urgency=low

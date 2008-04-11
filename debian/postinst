@@ -35,7 +35,7 @@ configure|reconfigure)
 			report_info "Migrating /dev/shm/resolvconf to /lib/init/rw/resolvconf"
 			F="$(echo /dev/shm/resolvconf/*)"
 			[ "$F" ] && [ "$F" != '/dev/shm/resolvconf/*' ] && cp -a /dev/shm/resolvconf/* /lib/init/rw/resolvconf
-			ln -sf /lib/init/rw/resolvconf /etc/resolvconf/run
+			ln -nsf /lib/init/rw/resolvconf /etc/resolvconf/run
 		fi
 	fi
 	# Delete it if it isn't a directory or a link to one
