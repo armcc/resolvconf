@@ -1,4 +1,4 @@
-resolvconf (1.40) UNRELEASED; urgency=low
+resolvconf (1.40) unstable; urgency=low
 
   * NOT RELEASED YET
 
@@ -14,6 +14,9 @@ resolvconf (1.40) UNRELEASED; urgency=low
     than by means of "ln -sf" since the latter just (uselessly) puts a
     new symlink _in_ the run directory.  Thanks to Karl Chen for pointing
     out the error.  (Closes: #475528)
+  * [Debconf translation updates]
+  * Italian (Closes: #471889)
+  * Spanish (Closes: #473470)
 
  -- Marco Nenciarini <mnencia@debian.org>  Thu, 13 Mar 2008 13:14:44 +0100
 
