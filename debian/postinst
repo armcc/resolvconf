@@ -11,13 +11,14 @@ report_err() { report "Error: $*" >&2 ; }
 report_info() { report "Info: $*" >&2 ; }
 
 ### Create /etc/resolvconf/run ###
+#
+# Unfortunately we can't keep state files in /var/run/ because 
+# resolvconf, as it must, initializes before networking does and
+# /var/ can be on the network.
+#
 case "$1" in
 configure|reconfigure)
-	# Unfortunately we can't keep state files in /var/run/ because 
-	# resolvconf, as it must, initializes before networking does and
-	# /var/ can be on the network.
-	#
-	# Only use an existing symlink if it is canonicalizable
+	# If it's a symlink, ensure that it is canonicalizable
 	if [ -L /etc/resolvconf/run ] ; then
 		RUN_CANONICALPATH="$(readlink -f /etc/resolvconf/run || :)"
 		if [ -z "$RUN_CANONICALPATH" ] ; then
@@ -44,10 +45,10 @@ configure|reconfigure)
 		rm -f /etc/resolvconf/run
 	fi
 	# Now /etc/resolvconf/run is either
-	# * a directory, or
-	# * a symlink to a directory, or
 	# * a nonexistent (if you'll pardon the expression), or
-	# * a dangling but canonicalizable symlink
+	# * a dangling but canonicalizable symlink, or
+	# * a (canonicalizable) symlink to a directory, or
+	# * a directory
 	if [ -d /etc/resolvconf/run ] ; then
 		# It's a directory or a symlink to one
 		[ -d /etc/resolvconf/run/interface ] || mkdir -v /etc/resolvconf/run/interface
@@ -58,6 +59,10 @@ configure|reconfigure)
 	else
 		# It's a nonexistent
 		# Use /lib/init/rw if possible
+		#
+		# TODO: In order to ensure that this code is equivalent to the earlier block,
+		#       put it into a function
+		#
 		if \
 			[ -d /lib/init/rw ] \
 			&& [ -w /lib/init/rw ] \
