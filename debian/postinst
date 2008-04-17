@@ -31,11 +31,13 @@ configure|reconfigure)
 			&& [ -r /proc/mounts ] \
 			&& grep -qs "^tmpfs[[:space:]]\+/lib/init/rw[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts \
 			&& { [ -d /lib/init/rw/resolvconf ] || mkdir -v /lib/init/rw/resolvconf ; } \
-			&& { [ -d /lib/init/rw/resolvconf/interface ] || mkdir -v /lib/init/rw/resolvconf/interface ; }
+			&& { [ -d /lib/init/rw/resolvconf/interface ] || mkdir -v /lib/init/rw/resolvconf/interface ; } \
+			&& F="$(echo /dev/shm/resolvconf/*)" \
+			&& [ "$F" ] \
+			&& [ "$F" != '/dev/shm/resolvconf/*' ] \
+			&& cp -a /dev/shm/resolvconf/* /lib/init/rw/resolvconf
 		then
 			report_info "Migrating /dev/shm/resolvconf to /lib/init/rw/resolvconf"
-			F="$(echo /dev/shm/resolvconf/*)"
-			[ "$F" ] && [ "$F" != '/dev/shm/resolvconf/*' ] && cp -a /dev/shm/resolvconf/* /lib/init/rw/resolvconf
 			ln -nsf /lib/init/rw/resolvconf /etc/resolvconf/run
 		fi
 	fi
@@ -54,8 +56,7 @@ configure|reconfigure)
 		[ -d /etc/resolvconf/run/interface ] || mkdir -v /etc/resolvconf/run/interface
 	elif [ -L /etc/resolvconf/run ] ; then
 		# It's a dangling but canonicalizable symlink
-		mkdir -v "$RUN_CANONICALPATH"
-		mkdir -v "${RUN_CANONICALPATH}/interface"
+		mkdir -v "$RUN_CANONICALPATH" "${RUN_CANONICALPATH}/interface"
 	else
 		# It's a nonexistent
 		# Use /lib/init/rw if possible
@@ -73,8 +74,7 @@ configure|reconfigure)
 		then
 			ln -s /lib/init/rw/resolvconf /etc/resolvconf/run
 		else
-			mkdir -v /etc/resolvconf/run
-			mkdir -v /etc/resolvconf/run/interface
+			mkdir -v /etc/resolvconf/run /etc/resolvconf/run/interface
 		fi
 	fi
 	;;
@@ -155,7 +155,6 @@ if [ "$TIME_TO_CHANGE_LINKIFICATION" = yes ] ; then
 
 		# Create the link
 		ln -nsf /etc/resolvconf/run/resolv.conf /etc/resolv.conf
-
 	fi
 fi
 								
