@@ -1,5 +1,4 @@
-#!/bin/bash
-# Bash required because /usr/share/debconf/confmodule uses "local" (#252094)
+#!/bin/sh
 
 set -e
 
@@ -14,10 +13,11 @@ report_info() { report "Info: $*" >&2 ; }
 #
 # Unfortunately we can't keep state files in /var/run/ because 
 # resolvconf, as it must, initializes before networking does and
-# /var/ can be on the network.
+# /var/ can be on the network.  In the past we used /dev/shm/
+# but now we use /lib/init/rw/.
 #
 case "$1" in
-configure|reconfigure)
+  configure|reconfigure)
 	# If it's a symlink, ensure that it is canonicalizable
 	if [ -L /etc/resolvconf/run ] ; then
 		RUN_CANONICALPATH="$(readlink -f /etc/resolvconf/run || :)"
@@ -37,7 +37,7 @@ configure|reconfigure)
 			&& [ "$F" != '/dev/shm/resolvconf/*' ] \
 			&& cp -a /dev/shm/resolvconf/* /lib/init/rw/resolvconf
 		then
-			report_info "Migrating /dev/shm/resolvconf to /lib/init/rw/resolvconf"
+			report_info "Migrating run-time database from /dev/shm/resolvconf to /lib/init/rw/resolvconf"
 			ln -nsf /lib/init/rw/resolvconf /etc/resolvconf/run
 		fi
 	fi
@@ -47,9 +47,9 @@ configure|reconfigure)
 		rm -f /etc/resolvconf/run
 	fi
 	# Now /etc/resolvconf/run is either
-	# * a nonexistent (if you'll pardon the expression), or
+	# * nonexistent, or
 	# * a dangling but canonicalizable symlink, or
-	# * a (canonicalizable) symlink to a directory, or
+	# * a symlink to a directory, or
 	# * a directory
 	if [ -d /etc/resolvconf/run ] ; then
 		# It's a directory or a symlink to one
@@ -58,8 +58,7 @@ configure|reconfigure)
 		# It's a dangling but canonicalizable symlink
 		mkdir -v "$RUN_CANONICALPATH" "${RUN_CANONICALPATH}/interface"
 	else
-		# It's a nonexistent
-		# Use /lib/init/rw if possible
+		# It's nonexistent
 		#
 		# TODO: In order to ensure that this code is equivalent to the earlier block,
 		#       put it into a function
@@ -78,19 +77,10 @@ configure|reconfigure)
 		fi
 	fi
 	;;
-# *)
+  # *)
 	# In other modes we don't need to do anything
 	# because we didn't take any action in the prerm
-esac
-
-
-case "$1" in
-configure|reconfigure)
-	# Deleting the old runlevel config is unavoidable
-	# because there is currently no way in Debian
-	# to update the config iff it is still the factory default
-	update-rc.d -f resolvconf remove > /dev/null 2>&1
-	;;
+	# ;;
 esac
 
 # We use dh_installinit with --no-start
@@ -99,7 +89,7 @@ esac
 ### Link tail to original if appropriate ###
 TIME_TO_CHANGE_TAIL_LINK=no
 case "$1" in
-configure|reconfigure)
+  configure|reconfigure)
 	TIME_TO_CHANGE_TAIL_LINK=yes
 	;;
 # *)
@@ -121,7 +111,7 @@ fi
 ### Linkify /etc/resolv.conf if appropriate ###
 TIME_TO_CHANGE_LINKIFICATION=no
 case "$1" in
-configure|reconfigure)
+  configure|reconfigure)
 	TIME_TO_CHANGE_LINKIFICATION=yes
 	;;
 # *)

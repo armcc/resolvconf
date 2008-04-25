@@ -1,3 +1,15 @@
+resolvconf (1.41) unstable; urgency=low
+
+  [ Thomas Hood ]
+  * postinst: Do not remove existing runlevel configuration.  (Releases
+    1.12 and up did so in order to correct the error made in earlier
+    releases, of installing at S39 instead of S38.  The correction will
+    already have been performed on all systems upgraded to sarge.)
+    (Closes: #477752)
+  * No longer #! bash in postinst
+
+ -- Thomas Hood <jdthood@yahoo.co.uk>  Fri, 25 Apr 2008 09:07:48 +0200
+
 resolvconf (1.40) unstable; urgency=low
 
   [ Daniel Kahn Gillmor ]
@@ -434,7 +446,7 @@ resolvconf (1.12) unstable; urgency=low
   * Move rcS sequence number from S39 to S38 so that resolvconf
     is initialized _before_ ifupdown is initialized (and thus
     before ifupdown can be used and thus before ifupdown can call
-    resolvconf).
+    resolvconf).  [See entry for release 1.41]
 
  -- Thomas Hood <jdthood@yahoo.co.uk>  Sat, 24 Apr 2004 16:55:39 +0200
 
