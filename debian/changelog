@@ -7,6 +7,10 @@ resolvconf (1.41) unstable; urgency=low
     already have been performed on all systems upgraded to sarge.)
     (Closes: #477752)
   * No longer #! bash in postinst
+  
+  [ Daniel Kahn Gillmor]
+  * don't try to manipulate forwarding dnscaches which are marked as
+    "down" (Thanks, Soeren Sonnenburg!) (Closes: #479867)
 
  -- Thomas Hood <jdthood@yahoo.co.uk>  Fri, 25 Apr 2008 09:07:48 +0200
 

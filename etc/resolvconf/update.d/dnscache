@@ -45,6 +45,7 @@ for SERVICEDIR in /var/lib/svscan /service /etc/service ; do
 			if \
 				[ -d "$SVC" ] \
 				&& [ -f "$SVC/run" ] \
+				&& [ ! -f "$SVC/down" ] \
 				&& [ -d "$SVC/root" ] \
 				&& [ -d "$SVC/root/servers" ] \
 				&& [ -d "$SVC/root/ip" ] \
