@@ -11,6 +11,9 @@ resolvconf (1.41) unstable; urgency=low
   [ Daniel Kahn Gillmor]
   * don't try to manipulate forwarding dnscaches which are marked as
     "down" (Thanks, Soeren Sonnenburg!) (Closes: #479867)
+  * since both runit and daemontools now use /etc/service, use
+    availability of executables to select supervising service instead
+    (Thanks, Alec Berryman!) (Closes: #485523)
 
  -- Thomas Hood <jdthood@yahoo.co.uk>  Fri, 25 Apr 2008 09:07:48 +0200
 

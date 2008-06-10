@@ -107,12 +107,14 @@ SV_CMD="$(which sv)" || :
 for CACHE in $CACHES ; do
 	cp "$TMPFILE" "$CACHE/root/servers/@"
 	# Restart the cache if it's already running:
-	if [ "$(dirname "$CACHE")" = "/etc/service" ]; then
-		# this is managed by runit
-		[ "$SV_CMD" ] && "$SV_CMD" restart "$CACHE"
-	else
-		# this is probably managed by daemontools
-		[ "$SVC_CMD" ] && "$SVC_CMD" -t "$CACHE"
-	fi
+        if [ "$SV_CMD" ] && \
+	    [ -e "$CACHE/supervise/pid" ] && \
+	    [ -e "$CACHE/supervise/stat" ]; then
+            # services managed by runit have supervise/{pid,stat}
+            "$SV_CMD" restart "$CACHE"
+        else
+            # otherwise, it is probably managed by daemontools
+            [ "$SVC_CMD" ] && "$SVC_CMD" -t "$CACHE"
+        fi
 done
 
