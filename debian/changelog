@@ -15,7 +15,7 @@ resolvconf (1.41) unstable; urgency=low
     availability of executables to select supervising service instead
     (Thanks, Alec Berryman!) (Closes: #485523)
 
- -- Thomas Hood <jdthood@yahoo.co.uk>  Fri, 25 Apr 2008 09:07:48 +0200
+ -- Daniel Kahn Gillmor <dkg-debian.org@fifthhorseman.net>  Tue, 17 Jun 2008 16:51:15 -0400
 
 resolvconf (1.40) unstable; urgency=low
 
