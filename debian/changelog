@@ -1,3 +1,12 @@
+resolvconf (1.42~unreleased1) unstable; urgency=low
+
+  [ Thomas Hood ]
+  * [Debconf translation updates]
+  * Japanese (Closes: #493608)
+  * Swedish (Closes: #491780)
+
+ -- Thomas <jdthood@yahoo.co.uk>  Sun, 03 Aug 2008 21:27:56 +0200
+
 resolvconf (1.41) unstable; urgency=low
 
   [ Thomas Hood ]

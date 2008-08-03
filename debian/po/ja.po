@@ -1,23 +1,23 @@
-#
+# 
 #    Translators, if you are not familiar with the PO format, gettext
 #    documentation is worth reading, especially sections dedicated to
 #    this format, e.g. by running:
 #         info -n '(gettext)PO Files'
 #         info -n '(gettext)Header Entry'
-#
+# 
 #    Some information specific to po-debconf are available at
 #            /usr/share/doc/po-debconf/README-trans
 #         or http://www.debian.org/intl/l10n/po-debconf/README-trans
-#
+# 
 #    Developers do not need to manually edit POT or PO files.
-#
-#
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf 1.36\n"
+"Project-Id-Version: resolvconf 1.41\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2008-02-11 07:44+0100\n"
-"PO-Revision-Date: 2006-10-09 00:52+0900\n"
+"PO-Revision-Date: 2008-08-03 21:04+0900\n"
 "Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,14 +33,6 @@ msgstr "/etc/resolv.conf を動的更新するようにしますか?"
 #. Type: boolean
 #. Description
 #: ../templates:2001
-#, fuzzy
-#| msgid ""
-#| "This package contains the infrastructure required for dynamic updating of "
-#| "the resolver configuration file. Part of the necessary infrastructure is "
-#| "a symbolic link from /etc/resolv.conf to /etc/resolvconf/run/resolv.conf. "
-#| "If you agree then this link will be created. The existing /etc/resolv."
-#| "conf file will be preserved as /etc/resolvconf/resolv.conf.d/original; it "
-#| "will be restored if this package is removed."
 msgid ""
 "The resolvconf package contains the infrastructure required for dynamic "
 "updating of the resolver configuration file. Part of the necessary "
@@ -49,12 +41,12 @@ msgid ""
 "the existing /etc/resolv.conf file will be preserved as /etc/resolvconf/"
 "resolv.conf.d/original, and will be restored if this package is removed."
 msgstr ""
-"このパッケージは、リゾルバ設定ファイルの動的更新に必要とされる仕組みを含んで"
-"います。必要となる仕組みの一つは /etc/resolv.conf から /etc/resolvconf/run/"
-"resolv.conf へのシンボリックリンクです。ここで「はい」と答えるとこのリンクが"
-"作成されます。すでにある /etc/resolv.conf ファイルは /etc/resolvconf/resolv."
-"conf.d/original として保存されます (このファイルは、パッケージが削除される際"
-"に元に戻されます)。"
+"resolvconf パッケージは、リゾルバ設定ファイルの動的更新に必要とされる仕組みを"
+"含んでいます。必要となる仕組みの一つは /etc/resolv.conf から /etc/resolvconf/"
+"run/resolv.conf へのシンボリックリンクです。このオプションを選ぶとこのリンク"
+"が作成されます。すでにある /etc/resolv.conf ファイルは /etc/resolvconf/"
+"resolv.conf.d/original として保存されます (このファイルは、パッケージが削除さ"
+"れる際に元に戻されます)。"
 
 #. Type: boolean
 #. Description
@@ -65,6 +57,10 @@ msgid ""
 "dynamically updated. Dynamic updating can then be activated following "
 "instructions in the README file."
 msgstr ""
+"このオプションの利用を断ると、今後のインストール時にシンボリックリンクの再生"
+"成を行わないようになります。そのため、リゾルバの設定ファイルは動的に更新され"
+"なくなります。そのような場合、動的更新を可能にするには README ファイルにある"
+"指示に従ってください。"
 
 #. Type: boolean
 #. Description
@@ -73,25 +69,18 @@ msgid ""
 "The presence of resolvconf can affect the behavior of other programs, so it "
 "should not be left installed if unconfigured."
 msgstr ""
+"resolvconf の存在によって他のプログラムの動作に影響が与える可能性があるので、"
+"インストールしたのにも関わらず未設定のままにはしていけません。"
 
 #. Type: note
 #. Description
 #: ../templates:3001
 msgid "Network interfaces reconfiguration mandatory"
-msgstr ""
+msgstr "ネットワークインターフェイスの再設定を強制的に実行"
 
 #. Type: note
 #. Description
 #: ../templates:3001
-#, fuzzy
-#| msgid ""
-#| "Once resolvconf is installed, interface configurers supply nameserver "
-#| "information to it (which it then makes available to the C Library "
-#| "resolver and to DNS caches). However, they do this only when they bring "
-#| "up interfaces. Therefore for resolvconf's nameserver information to be up "
-#| "to date after initial installation it is necessary to reconfigure "
-#| "interfaces -- that is, to take them down and then to bring them up again "
-#| "-- and to restart DNS caches."
 msgid ""
 "Once resolvconf is installed, interface configurers supply name server "
 "information to it (which it then makes available to the C library resolver "
@@ -105,7 +94,7 @@ msgstr ""
 "報を提供します (C ライブラリのリゾルバと DNS キャッシュで利用可能になりま"
 "す)。しかし、これはインターフェイスが起動された時のみです。そのため、"
 "resolvconf のネームサーバ情報を初期インストール後に更新するには、インターフェ"
-"イスの再設定−つまり、インターフェイスを一旦ダウンし、その後再度アップする−と"
+"イスの再設定 (つまり、インターフェイスを一旦ダウンしてからアップのし直し) と"
 "DNS キャッシュの再起動が必要になります。"
 
 #. Type: boolean
@@ -123,6 +112,10 @@ msgid ""
 "nameservers\" lines in /etc/network/interfaces. For more information, please "
 "consult the resolvconf(8) man page and the README file."
 msgstr ""
+"元々の静的な名前解決ファイル (/etc/resolv.conf) がネームサーバのアドレスを含"
+"んでいる場合、これらのアドレスは、/etc/network/interfaces の \"dns-"
+"nameservers\" 行に記述されている必要があります。詳細に付いては、resolvconf"
+"(8) の man ページと README ファイルを参照してください。"
 
 #. Type: boolean
 #. Description
@@ -132,6 +125,9 @@ msgid ""
 "brought down and up again, the name server addresses will not be included in "
 "the dynamically generated resolver configuration file."
 msgstr ""
+"/etc/network/interfaces を編集し、関連するインターフェイスをダウンして再度"
+"アップするようになるまで、ネームサーバのアドレスは動的に生成される名前解決"
+"ファイルに含まれません。"
 
 #. Type: boolean
 #. Description
@@ -143,205 +139,19 @@ msgid ""
 "This will cause the whole of that original resolver configuration file to be "
 "appended to the dynamically generated file."
 msgstr ""
+"この選択を選んだ場合、一時的な回避方法があります。(まだファイルが存在していな"
+"い場合) /etc/resolvconf/resolv.conf.d/tail から /etc/resolvconf/resolv.conf."
+"d/original へシンボリックリンクが作られます。これによって、元々のリゾルバ設定"
+"ファイルが丸ごと動的に生成されるファイルに追加されます。"
 
 #. Type: boolean
 #. Description
 #: ../templates:4001
-#, fuzzy
-#| msgid ""
-#| "After you have modified /etc/network/interfaces to add the required \"dns-"
-#| "nameservers\" lines you should point the /etc/resolvconf/resolv.conf.d/"
-#| "tail symbolic link to /dev/null."
 msgid ""
 "After the required \"dns-nameservers\" lines have been added to /etc/network/"
 "interfaces, the /etc/resolvconf/resolv.conf.d/tail link should be replaced "
 "by one to /dev/null."
 msgstr ""
-"/etc/network/interfaces に必要な \"dns-nameservers\" 行を加えた後、シンボリッ"
-"クリンク /etc/resolvconf/resolv.conf.d/tail が /dev/null を指すようにする必要"
-"があります。"
-
-#~ msgid ""
-#~ "If you wish to prevent future installations from recreating the symbolic "
-#~ "link then you can run dpkg-reconfigure later to withdraw your agreement."
-#~ msgstr ""
-#~ "今後のインストールの際には、シンボリックリンクの再生成をしたくなくなった場"
-#~ "合、dpkg-reconfigure を後ほど実行すれば決定を取り消せます。"
-
-#~ msgid ""
-#~ "If you do not agree then the necessary symbolic link will not be created "
-#~ "and consequently your resolver configuration file will not be dynamically "
-#~ "updated. In order to activate dynamic updating you will have to configure "
-#~ "resolvconf manually following the straightforward instructions in the "
-#~ "README file. If you choose not to configure resolvconf at all then you "
-#~ "should remove the package because its presence causes some programs to "
-#~ "deviate from their default behavior."
-#~ msgstr ""
-#~ "ここで「いいえ」と答えると、必要なシンボリックリンクは作成されず、従ってリ"
-#~ "ゾルバ設定ファイルは動的には更新されません。動的更新を有効にするには、"
-#~ "README ファイルの指示に従って resolvconf を手動で設定する必要があります。"
-#~ "resolvconf を全く設定しないのを選んだ場合は、このパッケージが存在するが故"
-#~ "にいくつかのプログラムが通常とは違った挙動をするようになるため、パッケージ"
-#~ "を削除する必要があります。"
-
-#~ msgid "However you decide, you should read the README file."
-#~ msgstr "いずれにせよ、README ファイルを読むべきです。"
-
-#~ msgid "Remember to reconfigure network interfaces"
-#~ msgstr "ネットワークインターフェイスの再設定を忘れないで下さい"
-
-#~ msgid ""
-#~ "If your original static resolver configuration file (/etc/resolv.conf) "
-#~ "contains nameserver addresses then those addresses should be listed on "
-#~ "\"dns-nameservers\" lines in /etc/network/interfaces as described in the "
-#~ "README. Until you have modified /etc/network/interfaces and reconfigured "
-#~ "the affected interfaces resolvconf will not include those addresses in "
-#~ "the dynamically generated resolver configuration file. Without those "
-#~ "addresses you may have trouble resolving domain names. A TEMPORARY "
-#~ "solution is to append the whole original resolver configuration file to "
-#~ "the end of the dynamically generated file. This will be done if there is "
-#~ "a symbolic link from /etc/resolvconf/resolv.conf.d/tail to /etc/"
-#~ "resolvconf/resolv.conf.d/original. If you agree then this symbolic link "
-#~ "will be created, provided that no /etc/resolvconf/resolv.conf.d/tail "
-#~ "already exists."
-#~ msgstr ""
-#~ "元々の静的なリゾルバ設定ファイル (/etc/resolv.conf) がネームサーバのアドレ"
-#~ "スを含んでいた場合、README に書いてあるように、そのアドレスは /etc/"
-#~ "network/interfaces の \"dns-nameservers\" 行に記述すべきです。/etc/"
-#~ "network/interfaces を編集して影響を受けるインターフェイスを再設定するま"
-#~ "で、resolvconf は動的に生成するリゾルバ設定ファイルにはこのアドレスを含め"
-#~ "ません。このアドレス設定がないとドメイン名の解決に問題が残るでしょう。「一"
-#~ "時的な」解決方法は、元々の静的なリゾルバ設定ファイルを動的に生成したファイ"
-#~ "ルの最後に丸ごと含めることです。 /etc/resolvconf/resolv.conf.d/tail から /"
-#~ "etc/resolvconf/resolv.conf.d/original へのシンボリックリンクが存在していた"
-#~ "場合、これが実行されます。ここで「はい」と答えると、/etc/resolvconf/"
-#~ "resolv.conf.d/tail がまだ存在していなければ、このシンボリックリンクが作成"
-#~ "されるでしょう。"
-
-#~ msgid "A rogue pppconfig PPP hook script is present"
-#~ msgstr ""
-#~ "問題になりそうな pppconfig の PPP フックスクリプトが存在しています。"
-
-#~ msgid ""
-#~ "Certain versions of the pppconfig package contain scripts /etc/ppp/ip-up."
-#~ "d/0dns-up and /etc/ppp/ip-down.d/0dns-down (run by pppd after a PPP "
-#~ "interface is brought up or down) that overwrite /etc/resolv.conf. These "
-#~ "scripts must be modified, disabled or deleted so that they will not "
-#~ "interfere with the operation of resolvconf."
-#~ msgstr ""
-#~ "ある特定バージョンの pppconfig パッケージは、/etc/resolv.conf を上書きす"
-#~ "る /etc/ppp/ip-up.d/0dns-up および /etc/ppp/ip-down.d/0dns-down スクリプト"
-#~ "を含んでいます。(これらは pppd によって PPP インターフェイスが開始または停"
-#~ "止する際に実行されます)。resolvconf の動作に干渉しないように、これらのスク"
-#~ "リプトは修正・無効化、あるいは削除を行う必要があります。"
-
-#~ msgid ""
-#~ "A non-empty executable script /etc/ppp/ip-up.d/0dns-up and/or /etc/ppp/ip-"
-#~ "down.d/0dns-down has been detected that appears to overwrite /etc/resolv."
-#~ "conf. Each one that does so must be modified, disabled or deleted. The "
-#~ "best way to disable it is to remove its execute permission. The best way "
-#~ "to delete it is to purge the pppconfig package."
-#~ msgstr ""
-#~ "/etc/resolv.conf を上書きするであろう、空でない実行可能なスクリプト /etc/"
-#~ "ppp/ip-up.d/0dns-up および /etc/ppp/ip-down.d/0dns-down が検出されました。"
-#~ "それぞれ、修正する・無効にする、あるいは削除を行う必要があります。無効にす"
-#~ "るのに最も良い方法は、実行権限を削除すること。そして、削除するのに最も良い"
-#~ "方法は、pppconfig パッケージを完全に削除 (purge) することです。"
-
-#~ msgid "A rogue pppoeconf PPP hook script is present"
-#~ msgstr "問題になりそうな pppoeconf の PPP フックスクリプトが存在しています"
-
-#~ msgid ""
-#~ "Versions of the pppoeconf package prior to version 1.0 contain a script /"
-#~ "etc/ppp/ip-up.d/000usepeerdns (run by pppd after a PPP interface is "
-#~ "brought up) that overwrites /etc/resolv.conf. The script must be "
-#~ "modified, disabled or deleted so that it will not interfere with the "
-#~ "operation of resolvconf. Contrary to Debian policy, merely removing the "
-#~ "pppoeconf package does not disable the script."
-#~ msgstr ""
-#~ "バージョン 1.0 以前の pppoeconf パッケージは /etc/resolv.conf を上書きす"
-#~ "る /etc/ppp/ip-up.d/000usepeerdns スクリプトを含んでいます (これは、pppd "
-#~ "によって PPP インターフェイスが起動した後に実行されます)。resolvconf の動"
-#~ "作に干渉しないように、これらのスクリプトは修正・無効化、あるいは削除を行う"
-#~ "必要があります。Debian ポリシーに反して、単純に pppoeconf パッケージの削除"
-#~ "ではスクリプトは無効にされません。"
-
-#~ msgid ""
-#~ "A non-empty executable script /etc/ppp/ip-up.d/000usepeerdns has been "
-#~ "detected. It must be modified, disabled or deleted. The best way to "
-#~ "modify it is to upgrade the pppoeconf package to version 1.0 or later and "
-#~ "to allow dpkg to install the new version of the script. The best way to "
-#~ "disable it is to remove its execute permission. The best way to delete it "
-#~ "is to purge the pppoeconf package."
-#~ msgstr ""
-#~ "空でない実行可能なスクリプト /etc/ppp/ip-up.d/000usepeerdns が検出されまし"
-#~ "た。これに対しては、修正する・無効にする、または削除を行う必要があります。"
-#~ "修正を行うのに最も良い方法は、pppoeconf パッケージをバージョン 1.0 以降に"
-#~ "アップグレードし、dpkg に新しいバージョンのスクリプトをインストールさせる"
-#~ "ことです。無効にするのに最も良い方法は、実行権限を削除すること。そして、削"
-#~ "除するのに最も良い方法は、pppoeconf パッケージを完全に削除 (purge) するこ"
-#~ "とです。"
-
-#~ msgid "A rogue xisp PPP hook script is present"
-#~ msgstr "問題になりそうな xisp の PPP フックスクリプトが存在しています。"
-
-#~ msgid ""
-#~ "The xisp package contains scripts /etc/ppp/ip-up.d/0xisp-dns and /etc/ppp/"
-#~ "ip-down.d/0xisp-dns (run by pppd after a PPP interface is brought up or "
-#~ "down) that overwrite /etc/resolv.conf. The scripts must be modified, "
-#~ "disabled or deleted so that they will not interfere with the operation of "
-#~ "resolvconf. Contrary to Debian policy, merely removing the xisp package "
-#~ "does not disable the scripts."
-#~ msgstr ""
-#~ "xisp パッケージは、/etc/resolv.conf を上書きする /etc/ppp/ip-up.d/0xisp-"
-#~ "dns および /etc/ppp/ip-down.d/0xisp-dns スクリプトを含んでいます (これら"
-#~ "は PPP インターフェイスが起動・停止された後に pppd によって実行されます)。"
-#~ "resolvconf の動作に干渉しないように、これらのスクリプトは修正・無効化、あ"
-#~ "るいは削除を行う必要があります。Debian ポリシーに反して、単純に xisp パッ"
-#~ "ケージの削除ではスクリプトは無効にされません。"
-
-#~ msgid ""
-#~ "A non-empty executable script /etc/ppp/ip-up.d/0xisp-dns and/or /etc/ppp/"
-#~ "ip-down.d/0xisp-dns has been detected. Each one must be modified, "
-#~ "disabled or deleted. The best way to disable it is to remove its execute "
-#~ "permission. The best way to delete it is to purge the xisp package."
-#~ msgstr ""
-#~ "空でない実行可能なスクリプト /etc/ppp/ip-up.d/0xisp-dns および /etc/ppp/"
-#~ "ip-down.d/0xisp-dns が検出されました。それぞれ、修正する・無効にする、ある"
-#~ "いは削除を行う必要があります。無効にするのに最も良い方法は、実行権限を削除"
-#~ "すること。そして、削除するのに最も良い方法は、xisp パッケージを完全に削除 "
-#~ "(purge) することです。"
-
-#~ msgid "Disable rogue hook scripts?"
-#~ msgstr "問題になりそうなフックスクリプトを無効にしますか?"
-
-#~ msgid ""
-#~ "Certain packages contain hook scripts which, contrary to Debian policy, "
-#~ "modify the resolver configuration file even when the packages that own "
-#~ "them are removed. Packages known to contain such rogue hook scripts are: "
-#~ "pppconfig (<< 2.2.0 and 2.3), pppoeconf (<< 1.0), totd (<< 1.4-4) and "
-#~ "xisp. Although the resolvconf package is marked as conflicting with these "
-#~ "packages so that they are removed before resolvconf is installed, their "
-#~ "rogue hook scripts may remain behind."
-#~ msgstr ""
-#~ "フックスクリプトを含んでいる一部のパッケージは、Debian ポリシーに反し、ス"
-#~ "クリプトを含むパッケージが削除される際にリゾルバ設定ファイルを変更します。"
-#~ "そのような問題のあるスクリプトを含んでいるパッケージは pppconfig (<< "
-#~ "2.2.0 および 2.3)、pppoeconf (<< 1.0)、totd (<< 1.4-4)、そして xisp です。"
-#~ "resolvconf パッケージはこれらのパッケージと衝突 (conflict) するように設定"
-#~ "されているので、resolvconf がインストールされる前にこれらのパッケージは削"
-#~ "除されますが、問題のスクリプトは残ったままかもしれません。"
-
-#~ msgid ""
-#~ "If you agree then the post-installation process will disable rogue hook "
-#~ "scripts by removing their execute permissions."
-#~ msgstr ""
-#~ "ここで「はい」と答えると、問題になりそうなフックスクリプトを post-install "
-#~ "時に実行権限を取り去ることで無効にします。"
-
-#~ msgid ""
-#~ "If you do not agree then you should disable the rogue scripts manually, "
-#~ "otherwise resolvconf will not work properly."
-#~ msgstr ""
-#~ "「いいえ」と答えた場合は、問題になりそうなスクリプトを手動で無効にする必要"
-#~ "があります。さもなければ resolvconf は正しく動作しないでしょう。"
+"/etc/network/interfaces に必要な \"dns-nameservers\" 行を加えた後、/etc/"
+"resolvconf/resolv.conf.d/tail へのシンボリックリンクを /dev/null へのリンクに"
+"変更する必要があります。"
