@@ -4,6 +4,8 @@
 # Provides:          resolvconf
 # Required-Start:    $local_fs
 # Required-Stop:     $local_fs
+# X-Start-Before:    networking ifupdown
+# Should-Stop:       networking ifupdown
 # Default-Start:     S
 # Default-Stop:      0 6
 # Short-Description: Nameserver information manager

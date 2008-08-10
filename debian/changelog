@@ -1,6 +1,8 @@
-resolvconf (1.42~unreleased1) unstable; urgency=low
+resolvconf (1.42~unreleased2) unstable; urgency=high
 
   [ Thomas Hood ]
+  * init script: Add X-Start-Before and Should-Stop dependencies on
+    ifupdown and networking (Closes: #493501, #494084)
   * [Debconf translation updates]
   * Japanese (Closes: #493608)
   * Swedish (Closes: #491780)
