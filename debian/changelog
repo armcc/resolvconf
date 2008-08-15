@@ -1,4 +1,4 @@
-resolvconf (1.42~unreleased3) unstable; urgency=high
+resolvconf (1.42) unstable; urgency=high
 
   [ Thomas Hood ]
   * init script: Add X-Start-Before and Should-Stop dependencies on
@@ -7,7 +7,7 @@ resolvconf (1.42~unreleased3) unstable; urgency=high
   * Japanese (Closes: #493608)
   * Swedish (Closes: #491780)
 
- -- Thomas <jdthood@yahoo.co.uk>  Sun, 03 Aug 2008 21:27:56 +0200
+ -- Thomas Hood <jdthood@yahoo.co.uk>  Sun, 03 Aug 2008 21:27:56 +0200
 
 resolvconf (1.41) unstable; urgency=low
 
