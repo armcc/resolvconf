@@ -1,4 +1,4 @@
-resolvconf (1.43) unstable; urgency=low
+resolvconf (1.43~1) unstable; urgency=low
 
   [ Thomas Hood ]
   * No longer #! bash in postrm and config since (as of policy 3.7.3.0)
