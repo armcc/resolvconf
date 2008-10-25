@@ -1,5 +1,4 @@
-#!/bin/bash
-# Bash required because /usr/share/debconf/confmodule uses "local" (#252094)
+#!/bin/sh
 
 set -e
 
