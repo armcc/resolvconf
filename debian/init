@@ -5,13 +5,16 @@
 # Required-Start:    $local_fs
 # Required-Stop:     $local_fs
 # X-Start-Before:    networking ifupdown
-# Should-Stop:       networking ifupdown
 # Default-Start:     S
 # Default-Stop:      0 6
 # Short-Description: Nameserver information manager
 # Description:       This service manages the list of nameserver addresses
 #                    used by the libc resolver and name service caches
 ### END INIT INFO
+#
+# We really need "X-Stop-Before: networking ifupdown" too because
+# terminal ifdowns shouldn't update resolv.conf;
+# however no "X-Stop-Before" dependency has been defined.
 #
 # This script is part of the resolvconf package
 # See /usr/share/doc/resolvconf/copyright
