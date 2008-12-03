@@ -7,7 +7,7 @@ resolvconf (1.43~3) unstable; urgency=low
   * initscript: Don't declare Should-Stop dependency on networking and ifupdown
     (because what is really required is a X-Stop-Before dependency)
   * In resolvconf(8), for explanation of dns-* options refer the reader
-    to resolv.conf(5).  (Closes: #502863)
+    to resolv.conf(5).  (Closes: #507086)
   * [Debconf translation updates]
   * Swedish (Closes: #503353)
 
