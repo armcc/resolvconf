@@ -76,7 +76,7 @@ option
 .BR nameserver .)
 For each other valid
 .BR resolv.conf (5)
-configuration option
+configuration option,
 you can include, in the stanza,
 one line beginning with that option name with a
 .B dns\-
@@ -93,6 +93,10 @@ The resulting stanza might look like the following example.
 .EE
 .PP
 See the resolvconf package's README file for more detailed information.
+For more information about the dns-* options, e.g.,
+.BR dns\-search ,
+see
+.BR resolv.conf (5).
 .PP
 The administrator \fIcan\fR run
 .B resolvconf

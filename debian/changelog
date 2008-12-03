@@ -1,4 +1,4 @@
-resolvconf (1.43~2) unstable; urgency=low
+resolvconf (1.43~3) unstable; urgency=low
 
   [ Thomas Hood ]
   * No longer #! bash in postrm and config since (as of policy 3.7.3.0)
@@ -6,6 +6,8 @@ resolvconf (1.43~2) unstable; urgency=low
     feature
   * initscript: Don't declare Should-Stop dependency on networking and ifupdown
     (because what is really required is a X-Stop-Before dependency)
+  * In resolvconf(8), for explanation of dns-* options refer the reader
+    to resolv.conf(5).  (Closes: #502863)
   * [Debconf translation updates]
   * Swedish (Closes: #503353)
 
