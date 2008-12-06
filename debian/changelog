@@ -1,4 +1,4 @@
-resolvconf (1.43~3) unstable; urgency=low
+resolvconf (1.43) unstable; urgency=low
 
   [ Thomas Hood ]
   * No longer #! bash in postrm and config since (as of policy 3.7.3.0)
@@ -11,7 +11,7 @@ resolvconf (1.43~3) unstable; urgency=low
   * [Debconf translation updates]
   * Swedish (Closes: #503353)
 
- -- Thomas Hood <jdthood@yahoo.co.uk>  Sat, 25 Oct 2008 12:00:00 +0200
+ -- Marco Nenciarini <mnencia@debian.org>  Sat, 06 Dec 2008 10:17:36 +0100
 
 resolvconf (1.42) unstable; urgency=high
 
