@@ -6,6 +6,7 @@ lo.!(pdns|pdns-recursor)
 lo
 tun*
 tap*
+hso*
 eth*
 ath*
 wlan*
