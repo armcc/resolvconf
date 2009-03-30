@@ -2,7 +2,7 @@ Source: resolvconf
 Section: net
 Priority: optional
 Maintainer: resolvconf maintainers <resolvconf-devel@lists.alioth.debian.org>
-Uploaders: Daniel Kahn Gillmor <dkg-debian.org@fifthhorseman.net>, Thomas Hood <jdthood@yahoo.co.uk>, Marco Nenciarini <mnencia@debian.org>, Petter Reinholdtsen <pere@debian.org>
+Uploaders: Daniel Kahn Gillmor <dkg@fifthhorseman.net>, Thomas Hood <jdthood@yahoo.co.uk>, Marco Nenciarini <mnencia@debian.org>, Petter Reinholdtsen <pere@debian.org>
 Build-Depends: debhelper (>= 5)
 Vcs-Svn: svn://svn.debian.org/resolvconf/resolvconf/trunk
 Vcs-Browser: http://svn.debian.org/wsvn/resolvconf/resolvconf/trunk

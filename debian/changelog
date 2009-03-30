@@ -1,8 +1,12 @@
 resolvconf (1.44~1) unstable; urgency=low
 
+  [ Thomas Hood ]
   * Add "hso*" pattern to interface-order file  (Closes: #516357)
+  
+  [ Daniel Kahn Gillmor ]
+  * debian/control: updated my e-mail address in Uploaders
 
- -- Thomas Hood <jdthood@gmail.com>  Thu, 12 Mar 2009 08:00:00 +0100
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Mon, 30 Mar 2009 04:03:49 -0400
 
 resolvconf (1.43) unstable; urgency=low
 
