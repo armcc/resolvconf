@@ -6,8 +6,10 @@ resolvconf (1.44~1) unstable; urgency=low
   [ Daniel Kahn Gillmor ]
   * debian/control: updated my e-mail address in Uploaders
   * fixed typo in initscript.  Thanks, Peter Eisentraut (Closes: #525681)
+  * added status function to initscript for LSB compliance.  Thanks, Peter
+    Eisentraut (Closes: #525680)
 
- -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Sun, 26 Apr 2009 17:41:23 -0400
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Sun, 26 Apr 2009 17:59:26 -0400
 
 resolvconf (1.43) unstable; urgency=low
 
