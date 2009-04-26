@@ -94,7 +94,7 @@ stop)
 restart)
 	log_action_begin_msg "Restarting resolvconf"
 	[ -d "${RUN_DIR}/interface" ] || log_action_end_msg_and_exit 1 "${RUN_DIR}/interface is not a directory"
-	enable_updates || log_action_end_msg_and_exit 1 "could not enabling updates"
+	enable_updates || log_action_end_msg_and_exit 1 "could not enable updates"
 	update
 	log_action_end_msg_and_exit "$?"
 	;;
