@@ -58,18 +58,22 @@ fi
 uniquify()
 {
 	RSLT=""
+	local D
 	while [ "$1" ] ; do
+		# Remove the root domain suffix
+		D="${1%.}"
 		for E in $RSLT ; do
-			[ "$1" = "$E" ] && { shift ; continue 2 ; }
+			[ "$D" = "$E" ] && { shift ; continue 2 ; }
 		done
-		RSLT="${RSLT:+$RSLT }$1"
+		RSLT="${RSLT:+$RSLT }$D"
 		shift
 	done
 }
 
 # Args are candidate items not containing spaces
 # Returns NSMSRVS -- space-separate list of no more than 3 items,
-#                    without duplicates, truncated after 127.*
+#                    without duplicates,
+#                    truncated after 127.* if TRUNCATE_NAMESERVER_LIST_AFTER_127 set affirmatively
 uniquify_nameserver_list()
 {
 	NMSRVRS=""

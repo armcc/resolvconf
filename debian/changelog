@@ -1,7 +1,10 @@
-resolvconf (1.44~1) unstable; urgency=low
+resolvconf (1.44~2) unstable; urgency=low
 
   [ Thomas Hood ]
   * Add "hso*" pattern to interface-order file  (Closes: #516357)
+  * Don't include duplicate domain names (both with and without
+    the root domain suffix) in search list.  Thanks to Tom Carroll.
+    (Closes: #522814)
   
   [ Daniel Kahn Gillmor ]
   * debian/control: updated my e-mail address in Uploaders
