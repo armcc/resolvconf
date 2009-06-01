@@ -31,6 +31,8 @@ purge)
 	rm -f /etc/resolvconf/resolv.conf.d/tail
 	rm -f /etc/resolvconf/resolv.conf.d/original
 	rm -f /etc/default/resolvconf
+	rmdir /lib/init/rw/resolvconf/interface || :
+	rmdir /lib/init/rw/resolvconf || :
 	;;
 esac
 

@@ -1,16 +1,18 @@
-resolvconf (1.44~2) unstable; urgency=low
+resolvconf (1.44~3) unstable; urgency=low
 
   [ Thomas Hood ]
   * Add "hso*" pattern to interface-order file  (Closes: #516357)
   * Don't include duplicate domain names (both with and without
-    the root domain suffix) in search list.  Thanks to Tom Carroll.
+    the root domain suffix) in search list. Thanks to Tom Carroll.
     (Closes: #522814)
+  * Remove /lib/init/rw/resolvconf on purge  (Closes: #531283)
+    Thanks to Holger Levsen.
   
   [ Daniel Kahn Gillmor ]
-  * debian/control: updated my e-mail address in Uploaders
-  * fixed typo in initscript.  Thanks, Peter Eisentraut (Closes: #525681)
-  * added status function to initscript for LSB compliance.  Thanks, Peter
-    Eisentraut (Closes: #525680)
+  * debian/control: Update my e-mail address in Uploaders
+  * Fix typo in initscript.  Thanks, Peter Eisentraut (Closes: #525681)
+  * Add status function to initscript for LSB compliance.  Thanks,
+    Peter Eisentraut (Closes: #525680)
 
  -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Sun, 26 Apr 2009 17:59:26 -0400
 
