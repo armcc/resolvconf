@@ -1,4 +1,4 @@
-resolvconf (1.44~3) unstable; urgency=low
+resolvconf (1.44) unstable; urgency=low
 
   [ Thomas Hood ]
   * Add "hso*" pattern to interface-order file  (Closes: #516357)
@@ -14,7 +14,7 @@ resolvconf (1.44~3) unstable; urgency=low
   * Add status function to initscript for LSB compliance.  Thanks,
     Peter Eisentraut (Closes: #525680)
 
- -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Sun, 26 Apr 2009 17:59:26 -0400
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 02 Jun 2009 18:02:23 -0400
 
 resolvconf (1.43) unstable; urgency=low
 
