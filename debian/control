@@ -8,7 +8,7 @@ Vcs-Svn: svn://svn.debian.org/resolvconf/resolvconf/trunk
 Vcs-Browser: http://svn.debian.org/wsvn/resolvconf/resolvconf/trunk
 Homepage: http://alioth.debian.org/projects/resolvconf/
 Dm-Upload-Allowed: yes
-Standards-Version: 3.8.0.0
+Standards-Version: 3.8.1.0
 
 Package: resolvconf
 Architecture: all

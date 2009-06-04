@@ -1,6 +1,8 @@
-resolvconf (1.45~1) UNRELEASED; urgency=low
+resolvconf (1.45~2) UNRELEASED; urgency=low
 
   * NOT RELEASED YET
+  [ Thomas Hood ]
+  * Bump standards version
 
  -- 
 
