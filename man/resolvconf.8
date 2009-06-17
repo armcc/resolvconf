@@ -234,6 +234,13 @@ Normally this is just a comment line.
 .I /etc/resolvconf/resolv.conf.d/tail
 File to be appended to the dynamically generated resolver configuration file.
 To append nothing, make this an empty file.
+This file is a good place to put a resolver
+.B options
+line if one is needed, e.g.,
+
+.EX
+    options inet6
+.EE
 .SH BUGS
 Currently
 .B resolvconf
