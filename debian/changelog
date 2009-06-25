@@ -1,10 +1,11 @@
-resolvconf (1.45~3) UNRELEASED; urgency=low
+resolvconf (1.45~4) UNRELEASED; urgency=low
 
   * NOT RELEASED YET
   [ Thomas Hood ]
   * Bump standards version
   * Add note to man page that tail file is a good place for a
     resolver "options" line  (Closes: #533297)
+  * Add eu.po (Closes: #534558)
 
  -- 
 
