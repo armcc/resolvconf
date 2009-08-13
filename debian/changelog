@@ -1,6 +1,5 @@
-resolvconf (1.45~4) UNRELEASED; urgency=low
+resolvconf (1.45~5) UNRELEASED; urgency=low
 
-  * NOT RELEASED YET
   [ Thomas Hood ]
   * Bump standards version
   * Add note to man page that tail file is a good place for a
