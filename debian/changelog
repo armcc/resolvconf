@@ -1,4 +1,4 @@
-resolvconf (1.45~5) UNRELEASED; urgency=low
+resolvconf (1.45) unstable; urgency=low
 
   [ Thomas Hood ]
   * Bump standards version
