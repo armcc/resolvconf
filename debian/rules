@@ -24,6 +24,7 @@ binary-indep: build
 	install -p --owner=root --group=root --mode=0755 bin/resolvconf $(DESTDIR)/sbin
 	install -p --owner=root --group=root --mode=0755 bin/list-records $(DESTDIR)/lib/resolvconf
 	dh_installdebconf
+	dh_lintian
 	dh_installdocs README
 	dh_installman
 	dh_installchangelogs

@@ -19,8 +19,8 @@ Credits
 
 News
 ~~~~
-* Last updated 30 July 2005 for version 1.33
-  (Update info about totd; update popcon scores)
+* Last updated 18 June 2010 for version 1.46 -- Update status of TODO
+  items to reflect progress over past five years
 
 Introduction
 ~~~~~~~~~~~~
@@ -507,56 +507,38 @@ A. Because 'dns-nameservers' can take several address arguments whereas
 TODO
 ~~~~
   * resolvconf
-    # 213591: Implement locking
-      Currently there is nothing that prevents two instances of
-      resolvconf from running at the same time.  One can imagine
-      scenarios in which this would have sub-optimal results.
-    * Add -n option?
-      If a caller needs to change several records then the only way to
-      do it is to call resolvconf several times.  In such a case we
-      don't want resolvconf to run the update scripts several times;
-      therefore an option (e.g., -n) would be needed that would prevent
-      resolvconf from running update scripts.  This option would be used
-      on all but the last invocation.  I haven't implemented this yet
-      because I haven't seen a case where someone really needs to call
-      resolvconf more than once.
+    See the Wishlist items at http://bugs.debian.org/resolvconf
   * gnome-ppp
     # 258064: Writes to /etc/resolv.conf
-      - UNKNOWN
+      - NO ACTION for several years
   * gnome-system-tools
     # 258553: Incompatible with resolvconf
-      - OKed by maintainer but nothing has been done
+      - OKed by maintainer but NO ACTION has been taken for several years
   * systemconfigurator
     # 272475: Please support resolvconf
-      - NO REPLY for several months
+      - NO REPLY for several years
   * ppp
     # 208095: Please suggest resolvconf
       - WONTFIX
   * pppconfig
     # 266819: Please suggest resolvconf
-      - NO REPLY
+      - NO REPLY for several years
   * ifupdown
     + Handle dns-* commands natively so that the resolver is configured
       before "up" commands are run
   * nscd
     # 266817: Please suggest resolvconf
-      - UNKNOWN
+      - WONTFIX
+  * bind
+    + Drop support for this obsolete version of BIND
   * bind9
-    # 252232: Please use 'lo.named' as resolvconf record name
-      - NO REPLY from maintainer for several months
-    # 252285: Please Suggest resolvconf
-      - NO REPLY from maintainer for several months
     + Adopt /etc/resolvconf/update.d/bind
       - The right thing to do, in theory.  Low priority.
     + Automatically use /var/run/bind/named.options if present instead of
       /etc/bind/named.conf.options
-  * bind
-    + Modify initscript to support resolvconf: same changes as in bind9
-      - Low priority since this package is obsolete
-  * dnscache (from djbdns)
-    + Someone should investigate whether it should be supported
-      - Currently it is not packaged for Debian; however the 
-        djbdns-installer package assists Debian users in installing it.
+  * dnscache-run (from djbdns)
+    # 582755: Add resolvconf support
+      - SUBMITTED
   * maradns
     + Add resolvconf support
       - Needs more investigation
@@ -565,13 +547,6 @@ TODO
 	as dnsmasq and pdnsd do.
       - Could it have an update script that sets the "upstream_servers"
 	variable?
-  * pdns-recursor
-    # 308677: /etc/init.d/pdns-recursor: Please add resolvconf calls
-      - SUBMITTED
-  * pdns-server
-    # 304528: Please add resolvconf update script in order to automate
-      the creation of the recursors list
-      - SUBMITTED
   * libadns1
     + It consults resolv.conf so it should already be supported.
       However, someone should test it.
@@ -643,15 +618,18 @@ DONE
   * nscd
     # 252251: Please add resolvconf support
       - DONE in resolvconf 1.15
-  * bind9 and bind
+  * bind9
     + Create script /etc/resolvconf/update.d/bind to:
       . Convert /etc/bind/named.options.sed into /var/run/bind/named.options
         (which is to be included in /etc/bind/named.conf)
       . Then run "/etc/init.d/bind9 reload" or "/etc/init.d/bind reload"
       - DONE in resolvconf package
-  * bind9
     # 199255: Please support resolvconf
       - DONE in 1:9.2.3-1
+    # 252232: Please use 'lo.named' as resolvconf record name
+      - DONE in 1:9.3.2-2
+    # 252285: Please Suggest resolvconf
+      - DONE in 1:9.4.2-2
   * dnsmasq
     + Create script /etc/resolvconf/update.d/dnsmasq to
       generate /var/run/dnsmasq/resolv.conf
@@ -660,6 +638,13 @@ DONE
       - DONE in 1.13-2
     + Include /etc/resolvconf/update.d/dnsmasq
       - DONE in 1.13-3
+  * pdns-recursor
+    # 308677: /etc/init.d/pdns-recursor: Please add resolvconf calls
+      - DONE in 2.9.18-4
+  * pdns-server
+    # 304528: Please add resolvconf update script in order to automate
+      the creation of the recursors list
+      - DONE in 2.9.18-4
   * pdnsd
     # 247946: Fix resolvconf support
       - DONE in pdnsd 1.1.10par-4
