@@ -11,8 +11,9 @@ resolvconf (1.46~2) unstable; urgency=low
   * Add Conflict with dnscache-run which overwrites /etc/resolv.conf.
     See #582755 for my request that dnscache-run be modified to
     be compatible with resolvconf.
-  * Drop all dependencies on package versions older than those in
-    oldstable.
+  * Drop all dependencies on package versions older than oldstable.
+  * Drop Enhances: for obsolete packages dhcp-client and bind
+  * Add Enhances: isc-dhcp-client
   * Add lintian overrides.
   * Bump Standards-Version to 3.8.4.  No changes required.
 
