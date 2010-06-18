@@ -1,15 +1,20 @@
 resolvconf (1.46~2) unstable; urgency=low
 
-  * Add hook script for dhclient from the new isc-dhcp-client package
-    (Closes: #583991).  The new script, in /etc/dhcp/, is the same as
-    the old one, in /etc/dhcp3/.  Please note that any local changes
-    made to the old script should be made to the new script as well.
-  * Update status of TODO items in README.
+  * Add hook script for dhclient from the new (currently only in
+    experimental) isc-dhcp-client package (Closes: #583991).
+    The new script, in /etc/dhcp/, has the same contents as the
+    old one, in /etc/dhcp3/.  Please note that any local changes
+    made to the old one should be made to the new script as well.
+  * Reiterate the latter advice in a NEWS item.
+  * Update the status of many TODO items in the README file. There
+    has been some progress in the past five years.
   * Add Conflict with dnscache-run which overwrites /etc/resolv.conf.
-    See #582755.
-  * Drop Conflicts with packages no longer available even in oldstable.
-  * Add lintian overrides.
-  * Bump Standards-Version.  No changes required.
+    See #582755 for my request that dnscache-run be modified to
+    support resolvconf.
+  * Drop all dependencies on package versions older than those in the
+    "oldstable" distribution.
+  * Add lintian overrides to eliminate invalid lintian warnings.
+  * Bump Standards-Version to 3.8.4.  No changes required.
 
  -- Thomas Hood <jdthood@gmail.com>  Fri, 18 Jun 2010 09:19:00 +0200
 
