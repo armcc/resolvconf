@@ -1,3 +1,12 @@
+resolvconf (1.46~1) unstable; urgency=low
+
+  * Add hook script for dhclient from the new isc-dhcp-client package
+    (Closes: #583991).  The new script, in /etc/dhcp/, is the same as
+    the old one, in /etc/dhcp3/.  Please note that any local changes
+    made to the old script should be made to the new script as well.
+
+ -- Thomas Hood <jdthood@triffid>  Fri, 18 Jun 2010 09:19:00 +0200
+
 resolvconf (1.45) unstable; urgency=low
 
   [ Thomas Hood ]
