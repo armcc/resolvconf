@@ -10,10 +10,10 @@ resolvconf (1.46~2) unstable; urgency=low
     has been some progress in the past five years.
   * Add Conflict with dnscache-run which overwrites /etc/resolv.conf.
     See #582755 for my request that dnscache-run be modified to
-    support resolvconf.
-  * Drop all dependencies on package versions older than those in the
-    "oldstable" distribution.
-  * Add lintian overrides to eliminate invalid lintian warnings.
+    be compatible with resolvconf.
+  * Drop all dependencies on package versions older than those in
+    oldstable.
+  * Add lintian overrides.
   * Bump Standards-Version to 3.8.4.  No changes required.
 
  -- Thomas Hood <jdthood@gmail.com>  Fri, 18 Jun 2010 09:19:00 +0200
