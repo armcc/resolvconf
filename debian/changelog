@@ -1,4 +1,4 @@
-resolvconf (1.46~2) unstable; urgency=low
+resolvconf (1.46~3) unstable; urgency=low
 
   * Add hook script for dhclient from the new (currently only in
     experimental) isc-dhcp-client package (Closes: #583991).
@@ -12,10 +12,11 @@ resolvconf (1.46~2) unstable; urgency=low
     See #582755 for my request that dnscache-run be modified to
     be compatible with resolvconf.
   * Drop all dependencies on package versions older than oldstable.
+  * Bump Standards-Version to 3.9.0.0.  As advised, demote remaining
+    Conflicts to Breaks.
   * Drop Enhances: for obsolete packages dhcp-client and bind
   * Add Enhances: isc-dhcp-client
   * Add lintian overrides.
-  * Bump Standards-Version to 3.8.4.  No changes required.
 
  -- Thomas Hood <jdthood@gmail.com>  Fri, 18 Jun 2010 09:19:00 +0200
 
