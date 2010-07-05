@@ -102,7 +102,7 @@ switchconf (12)
     Forcibly links selected resolv.conf file into place without making a
     backup.
 divine (9)
-    Symlinks in a resolv.conf for the selected network.  Appears to
+    Symlinks-in a resolv.conf for the selected network.  Appears to
     trash whatever was in resolv.conf when it starts.
 intuitively (18)
     If a resolv.conf file is included in /etc/intuitively/NETWORK,
