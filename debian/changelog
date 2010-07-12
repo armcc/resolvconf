@@ -1,5 +1,6 @@
-resolvconf (1.46~4) unstable; urgency=low
+resolvconf (1.46) unstable; urgency=low
 
+  [ Thomas Hood ]
   * Add hook script for dhclient from the new isc-dhcp-client
     package (Closes: #583991, #570896).  The new script, in
     /etc/dhcp/, has the same contents as the old one in /etc/dhcp3/.
@@ -19,7 +20,13 @@ resolvconf (1.46~4) unstable; urgency=low
   * Add Enhances: isc-dhcp-client
   * Add some lintian overrides.
 
- -- Thomas Hood <jdthood@gmail.com>  Fri, 18 Jun 2010 09:19:00 +0200
+  [ Marco Nenciarini ]
+  * Depend on debhelper >= 6.0.7~ to have dh_lintian
+  * Update copyright file to refer to GPL-2 instead of GPL which is
+    actually a symlink to GPL-3
+  * Add lintian overrides for breaks-without-version.
+
+ -- Marco Nenciarini <mnencia@debian.org>  Mon, 12 Jul 2010 12:41:37 +0200
 
 resolvconf (1.45) unstable; urgency=low
 
