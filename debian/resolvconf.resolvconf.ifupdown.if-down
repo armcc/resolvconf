@@ -5,7 +5,7 @@
 # Licensed under the GNU GPL.  See /usr/share/common-licenses/GPL.
 #
 # History
-# Jun 2003 - Apr 2004: Written by Thomas Hood <jdthood@yahoo.co.uk>
+# Jun 2003 - Nov 2010: Written by Thomas Hood
 
 [ -x /sbin/resolvconf ] || exit 0
 
@@ -16,9 +16,9 @@ esac
 
 case "$METHOD" in
 	dhcp)
-		# Delete record left behind by TERMinated dhclient
-		# This works around bug #196865
-		/sbin/resolvconf -d "${IFACE}"
+		# Delete record left behind by TERMinated udhcpc
+		# This works around bug #605215
+		/sbin/resolvconf -d "${IFACE}.udhcpc"
 		;;
 esac
 
