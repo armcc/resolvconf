@@ -1,4 +1,4 @@
-resolvconf (1.47~1) maverick; urgency=low
+resolvconf (1.47~1) unstable; urgency=low
 
   * Cause ifdown to delete ${IFACE}.udhcpc  (Closes: #605215)
   * Remove workaround for #196865 which was fixed in ifupdown << oldstable
