@@ -78,7 +78,7 @@ case "$1" in
 	fi
 	;;
   # *)
-	# In other modes we don't need to do anything
+	# In other modes (viz., abort-upgrade, abort-remove, abort-deconfigure) we don't need to do anything
 	# because we didn't take any action in the prerm
 	# ;;
 esac
@@ -158,3 +158,6 @@ if [ -x "/etc/init.d/resolvconf" ] ; then
 		/etc/init.d/resolvconf enable-updates
 	fi
 fi
+
+chmod ugo+x /sbin/resolvconf
+

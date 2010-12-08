@@ -10,6 +10,10 @@ resolvconf binary: possible-debconf-note-abuse
 # The link-tail-to-original description is only 21 lines
 resolvconf binary: too-long-extended-description-in-templates resolvconf/link-tail-to-original
 
-# Breaks is sufficient for these packages
+# "Breaks" alone is sufficient for these packages
 resolvconf: breaks-without-version divine
 resolvconf: breaks-without-version dnscache-run
+
+# We really want to install the script without x permissions.
+# The script is made executable in the postinst.  See #563386.
+resolvconf: script-not-executable ./sbin/resolvconf
