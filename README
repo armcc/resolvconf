@@ -516,7 +516,7 @@ TODO
       - Under discussion
   * dnscache-run (from djbdns)
     # 582755: Add resolvconf support
-      - NO REPLY for six months
+      - NO REPLY for several months
   * maradns
     + Add resolvconf support
       - Needs more investigation
