@@ -495,7 +495,7 @@ A. Because 'dns-nameservers' can take several address arguments whereas
 TODO
 ~~~~
   * resolvconf
-    See the Wishlist items at http://bugs.debian.org/resolvconf
+    + See the Wishlist items at http://bugs.debian.org/resolvconf
   * gnome-ppp
     # 258064: Writes to /etc/resolv.conf
       - NO ACTION for several years
@@ -505,24 +505,18 @@ TODO
   * systemconfigurator
     # 272475: Please support resolvconf
       - NO REPLY for several years
-  * ppp
-    # 208095: Please suggest resolvconf
-      - WONTFIX
   * pppconfig
     # 266819: Please suggest resolvconf
       - NO REPLY for several years
   * ifupdown
     + Handle dns-* commands natively so that the resolver is configured
       before "up" commands are run
-  * nscd
-    # 266817: Please suggest resolvconf
-      - WONTFIX
   * bind9
     # 483098: bind9: Please switch default to using resolvconf generated file if resolvconf is installed
       - Under discussion
   * dnscache-run (from djbdns)
     # 582755: Add resolvconf support
-      - SUBMITTED
+      - NO REPLY for six months
   * maradns
     + Add resolvconf support
       - Needs more investigation
@@ -556,6 +550,15 @@ TODO
     compatible library, add a /etc/resolvconf/update-libc.d/ script to
     notify running instances of the program that the resolver
     configuration file has changed.
+
+WONTFIX
+~~~~~~~
+  * ppp
+    # 208095: Please suggest resolvconf
+      - WONTFIX
+  * nscd
+    # 266817: Please suggest resolvconf
+      - WONTFIX
 
 DONE
 ~~~~
