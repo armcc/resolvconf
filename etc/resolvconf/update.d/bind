@@ -21,10 +21,10 @@ PATH=/sbin:/bin
 [ -f /etc/bind/named.conf.options ] || exit 0
 
 DYNAMIC_OPTS_FILE=named.options
-NAMED_RUN_DIR=/var/run/named
+NAMED_RUN_DIR=/var/run/bind
 
 # Default override
-[ -r /etc/default/bind9 ] && . /etc/default/bind9
+[ -r /etc/default/resolvconf ] && . /etc/default/resolvconf
 
 [ -d "$NAMED_RUN_DIR" ] || mkdir --parents --mode=0755 "$NAMED_RUN_DIR"
 

@@ -285,7 +285,7 @@ locally by customizing your configuration.
       set RESOLVCONF=yes in /etc/default/bind9.
     * To make bind9 use nameserver addresses supplied by other sources as
       addresses of forwarders, change the /etc/bind/named.conf file so that
-      it includes /var/run/named/named.options instead of
+      it includes /var/run/bind/named.options instead of
       /etc/bind/named.conf.options.  The former will be generated from the
       latter, as needed, such that the "forwarders" statement inside the
       "options" statement is added or updated to contain a current list of
