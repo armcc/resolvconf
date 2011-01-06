@@ -82,8 +82,7 @@ cat /etc/bind/named.conf.options \
 	forwarders { '"${NMSRVRS}"'};/' | sed -e '/^[[:space:]]*$/{ d ; }' \
 	>> "$TMP_FILE"
 
-# bind version 8 does not create a "bind" group
-chown root:bind "$TMP_FILE" > /dev/null 2>&1 || :
+chown root:bind "$TMP_FILE"
 
 if [ "$1" = "-i" ] ; then
 	mv -f "$TMP_FILE" "$OPTS_FILE"
@@ -97,6 +96,5 @@ if [ -x /usr/bin/diff ] && [ -f "$OPTS_FILE" ] && /usr/bin/diff -q "$OPTS_FILE" 
 else
 	mv -f "$TMP_FILE" "$OPTS_FILE"
 	[ -x /etc/init.d/bind9 ] && /etc/init.d/bind9 reload > /dev/null 2>&1 || :
-	[ -x /etc/init.d/bind  ] && /etc/init.d/bind reload > /dev/null 2>&1 || :
 fi
 
