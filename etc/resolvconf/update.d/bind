@@ -32,7 +32,7 @@ NAMED_RUN_DIR=/var/run/bind
 DYNAMIC_OPTS_FILE=named.options
 
 # Stores arguments (minus duplicates) in RSLT, separated by spaces
-# Doesn't work properly if an argument itself contain whitespace
+# Doesn't work properly if an argument itself contains whitespace
 uniquify()
 {
 	RSLT=""
