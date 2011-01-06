@@ -19,8 +19,8 @@ Credits
 
 News
 ~~~~
-* Last updated 18 June 2010 for version 1.46 -- Update status of TODO
-  items to reflect progress over past five years
+* Last updated 6 January 2011 for version 1.48
+  -- Remove support for old version of bind; update info for bind9
 
 Introduction
 ~~~~~~~~~~~~
@@ -281,27 +281,15 @@ locally by customizing your configuration.
       too that scripts in /etc/network/if-up.d/ CAN make use of the
       added nameservers because those scripts run after 000resolvconf.
   3.5 bind9
-    * Change the /etc/bind/named.conf file so that it includes
-      /var/run/bind/named.options instead of /etc/bind/named.conf.options.
-      The former will be generated from the latter, as needed, by
-      inserting or updating the "forwarders" statement inside the
-      "options" statement with a current list of forwarders.
-  3.6 bind
-    * Change the /etc/bind/named.conf file so that it includes
-      /var/run/bind/named.options instead of /etc/bind/named.conf.options.
-      The former will be generated from the latter, as needed, by
-      inserting or updating the "forwarders" statement inside the
-      "options" statement with a current list of forwarders.
-    * Change /etc/init.d/bind to:
-      + At the bottom of start(), after the start-stop-daemon line, add:
-            if [ "$?" = 0 ] && [ -x /sbin/resolvconf ] ; then
-                echo "nameserver 127.0.0.1" | /sbin/resolvconf -a lo.named
-            fi
-      + At top of stop(), before the start-stop-daemon line, add:
-            if [ -x /sbin/resolvconf ] ; then
-                /sbin/resolvconf -d lo.named
-            fi
-      This tells resolvconf when named is available to resolve names.
+    * To make bind9 supply its nameserver address 127.0.0.1 to resolvconf,
+      set RESOLVCONF=yes in /etc/default/bind9.
+    * To make bind9 use nameserver addresses supplied by other sources as
+      addresses of forwarders, change the /etc/bind/named.conf file so that
+      it includes /var/run/named/named.options instead of
+      /etc/bind/named.conf.options.  The former will be generated from the
+      latter, as needed, such that the "forwarders" statement inside the
+      "options" statement is added or updated to contain a current list of
+      forwarders.
 4. Install the resolvconf package if you have not already done so.
    If you have already done so then consider dpkg-reconfigure'ing it.
    Agree to symlink /etc/resolv.conf to /etc/resolvconf/run/resolv.conf.
@@ -529,13 +517,9 @@ TODO
   * nscd
     # 266817: Please suggest resolvconf
       - WONTFIX
-  * bind
-    + Drop support for this obsolete version of BIND
   * bind9
-    + Adopt /etc/resolvconf/update.d/bind
-      - The right thing to do, in theory.  Low priority.
-    + Automatically use /var/run/bind/named.options if present instead of
-      /etc/bind/named.conf.options
+    # 483098: bind9: Please switch default to using resolvconf generated file if resolvconf is installed
+      - Under discussion
   * dnscache-run (from djbdns)
     # 582755: Add resolvconf support
       - SUBMITTED
@@ -618,6 +602,9 @@ DONE
   * nscd
     # 252251: Please add resolvconf support
       - DONE in resolvconf 1.15
+  * bind
+    + Drop support for this obsolete version of BIND
+      - DONE in resolvconf 1.48
   * bind9
     + Create script /etc/resolvconf/update.d/bind to:
       . Convert /etc/bind/named.options.sed into /var/run/bind/named.options
