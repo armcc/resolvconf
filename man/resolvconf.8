@@ -207,10 +207,17 @@ as an unlikely event,
 this is a relatively minor disadvantage.
 Set to "no" to disable this truncation feature.
 The default is "yes".
+.TP
+The following variable can be set in /etc/default/bind9.
+.TP
+.B NAMED_RUN_DIR
+The default is 
+.IR /var/run/named/ .
 .SH FILES
 .TP
-.I /etc/default/resolvconf
+.I /etc/default/resolvconf /etc/default/bind9
 See the ENVIRONMENT VARIABLES section.
+.TP
 .I /etc/resolvconf/run
 This is either a directory where nameserver information can be stored
 or a symbolic link to such a directory.
