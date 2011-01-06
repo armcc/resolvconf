@@ -20,13 +20,16 @@ PATH=/sbin:/bin
 [ -x /lib/resolvconf/list-records ] || exit 1
 [ -f /etc/bind/named.conf.options ] || exit 0
 
-DYNAMIC_OPTS_FILE=named.options
+# Defaults
 NAMED_RUN_DIR=/var/run/bind
 
-# Default override
+# Defaults overrides
 [ -r /etc/default/resolvconf ] && . /etc/default/resolvconf
 
+[ "$NAMED_RUN_DIR" ] || exit 0
 [ -d "$NAMED_RUN_DIR" ] || mkdir --parents --mode=0755 "$NAMED_RUN_DIR"
+
+DYNAMIC_OPTS_FILE=named.options
 
 # Stores arguments (minus duplicates) in RSLT, separated by spaces
 # Doesn't work properly if an argument itself contain whitespace

@@ -3,7 +3,7 @@ resolvconf (1.48~3) unstable; urgency=low
   [ Thomas Hood ]
   * README: Drop support for old bind package and update instructions
     for configuring bind9 to work with resolvconf.  (Closes: #586326)
-  * Allow NAMED_RUN_DIR to be overridden in /etc/default/bind9.
+  * Allow NAMED_RUN_DIR to be overridden in /etc/default/resolvconf.
     (Closes: #602204)
 
  -- Thomas Hood <jdthood@triffid>  Thu, 06 Jan 2011 12:00:00 +0100
