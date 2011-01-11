@@ -6,7 +6,7 @@ resolvconf (1.48) unstable; urgency=low
   * Allow NAMED_RUN_DIR to be overridden in /etc/default/resolvconf.
     (Closes: #602204)
 
- -- Thomas Hood <jdthood@triffid>  Thu, 06 Jan 2011 12:00:00 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Thu, 06 Jan 2011 12:00:00 +0100
 
 resolvconf (1.47) unstable; urgency=low
 
