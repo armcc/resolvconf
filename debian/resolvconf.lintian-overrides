@@ -11,5 +11,4 @@ resolvconf binary: possible-debconf-note-abuse
 resolvconf binary: too-long-extended-description-in-templates resolvconf/link-tail-to-original
 
 # Breaks is sufficient for these packages
-resolvconf: breaks-without-version divine
 resolvconf: breaks-without-version dnscache-run
