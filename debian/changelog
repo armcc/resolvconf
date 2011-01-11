@@ -1,4 +1,4 @@
-resolvconf (1.48~3) unstable; urgency=low
+resolvconf (1.48) unstable; urgency=low
 
   [ Thomas Hood ]
   * README: Drop support for old bind package and update instructions
