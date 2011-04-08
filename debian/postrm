@@ -5,8 +5,10 @@ set -e
 #DEBHELPER#
 
 case "$1" in
-remove)
-	# Restore /etc/resolv.conf
+  remove)
+	#
+	# Restore /etc/resolv.conf if it's resolvconf symlink
+	#
 	if \
 		[ -L /etc/resolv.conf ] \
 		&& { \
@@ -22,7 +24,7 @@ remove)
 		fi
 	fi
 	;;
-purge)
+  purge)
 	if [ -L /etc/resolvconf/run ] ; then
 		rm -f /etc/resolvconf/run
 	elif [ -d /etc/resolvconf/run ] ; then
@@ -34,5 +36,15 @@ purge)
 	rmdir /lib/init/rw/resolvconf/interface || :
 	rmdir /lib/init/rw/resolvconf || :
 	;;
+  # disappear|upgrade)
+	# Don't do anything
+	# ;;
+  # failed-upgrade)
+	# Don't do anything because we don't do anything in the postrm on upgrade
+	# ;;
+  # abort-install|abort-upgrade)
+	# Don't do anything.  In the preinst we create directories
+	# but there is no need to remove them.
+	# ;;
 esac
 

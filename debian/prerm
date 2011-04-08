@@ -2,7 +2,7 @@
 set -e
 
 case "$1" in
-  remove)
+  deconfigure|remove)
 	if [ -x "/etc/init.d/resolvconf" ] ; then
 		if which invoke-rc.d >/dev/null 2>&1 ; then
 			invoke-rc.d resolvconf disable-updates || :
@@ -11,8 +11,8 @@ case "$1" in
 		fi
 	fi							
 	;;
-# *)
-	# deconfigure, upgrade, failed-upgrade
+  # *)
+	# upgrade, failed-upgrade
 esac
 
 #DEBHELPER#

@@ -3,17 +3,16 @@ Section: net
 Priority: optional
 Maintainer: resolvconf maintainers <resolvconf-devel@lists.alioth.debian.org>
 Uploaders: Daniel Kahn Gillmor <dkg@fifthhorseman.net>, Thomas Hood <jdthood@yahoo.co.uk>, Marco Nenciarini <mnencia@debian.org>
-Build-Depends: debhelper (>= 6.0.7~)
 Vcs-Svn: svn://svn.debian.org/resolvconf/resolvconf/trunk
 Vcs-Browser: http://svn.debian.org/wsvn/resolvconf/resolvconf/trunk
 Homepage: http://alioth.debian.org/projects/resolvconf/
-Dm-Upload-Allowed: yes
-Standards-Version: 3.9.1.0
+DM-Upload-Allowed: yes
+Standards-Version: 3.9.2.0
 
 Package: resolvconf
 Architecture: all
 Enhances: isc-dhcp-client, dhcpcd, pump, udhcpc, ppp, ifupdown, network-manager, bind9, dnsmasq, pdnsd, totd, libc6, nscd
-Depends: lsb-base, ${misc:Depends}
+Depends: lsb-base, initscripts (>= xxx), ${misc:Depends}
 Breaks: dnscache-run
 Description: name server information handler
  Resolvconf is a framework for keeping up to date the system's
