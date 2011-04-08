@@ -1,7 +1,8 @@
 resolvconf (1.49~1) unstable; urgency=low
 
   [ Thomas Hood ]
-  * Use /run instead of /lib/init/rw (Closes: #621503)
+  * Use /run instead of /lib/init/rw (Closes: #621503).
+    Thanks to Roger Leigh for help (and for introducing /run).
   * Create run directory in the preinst instead of in the postinst
     (Closes: #551999, #563386)
   * Clean up maintainer scripts
