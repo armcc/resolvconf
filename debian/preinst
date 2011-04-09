@@ -5,7 +5,7 @@ set -e
 MYNAME=resolvconf.preinst
 report() { echo "${MYNAME}: $*" ; }
 report_err() { report "Error: $*" >&2 ; }
-report_info() { report "Info: $*" >&2 ; }
+report_info() { report "$*" >&2 ; }
 
 standard_run_available() {
 	[ -d /run ] \

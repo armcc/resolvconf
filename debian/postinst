@@ -7,7 +7,7 @@ set -e
 MYNAME=resolvconf.postinst
 report() { echo "${MYNAME}: $*" ; }
 report_err() { report "Error: $*" >&2 ; }
-report_info() { report "Info: $*" >&2 ; }
+report_info() { report "$*" >&2 ; }
 
 # We use dh_installinit with --no-start
 #DEBHELPER#
