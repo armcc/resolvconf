@@ -6,3 +6,6 @@ TODO
 When changing conffiles, update the license reference to refer to
 /usr/share/doc/resolvconf/copyright.
 
+
+A lintian warning about the man pages goes away when the
+man-db package is upgraded to >= 2.5.3-1.
