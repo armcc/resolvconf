@@ -52,6 +52,7 @@ case "$1" in
 					&& cp -a /lib/init/rw/resolvconf/* /run/resolvconf \
 					&& report_info "Migrated resolvconf run-time data from /lib/init/rw/resolvconf to /run/resolvconf"
 				}
+				mkdir -pv /etc/resolvconf
 				ln -nsf /run/resolvconf /etc/resolvconf/run
 			}
 		fi
@@ -81,9 +82,10 @@ case "$1" in
 		# Make directories at the standard location if possible,
 		# otherwise directly under /etc/resolvconf.
 		if standard_run_available && standard_run_subdirs_exist_or_create ; then
+			mkdir -pv /etc/resolvconf
 			ln -s /run/resolvconf /etc/resolvconf/run
 		else
-			mkdir -v /etc/resolvconf/run /etc/resolvconf/run/interface
+			mkdir -pv /etc/resolvconf/run/interface
 		fi
 	fi
 	;;
