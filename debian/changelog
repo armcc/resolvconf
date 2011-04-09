@@ -1,4 +1,4 @@
-resolvconf (1.49~1) unstable; urgency=low
+resolvconf (1.49) unstable; urgency=low
 
   [ Thomas Hood ]
   * Use /run instead of /lib/init/rw (Closes: #621503).
