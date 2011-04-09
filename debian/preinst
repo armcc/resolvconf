@@ -2,8 +2,6 @@
 
 set -e
 
-. /usr/share/debconf/confmodule
-
 MYNAME=resolvconf.preinst
 report() { echo "${MYNAME}: $*" ; }
 report_err() { report "Error: $*" >&2 ; }
@@ -95,6 +93,4 @@ case "$1" in
 esac
 
 #DEBHELPER#
-
-db_stop
 
