@@ -7,24 +7,29 @@ set -e
 case "$1" in
   remove)
 	#
-	# Restore /etc/resolv.conf if it's resolvconf symlink
+	# Restore /etc/resolv.conf if it's a resolvconf symlink
 	#
-	if \
+	if
 		[ -L /etc/resolv.conf ] \
-		&& { \
+		&& {
 			[ "$(readlink /etc/resolv.conf)" = "/etc/resolvconf/run/resolv.conf" ] \
-			|| [ "$(readlink /etc/resolv.conf)" = "resolvconf/run/resolv.conf" ] ; \
+			|| [ "$(readlink /etc/resolv.conf)" = "resolvconf/run/resolv.conf" ]
 		}
 	then
-		rm -f /etc/resolv.conf
+		# Replace symlink with what's at its target
 		if [ -e /etc/resolvconf/run/resolv.conf ] ; then
 			mv -f /etc/resolvconf/run/resolv.conf /etc/resolv.conf
 		elif [ -e /etc/resolvconf/resolv.conf.d/original ] ; then
 			mv -f /etc/resolvconf/resolv.conf.d/original /etc/resolv.conf
+		else
+			rm -f /etc/resolv.conf
 		fi
 	fi
 	;;
   purge)
+	#
+	# Remove all remaining cruft
+	#
 	if [ -L /etc/resolvconf/run ] ; then
 		rm -f /etc/resolvconf/run
 	elif [ -d /etc/resolvconf/run ] ; then
@@ -33,18 +38,17 @@ case "$1" in
 	rm -f /etc/resolvconf/resolv.conf.d/tail
 	rm -f /etc/resolvconf/resolv.conf.d/original
 	rm -f /etc/default/resolvconf
-	rmdir /lib/init/rw/resolvconf/interface || :
-	rmdir /lib/init/rw/resolvconf || :
+	rm -rf /run/resolvconf || :
 	;;
   # disappear|upgrade)
-	# Don't do anything
+	# Don't do anything on upgrade
 	# ;;
   # failed-upgrade)
-	# Don't do anything because we don't do anything in the postrm on upgrade
+	# Don't do anything because we don't do anything here (in the postrm) on upgrade
 	# ;;
   # abort-install|abort-upgrade)
-	# Don't do anything.  In the preinst we create directories
-	# but there is no need to remove them.
+	# Don't do anything.  In the preinst we do create directories
+	# but there is no immediate need to remove them if there is an error.
 	# ;;
 esac
 

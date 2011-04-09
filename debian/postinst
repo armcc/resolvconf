@@ -12,9 +12,9 @@ report_info() { report "Info: $*" >&2 ; }
 # We use dh_installinit with --no-start
 #DEBHELPER#
 
-### Link tail to original if appropriate ###
 case "$1" in
-  configure|reconfigure)
+  configure)
+	# Link tail to original if appropriate
 	if [ ! -e /etc/resolvconf/resolv.conf.d/tail ] ; then
 		db_get resolvconf/link-tail-to-original
 		if [ "$RET" = "true" ] ; then
@@ -23,20 +23,15 @@ case "$1" in
 			: > /etc/resolvconf/resolv.conf.d/tail
 		fi
 	fi
-	;;
-esac
-
-### Linkify /etc/resolv.conf if appropriate ###
-case "$1" in
-  configure|reconfigure)
+	# Linkify /etc/resolv.conf if appropriate
 	db_get resolvconf/linkify-resolvconf
 	if [ "$RET" = "true" ] ; then
 		# Back up
-		if \
+		if
 			[ -f /etc/resolv.conf ] \
-			&& { \
+			&& {
 				[ ! -L /etc/resolv.conf ] \
-				|| [ ! "$(readlink /etc/resolv.conf)" = "/etc/resolvconf/run/resolv.conf" ] ; \
+				|| [ ! "$(readlink /etc/resolv.conf)" = "/etc/resolvconf/run/resolv.conf" ]
 			}
 		then
 			if [ ! -e /etc/resolvconf/resolv.conf.d/original ] ; then
@@ -51,16 +46,25 @@ case "$1" in
 				cp -a /etc/resolv.conf /etc/resolvconf/run/resolv.conf
 			fi
 		fi
-
 		# Create the link
 		ln -nsf /etc/resolvconf/run/resolv.conf /etc/resolv.conf
 	fi
 	;;
+  # abort-upgrade)
+	# Don't do anything here since we don't do anything in the prerm on upgrade or on failed-upgrade
+	# ;;
+  # abort-remove)
+	# Don't do anything extra here since we don't do anything extra in the prerm on remove
+	# ;;
+  # abort-deconfigure)
+	# Don't do anything extra here since we don't do anything extra in the prerm on deconfigure
+	# ;;
 esac
-								
+
 db_stop
 
-### Enable updates ###
+# Enable updates
+# Do this also on abort-*
 if [ -x "/etc/init.d/resolvconf" ] ; then
 	if which invoke-rc.d >/dev/null 2>&1 ; then
 		invoke-rc.d resolvconf enable-updates || :
