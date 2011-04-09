@@ -13,7 +13,7 @@ Standards-Version: 3.9.2.0
 Package: resolvconf
 Architecture: all
 Enhances: isc-dhcp-client, dhcpcd, pump, udhcpc, ppp, ifupdown, network-manager, bind9, dnsmasq, pdnsd, totd, libc6, nscd
-Depends: lsb-base, initscripts (>= xxx), ${misc:Depends}
+Depends: lsb-base, initscripts (>= xxx), man-db (>= 2.5.3-1), ${misc:Depends}
 Breaks: dnscache-run
 Description: name server information handler
  Resolvconf is a framework for keeping up to date the system's
