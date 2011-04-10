@@ -38,6 +38,7 @@ case "$1" in
 	rm -f /etc/resolvconf/resolv.conf.d/tail
 	rm -f /etc/resolvconf/resolv.conf.d/original
 	rm -f /etc/default/resolvconf
+	rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
 	rm -rf /run/resolvconf || :
 	;;
   # disappear|upgrade)

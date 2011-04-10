@@ -4,12 +4,15 @@ resolvconf (1.49) unstable; urgency=low
   * Keep run-time data in /run instead of /lib/init/rw (Closes: #621503).
     Thanks to Roger Leigh for his help (and for introducing /run to Debian).
   * Create run-time data directories in the preinst instead of in the
-    postinst (Closes: #551999, #563386)
+    postinst (Closes: #551999, #563386).
   * Add dependency on the new initscripts package which enables /run.
-  * Clean up all maintainer scripts
-  * Bump Standards-Version to 3.9.2.0
+  * Clean up all maintainer scripts.
+  * Bump Standards-Version to 3.9.2.0.
+  * Remove /etc/dhcp3/dhclient-enter-hooks.d/resolvconf which is obsolete,
+    remove it on purge and declare a Breaks: old versions of dhcp3-client
+    which used it (Closes: #591022).
 
- -- Thomas Hood <jdthood@gmail.com>  Fri, 09 Apr 2011 12:00:00 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Sun, 10 Apr 2011 12:00:00 +0200
 
 resolvconf (1.48) unstable; urgency=low
 
