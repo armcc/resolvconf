@@ -30,8 +30,8 @@ binary-indep: build
 	dh_installchangelogs
 	dh_installinit --no-start -- start 38 S . stop 89 0 6 .
 	dh_installppp --name=000resolvconf
-	install --mode=0755 debian/resolvconf.000resolvconf.ifupdown.if-up $(DESTDIR)/etc/network/if-up.d/000resolvconf
-	install --mode=0755 debian/resolvconf.resolvconf.ifupdown.if-down $(DESTDIR)/etc/network/if-down.d/resolvconf
+	dh_installifupdown --name=resolvconf
+	dh_installifupdown --name=000resolvconf
 	dh_compress
 	dh_fixperms
 	dh_installdeb

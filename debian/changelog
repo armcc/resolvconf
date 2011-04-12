@@ -11,6 +11,8 @@ resolvconf (1.49) unstable; urgency=low
   * Remove /etc/dhcp3/dhclient-enter-hooks.d/resolvconf which is obsolete,
     remove it on purge and declare a Breaks: old versions of dhcp3-client
     which used it (Closes: #591022).
+  * Use dh_installifupdown to install ifupdown hook scripts and,
+    consequently, build-depend on debhelper >= 7.4.3.
 
  -- Thomas Hood <jdthood@gmail.com>  Sun, 10 Apr 2011 12:00:00 +0200
 
