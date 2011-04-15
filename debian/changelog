@@ -5,7 +5,7 @@ resolvconf (1.49) unstable; urgency=low
     Thanks to Roger Leigh for his help (and for introducing /run to Debian).
   * Create run-time data directories in the preinst instead of in the
     postinst (Closes: #551999, #563386).
-  * Add dependency on the new initscripts package which enables /run.
+  * Add dependency on initscripts >= 2.88dsf-13.3 which enables /run.
   * Clean up all maintainer scripts.
   * Bump Standards-Version to 3.9.2.0.
   * Remove /etc/dhcp3/dhclient-enter-hooks.d/resolvconf which is obsolete,
