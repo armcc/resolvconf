@@ -31,6 +31,8 @@ case "$1" in
 	fi
 
 	### BEGIN BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE PREINST ###
+	# /etc/resolvconf/run is not a non-canonicalizable symlink.
+	# RUN_CANONICALPATH is the canonical path pointed to by /etc/resolvconf/run.
 	# Attempt migration from old to new standard location
 	if [ -L /etc/resolvconf/run ] ; then
 		# It's a canonicalizable symlink
