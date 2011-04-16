@@ -7,6 +7,7 @@ report() { echo "${MYNAME}: $*" ; }
 report_err() { report "Error: $*" >&2 ; }
 report_info() { report "$*" >&2 ; }
 
+### BEGIN BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE POSTINST ###
 standard_run_tmpfs_is_available() {
 	[ -d /run ] \
 	&& [ -w /run ] \
@@ -18,6 +19,19 @@ standard_run_subdirs_created() {
 	{ [ -d /run/resolvconf ] || mkdir -v /run/resolvconf ; } \
 	&& { [ -d /run/resolvconf/interface ] || mkdir -v /run/resolvconf/interface ; }
 }
+### END BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE POSTINST ###
+
+standard_lib_init_rw_tmpfs_is_available() {
+	[ -d /run ] \
+	&& [ -w /run ] \
+	&& [ -r /proc/mounts ] \
+	&& grep -qs "^tmpfs[[:space:]]\+/lib/init/rw[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts
+}
+
+standard_lib_init_rw_subdirs_created() {
+	{ [ -d /lib/init/rw/resolvconf ] || mkdir -v /lib/init/rw/resolvconf ; } \
+	&& { [ -d /lib/init/rw/resolvconf/interface ] || mkdir -v /lib/init/rw/resolvconf/interface ; }
+}
 
 ### Create run-time directories ###
 #
@@ -27,38 +41,50 @@ standard_run_subdirs_created() {
 # is installed simultaneously with a caching nameserver package whose
 # postinst runs resolvconf to add its IP address.)
 #
+# The new standard location is /run;
+# the old standard location was /lib/init/rw.
+#
 case "$1" in
   install|upgrade)
+	# Ensure /etc/resolvconf exists.  We are running before unpack.
+	mkdir -pv /etc/resolvconf
+
 	if [ -L /etc/resolvconf/run ] ; then
-		# /etc/resolvconf/run is a symlink.
-		# If it's standard then migrate it.
+		# We are upgrading.
+		# Make sure that the symlink is canonicalizable.
 		RUN_CANONICALPATH="$(readlink -f /etc/resolvconf/run || :)"
 		if [ -z "$RUN_CANONICALPATH" ] ; then
 			# It's not canonicalizable
 			report_err "Deleting old symlink /etc/resolvconf/run, the canonical path of whose target could not be determined"
 			rm -f /etc/resolvconf/run
-		else
-			# It's a canonicalizable symlink
-			# Migrate it if it's standard
-			[ "$RUN_CANONICALPATH" = "/lib/init/rw/resolvconf" ] \
-			&& standard_run_tmpfs_is_available \
-			&& standard_run_subdirs_created \
-			&& {
-				# /etc/resolvconf/run points to the old standard location;
-				# new-standard run directories are ready for use, so
-				# switch from the old to the new standard location.
-				{
-					F="$(echo /lib/init/rw/resolvconf/*)" \
-					&& [ "$F" ] \
-					&& [ "$F" != '/lib/init/rw/resolvconf/*' ] \
-					&& cp -a /lib/init/rw/resolvconf/* /run/resolvconf \
-					&& report_info "Migrated resolvconf run-time data from /lib/init/rw/resolvconf to /run/resolvconf"
-				}
-				mkdir -pv /etc/resolvconf
-				ln -nsf /run/resolvconf /etc/resolvconf/run
-			}
 		fi
 	fi
+
+	# /etc/resolvconf/run is not a non-canonicalizable symlink
+
+	### BEGIN BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE POSTINST ###
+	# Attempt migration from old to new standard location
+	if [ -L /etc/resolvconf/run ] ; then
+		# It's a canonicalizable symlink
+		# If it's standard then try to migrate from old to new standard location.
+		[ "$RUN_CANONICALPATH" = "/lib/init/rw/resolvconf" ] \
+		&& standard_run_tmpfs_is_available \
+		&& standard_run_subdirs_created \
+		&& {
+			# /etc/resolvconf/run points to the old-standard location
+			# and new-standard run directories are ready for use.
+			# Switch from the old to the new standard location.
+			{
+				F="$(echo /lib/init/rw/resolvconf/*)" \
+				&& [ "$F" ] \
+				&& [ "$F" != '/lib/init/rw/resolvconf/*' ] \
+				&& cp -a /lib/init/rw/resolvconf/* /run/resolvconf \
+				&& report_info "Migrated resolvconf run-time data from /lib/init/rw/resolvconf to /run/resolvconf"
+			}
+			ln -nsf /run/resolvconf /etc/resolvconf/run
+		}
+	fi
+	### END BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE POSTINST ###
 
 	# Delete /etc/resolvconf/run if it is neither a directory nor a link to one
 	if [ -e /etc/resolvconf/run ] && [ ! -d /etc/resolvconf/run ] ; then
@@ -81,11 +107,14 @@ case "$1" in
 		mkdir -v "$RUN_CANONICALPATH" "${RUN_CANONICALPATH}/interface"
 	else
 		# It's nonexistent
-		# Make directories at the standard location if possible,
+		# Make directories at one of the standard locations if possible,
 		# otherwise directly under /etc/resolvconf.
 		if standard_run_tmpfs_is_available && standard_run_subdirs_created ; then
 			mkdir -pv /etc/resolvconf
 			ln -s /run/resolvconf /etc/resolvconf/run
+		elif standard_lib_init_rw_tmpfs_is_available && standard_lib_init_rw_subdirs_created ; then
+			mkdir -pv /etc/resolvconf
+			ln -s /lib/init/rw/resolvconf /etc/resolvconf/run
 		else
 			mkdir -pv /etc/resolvconf/run/interface
 		fi
