@@ -22,8 +22,8 @@ standard_run_subdirs_created() {
 ### END BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE POSTINST ###
 
 standard_lib_init_rw_tmpfs_is_available() {
-	[ -d /run ] \
-	&& [ -w /run ] \
+	[ -d /lib/init/rw ] \
+	&& [ -w /lib/init/rw ] \
 	&& [ -r /proc/mounts ] \
 	&& grep -qs "^tmpfs[[:space:]]\+/lib/init/rw[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts
 }
