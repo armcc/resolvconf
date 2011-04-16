@@ -9,14 +9,12 @@ report() { echo "${MYNAME}: $*" ; }
 report_err() { report "Error: $*" >&2 ; }
 report_info() { report "$*" >&2 ; }
 
-### BEGIN BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE PREINST ###
 standard_run_tmpfs_is_available() {
-	[ -d /run ] \
-	&& [ -w /run ] \
-	&& [ -r /proc/mounts ] \
-	&& grep -qs "^tmpfs[[:space:]]\+/run[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts
+	:
+	# Initscripts guarantees that /run is available.
 }
 
+### BEGIN BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE PREINST ###
 standard_run_subdirs_created() {
 	{ [ -d /run/resolvconf ] || mkdir -v /run/resolvconf ; } \
 	&& { [ -d /run/resolvconf/interface ] || mkdir -v /run/resolvconf/interface ; }

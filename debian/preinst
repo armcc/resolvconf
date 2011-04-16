@@ -7,7 +7,6 @@ report() { echo "${MYNAME}: $*" ; }
 report_err() { report "Error: $*" >&2 ; }
 report_info() { report "$*" >&2 ; }
 
-### BEGIN BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE POSTINST ###
 standard_run_tmpfs_is_available() {
 	[ -d /run ] \
 	&& [ -w /run ] \
@@ -15,6 +14,7 @@ standard_run_tmpfs_is_available() {
 	&& grep -qs "^tmpfs[[:space:]]\+/run[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts
 }
 
+### BEGIN BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE POSTINST ###
 standard_run_subdirs_created() {
 	{ [ -d /run/resolvconf ] || mkdir -v /run/resolvconf ; } \
 	&& { [ -d /run/resolvconf/interface ] || mkdir -v /run/resolvconf/interface ; }
