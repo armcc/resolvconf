@@ -26,6 +26,10 @@ standard_run_subdirs_created() {
 
 case "$1" in
   configure)
+	if [ -L /etc/resolvconf/run ] ; then
+		RUN_CANONICALPATH="$(readlink -f /etc/resolvconf/run || :)"
+	fi
+
 	### BEGIN BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE PREINST ###
 	# Attempt migration from old to new standard location
 	if [ -L /etc/resolvconf/run ] ; then
