@@ -2,9 +2,9 @@
 # Copyright (c) 2011 resolvconf & nedenstående oversættere.
 # This file is distributed under the same license as the resolvconf package.
 # Joe Hansen <joedalton2@yahoo.dk>, 2011.
-#
+# 
 # resolver -> klarlægger
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf\n"
@@ -13,6 +13,7 @@ msgstr ""
 "PO-Revision-Date: 2011-04-17 17:30+01:00\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <debian-l10n-danish@lists.debian.org> \n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -34,13 +35,13 @@ msgid ""
 "the existing /etc/resolv.conf file will be preserved as /etc/resolvconf/"
 "resolv.conf.d/original, and will be restored if this package is removed."
 msgstr ""
-"Pakken resolvconf indeholder infrastrukturen krævet for dynamisk "
-"opdatering af klarlæggerkonfigurationsfilen (»resolver«). En del af den "
-"nødvendige infrastruktur er en symbolsk henvisning fra /etc/resolv.conf "
-"til /etc/resolvconf/run/resolv.conf. Hvis du vælger denne indstilling, "
-"vil denne henvisning blive oprettet; den eksisterende /etc/resolv.conf- "
-"fil vil blive bevaret som /etc/resolvconf/resolv.conf.d/original og vil "
-"blive gendannet, hvis pakken fjernes."
+"Pakken resolvconf indeholder infrastrukturen krævet for dynamisk opdatering "
+"af klarlæggerkonfigurationsfilen (»resolver«). En del af den nødvendige "
+"infrastruktur er en symbolsk henvisning fra /etc/resolv.conf til /etc/"
+"resolvconf/run/resolv.conf. Hvis du vælger denne indstilling, vil denne "
+"henvisning blive oprettet; den eksisterende /etc/resolv.conf- fil vil blive "
+"bevaret som /etc/resolvconf/resolv.conf.d/original og vil blive gendannet, "
+"hvis pakken fjernes."
 
 #. Type: boolean
 #. Description
@@ -52,9 +53,9 @@ msgid ""
 "instructions in the README file."
 msgstr ""
 "Afslag af denne indstilling vil forhindre fremtidige installationer fra at "
-"genskabe den symbolske henvisning og derfor vil klarlæggerkonfigurationsfilen "
-"ikke blive dynamsik opdateret. Dynamisk opdatering kan så aktiveres "
-"ved at følge instruktionerne i README-filen."
+"genskabe den symbolske henvisning og derfor vil "
+"klarlæggerkonfigurationsfilen ikke blive dynamsik opdateret. Dynamisk "
+"opdatering kan så aktiveres ved at følge instruktionerne i README-filen."
 
 #. Type: boolean
 #. Description
@@ -85,12 +86,12 @@ msgid ""
 "DNS caches."
 msgstr ""
 "Når resolvconf er installeret, leverer grænsefladekonfiguratorer "
-"navneserverinformation til den (som den så gør tilgængelig for C-bibliotekets "
-"klarlægger og til DNS-mellemlagre). De gør dog kun dette, når de starter "
-"grænseflader op. For at resolvconfs navneserverinformation skal være opdateret "
-"efter den oprindelige installation, er det nødvendigt at rekonfigurere grænseflader "
-"(det vil sige at tage dem ned og starte dem op igen) og at genstarte "
-"DNS-mellemlagre."
+"navneserverinformation til den (som den så gør tilgængelig for C-"
+"bibliotekets klarlægger og til DNS-mellemlagre). De gør dog kun dette, når "
+"de starter grænseflader op. For at resolvconfs navneserverinformation skal "
+"være opdateret efter den oprindelige installation, er det nødvendigt at "
+"rekonfigurere grænseflader (det vil sige at tage dem ned og starte dem op "
+"igen) og at genstarte DNS-mellemlagre."
 
 #. Type: boolean
 #. Description
@@ -108,10 +109,9 @@ msgid ""
 "consult the resolvconf(8) man page and the README file."
 msgstr ""
 "Hvis den oprindelige statiske klarlæggerkonfigurationsfil (/etc/resolv.conf) "
-"indeholder adresser for navneservere, så bør disse adresser være anført "
-"på »dns-nameservers«-linjer i /etc/network/interfaces. For yderligere "
-"information så konsulter venligst manualsiden resolvconf(8) og "
-"README-filen."
+"indeholder adresser for navneservere, så bør disse adresser være anført på "
+"»dns-nameservers«-linjer i /etc/network/interfaces. For yderligere "
+"information så konsulter venligst manualsiden resolvconf(8) og README-filen."
 
 #. Type: boolean
 #. Description
@@ -121,9 +121,9 @@ msgid ""
 "brought down and up again, the name server addresses will not be included in "
 "the dynamically generated resolver configuration file."
 msgstr ""
-"Indtil /etc/network/interfaces er blevet redigeret og de påvirkede grænseflader "
-"bragt ned og op igen, vil navneserveradresserne ikke være inkluderet i den "
-"dynamisk oprettede klarlæggerkonfigurationsfil."
+"Indtil /etc/network/interfaces er blevet redigeret og de påvirkede "
+"grænseflader bragt ned og op igen, vil navneserveradresserne ikke være "
+"inkluderet i den dynamisk oprettede klarlæggerkonfigurationsfil."
 
 #. Type: boolean
 #. Description
@@ -135,11 +135,12 @@ msgid ""
 "This will cause the whole of that original resolver configuration file to be "
 "appended to the dynamically generated file."
 msgstr ""
-"Hvis du vælger denne indstilling, vil en midlertidig omgåelse blive igangsat: "
-"En symbolsk henvisning vil blive oprettet (hvis den ikke allerede findes) fra "
-"/etc/resolvconf/resolv.conf.d/tail til /etc/resolvconf/resolv.conf.d/original. "
-"Dette vil medføre, at hele den oprindelige klarlæggerkonfigurationsfil vil "
-"blive tilføjet til den dynamisk oprettede fil."
+"Hvis du vælger denne indstilling, vil en midlertidig omgåelse blive "
+"igangsat: En symbolsk henvisning vil blive oprettet (hvis den ikke allerede "
+"findes) fra /etc/resolvconf/resolv.conf.d/tail til /etc/resolvconf/resolv."
+"conf.d/original. Dette vil medføre, at hele den oprindelige "
+"klarlæggerkonfigurationsfil vil blive tilføjet til den dynamisk oprettede "
+"fil."
 
 #. Type: boolean
 #. Description
@@ -149,7 +150,6 @@ msgid ""
 "interfaces, the /etc/resolvconf/resolv.conf.d/tail link should be replaced "
 "by one to /dev/null."
 msgstr ""
-"Efter de krævede »dns-nameservers«-linjer er blevet tilføjet til /etc/network/"
-"interfaces, bør henvisningen /etc/resolvconf/resolv.conf.d/tail erstattes med en "
-"i /dev/null."
-
+"Efter de krævede »dns-nameservers«-linjer er blevet tilføjet til /etc/"
+"network/interfaces, bør henvisningen /etc/resolvconf/resolv.conf.d/tail "
+"erstattes med en i /dev/null."

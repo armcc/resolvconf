@@ -37,6 +37,7 @@ msgstr ""
 "PO-Revision-Date: 2008-03-30 23:27+0200\n"
 "Last-Translator: Javier Fernández-Sanguino <jfs@debian.org>\n"
 "Language-Team: Debian Spanish <debian-l10n-spanish@lists.debian.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -60,7 +61,14 @@ msgid ""
 "run/resolv.conf. If you choose this option then this link will be created; "
 "the existing /etc/resolv.conf file will be preserved as /etc/resolvconf/"
 "resolv.conf.d/original, and will be restored if this package is removed."
-msgstr "El paquete resolvconf incluye la infraestructura necesaria para poder actualizar de forma dinámica el fichero de configuración de resolución. Un enlace simbólico de «/etc/resolv.conf» a «/etc/resolvconf/run/resolv.conf» es parte de la infraestructura necesaria. Si elije esta opción se creará este enlace. Se preservarán los contenidos del fichero «/etc/resolv.conf» actual en el fichero «/etc/resolvconf/resolv.conf.d/original» y se restaurará este archivo si elimina el paquete."
+msgstr ""
+"El paquete resolvconf incluye la infraestructura necesaria para poder "
+"actualizar de forma dinámica el fichero de configuración de resolución. Un "
+"enlace simbólico de «/etc/resolv.conf» a «/etc/resolvconf/run/resolv.conf» "
+"es parte de la infraestructura necesaria. Si elije esta opción se creará "
+"este enlace. Se preservarán los contenidos del fichero «/etc/resolv.conf» "
+"actual en el fichero «/etc/resolvconf/resolv.conf.d/original» y se "
+"restaurará este archivo si elimina el paquete."
 
 #. Type: boolean
 #. Description
@@ -70,7 +78,12 @@ msgid ""
 "symbolic link and therefore the resolver configuration file will not be "
 "dynamically updated. Dynamic updating can then be activated following "
 "instructions in the README file."
-msgstr "Si rechaza esta opción futuras instalaciones de este paquete no volverán a crear el enlace simbólico, lo que significa que le fichero de configuración de resolución no se actualizará de forma dinámica. Puede activar la actualización dinámica siguiendo las instrucciones que encontrará en el fichero «README»."
+msgstr ""
+"Si rechaza esta opción futuras instalaciones de este paquete no volverán a "
+"crear el enlace simbólico, lo que significa que le fichero de configuración "
+"de resolución no se actualizará de forma dinámica. Puede activar la "
+"actualización dinámica siguiendo las instrucciones que encontrará en el "
+"fichero «README»."
 
 #. Type: boolean
 #. Description
@@ -78,7 +91,9 @@ msgstr "Si rechaza esta opción futuras instalaciones de este paquete no volverán
 msgid ""
 "The presence of resolvconf can affect the behavior of other programs, so it "
 "should not be left installed if unconfigured."
-msgstr "No debería dejar resolvconf instalado si no está configurado ya que el hecho de que esté instalado afectará al comportamiento de otros programas."
+msgstr ""
+"No debería dejar resolvconf instalado si no está configurado ya que el hecho "
+"de que esté instalado afectará al comportamiento de otros programas."
 
 #. Type: note
 #. Description
@@ -97,7 +112,16 @@ msgid ""
 "date after initial installation it is necessary to reconfigure interfaces "
 "(that is, to take them down and then to bring them up again) and to restart "
 "DNS caches."
-msgstr "Una vez haya instalado resolvconf, las aplicaciones que configuren las interfaces podrán proporcionan la información de los servidores de nombres disponibles. Esta información se proporciona, a su vez, para la biblioteca C de resolución y para las cachés de DNS. Sin embargo, este cambio sólo se produce cuando se activa una interfaz. Para que la información de los servidores de nombres que proporciona resolvconf esté actualizada después de la instalación inicial es necesario que se reconfiguren las interfaces (es decir, que se desactiven y se vuelvan a activar) y que se reinicien las cachés de DNS."
+msgstr ""
+"Una vez haya instalado resolvconf, las aplicaciones que configuren las "
+"interfaces podrán proporcionan la información de los servidores de nombres "
+"disponibles. Esta información se proporciona, a su vez, para la biblioteca C "
+"de resolución y para las cachés de DNS. Sin embargo, este cambio sólo se "
+"produce cuando se activa una interfaz. Para que la información de los "
+"servidores de nombres que proporciona resolvconf esté actualizada después de "
+"la instalación inicial es necesario que se reconfiguren las interfaces (es "
+"decir, que se desactiven y se vuelvan a activar) y que se reinicien las "
+"cachés de DNS."
 
 #. Type: boolean
 #. Description
@@ -113,7 +137,12 @@ msgid ""
 "contains name server addresses, those addresses should be listed on \"dns-"
 "nameservers\" lines in /etc/network/interfaces. For more information, please "
 "consult the resolvconf(8) man page and the README file."
-msgstr "Si su fichero de configuración de resolución estática original («/etc/resolv.conf») contiene direcciones de servidores de nombres, deberá incluir estas direcciones en las líneas «dns-nameservers» en el fichero «/etc/network/interfaces». Para más información consulte la página de manual de «resolvconf(8)» y el fichero «README»."
+msgstr ""
+"Si su fichero de configuración de resolución estática original («/etc/resolv."
+"conf») contiene direcciones de servidores de nombres, deberá incluir estas "
+"direcciones en las líneas «dns-nameservers» en el fichero «/etc/network/"
+"interfaces». Para más información consulte la página de manual de «resolvconf"
+"(8)» y el fichero «README»."
 
 #. Type: boolean
 #. Description
@@ -122,7 +151,11 @@ msgid ""
 "Until /etc/network/interfaces has been edited and the affected interfaces "
 "brought down and up again, the name server addresses will not be included in "
 "the dynamically generated resolver configuration file."
-msgstr "No se incluirán las direcciones de los servidores de nombres en el fichero de configuración de resolución que se genera de forma dinámica hasta que no haya editado el fichero «/etc/network/interfaces» y haya parado y arrancado de nuevo las interfaces afectadas."
+msgstr ""
+"No se incluirán las direcciones de los servidores de nombres en el fichero "
+"de configuración de resolución que se genera de forma dinámica hasta que no "
+"haya editado el fichero «/etc/network/interfaces» y haya parado y arrancado "
+"de nuevo las interfaces afectadas."
 
 #. Type: boolean
 #. Description
@@ -133,7 +166,12 @@ msgid ""
 "resolvconf/resolv.conf.d/tail to /etc/resolvconf/resolv.conf.d/original. "
 "This will cause the whole of that original resolver configuration file to be "
 "appended to the dynamically generated file."
-msgstr "Se introducirá una solución temporal si escoge esta opción: se creará un enlace simbólico (si no existe todavía) en «/etc/resolvconf/resolv.conf/tail» a «/etc/resolvconf/resolv.conf.d/original». Esto hará que se añada el contenido completo del fichero de configuración de resolución original al fichero generado de forma dinámica."
+msgstr ""
+"Se introducirá una solución temporal si escoge esta opción: se creará un "
+"enlace simbólico (si no existe todavía) en «/etc/resolvconf/resolv.conf/"
+"tail» a «/etc/resolvconf/resolv.conf.d/original». Esto hará que se añada el "
+"contenido completo del fichero de configuración de resolución original al "
+"fichero generado de forma dinámica."
 
 #. Type: boolean
 #. Description
@@ -142,5 +180,7 @@ msgid ""
 "After the required \"dns-nameservers\" lines have been added to /etc/network/"
 "interfaces, the /etc/resolvconf/resolv.conf.d/tail link should be replaced "
 "by one to /dev/null."
-msgstr "Debería reemplazar el enlace simbólico «/etc/resolvconf/resolv.conf.d/tail» para que sea un enlace a «/dev/null» una vez haya añadido las líneas «dns-nameservers» necesarias a «/etc/network/interfaces»."
-
+msgstr ""
+"Debería reemplazar el enlace simbólico «/etc/resolvconf/resolv.conf.d/tail» "
+"para que sea un enlace a «/dev/null» una vez haya añadido las líneas «dns-"
+"nameservers» necesarias a «/etc/network/interfaces»."
