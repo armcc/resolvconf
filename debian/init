@@ -29,6 +29,7 @@ RUN_DIR=/etc/resolvconf/run
 IFACE_DIR="${RUN_DIR}/interface"
 RESOLVCONF_FILE="${RUN_DIR}/resolv.conf"
 ENABLE_UPDATES_FLAGFILE="${RUN_DIR}/enable-updates"
+POSTPONED_UPDATE_FLAGFILE="${RUN_DIR}/postponed-update"
 
 . /lib/lsb/init-functions
 
@@ -46,11 +47,15 @@ update()
 	cd "$IFACE_DIR"
 	# "update" scripts must assume that interface files are in the PWD
 	run-parts ${1:+--arg="$1"} ${2:+--arg="$2"} /etc/resolvconf/update.d
+	rm -f "$POSTPONED_UPDATE_FLAGFILE"
 }
 
 enable_updates()
 {
-	: >| "$ENABLE_UPDATES_FLAGFILE"
+	: >| "$ENABLE_UPDATES_FLAGFILE" || return 1
+	if [ -e "$POSTPONED_UPDATE_FLAGFILE" ] ; then
+		update
+	fi
 }
 
 disable_updates()

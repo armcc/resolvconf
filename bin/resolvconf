@@ -18,6 +18,7 @@ MYNAME="${0##*/}"
 RUN_DIR=/etc/resolvconf/run
 IFACE_DIR="${RUN_DIR}/interface"
 ENABLE_UPDATES_FLAGFILE="${RUN_DIR}/enable-updates"
+POSTPONED_UPDATE_FLAGFILE="${RUN_DIR}/postponed-update"
 
 report_err() { echo "${MYNAME}: Error: $*" >&2 ; }
 
@@ -90,7 +91,11 @@ case "$CMD" in
 	;;
 esac
 
-[ -e "$ENABLE_UPDATES_FLAGFILE" ] || exit 0
+if [ -e "$ENABLE_UPDATES_FLAGFILE" ] ; then
+	exec run-parts "--arg=$CMD" ${IFACE:+--arg="$IFACE"} /etc/resolvconf/update.d
+else
+	# Schedule an update for when updates are enabled
+	: > "$POSTPONED_UPDATE_FLAGFILE"
+fi
 
-exec run-parts "--arg=$CMD" ${IFACE:+--arg="$IFACE"} /etc/resolvconf/update.d
 
