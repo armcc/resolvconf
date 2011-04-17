@@ -46,7 +46,7 @@ standard_lib_init_rw_subdirs_created() {
 #
 case "$1" in
   install|upgrade)
-	# Ensure /etc/resolvconf exists.  We are running before unpack.
+	# Ensure that /etc/resolvconf exists.
 	mkdir -pv /etc/resolvconf
 
 	if [ -L /etc/resolvconf/run ] ; then
@@ -111,13 +111,11 @@ case "$1" in
 		# Make directories at one of the standard locations if possible,
 		# otherwise directly under /etc/resolvconf.
 		if standard_run_tmpfs_is_available && standard_run_subdirs_created ; then
-			mkdir -pv /etc/resolvconf
 			ln -s /run/resolvconf /etc/resolvconf/run
 		elif standard_lib_init_rw_tmpfs_is_available && standard_lib_init_rw_subdirs_created ; then
-			mkdir -pv /etc/resolvconf
 			ln -s /lib/init/rw/resolvconf /etc/resolvconf/run
 		else
-			mkdir -pv /etc/resolvconf/run/interface
+			[ -d /etc/resolvconf/run/interface ] || mkdir -v /etc/resolvconf/run/interface
 		fi
 	fi
 	;;
