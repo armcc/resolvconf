@@ -2,22 +2,24 @@ resolvconf (1.49) unstable; urgency=low
 
   [ Thomas Hood ]
   * Standardly keep run-time data in /run instead of /lib/init/rw;
-    migrate from /lib/init/rw to /run in the postinst.  (Closes: #621503).
+    migrate from /lib/init/rw to /run in the postinst  (Closes: #621503).
     Thanks to Roger Leigh for his help.
   * Create run-time data directories in the preinst instead of in the
-    postinst (Closes: #551999, #563386).  (Do this in /run if it's already
-    available, otherwise in /lib/init/rw, otherwise in /etc/resolvconf.)
-  * Add dependency on initscripts >= 2.88dsf-13.3 which enables /run
-    in its postinst, ensuring that /run is available when our postinst
-    runs.
-  * Tidy up all maintainer scripts.
-  * Bump Standards-Version to 3.9.2.0.
+    postinst  (Closes: #551999, #563386).  (Do this in /run if that is
+    already already available, otherwise in /lib/init/rw, otherwise in
+    /etc/resolvconf.)
+  * Add Depends on initscripts >= 2.88dsf-13.3 which enables /run
+    in its postinst, ensuring that /run is available to our postinst.
   * Remove /etc/dhcp3/dhclient-enter-hooks.d/resolvconf which is obsolete;
     remove it on purge and declare a Breaks: old versions of dhcp3-client
     which used it (Closes: #591022).
   * Use dh_installifupdown to install ifupdown hook scripts and,
-    consequently, build-depend on debhelper >= 7.4.3.
-  * Update debian/compat to 8
+    consequently, build-depend on newer debhelper.
+  * Update debian/compat to 8.
+  * Add da.po  (Closes: #623079)  Thanks to Joe Dalton.
+  * Run debconf-updatepo.
+  * Bump Standards-Version to 3.9.2.0.
+  * Tidy up all maintainer scripts.
 
  -- Thomas Hood <jdthood@gmail.com>  Sat, 16 Apr 2011 12:00:00 +0200
 
