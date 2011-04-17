@@ -2,21 +2,32 @@ resolvconf (1.49) unstable; urgency=low
 
   [ Thomas Hood ]
   * Standardly keep run-time data in /run instead of /lib/init/rw;
-    migrate from /lib/init/rw to /run in the postinst  (Closes: #621503).
+    migrate from /lib/init/rw to /run in the postinst. (Closes: #621503).
     Thanks to Roger Leigh for his help.
   * Create run-time data directories in the preinst instead of in the
-    postinst  (Closes: #551999, #563386).  (Do this in /run if that is
+    postinst. (Closes: #551999, #563386).  (Do this in /run if that is
     already already available, otherwise in /lib/init/rw, otherwise in
-    /etc/resolvconf.)
+    /etc/resolvconf.)  Now when other packages call resolvconf before
+    resolvconf's postinst runs, the data is not lost and no error 
+    message is printed.
+  * If someone has run resolvconf while updates were disabled, update
+    when updates are enabled.
+  * Include the contents of the original resolv.conf file in the
+    database until the first reboot after installation.  The old behavior
+    was not to include these contents (unless link-tail-to-original was
+    selected) with the result that information was missing from
+    resolv.conf until ifdown-ifup cycles.  The new behavior is not 
+    correct either, but should have less unpleasant consequences than
+    the old behavior.
   * Add Depends on initscripts >= 2.88dsf-13.3 which enables /run
     in its postinst, ensuring that /run is available to our postinst.
   * Remove /etc/dhcp3/dhclient-enter-hooks.d/resolvconf which is obsolete;
     remove it on purge and declare a Breaks: old versions of dhcp3-client
-    which used it (Closes: #591022).
+    which used it. (Closes: #591022).
   * Use dh_installifupdown to install ifupdown hook scripts and,
     consequently, build-depend on newer debhelper.
   * Update debian/compat to 8.
-  * Add da.po  (Closes: #623079)  Thanks to Joe Dalton.
+  * Add da.po. (Closes: #623079)  Thanks to Joe Dalton.
   * Run debconf-updatepo.
   * Bump Standards-Version to 3.9.2.0.
   * Tidy up all maintainer scripts.

@@ -69,7 +69,6 @@ case "$1" in
 	# Linkify /etc/resolv.conf if appropriate
 	db_get resolvconf/linkify-resolvconf
 	if [ "$RET" = "true" ] ; then
-		# Back up
 		if
 			[ -f /etc/resolv.conf ] \
 			&& {
@@ -77,6 +76,7 @@ case "$1" in
 				|| [ ! "$(readlink /etc/resolv.conf)" = "/etc/resolvconf/run/resolv.conf" ]
 			}
 		then
+			# Back up original file
 			if [ ! -e /etc/resolvconf/resolv.conf.d/original ] ; then
 				cp -a /etc/resolv.conf /etc/resolvconf/resolv.conf.d/original
 			else
@@ -84,10 +84,16 @@ case "$1" in
 			fi
 			# Before creating the link, make sure that the original file is
 			# at the target of the link.  /sbin/resolvconf will overwrite
-			# this when it runs, of course.
+			# this when it does an update, of course.
 			if [ ! -e /etc/resolvconf/run/resolv.conf ] ; then
 				cp -a /etc/resolv.conf /etc/resolvconf/run/resolv.conf
 			fi
+			# Add the original file to the database so that its contents
+			# are included when resolvconf updates.
+			# Yes, this is an ugly workaround for the problem that there
+			# is no way to obtain nameserver information from interface
+			# configurers after they have done their configuration work.
+			cp -a /etc/resolv.conf /etc/resolvconf/run/interface/original.resolvconf
 		fi
 		# Create the link
 		ln -nsf /etc/resolvconf/run/resolv.conf /etc/resolv.conf
