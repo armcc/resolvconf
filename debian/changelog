@@ -31,7 +31,7 @@ resolvconf (1.49) unstable; urgency=low
     in order to trigger other packages to take notice of resolvconf
     being installed (configured) or removed.  When resolvconf is installed
     other packages possessing name server information should register it
-    with resolvconf.
+    with resolvconf. (Closes: #567059)
   * Remove /etc/dhcp3/dhclient-enter-hooks.d/resolvconf which is obsolete;
     remove it on purge and declare a Breaks: old versions of dhcp3-client
     which used it. (Closes: #591022).
