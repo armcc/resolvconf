@@ -21,6 +21,7 @@ resolvconf (1.49) unstable; urgency=low
     the old behavior.
   * Add Depends on initscripts >= 2.88dsf-13.3 which enables /run
     in its postinst, ensuring that /run is available to our postinst.
+  * Activate the "resolvconf-event" trigger in postinst and in postrm.
   * Remove /etc/dhcp3/dhclient-enter-hooks.d/resolvconf which is obsolete;
     remove it on purge and declare a Breaks: old versions of dhcp3-client
     which used it. (Closes: #591022).
