@@ -29,14 +29,20 @@ _Description: Prepare /etc/resolv.conf for dynamic updates?
 
 Template: resolvconf/downup-interfaces
 Type: note
-_Description: Network interfaces reconfiguration mandatory
- Once resolvconf is installed, interface configurers supply name server
- information to it (which it then makes available to the C library resolver
- and to DNS caches). However, they do this only when they bring up interfaces.
- Therefore for resolvconf's name server information to be up to date after
- initial installation it is necessary to reconfigure interfaces (that is,
- to take them down and then to bring them up again) and to restart
- DNS caches.
+_Description: Reboot recommended
+ Local caching name servers and interface configurers supply name
+ server information to resolvconf after resolvconf has been
+ installed. Name servers that previously started, and configurers
+ that previously brought up interfaces, have not supplied their
+ name server information to resolvconf. The information has usually
+ either been lost or has been added directly to /etc/resolv.conf.
+ In order to preserve as much information as possible, resolvconf
+ includes the contents of the original /etc/resolv.conf in its
+ database until reboot. Although resolvconf attempts to trigger other
+ programs to send their information to resolvconf after installation,
+ this often does not happen correctly. Consequently, in order for
+ resolvconf's name server information to be fully correct it is often
+ necessary to reboot the system.
 
 Template: resolvconf/link-tail-to-original
 Type: boolean

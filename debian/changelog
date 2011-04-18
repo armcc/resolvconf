@@ -14,22 +14,30 @@ resolvconf (1.49) unstable; urgency=low
     when updates are enabled.
   * Include the contents of the original resolv.conf file in the
     database until the first reboot after installation.  The old behavior
-    was not to include these contents (unless link-tail-to-original was
+    was to omit these contents (unless link-tail-to-original was
     selected) with the result that information was missing from
     resolv.conf until ifdown-ifup cycles.  The new behavior is not 
     correct either, but should have less unpleasant consequences than
     the old behavior.
+  * Update the debconf template that discusses the problem just described.
+    Whereas before it was recommended that the administrator down and up
+    network interfaces, it is now recommended that the administrator
+    reboot the system.
+  * Add da.po. (Closes: #623079)  Thanks to Joe Dalton.
+  * Run debconf-updatepo.
   * Add Depends on initscripts >= 2.88dsf-13.3 which enables /run
     in its postinst, ensuring that /run is available to our postinst.
-  * Activate the "resolvconf-event" trigger in postinst and in postrm.
+  * Activate the "resolvconf-event" trigger in postinst and in postrm
+    in order to trigger other packages to take notice of resolvconf
+    being installed (configured) or removed.  When resolvconf is installed
+    other packages possessing name server information should register it
+    with resolvconf.
   * Remove /etc/dhcp3/dhclient-enter-hooks.d/resolvconf which is obsolete;
     remove it on purge and declare a Breaks: old versions of dhcp3-client
     which used it. (Closes: #591022).
   * Use dh_installifupdown to install ifupdown hook scripts and,
-    consequently, build-depend on newer debhelper.
+    consequently, Build-Depend on newer debhelper.
   * Update debian/compat to 8.
-  * Add da.po. (Closes: #623079)  Thanks to Joe Dalton.
-  * Run debconf-updatepo.
   * Bump Standards-Version to 3.9.2.0.
   * Tidy up all maintainer scripts.
 
