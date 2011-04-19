@@ -41,7 +41,10 @@ resolvconf (1.49) experimental; urgency=low
   * Bump Standards-Version to 3.9.2.0.
   * Tidy up all maintainer scripts.
 
- -- Thomas Hood <jdthood@gmail.com>  Mon, 18 Apr 2011 12:00:00 +0200
+  [ Marco Nenciarini ]
+  * debian/control: updated Thomas Hood's email address.
+
+ -- Marco Nenciarini <mnencia@debian.org>  Tue, 19 Apr 2011 22:30:30 +0200
 
 resolvconf (1.48) unstable; urgency=low
 
