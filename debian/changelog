@@ -1,3 +1,11 @@
+resolvconf (1.50) unstable; urgency=low
+
+  [ Thomas Hood ]
+  * README: Add section "Usage information for maintainers" discussing
+    the "resolvconf-event" trigger
+
+ -- Thomas Hood <jdthood@gmail.com>  Wed, 20 Apr 2011 12:00:00 +0200
+
 resolvconf (1.49) experimental; urgency=low
 
   [ Thomas Hood ]
