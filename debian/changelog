@@ -6,6 +6,14 @@ resolvconf (1.50) unstable; urgency=low
   * Name the trigger 'update-resolvconf'.
   * README: Add section "Usage information for maintainers" discussing
     the trigger.
+  * Include the contents of the original resolv.conf file in the
+    database until the first reboot after installation.  The old behavior
+    was to omit these contents (unless link-tail-to-original was
+    selected) with the result that information was missing from
+    resolv.conf until ifdown-ifup cycles.  The new behavior is not 
+    correct either, but should have less unpleasant consequences than
+    the old behavior.
+  * Document the "original" file in resolvconf(8). (Closes: #414692)
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 20 Apr 2011 12:00:00 +0200
 
@@ -23,13 +31,6 @@ resolvconf (1.49) experimental; urgency=low
     message is printed.
   * If someone has run resolvconf while updates were disabled, update
     when updates are enabled.
-  * Include the contents of the original resolv.conf file in the
-    database until the first reboot after installation.  The old behavior
-    was to omit these contents (unless link-tail-to-original was
-    selected) with the result that information was missing from
-    resolv.conf until ifdown-ifup cycles.  The new behavior is not 
-    correct either, but should have less unpleasant consequences than
-    the old behavior.
   * Update the debconf template that discusses the problem just described.
     Whereas before it was recommended that the administrator down and up
     network interfaces, it is now recommended that the administrator
