@@ -38,9 +38,9 @@ resolvconf (1.49) experimental; urgency=low
     in its postinst, ensuring that /run is available to our postinst.
   * Activate a trigger in postinst and in postrm in order to induce other
     packages to take notice of resolvconf being installed (configured) or
-    removed.  When resolvconf is installed other packages possessing name
-    server information should register it with resolvconf.
-    (Closes: #567059)
+    removed.  When triggered and resolvconf is installed, interested
+    packages possessing name server information should send it to
+    resolvconf. See README for details. (Closes: #567059)
   * Remove /etc/dhcp3/dhclient-enter-hooks.d/resolvconf which is obsolete;
     remove it on purge and declare a Breaks: old versions of dhcp3-client
     which used it. (Closes: #591022).
