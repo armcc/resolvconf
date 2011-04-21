@@ -1,8 +1,9 @@
 resolvconf (1.50) unstable; urgency=low
 
   [ Thomas Hood ]
+  * Name the trigger 'update-resolvconf'.
   * README: Add section "Usage information for maintainers" discussing
-    the "resolvconf-event" trigger
+    the trigger.
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 20 Apr 2011 12:00:00 +0200
 
@@ -35,11 +36,11 @@ resolvconf (1.49) experimental; urgency=low
   * Run debconf-updatepo.
   * Add Depends on initscripts >= 2.88dsf-13.3 which enables /run
     in its postinst, ensuring that /run is available to our postinst.
-  * Activate the "resolvconf-event" trigger in postinst and in postrm
-    in order to trigger other packages to take notice of resolvconf
-    being installed (configured) or removed.  When resolvconf is installed
-    other packages possessing name server information should register it
-    with resolvconf. (Closes: #567059)
+  * Activate a trigger in postinst and in postrm in order to induce other
+    packages to take notice of resolvconf being installed (configured) or
+    removed.  When resolvconf is installed other packages possessing name
+    server information should register it with resolvconf.
+    (Closes: #567059)
   * Remove /etc/dhcp3/dhclient-enter-hooks.d/resolvconf which is obsolete;
     remove it on purge and declare a Breaks: old versions of dhcp3-client
     which used it. (Closes: #591022).

@@ -124,6 +124,6 @@ fi
 
 case "$1" in
   configure)
-	dpkg-trigger resolvconf-event
+	dpkg-trigger update-resolvconf
 	;;
 esac
