@@ -103,27 +103,52 @@ case "$1" in
 	# Don't do anything here since we don't do anything in the prerm on upgrade or on failed-upgrade
 	# ;;
   # abort-remove)
-	# Don't do anything extra here since we don't do anything extra in the prerm on remove
+	# Don't do anything extra here since we don't deconfigure anything in the prerm on remove
 	# ;;
   # abort-deconfigure)
-	# Don't do anything extra here since we don't do anything extra in the prerm on deconfigure
+	# Don't do anything extra here since we don't do anything in the prerm on deconfigure
 	# ;;
 esac
 
 db_stop
 
-# Enable updates
-# Do this also on abort-*
-if [ -x "/etc/init.d/resolvconf" ] ; then
-	if which invoke-rc.d >/dev/null 2>&1 ; then
-		invoke-rc.d resolvconf enable-updates || :
-	else
-		/etc/init.d/resolvconf enable-updates
+enable_updates() {
+	if [ -x "/etc/init.d/resolvconf" ] ; then
+		if which invoke-rc.d >/dev/null 2>&1 ; then
+			invoke-rc.d resolvconf enable-updates || :
+		else
+			/etc/init.d/resolvconf enable-updates
+		fi
 	fi
-fi
+}
 
 case "$1" in
   configure)
 	dpkg-trigger update-resolvconf
 	;;
+  triggered)
+	# This runs after we and possibly other packages have been configured
+        for trigger in $2 ; do
+		case "$trigger" in
+		  update-resolvconf)
+			if [ -x /sbin/resolvconf ] ; then
+				# Presumably we were just installed
+				enable_updates
+			fi
+			;;
+		esac
+        done
+	;;
+  abort-remove)
+	# We disable updates in the prerm on remove.
+	# So, enable them again
+	enable_updates
+	;;
+  # abort-upgrade)
+	# Don't do anything here since we don't do anything in the prerm on upgrade or on failed-upgrade
+	# ;;
+  # abort-deconfigure)
+	# Don't do anything extra here since we don't do anything in the prerm on deconfigure
+	# ;;
 esac
+

@@ -1,6 +1,8 @@
 resolvconf (1.50) unstable; urgency=low
 
   [ Thomas Hood ]
+  * Be interested in own trigger and enable updates only when triggered.
+    This could eliminate some superfluous updates on installation.
   * Name the trigger 'update-resolvconf'.
   * README: Add section "Usage information for maintainers" discussing
     the trigger.
