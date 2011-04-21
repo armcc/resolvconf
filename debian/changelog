@@ -19,7 +19,7 @@ resolvconf (1.49) experimental; urgency=low
     postinst. (Closes: #551999, #563386).  (Do this in /run if that is
     already already available, otherwise in /lib/init/rw, otherwise in
     /etc/resolvconf.)  Now when other packages call resolvconf before
-    resolvconf's postinst runs, the data is not lost and no error 
+    resolvconf's postinst runs, the data are not lost and no error 
     message is printed.
   * If someone has run resolvconf while updates were disabled, update
     when updates are enabled.

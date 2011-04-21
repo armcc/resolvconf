@@ -14,12 +14,10 @@ standard_run_tmpfs_is_available() {
 	&& grep -qs "^tmpfs[[:space:]]\+/run[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts
 }
 
-### BEGIN BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE POSTINST ###
 standard_run_subdirs_created() {
 	{ [ -d /run/resolvconf ] || mkdir -v /run/resolvconf ; } \
 	&& { [ -d /run/resolvconf/interface ] || mkdir -v /run/resolvconf/interface ; }
 }
-### END BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE POSTINST ###
 
 standard_lib_init_rw_tmpfs_is_available() {
 	[ -d /lib/init/rw ] \
@@ -60,32 +58,28 @@ case "$1" in
 		fi
 	fi
 
-
-	### BEGIN BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE POSTINST ###
 	# /etc/resolvconf/run is not a non-canonicalizable symlink.
-	# RUN_CANONICALPATH is the canonical path pointed to by /etc/resolvconf/run.
-	# Attempt migration from old to new standard location
+	# Attempt migration to new standard location
 	if [ -L /etc/resolvconf/run ] ; then
 		# It's a canonicalizable symlink
 		# If it's standard then try to migrate from old to new standard location.
-		[ "$RUN_CANONICALPATH" = "/lib/init/rw/resolvconf" ] \
-		&& standard_run_tmpfs_is_available \
-		&& standard_run_subdirs_created \
-		&& {
+		if
+			[ "$RUN_CANONICALPATH" = "/lib/init/rw/resolvconf" ] \
+			&& standard_run_tmpfs_is_available \
+			&& standard_run_subdirs_created
+		then
 			# /etc/resolvconf/run points to the old-standard location
 			# and new-standard run directories are ready for use.
 			# Switch from the old to the new standard location.
-			{
-				F="$(echo /lib/init/rw/resolvconf/*)" \
-				&& [ "$F" ] \
-				&& [ "$F" != '/lib/init/rw/resolvconf/*' ] \
-				&& cp -a /lib/init/rw/resolvconf/* /run/resolvconf \
-				&& report_info "Migrated resolvconf run-time data from /lib/init/rw/resolvconf to /run/resolvconf"
-			}
+			F="$(echo /lib/init/rw/resolvconf/*)"
+			if [ "$F" ] && [ "$F" != '/lib/init/rw/resolvconf/*' ] ; then
+				if cp -a /lib/init/rw/resolvconf/* /run/resolvconf ; then
+					report_info "Migrated resolvconf run-time data from /lib/init/rw/resolvconf to /run/resolvconf"
+				fi
+			fi
 			ln -nsf /run/resolvconf /etc/resolvconf/run
-		}
+		fi
 	fi
-	### END BLOCK THAT SHOULD BE IDENTICAL TO THAT IN THE POSTINST ###
 
 	# Delete /etc/resolvconf/run if it is neither a directory nor a link to one
 	if [ -e /etc/resolvconf/run ] && [ ! -d /etc/resolvconf/run ] ; then
