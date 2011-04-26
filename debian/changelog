@@ -3,6 +3,8 @@ resolvconf (1.50) unstable; urgency=low
   [ Thomas Hood ]
   * Be interested in own trigger and enable updates only when triggered.
     This could eliminate some superfluous updates on installation.
+    (Evidence that a package is allowed trigger itself:
+    http://lists.debian.org/debian-dpkg/2007/10/msg00175.html)
   * Name the trigger 'update-resolvconf'.
   * README: Add section "Usage information for maintainers" discussing
     the trigger.
