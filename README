@@ -467,34 +467,35 @@ only later, the latter programs have (obviously) not sent their nameserver
 information to resolvconf.  This means that after installation resolvconf
 does not have complete nameserver information.  The most reliable solution
 to this problem is to reboot.  But Debian rightly frowns on requirements
-to reboot, so the resolvconf package has been so designed that it minimizes
-the problem just mentioned.  In the future the problem may be completely
-solved.
+to reboot, so the resolvconf package has been so designed that it partially
+addresses the problem just mentioned.  In the future the problem may be
+fully solved, but this will require the cooperation of other package
+maintainers.
 
-In order to minimize the problem of resolvconf having incomplete
+In order partially to address the problem of resolvconf having incomplete
 information after installation until the first reboot, resolvconf includes
 the entire contents of the original (pre-resolvconf-installation)
 resolv.conf in its database.  Consequently, nameserver addresses are not
-lost just because resolvconf has been installed.  Unfortunately this also
-means that those addresses are not removed when interfaces are brought down.
+lost when resolvconf is installed.  Unfortunately this also means that those
+addresses are not removed when interfaces are brought down.
 
-Another way the resolvconf package minimizes the problem is to allow other
-parties to call /sbin/resolvconf as soon as it appears in the filesystem.
-Nameserver information can be registered with resolvconf before the
-package's postinst runs.  This means that when, for example, dnsmasq and
-resolvconf are installed together, and dnsmasq happens to be configured
-first, dnsmasq can still successfully register its nameserver address.
+Another way the resolvconf package addresses the problem is to allow other
+parties to call /sbin/resolvconf as soon as it appears in the filesystem:
+nameserver information can be registered with resolvconf before the
+resolvconf's postinst runs.  This means that when, for example, dnsmasq and
+resolvconf are installed in the same dpkg run, and dnsmasq happens to be
+configured first, dnsmasq can still successfully register its nameserver
+address with resolvconf.
 
-The correct and complete way to solve the problem would be for all
-suppliers of nameserver information to supply their information to
-resolvconf after it has been installed.  To make this possible the
-resolvconf package activates a trigger in the postinst and the postrm.
-Each package containing a program that supplies nameserver information
-to resolvconf should register interest in this trigger, named
-"update-resolvconf", and should have code in its postinst which causes
-nameserver information in the possession of its program(s) to be sent to
-/sbin/resolvconf if it exists and if that information has not already
-been sent.  Here's the idea.
+The correct and complete way to solve the problem would be for all suppliers
+of nameserver information to supply their information to resolvconf after it
+has been installed.  To make this possible the resolvconf package activates
+a trigger in the postinst and the postrm.  Each package containing a program
+that supplies nameserver information to resolvconf should register interest
+in this trigger, named "update-resolvconf", and should have code in its
+postinst which causes nameserver information in the possession of its
+program(s) to be sent to resolvconf if /sbin/resolvconf exists and is
+executable.  Here's the idea.
 
     # postinst
     case "$1" in
@@ -504,10 +505,11 @@ been sent.  Here's the idea.
             update-resolvconf)
               if [ -x /sbin/resolvconf ] ; then
                 if we_are_running ; then
-                  echo -n "$RESOLVINFO" | /sbin/resolvconf -a "${IFACE}.${MYNAME}"
+                  echo -n "$NMSRVR_INFO" | /sbin/resolvconf -a "${IFACE}.${MYNAME}"
                 fi
               else
                 # Resolvconf no longer installed
+                # Do magic things directly to /etc/resolv.conf
                 ...
               fi
               ;;

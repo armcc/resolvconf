@@ -6,8 +6,8 @@ resolvconf (1.50) unstable; urgency=low
     (Evidence that a package is allowed trigger itself:
     http://lists.debian.org/debian-dpkg/2007/10/msg00175.html)
   * Name the trigger 'update-resolvconf'.
-  * README: Add section "Usage information for maintainers" discussing
-    the trigger.
+  * Add section "Usage information for maintainers" to the README file
+    discussing the new trigger.
   * Include the contents of the original resolv.conf file in the
     database until the first reboot after installation.  The old behavior
     was to omit these contents (unless link-tail-to-original was
@@ -16,6 +16,7 @@ resolvconf (1.50) unstable; urgency=low
     correct either, but should have less unpleasant consequences than
     the old behavior.
   * Document the "original" file in resolvconf(8). (Closes: #414692)
+  * Improve markup of resolvconf(8).
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 20 Apr 2011 12:00:00 +0200
 
