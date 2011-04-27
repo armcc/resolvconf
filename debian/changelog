@@ -1,4 +1,4 @@
-resolvconf (1.50) unstable; urgency=low
+resolvconf (1.50) experimental; urgency=low
 
   [ Thomas Hood ]
   * Be interested in own trigger and enable updates only when triggered.
@@ -10,15 +10,16 @@ resolvconf (1.50) unstable; urgency=low
     discussing the new trigger.
   * Include the contents of the original resolv.conf file in the
     database until the first reboot after installation.  The old behavior
-    was to omit these contents (unless link-tail-to-original was
-    selected) with the result that information was missing from
+    was to omit these contents unless link-tail-to-original was
+    selected with the result that information was missing from
     resolv.conf until ifdown-ifup cycles.  The new behavior is not 
-    correct either, but should have less unpleasant consequences than
-    the old behavior.
+    correct either, since nameserver addresses are not removed when
+    corresponding interfaces are deconfigured, but should have less
+    unpleasant consequences than the old behavior.
   * Document the "original" file in resolvconf(8). (Closes: #414692)
   * Improve markup of resolvconf(8).
 
- -- Thomas Hood <jdthood@gmail.com>  Wed, 20 Apr 2011 12:00:00 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Wed, 27 Apr 2011 12:00:00 +0200
 
 resolvconf (1.49) experimental; urgency=low
 
