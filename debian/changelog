@@ -1,6 +1,10 @@
 resolvconf (1.51) unstable; urgency=low
 
   * Upload to unstable
+  * Rename 'TRUNCATE_NAMESERVER_LIST_AFTER_127' to
+    'TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS' and make it
+    cause the nameserver list to be truncated also after IPv6 loopback
+    addresses. (Closes: #568820)  NOT YET FULLY IMPLEMENTED!!!!
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 28 Apr 2011 12:00:00 +0200
 

@@ -9,7 +9,7 @@
 #
 # Licensed under the GNU GPL.  See /usr/share/doc/resolvconf/copyright.
 #
-# Written by Thomas Hood <jdthood@yahoo.co.uk>
+# Written by Thomas Hood <jdthood@gmail.com>
 
 set -e
 PATH=/sbin:/bin
@@ -19,9 +19,6 @@ PATH=/sbin:/bin
 # Set REPORT_ABSENT_SYMLINK=no to inhibit reports that
 # /etc/resolv.conf is not a symbolic link
 
-# Default value
-REPORT_ABSENT_SYMLINK=y
-TRUNCATE_NAMESERVER_LIST_AFTER_127=y
 
 # Default override
 [ -r /etc/default/resolvconf ] && . /etc/default/resolvconf
@@ -35,19 +32,35 @@ TAILFILE="${RESOLVCONFDIR}/tail"
 DYNAMICRSLVCNFFILE="${ETCRESOLVCONF}/run/resolv.conf"
 TMPFILE="${DYNAMICRSLVCNFFILE}_new.$$"
 
+# Set unset variables to their defaults
+if [ -z "$REPORT_ABSENT_SYMLINK" ] ; then
+	# '..._ALTERED_...' is the old deprecated name for this variable
+	if [ "$REPORT_ALTERED_SYMLINK" ] ; then
+		REPORT_ABSENT_SYMLINK="$REPORT_ALTERED_SYMLINK"
+	else
+		# Set to default value
+		REPORT_ABSENT_SYMLINK=y
+	fi
+fi
+
+if [ -z "$TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS" ] ; then
+	# '..._127' is the old deprecated name for this variable
+	if [ "$TRUNCATE_NAMESERVER_LIST_AFTER_127" ] ; then
+		TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS="$TRUNCATE_NAMESERVER_LIST_AFTER_127"
+	else
+		# Set to default value
+		TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS=y
+	fi
+fi
+
+
 report_warning() { echo "$0: Warning: $*" >&2 ; }
 
 if [ ! -L ${ETC}/resolv.conf ] || [ ! "$(readlink ${ETC}/resolv.conf)" = "$DYNAMICRSLVCNFFILE" ] ; then
 	case "$REPORT_ABSENT_SYMLINK" in
-		y|Y|yes|YES|Yes)
-			report_warning "${ETC}/resolv.conf is not a symbolic link to $DYNAMICRSLVCNFFILE"
-			;;
-	esac
-	# Old name for the variable was '...ALTERED...' so accept that for now
-	case "$REPORT_ALTERED_SYMLINK" in
-		y|Y|yes|YES|Yes)
-			report_warning "${ETC}/resolv.conf is not a symbolic link to $DYNAMICRSLVCNFFILE"
-			;;
+	  y|Y|yes|YES|Yes)
+		report_warning "${ETC}/resolv.conf is not a symbolic link to $DYNAMICRSLVCNFFILE"
+		;;
 	esac
 fi
 
@@ -73,7 +86,7 @@ uniquify()
 # Args are candidate items not containing spaces
 # Returns NSMSRVS -- space-separate list of no more than 3 items,
 #                    without duplicates,
-#                    truncated after 127.* if TRUNCATE_NAMESERVER_LIST_AFTER_127 set affirmatively
+#                    truncated after 127.* if TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS set affirmatively
 uniquify_nameserver_list()
 {
 	NMSRVRS=""
@@ -83,7 +96,7 @@ uniquify_nameserver_list()
 			[ "$1" = "$E" ] && { shift ; continue 2 ; }
 		done
 		NMSRVRS="${NMSRVRS:+$NMSRVRS }$1"
-		case "$TRUNCATE_NAMESERVER_LIST_AFTER_127" in (y|Y|yes|YES|Yes) case "$1" in (127.*) return 0 ;; esac ;; esac
+		case "$TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS" in (y|Y|yes|YES|Yes) case "$1" in (127.*) return 0 ;; esac ;; esac
 		N=$(($N + 1))
 		[ "$N" = 3 ] && return 0
 		shift

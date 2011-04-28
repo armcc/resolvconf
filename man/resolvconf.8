@@ -208,12 +208,12 @@ file.
 Set to "no" to prevent the printing of this message.
 The default is "yes".
 .TP
-.B TRUNCATE_NAMESERVER_LIST_AFTER_127
+.B TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS
 If set to "yes" then the 
 .I update.d/libc
 script will include
-no more nameserver addresses after the first address
-that starts with "127."
+no more nameserver addresses after the first loopback address.
+In IPv4 a loopback address is an address that starts with "127."
 This is usually the preferable behavior
 if the nameserver at 127.* is a local caching nameserver
 since it inhibits unnecessary changes to
@@ -233,6 +233,8 @@ as an unlikely event,
 this is a relatively minor disadvantage.
 Set to "no" to disable this truncation feature.
 The default is "yes".
+A deprecated synonym for this variable is 
+.BR TRUNCATE_NAMESERVER_LIST_AFTER_127 .
 .TP
 .B NAMED_RUN_DIR
 This is the directory where the dynamically generated
