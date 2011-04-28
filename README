@@ -492,7 +492,7 @@ of nameserver information to supply their information to resolvconf after it
 has been installed.  To make this possible the resolvconf package activates
 a trigger in the postinst and the postrm.  Each package containing a program
 that supplies nameserver information to resolvconf should register interest
-in this trigger, named "update-resolvconf", and should have code in its
+in this trigger, named "resolvconf-event", and should have code in its
 postinst which causes nameserver information in the possession of its
 program(s) to be sent to resolvconf if /sbin/resolvconf exists and is
 executable.  Here's the idea.
@@ -502,7 +502,7 @@ executable.  Here's the idea.
       triggered)
         for trigger in $2 ; do
           case "$trigger" in
-            update-resolvconf)
+            resolvconf-event)
               if [ -x /sbin/resolvconf ] ; then
                 if we_are_running ; then
                   echo -n "$NMSRVR_INFO" | /sbin/resolvconf -a "${IFACE}.${MYNAME}"

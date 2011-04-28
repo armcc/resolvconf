@@ -138,13 +138,13 @@ enable_updates() {
 
 case "$1" in
   configure)
-	dpkg-trigger update-resolvconf
+	dpkg-trigger resolvconf-event
 	;;
   triggered)
 	# Runs after this and possibly other packages have been configured
         for trigger in $2 ; do
 		case "$trigger" in
-		  update-resolvconf)
+		  resolvconf-event)
 			if [ -x /sbin/resolvconf ] ; then
 				enable_updates
 				break

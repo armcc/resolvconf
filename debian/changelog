@@ -5,17 +5,8 @@ resolvconf (1.50) experimental; urgency=low
     This could eliminate some superfluous updates on installation.
     (Evidence that a package is allowed trigger itself:
     http://lists.debian.org/debian-dpkg/2007/10/msg00175.html)
-  * Name the trigger 'update-resolvconf'.
   * Add section "Usage information for maintainers" to the README file
     discussing the new trigger.
-  * Include the contents of the original resolv.conf file in the
-    database until the first reboot after installation.  The old behavior
-    was to omit these contents unless link-tail-to-original was
-    selected with the result that information was missing from
-    resolv.conf until ifdown-ifup cycles.  The new behavior is not 
-    correct either, since nameserver addresses are not removed when
-    corresponding interfaces are deconfigured, but should have less
-    unpleasant consequences than the old behavior.
   * Document the "original" file in resolvconf(8). (Closes: #414692)
   * Improve markup of resolvconf(8).
 
@@ -35,6 +26,14 @@ resolvconf (1.49) experimental; urgency=low
     message is printed.
   * If someone has run resolvconf while updates were disabled, update
     when updates are enabled.
+  * Include the contents of the original resolv.conf file in the
+    database until the first reboot after installation.  The old behavior
+    was to omit these contents unless link-tail-to-original was
+    selected with the result that information was missing from
+    resolv.conf until ifdown-ifup cycles.  The new behavior is not 
+    correct either, since nameserver addresses are not removed when
+    corresponding interfaces are deconfigured, but should have less
+    unpleasant consequences than the old behavior.
   * Update the debconf template that discusses the problem just described.
     Whereas before it was recommended that the administrator down and up
     network interfaces, it is now recommended that the administrator
@@ -43,11 +42,12 @@ resolvconf (1.49) experimental; urgency=low
   * Run debconf-updatepo.
   * Add Depends on initscripts >= 2.88dsf-13.3 which enables /run
     in its postinst, ensuring that /run is available to our postinst.
-  * Activate a trigger in postinst and in postrm in order to induce other
-    packages to take notice of resolvconf being installed (configured) or
-    removed.  When triggered and resolvconf is installed, interested
-    packages possessing name server information should send it to
-    resolvconf. See README for details. (Closes: #567059)
+  * Activate the "resolvconf-event" trigger in postinst and in postrm
+    in order to induce other packages to take notice of resolvconf
+    being installed (configured) or removed.  When triggered and
+    resolvconf is installed, interested packages possessing name server
+    information should send it to resolvconf.  See README for details.
+    (Closes: #567059)
   * Remove /etc/dhcp3/dhclient-enter-hooks.d/resolvconf which is obsolete;
     remove it on purge and declare a Breaks: old versions of dhcp3-client
     which used it. (Closes: #591022).
