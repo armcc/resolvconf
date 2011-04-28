@@ -1,6 +1,8 @@
 resolvconf (1.50) experimental; urgency=low
 
   [ Thomas Hood ]
+  * Also migrate non-symlinked directory /etc/resolvconf/run to
+    /run/resolvconf.
   * Be interested in own trigger and enable updates only when triggered.
     This could eliminate some superfluous updates on installation.
     (Evidence that a package is allowed trigger itself:
