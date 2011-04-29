@@ -10,15 +10,19 @@
 # Licensed under the GNU GPL.  See /usr/share/doc/resolvconf/copyright.
 #
 # Written by Thomas Hood <jdthood@gmail.com>
+#
+# Set REPORT_ABSENT_SYMLINK=no to inhibit reports that
+# /etc/resolv.conf is not a symbolic link
+#
+# Set TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS=no
+# to allow additional nameserver addresses to be listed after
+# an initial loopback address 127.* or ::1.
+#
 
 set -e
 PATH=/sbin:/bin
 
 [ -x /lib/resolvconf/list-records ] || exit 1
-
-# Set REPORT_ABSENT_SYMLINK=no to inhibit reports that
-# /etc/resolv.conf is not a symbolic link
-
 
 # Default override
 [ -r /etc/default/resolvconf ] && . /etc/default/resolvconf
@@ -86,7 +90,7 @@ uniquify()
 # Args are candidate items not containing spaces
 # Returns NSMSRVS -- space-separate list of no more than 3 items,
 #                    without duplicates,
-#                    truncated after 127.* if TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS set affirmatively
+#                    truncated after loopback address if TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS set affirmatively
 uniquify_nameserver_list()
 {
 	NMSRVRS=""
@@ -96,7 +100,7 @@ uniquify_nameserver_list()
 			[ "$1" = "$E" ] && { shift ; continue 2 ; }
 		done
 		NMSRVRS="${NMSRVRS:+$NMSRVRS }$1"
-		case "$TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS" in (y|Y|yes|YES|Yes) case "$1" in (127.*) return 0 ;; esac ;; esac
+		case "$TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS" in (y|Y|yes|YES|Yes) case "$1" in (127.*|::1) return 0 ;; esac ;; esac
 		N=$(($N + 1))
 		[ "$N" = 3 ] && return 0
 		shift
