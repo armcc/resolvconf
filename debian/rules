@@ -13,6 +13,7 @@ clean:
 	dh_clean
 
 build:
+	debian/test-normalization
 	dh_testdir
 
 binary-arch:

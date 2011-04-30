@@ -59,12 +59,45 @@ esac
 
 cd "$IFACE_DIR"
 
+#	
+# The following function must EXACTLY the same in the resolvconf
+# and test-normalization scripts. And the test must pass!
+#
+### BEGIN FUNCTION TO COPY TO THE test-normalization SCRIPT ###
+#
+# Echo stdin with:
+#	comments removed;
+#	initial and terminal whitespace removed;
+#	whitespace strings replaced by single blanks;
+#	leading zeroes removed from nameserver address fields;
+#	first set of zero fields in an IPv6 address collapsed to '::';
+#	empty lines removed.
+normalized_stdin() {
+	sed                                                                                     \
+		-e 's/#.*$//'                                                                   \
+		-e 's/[[:blank:]]\+$//'                                                         \
+		-e 's/^[[:blank:]]\+//'                                                         \
+		-e 's/[[:blank:]]\+/ /g'                                                        \
+		-e '/^nameserver/!b ENDOFCYCLE'                                                 \
+		-e 's/$/ /'                                                                     \
+		-e 's/\([:. ]\)0\+/\10/g'                                                       \
+		-e 's/\([:. ]\)0\([123456789abcdefABCDEF][[:xdigit:]]*\)/\1\2/g'                \
+		-e '/::/b ENDOFCYCLE; s/ \(0[: ]\)\+/ ::/'                                      \
+		-e '/::/b ENDOFCYCLE; s/:\(0[: ]\)\+/::/'                                       \
+		-e ': ENDOFCYCLE'                                                               \
+		- |                                                                             \
+	sed                                                                                     \
+		-e 's/[[:blank:]]\+$//'                                                         \
+		-e '/^$/d'
+}
+### END FUNCTION TO COPY TO THE test-normalization SCRIPT ###
+
 case "$CMD" in
   -u) : ;;
   -a)
 	OLD_CONTENT=""
 	[ -f "$IFACE" ] && OLD_CONTENT="$(cat "$IFACE")"
-	NEW_CONTENT="$(sed 's/#.*//' -)"
+	NEW_CONTENT="$(normalized_stdin)"
 	# Proceed only if content has changed. The test here can't
 	# eliminate 100% of redundant invocations of update scripts
 	# because we don't do any locking; however it certainly does

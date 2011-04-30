@@ -11,12 +11,12 @@
 #
 # Written by Thomas Hood <jdthood@gmail.com>
 #
-# Set REPORT_ABSENT_SYMLINK=no to inhibit reports that
+# Set REPORT_ABSENT_SYMLINK=no to inhibit warning message that
 # /etc/resolv.conf is not a symbolic link
 #
 # Set TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS=no
-# to allow additional nameserver addresses to be listed after
-# an initial loopback address 127.* or ::1.
+# to allow additional nameserver addresses to be listed in
+# resolv.conf after an initial loopback address 127.* or ::1.
 #
 
 set -e

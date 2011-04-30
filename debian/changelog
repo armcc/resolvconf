@@ -4,7 +4,9 @@ resolvconf (1.51) unstable; urgency=low
   * Rename 'TRUNCATE_NAMESERVER_LIST_AFTER_127' to
     'TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS' and make it
     cause the nameserver list to be truncated also after IPv6 loopback
-    addresses. (Closes: #568820)  NOT YET FULLY IMPLEMENTED!!!!
+    addresses. (Closes: #568820)
+  * Normalize content.  Add debian/test-normalization script to test
+    the normalization code.
   * Update resolvconf/downup-interfaces template again.  Ready for
     re-translation.
   * Upload to unstable.
