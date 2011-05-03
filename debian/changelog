@@ -13,7 +13,7 @@ resolvconf (1.51) experimental; urgency=low
   * Update resolvconf/downup-interfaces template again.  Ready for
     re-translation!
 
- -- Thomas Hood <jdthood@gmail.com>  Thu, 28 Apr 2011 12:00:00 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Tue, 03 May 2011 12:00:00 +0200
 
 resolvconf (1.50) experimental; urgency=low
 
