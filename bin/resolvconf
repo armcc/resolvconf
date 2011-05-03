@@ -73,21 +73,21 @@ cd "$IFACE_DIR"
 #	first set of zero fields in an IPv6 address collapsed to '::';
 #	empty lines removed.
 normalized_stdin() {
-	sed                                                                                     \
-		-e 's/#.*$//'                                                                   \
-		-e 's/[[:blank:]]\+$//'                                                         \
-		-e 's/^[[:blank:]]\+//'                                                         \
-		-e 's/[[:blank:]]\+/ /g'                                                        \
-		-e '/^nameserver/!b ENDOFCYCLE'                                                 \
-		-e 's/$/ /'                                                                     \
-		-e 's/\([:. ]\)0\+/\10/g'                                                       \
-		-e 's/\([:. ]\)0\([123456789abcdefABCDEF][[:xdigit:]]*\)/\1\2/g'                \
-		-e '/::/b ENDOFCYCLE; s/ \(0[: ]\)\+/ ::/'                                      \
-		-e '/::/b ENDOFCYCLE; s/:\(0[: ]\)\+/::/'                                       \
-		-e ': ENDOFCYCLE'                                                               \
-		- |                                                                             \
-	sed                                                                                     \
-		-e 's/[[:blank:]]\+$//'                                                         \
+	sed                                                                        \
+		-e 's/#.*$//'                                                      \
+		-e 's/[[:blank:]]\+$//'                                            \
+		-e 's/^[[:blank:]]\+//'                                            \
+		-e 's/[[:blank:]]\+/ /g'                                           \
+		-e '/^nameserver/!b ENDOFCYCLE'                                    \
+		-e 's/$/ /'                                                        \
+		-e 's/\([:. ]\)0\+/\10/g'                                          \
+		-e 's/\([:. ]\)0\([123456789abcdefABCDEF][[:xdigit:]]*\)/\1\2/g'   \
+		-e '/::/b ENDOFCYCLE; s/ \(0[: ]\)\+/ ::/'                         \
+		-e '/::/b ENDOFCYCLE; s/:\(0[: ]\)\+/::/'                          \
+		-e ': ENDOFCYCLE'                                                  \
+		- |                                                                \
+	sed                                                                        \
+		-e 's/[[:blank:]]\+$//'                                            \
 		-e '/^$/d'
 }
 ### END FUNCTION TO COPY TO THE test-normalization SCRIPT ###
