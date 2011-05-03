@@ -1,4 +1,4 @@
-resolvconf (1.51) unstable; urgency=low
+resolvconf (1.51) experimental; urgency=low
 
   [ Thomas Hood ]
   * Rename 'TRUNCATE_NAMESERVER_LIST_AFTER_127' to
@@ -12,7 +12,6 @@ resolvconf (1.51) unstable; urgency=low
     code.
   * Update resolvconf/downup-interfaces template again.  Ready for
     re-translation!
-  * Upload to unstable.
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 28 Apr 2011 12:00:00 +0200
 
