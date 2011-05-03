@@ -4,7 +4,7 @@ resolvconf (1.51) experimental; urgency=low
   * Rename 'TRUNCATE_NAMESERVER_LIST_AFTER_127' to
     'TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS' and make it
     cause the nameserver list to be truncated also after an IPv6
-    loopback addresses. (Closes: #568820)
+    loopback address. (Closes: #568820)
   * Normalize contents of records -- i.e., strip out comments and
     whitespace and shorten IPv6 nameserver addresses.  This makes
     it easier to implement the change above.
