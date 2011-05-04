@@ -2,6 +2,7 @@ resolvconf (1.52) unstable; urgency=low
 
   [ Thomas Hood ]
   * Add debian/source/format at lintian's suggestion
+  * Run debconf-updatepo
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 04 May 2011 12:24:09 +0200
 

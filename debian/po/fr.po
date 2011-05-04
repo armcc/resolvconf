@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
-"POT-Creation-Date: 2011-04-18 22:36+0200\n"
+"POT-Creation-Date: 2011-05-04 14:46+0200\n"
 "PO-Revision-Date: 2008-02-26 23:35+0100\n"
 "Last-Translator: Christian Perrier <bubulle@debian.org>\n"
 "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
@@ -81,17 +81,32 @@ msgstr ""
 #. Description
 #: ../templates:3001
 msgid ""
-"Local caching name servers and interface configurers supply name server "
-"information to resolvconf after resolvconf has been installed. Name servers "
-"that previously started, and configurers that previously brought up "
-"interfaces, have not supplied their name server information to resolvconf. "
-"The information has usually either been lost or has been added directly to /"
-"etc/resolv.conf. In order to preserve as much information as possible, "
-"resolvconf includes the contents of the original /etc/resolv.conf in its "
-"database until reboot. Although resolvconf attempts to trigger other "
-"programs to send their information to resolvconf after installation, this "
-"often does not happen correctly. Consequently, in order for resolvconf's "
-"name server information to be fully correct it is often necessary to reboot "
+"Suppliers of name server information such as local caching name servers and "
+"interface configurers are expected to supply name server information to the "
+"resolvconf program. However, although installation of the resolvconf package "
+"triggers them to supply their information, some of them fail to do so."
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:3001
+msgid ""
+"This bug would lead to loss of valid name server information on installation "
+"of the resolvconf package if the following workaround were not adopted: "
+"resolvconf includes the full contents of the pre-installation /etc/resolv."
+"conf in its database until reboot. This has the drawback that name server "
+"information is retained even if the associated interface is later "
+"deconfigured. (This incorrect behavior is judged to be less harmful than the "
+"alternative of losing valid information.)"
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:3001
+msgid ""
+"Until the bug in question is fixed and the workaround removed, the only way "
+"to ensure that resolvconf has fully correct name server information after "
+"the resolvconf package has been installed on a running system is to reboot "
 "the system."
 msgstr ""
 
