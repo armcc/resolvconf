@@ -2,9 +2,9 @@ resolvconf (1.52) unstable; urgency=low
 
   [ Thomas Hood ]
   * Add debian/source/format at lintian's suggestion
-  * Run debconf-updatepo
   * Update debconf template translations
     * ru.po thanks to Yuri Kozlov (Closes: #625623)
+  * Run debconf-updatepo
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 04 May 2011 12:24:09 +0200
 
@@ -20,8 +20,7 @@ resolvconf (1.51) experimental; urgency=low
     it easier to implement the change above.
   * Add debian/test-normalization script to test the normalization
     code.
-  * Update resolvconf/downup-interfaces template again.  Ready for
-    re-translation!
+  * Update resolvconf/downup-interfaces template again.
 
  -- Thomas Hood <jdthood@gmail.com>  Tue, 03 May 2011 12:00:00 +0200
 
