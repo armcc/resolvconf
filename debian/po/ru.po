@@ -11,21 +11,22 @@
 #    Developers do not need to manually edit POT or PO files.
 #
 # Yuri Kozlov <kozlov.y@gmail.com>, 2006, 2008.
+# Yuri Kozlov <yuray@komyakino.ru>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf-1.39\n"
+"Project-Id-Version: resolvconf 1.52\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2011-05-04 14:46+0200\n"
-"PO-Revision-Date: 2008-02-11 20:58+0300\n"
-"Last-Translator: Yuri Kozlov <kozlov.y@gmail.com>\n"
+"PO-Revision-Date: 2011-05-04 20:16+0400\n"
+"Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. Type: boolean
 #. Description
@@ -79,7 +80,7 @@ msgstr ""
 #. Description
 #: ../templates:3001
 msgid "Reboot recommended"
-msgstr ""
+msgstr "Рекомендуется перезагрузка"
 
 #. Type: note
 #. Description
@@ -90,6 +91,13 @@ msgid ""
 "resolvconf program. However, although installation of the resolvconf package "
 "triggers them to supply their information, some of them fail to do so."
 msgstr ""
+"Ожидается, что информация о сервере имён для программы "
+"resolvconf будет получена от других программ, таких как "
+"локальные кэширущие серверы имён и "
+"настройщики интерфейсов. "
+"Однако, хотя процедура установки пакета resolvconf "
+"запросила эту информацию, некоторые из них не могут "
+"её выдать."
 
 #. Type: note
 #. Description
@@ -103,6 +111,15 @@ msgid ""
 "deconfigured. (This incorrect behavior is judged to be less harmful than the "
 "alternative of losing valid information.)"
 msgstr ""
+"Этот дефект привёл бы к потере информации о сервере имён при "
+"установке пакета resolvconf, если не было применено "
+"следующее обходное решение: "
+"resolvconf включил всё содержимое /etc/resolv.conf, которое было "
+"до установки, в свою базу данных до перезагрузки. "
+"Но в этом решении есть недостаток: информация о сервере имён "
+"останется, даже если со связанного с ней интерфейса позднее "
+"будут удалены настройки (это некорректное поведение "
+"считается менее болезненным, чем потеря достоверной информации)."
 
 #. Type: note
 #. Description
@@ -113,6 +130,11 @@ msgid ""
 "the resolvconf package has been installed on a running system is to reboot "
 "the system."
 msgstr ""
+"Пока рассматриваемая ошибка не исправлена, и обходное решение "
+"не удалено, единственный путь гарантировать, что у resolvconf "
+"есть полностью корректная информация о сервере имён после "
+"установки пакета resolvconf пакет в рабочую систему, "
+"это перезагрузка системы."
 
 #. Type: boolean
 #. Description
@@ -174,22 +196,3 @@ msgstr ""
 "nameservers\", нужно изменить символическую ссылку /etc/resolvconf/resolv."
 "conf.d/tail, чтобы она указывала на /dev/null."
 
-#~ msgid "Network interfaces reconfiguration mandatory"
-#~ msgstr "Обязательная перенастройка сетевых интерфейсов"
-
-#~ msgid ""
-#~ "Once resolvconf is installed, interface configurers supply name server "
-#~ "information to it (which it then makes available to the C library "
-#~ "resolver and to DNS caches). However, they do this only when they bring "
-#~ "up interfaces. Therefore for resolvconf's name server information to be "
-#~ "up to date after initial installation it is necessary to reconfigure "
-#~ "interfaces (that is, to take them down and then to bring them up again) "
-#~ "and to restart DNS caches."
-#~ msgstr ""
-#~ "После установки resolvconf, настройщики интерфейсов предоставляют ему "
-#~ "информацию о серверах имён (которая затем становится доступна C-"
-#~ "библиотеке resolver и кеширующим DNS). Однако, они делают это только в "
-#~ "момент активации интерфейсов. Поэтому, чтобы синхронизировать информацию "
-#~ "о серверах имён для resolvconf после начальной установки, необходимо "
-#~ "перенастроить интерфейсы (то есть, деактивировать их и тут же "
-#~ "активировать заново), а также перезапустить кеширующие DNS."
