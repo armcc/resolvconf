@@ -6,5 +6,7 @@ TODO
 When changing conffiles, update the license reference to refer to
 /usr/share/doc/resolvconf/copyright and update jdthood's e-mail address.
 
+Remember to run debconf-updatepo after changing templates or po files.
+
 As Ian Jackson says (http://lists.debian.org/debian-dpkg/2008/03/msg00091.html)
 > OH FOR FUCK'S SAKE WHAT DOES IT TAKE TO GET SOMETHING DONE AROUND HERE?
