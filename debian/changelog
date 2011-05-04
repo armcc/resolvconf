@@ -1,3 +1,10 @@
+resolvconf (1.52) unstable; urgency=low
+
+  [ Thomas Hood ]
+  * Add debian/source/format at lintian's suggestion
+
+ -- Thomas Hood <jdthood@gmail.com>  Wed, 04 May 2011 12:24:09 +0200
+
 resolvconf (1.51) experimental; urgency=low
 
   [ Thomas Hood ]
