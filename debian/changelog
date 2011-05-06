@@ -4,6 +4,7 @@ resolvconf (1.52) unstable; urgency=low
   * Add debian/source/format at lintian's suggestion
   * Update debconf template translations
     * ru.po thanks to Yuri Kozlov (Closes: #625623)
+    * sv.po thanks to Martin Bagge (Closes: #625786)
   * Run debconf-updatepo
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 04 May 2011 12:24:09 +0200
