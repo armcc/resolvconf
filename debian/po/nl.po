@@ -1,27 +1,19 @@
-#
-#    Translators, if you are not familiar with the PO format, gettext
-#    documentation is worth reading, especially sections dedicated to
-#    this format, e.g. by running:
-#         info -n '(gettext)PO Files'
-#         info -n '(gettext)Header Entry'
-#
-#    Some information specific to po-debconf are available at
-#            /usr/share/doc/po-debconf/README-trans
-#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
-#
-#    Developers do not need to manually edit POT or PO files.
+# Dutch resolvconf po-debconf translation,
+# Copyright (C) 2011 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the resolvconf package.
+# Vincent Zweije <vincent@zweije.nl>, 2011.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf 1.1\n"
+"Project-Id-Version: resolvconf 1.52\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2011-05-04 14:46+0200\n"
-"PO-Revision-Date: 2008-02-17 22:24+0000\n"
-"Last-Translator: Vincent Zweije <zweije@xs4all.nl>\n"
-"Language-Team: Dutch <debian-l10n-dutch@lists.debian.org>\n"
+"PO-Revision-Date: 2011-05-04 20:32+0000\n"
+"Last-Translator: Vincent Zweije <vincent@zweije.nl>\n"
+"Language-Team: Debian-Dutch <debian-l10n-dutch@lists.debian.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-15\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. Type: boolean
@@ -41,7 +33,7 @@ msgid ""
 "the existing /etc/resolv.conf file will be preserved as /etc/resolvconf/"
 "resolv.conf.d/original, and will be restored if this package is removed."
 msgstr ""
-"Het resolvconf pakket bevat de infrastructuur om automatisch bijwerken van "
+"Het resolvconf-pakket bevat de infrastructuur om automatisch bijwerken van "
 "het resolver-configuratiebestand mogelijk te maken. Een gedeelte van de "
 "noodzakelijke infrastructuur is een symbolische koppeling van /etc/resolv."
 "conf naar /etc/resolvconf/run/resolv.conf. Als u deze optie accepteert zal "
@@ -61,7 +53,7 @@ msgstr ""
 "Het weigeren van deze optie voorkomt dat toekomstige installaties de "
 "symbolische koppeling terug aanmaken; bijgevolg zal het resolver-"
 "configuratiebestand niet dynamisch worden bijgewerkt. Dynamisch bijwerken "
-"kan worden gereactiveerd door de instructies in de README te volgen."
+"kan alsnog worden geactiveerd door de instructies in de README te volgen."
 
 #. Type: boolean
 #. Description
@@ -71,14 +63,14 @@ msgid ""
 "should not be left installed if unconfigured."
 msgstr ""
 "De aanwezigheid van resolvconf kan het gedrag van andere programma's "
-"beïnvloeden. Het is dus af te raden om dit pakket ongeconfigureerd, maar wel "
-"geïnstalleerd te laten."
+"beÃ¯nvloeden. Het is dus af te raden om dit pakket ongeconfigureerd, maar wel "
+"geÃ¯nstalleerd te laten."
 
 #. Type: note
 #. Description
 #: ../templates:3001
 msgid "Reboot recommended"
-msgstr ""
+msgstr "Herstart aanbevolen"
 
 #. Type: note
 #. Description
@@ -89,6 +81,11 @@ msgid ""
 "resolvconf program. However, although installation of the resolvconf package "
 "triggers them to supply their information, some of them fail to do so."
 msgstr ""
+"Van programma's die naamserver-informatie leveren, zoals lokale "
+"naamservers en interface-configuratieprogramma's, wordt verwacht dat zij "
+"naamserver-informatie aan het resolvconf programma doorgeven. Sommigen "
+"doen dit echter niet, hoewel de installatie van het resolvconf-pakket hun "
+"daartoe een signaal geeft."
 
 #. Type: note
 #. Description
@@ -102,6 +99,14 @@ msgid ""
 "deconfigured. (This incorrect behavior is judged to be less harmful than the "
 "alternative of losing valid information.)"
 msgstr ""
+"Deze fout kan leiden tot verlies van geldige naamserver-informatie bij "
+"installatie van het resolvocnf-pakket. Daarom is er de volgende maatregel: "
+"resolvconf neemt de volledige inhoud van /etc/resolv.conf van voor zijn "
+"installatie over tot aan de volgende herstart. Het nadeel van deze maatregel "
+"is dat naamserver-informatie wordt vastgehouden, zelfs als de bijbehorende "
+"interface later wordt gedeconfigureerd. Dit op zich onjuiste gedrag wordt "
+"algemeen gezien als minder schadelijk dan het alternatief waarbij geldige "
+"informatie verloren gaat."
 
 #. Type: note
 #. Description
@@ -112,6 +117,9 @@ msgid ""
 "the resolvconf package has been installed on a running system is to reboot "
 "the system."
 msgstr ""
+"Totdat de feitelijke fout is verholpen en de maatregel is verwijderd, is "
+"herstarten van het systeem de enige manier om te garanderen dat resolvconf "
+"na installatie volledig juiste naamserver-informatie heeft."
 
 #. Type: boolean
 #. Description
@@ -144,8 +152,7 @@ msgstr ""
 "Tot op het moment waarop /etc/network/interfaces is aangepast en de "
 "betreffende netwerk-interfaces opnieuw zijn ingesteld, zullen deze adressen "
 "niet in het automatisch gegenereerde resolver-configuratiebestand zijn "
-"opgenomen. Zonder deze adressen kunt u problemen krijgen met het opzoeken "
-"van domeinnamen."
+"opgenomen."
 
 #. Type: boolean
 #. Description
@@ -174,26 +181,5 @@ msgid ""
 msgstr ""
 "Nadat de benodigde \"dns-nameservers\"-regels zijn toegevoegd aan /etc/"
 "network/interfaces, dient de symbolische koppeling /etc/resolvconf/resolv."
-"conf.d/tail te worden vervangen door één die naar /dev/null wijst."
+"conf.d/tail te worden vervangen door Ã©Ã©n die naar /dev/null wijst."
 
-#~ msgid "Network interfaces reconfiguration mandatory"
-#~ msgstr "Herconfigureren van netwerkinterfaces noodzakelijk"
-
-#~ msgid ""
-#~ "Once resolvconf is installed, interface configurers supply name server "
-#~ "information to it (which it then makes available to the C library "
-#~ "resolver and to DNS caches). However, they do this only when they bring "
-#~ "up interfaces. Therefore for resolvconf's name server information to be "
-#~ "up to date after initial installation it is necessary to reconfigure "
-#~ "interfaces (that is, to take them down and then to bring them up again) "
-#~ "and to restart DNS caches."
-#~ msgstr ""
-#~ "Nadat resolvconf is geïnstalleerd zullen programma's die een netwerk-"
-#~ "interface configureren informatie omtrent naamservers aan resolvconf "
-#~ "doorgeven. (Op zijn beurt zal resolvconf deze informatie beschikbaar "
-#~ "maken aan de C-bibliotheekresolver en aan DNS-caches.) Dit gebeurt echter "
-#~ "alleen als een interface op wordt gebracht. Om na de installatie "
-#~ "resolvconf van actuele informatie te voorzien, dienen de "
-#~ "netwerkinterfaces opnieuw te worden ingesteld (dat betekent neerbrengen "
-#~ "met het ifdown-commando en weer op met het ifup-commando) en de DNS-"
-#~ "caches te worden herstart."
