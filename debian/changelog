@@ -7,6 +7,7 @@ resolvconf (1.52) unstable; urgency=low
     * sv.po thanks to Martin Bagge (Closes: #625786)
     * nl.po thanks to Vincent Zweije (Closes: #625896)
     * de.po thanks to Helge Kreutzmann (Closes: #626030)
+  * Remove long-out-of-date pt_BR.po
   * Run debconf-updatepo
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 04 May 2011 12:24:09 +0200
