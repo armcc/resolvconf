@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: resolvconf\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2011-05-04 14:46+0200\n"
-"PO-Revision-Date: 2011-04-17 17:30+01:00\n"
+"PO-Revision-Date: 2011-05-10 17:30+01:00\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <debian-l10n-danish@lists.debian.org> \n"
 "Language: da\n"
@@ -71,7 +71,7 @@ msgstr ""
 #. Description
 #: ../templates:3001
 msgid "Reboot recommended"
-msgstr ""
+msgstr "Genstart anbefales"
 
 #. Type: note
 #. Description
@@ -82,6 +82,11 @@ msgid ""
 "resolvconf program. However, although installation of the resolvconf package "
 "triggers them to supply their information, some of them fail to do so."
 msgstr ""
+"Leverandører af navneserverinformation såsom lokale navneservere for mellemlageret "
+"(caching) og opsættere af brugerflader forventes at angive navneserverinformation "
+"til resolvconf-programmet. Selvom installationen af pakken resolvconf beder "
+"dem om at angive deres informationer så fejler nogle af dem med hensyn til "
+"denne opgave."
 
 #. Type: note
 #. Description
@@ -95,6 +100,13 @@ msgid ""
 "deconfigured. (This incorrect behavior is judged to be less harmful than the "
 "alternative of losing valid information.)"
 msgstr ""
+"Denne fejl vil føre til tab af gyldig navneserverinformation ved installation "
+"af pakken resolvconf, hvis den følgende omgåelse ikke blev indarbejdet: "
+"resolvconf inkluderer det fulde indhold af den præinstallerede /etc/resolv."
+"conf i sin database indtil genstart. Dette har den ulempe, at "
+"navneserverinformation bevares selv om den associerede brugerflade senere "
+"dekonfigureres. (Denne forkerte opførsel er bedømt til at være mindre "
+"skadelig end alternativet, der kan medføre tab af valid information.)"
 
 #. Type: note
 #. Description
@@ -105,6 +117,10 @@ msgid ""
 "the resolvconf package has been installed on a running system is to reboot "
 "the system."
 msgstr ""
+"Indtil den omtalte fejl er rettet og omgåelsen fjernet er den eneste måde at "
+"sikre sig, at resolvconf har fuld korrekt navneserverinformation, efter at "
+"pakken resolvconf er blevet installeret på et kørende system, at genstarte "
+"systemet."
 
 #. Type: boolean
 #. Description
@@ -167,22 +183,3 @@ msgstr ""
 "network/interfaces, bør henvisningen /etc/resolvconf/resolv.conf.d/tail "
 "erstattes med en i /dev/null."
 
-#~ msgid "Network interfaces reconfiguration mandatory"
-#~ msgstr "Rekonfiguration af netværksgrænseflader er tvungen"
-
-#~ msgid ""
-#~ "Once resolvconf is installed, interface configurers supply name server "
-#~ "information to it (which it then makes available to the C library "
-#~ "resolver and to DNS caches). However, they do this only when they bring "
-#~ "up interfaces. Therefore for resolvconf's name server information to be "
-#~ "up to date after initial installation it is necessary to reconfigure "
-#~ "interfaces (that is, to take them down and then to bring them up again) "
-#~ "and to restart DNS caches."
-#~ msgstr ""
-#~ "Når resolvconf er installeret, leverer grænsefladekonfiguratorer "
-#~ "navneserverinformation til den (som den så gør tilgængelig for C-"
-#~ "bibliotekets klarlægger og til DNS-mellemlagre). De gør dog kun dette, "
-#~ "når de starter grænseflader op. For at resolvconfs navneserverinformation "
-#~ "skal være opdateret efter den oprindelige installation, er det nødvendigt "
-#~ "at rekonfigurere grænseflader (det vil sige at tage dem ned og starte dem "
-#~ "op igen) og at genstarte DNS-mellemlagre."
