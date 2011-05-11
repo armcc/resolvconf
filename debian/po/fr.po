@@ -1,5 +1,5 @@
 # Translation of resolvconf debconf templates to French
-# Copyright (C) 2008 Christian Perrier <bubulle@debian.org>
+# Copyright (C) 2008, 2011 Christian Perrier <bubulle@debian.org>
 # This file is distributed under the same license as the resolvconf package.
 #
 # Relecteurs : philippe.batailler@free.fr (Philippe Batailler)
@@ -173,7 +173,7 @@ msgid ""
 "appended to the dynamically generated file."
 msgstr ""
 "Si vous choisissez cette option, un contournement temporaire sera "
-"établi : un lien symbolique sera créé (s'il n'existe pas déjà), de /etc/"
+"établi : un lien symbolique sera créé (s'il n'existe pas déjà), de /etc/"
 "resolvconf/resolv.conf.d/tail vers /etc/resolvconf/resolv.conf.d/original. "
 "Cela ajoutera l'ensemble du fichier initial de configuration du résolveur à "
 "la fin du fichier créé dynamiquement."
