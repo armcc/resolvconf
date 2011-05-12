@@ -8,12 +8,10 @@ resolvconf (1.52) unstable; urgency=low
     * nl.po thanks to Vincent Zweije (Closes: #625896)
     * de.po thanks to Helge Kreutzmann (Closes: #626030)
     * da.po thanks to Joe Dalton (Closes: #626302)
-    * fr.po thanks to Christian PERRIER, Steve Petruzzello, and 
-      David Prévot on the debian-10n-french list
-  * Remove long-out-of-date pt_BR.po
-  * Run debconf-updatepo
+    * fr.po thanks to Christian PERRIER, Steve Petruzzello and David Prévot
+  * Remove long outdated pt_BR.po
 
- -- Thomas Hood <jdthood@gmail.com>  Wed, 04 May 2011 12:24:09 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Wed, 11 May 2011 12:00:00 +0200
 
 resolvconf (1.51) experimental; urgency=low
 
