@@ -15,8 +15,8 @@ standard_run_tmpfs_is_available() {
 }
 
 standard_run_subdirs_created() {
-	{ [ -d /run/resolvconf ] || mkdir -v /run/resolvconf ; } \
-	&& { [ -d /run/resolvconf/interface ] || mkdir -v /run/resolvconf/interface ; }
+	{ [ -d /run/resolvconf ] || mkdir /run/resolvconf ; } \
+	&& { [ -d /run/resolvconf/interface ] || mkdir /run/resolvconf/interface ; }
 }
 
 standard_lib_init_rw_tmpfs_is_available() {
@@ -27,8 +27,8 @@ standard_lib_init_rw_tmpfs_is_available() {
 }
 
 standard_lib_init_rw_subdirs_created() {
-	{ [ -d /lib/init/rw/resolvconf ] || mkdir -v /lib/init/rw/resolvconf ; } \
-	&& { [ -d /lib/init/rw/resolvconf/interface ] || mkdir -v /lib/init/rw/resolvconf/interface ; }
+	{ [ -d /lib/init/rw/resolvconf ] || mkdir /lib/init/rw/resolvconf ; } \
+	&& { [ -d /lib/init/rw/resolvconf/interface ] || mkdir /lib/init/rw/resolvconf/interface ; }
 }
 
 ### Create run-time directories ###
@@ -45,7 +45,7 @@ standard_lib_init_rw_subdirs_created() {
 case "$1" in
   install|upgrade)
 	# Ensure that /etc/resolvconf exists.
-	mkdir -pv /etc/resolvconf
+	mkdir -p /etc/resolvconf
 
 	if [ -L /etc/resolvconf/run ] ; then
 		# We are upgrading.
@@ -96,10 +96,10 @@ case "$1" in
 	# Create subdirectory
 	if [ -d /etc/resolvconf/run ] ; then
 		# It's a directory or a symlink to one
-		[ -d /etc/resolvconf/run/interface ] || mkdir -v /etc/resolvconf/run/interface
+		[ -d /etc/resolvconf/run/interface ] || mkdir /etc/resolvconf/run/interface
 	elif [ -L /etc/resolvconf/run ] ; then
 		# It's a dangling but canonicalizable symlink
-		mkdir -v "$RUN_CANONICALPATH" "${RUN_CANONICALPATH}/interface"
+		mkdir "$RUN_CANONICALPATH" "${RUN_CANONICALPATH}/interface"
 	else
 		# It's nonexistent
 		# Make directories at one of the standard locations if possible,
@@ -109,7 +109,7 @@ case "$1" in
 		elif standard_lib_init_rw_tmpfs_is_available && standard_lib_init_rw_subdirs_created ; then
 			ln -s /lib/init/rw/resolvconf /etc/resolvconf/run
 		else
-			[ -d /etc/resolvconf/run/interface ] || mkdir -v /etc/resolvconf/run/interface
+			[ -d /etc/resolvconf/run/interface ] || mkdir /etc/resolvconf/run/interface
 		fi
 	fi
 	;;

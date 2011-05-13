@@ -10,8 +10,8 @@ report_err() { report "Error: $*" >&2 ; }
 report_info() { report "$*" >&2 ; }
 
 standard_run_subdirs_created() {
-	{ [ -d /run/resolvconf ] || mkdir -v /run/resolvconf ; } \
-	&& { [ -d /run/resolvconf/interface ] || mkdir -v /run/resolvconf/interface ; }
+	{ [ -d /run/resolvconf ] || mkdir /run/resolvconf ; } \
+	&& { [ -d /run/resolvconf/interface ] || mkdir /run/resolvconf/interface ; }
 }
 
 # We use dh_installinit with --no-start
