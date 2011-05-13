@@ -12,7 +12,7 @@ resolvconf (1.52) unstable; urgency=low
   * Remove long outdated pt_BR.po
   * Don't run mkdir with -v
 
- -- Thomas Hood <jdthood@gmail.com>  Wed, 11 May 2011 12:00:00 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Wed, 13 May 2011 12:00:00 +0200
 
 resolvconf (1.51) experimental; urgency=low
 
