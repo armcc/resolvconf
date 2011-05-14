@@ -1,7 +1,6 @@
-# Dutch resolvconf po-debconf translation,
-# Copyright (C) 2011 THE PACKAGE'S COPYRIGHT HOLDER
+# Dutch resolvconf po-debconf translation
+# Copyright (C) 2011 Vincent Zweije <vincent@zweije.nl>
 # This file is distributed under the same license as the resolvconf package.
-# Vincent Zweije <vincent@zweije.nl>, 2011.
 #
 msgid ""
 msgstr ""

@@ -1,5 +1,5 @@
 # Translation of resolvconf debconf templates to German
-# Copyright (C) Helge Kreutzmann <debian@helgefjell.de>, 2004, 2008, 2011.
+# Copyright (C) 2004, 2008, 2011 Helge Kreutzmann <debian@helgefjell.de>
 # This file is distributed under the same license as the resolvconf package.
 #
 msgid ""

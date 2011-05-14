@@ -1,8 +1,7 @@
-# translation of resolvconf-eu.po to Euskara
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-#
-# Piarres Beobide EGaña <pi@beobide.net>, 2009.
+# Translation of resolvconf-eu.po to Euskara
+# Copyright (C) 2009 Piarres Beobide EGaña <pi@beobide.net>
+# This file is distributed under the same license as the resolvconf package.
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.52\n"

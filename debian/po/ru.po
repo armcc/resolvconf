@@ -1,17 +1,7 @@
-# translation of ru.po to Russian
+# Translation of resolvconf debconf templates to Russian
+# Copyright (C) 2006, 2008, 2011 Yuri Kozlov <yuray@komyakino.ru>
+# This file is distributed under the same license as the resolvconf package.
 #
-#    Translators, if you are not familiar with the PO format, gettext
-#    documentation is worth reading, especially sections dedicated to
-#    this format, e.g. by running:
-#         info -n '(gettext)PO Files'
-#         info -n '(gettext)Header Entry'
-#    Some information specific to po-debconf are available at
-#            /usr/share/doc/po-debconf/README-trans
-#         or http://www.debian.org/intl/l10n/po-debconf/README-trans#
-#    Developers do not need to manually edit POT or PO files.
-#
-# Yuri Kozlov <kozlov.y@gmail.com>, 2006, 2008.
-# Yuri Kozlov <yuray@komyakino.ru>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.52\n"

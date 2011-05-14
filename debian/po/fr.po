@@ -2,11 +2,11 @@
 # Copyright (C) 2008, 2011 Christian Perrier <bubulle@debian.org>
 # This file is distributed under the same license as the resolvconf package.
 #
-# Relecteurs : philippe.batailler@free.fr (Philippe Batailler)
+# Relecteurs : Philippe Batailler <philippe.batailler@free.fr>
 #              Daniel Déchelotte <maitre_yodan@fr.club-internet>
 # 	       Nicolas Boullis <nboullis@debian.org>
-# Frédéric ZULIAN <f1sxo@ref-union.org>, 2004.
-# Christian Perrier <bubulle@debian.org>, 2008, 2011.
+#              Frédéric ZULIAN <f1sxo@ref-union.org>
+#              Christian Perrier <bubulle@debian.org>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"

@@ -1,14 +1,13 @@
 # Portuguese translation for resolvconf debconf messages.
-# Copyright (C) 2008 Pedro Ribeiro <p.m42.ribeiro@gmail.com>
+# Copyright (C) 2008, 2011 Pedro Ribeiro <p.m42.ribeiro@gmail.com>
 # This file is distributed under the same license as the resolvconf package.
-# Pedro Ribeiro <p.m42.ribeiro@gmail.com>, 2008
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf_1.37\n"
+"Project-Id-Version: resolvconf_1.52\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2011-05-04 14:46+0200\n"
-"PO-Revision-Date: 2008-02-18 22:33+0000\n"
+"PO-Revision-Date: 2011-05-04 21:33+0000\n"
 "Last-Translator: Pedro Ribeiro <p.m42.ribeiro@gmail.com>\n"
 "Language-Team: Portuguese <traduz@debianpt.org>\n"
 "Language: pt\n"
@@ -68,7 +67,7 @@ msgstr ""
 #. Description
 #: ../templates:3001
 msgid "Reboot recommended"
-msgstr ""
+msgstr "Re-início do sistema recomendado"
 
 #. Type: note
 #. Description
@@ -79,6 +78,10 @@ msgid ""
 "resolvconf program. However, although installation of the resolvconf package "
 "triggers them to supply their information, some of them fail to do so."
 msgstr ""
+"Os fornecedores de informação de servidor de nomes, tais como servidores de "
+"nome com cache local e configuradores de interfaces, devem fornecer essa "
+"informação ao resolvconf. No entanto, embora a instalação do pacote "
+"resolvconf despolete a entrega dessa informação, alguns deles não o fazem."
 
 #. Type: note
 #. Description
@@ -92,6 +95,13 @@ msgid ""
 "deconfigured. (This incorrect behavior is judged to be less harmful than the "
 "alternative of losing valid information.)"
 msgstr ""
+"Esta falha levaria à perda de informação válida do servidor de nomes após a "
+"instalação do resolvconf se o seguinte procedimento não fosse adoptado: o "
+"resolvconf inclui todo o conteúdo do /etc/resolv.conf pré-existente na sua "
+"base de dados até ao re-início seguinte. Isto tem a desvantagem da "
+"informação do servidor de nomes ser retida mesmo que a interface associada "
+"seja desconfigurada. (Este comportamento incorrecto é julgado menos "
+"prejudicial que a alternativa de perder informação válida.)"
 
 #. Type: note
 #. Description
@@ -102,6 +112,10 @@ msgid ""
 "the resolvconf package has been installed on a running system is to reboot "
 "the system."
 msgstr ""
+"Até que esta falha esteja resolvida e o procedimento removido, a única "
+"maneira de assegurar que o resolvconf tem informação completamente correcta "
+"dos servidores de nome após a instalação do pacote resolvconf num sistema é "
+"reiniciar o sistema."
 
 #. Type: boolean
 #. Description

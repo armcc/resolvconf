@@ -1,11 +1,6 @@
-# resolvconf po-debconf translation to spanish
-# Copyright (C) 2006 Software in the Public Interest, SPI Inc.
+# resolvconf debconf template translation to Spanish
+# Copyright (C) 2006 Javier Fernández-Sanguino
 # This file is distributed under the same license as the resolvconf package.
-#
-# Changes:
-# - Initial translation
-#       Javier Fernández-Sanguino , 2006
-#
 #
 #  Traductores, si no conoce el formato PO, merece la pena leer la 
 #  documentación de gettext, especialmente las secciones dedicadas a este

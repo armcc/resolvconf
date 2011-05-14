@@ -1,8 +1,7 @@
-# translation of resolvconf-debconf.po to Bahasa Indonesia
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Translation of resolvconf-debconf.po to Bahasa Indonesia
+# Copyright (C) 2008 Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>
+# This file is distributed under the same license as the resolvconf package.
 #
-# Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf-debconf\n"

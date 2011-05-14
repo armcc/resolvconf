@@ -9,8 +9,9 @@ resolvconf (1.52) unstable; urgency=low
     * de.po thanks to Helge Kreutzmann (Closes: #626030)
     * da.po thanks to Joe Dalton (Closes: #626302)
     * fr.po thanks to Christian PERRIER, Steve Petruzzello and David Prévot
+    * pt.po thanks to Pedro Ribeiro (Closes: #626675)
   * Remove long outdated pt_BR.po
-  * Don't run mkdir with -v
+  * Don't run mkdir with -v in debian/p*inst
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 13 May 2011 12:00:00 +0200
 

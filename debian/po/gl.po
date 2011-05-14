@@ -1,6 +1,6 @@
 # Galician translation of resolvconf's debconf templates
+# Copyright (C) 2007, 2008 Jacobo Tarrio <jtarrio@debian.org>
 # This file is distributed under the same license as the resolvconf package.
-# Jacobo Tarrio <jtarrio@debian.org>, 2007, 2008.
 #
 msgid ""
 msgstr ""
