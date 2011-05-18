@@ -3,9 +3,6 @@
 #
 # Licensed under the GNU GPL.  See /usr/share/doc/resolvconf/copyright.
 #
-# History
-# Jun 2003 - April 2005: Written by Thomas Hood <jdthood@yahoo.co.uk>
-#
 # resolvconf (-u|-d IFACE|-a IFACE)
 
 set -e

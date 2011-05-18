@@ -1,3 +1,11 @@
+resolvconf (1.53) unstable; urgency=low
+
+  [ Thomas Hood ]
+  * Update README
+  * Update my e-mail address in various places
+
+ -- Thomas Hood <jdthood@gmail.com>  Wed, 18 May 2011 12:21:02 +0200
+
 resolvconf (1.52) unstable; urgency=low
 
   [ Thomas Hood ]

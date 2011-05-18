@@ -570,6 +570,9 @@ TODO
   * systemconfigurator
     # 272475: Please support resolvconf
       - NO REPLY for several years
+  * ppp
+    # 208095: Please suggest resolvconf
+      - Tagged WONTFIX
   * pppconfig
     # 266819: Please suggest resolvconf
       - NO REPLY for several years
@@ -578,18 +581,18 @@ TODO
       before "up" commands are run
   * bind9
     # 483098: bind9: Please switch default to using resolvconf generated file if resolvconf is installed
-      - Under discussion
+      - NO REPLY for several months
   * dnscache-run (from djbdns)
     # 582755: Add resolvconf support
-      - NO REPLY for several months
+      - NO REPLY for several years
   * maradns
-    + Add resolvconf support
-      - Needs more investigation
+    # 608946: resolvconf integration
       - Its initscript should probably do
 	    echo "nameserver 127.0.0.1" | resolvconf -a lo.maradns
 	as dnsmasq and pdnsd do.
       - Could it have an update script that sets the "upstream_servers"
 	variable?
+      - Tagged WONTFIX since the maintainer doesn't have any free time
   * libadns1
     + It consults resolv.conf so it should already be supported.
       However, someone should test it.
@@ -610,20 +613,14 @@ TODO
     + It consults resolv.conf so it should already be supported.
       However, someone should test it.
     + Someone should investigate whether it could be supported better.
+  * nscd
+    # 266817: Please suggest resolvconf
+      - Tagged WONTFIX
   * Users of resolver libraries
     For any package that contains a program that uses resolver(3) or a
     compatible library, add a /etc/resolvconf/update-libc.d/ script to
     notify running instances of the program that the resolver
     configuration file has changed.
-
-WONTFIX
-~~~~~~~
-  * ppp
-    # 208095: Please suggest resolvconf
-      - WONTFIX
-  * nscd
-    # 266817: Please suggest resolvconf
-      - WONTFIX
 
 DONE
 ~~~~
@@ -734,7 +731,7 @@ resolvconf support to their packages.
 
 Werner Heuser, Joe Nahmias and Andreas Barth have been helpful sponsors.
 
-This document was written by Thomas Hood <jdthood_AT_yahoo.co.uk> using
-some material written by John Hasler.
+This document was written by Thomas Hood <jdthood@gmail.com> using some
+material written by John Hasler.
 
 This document is part of resolvconf.
