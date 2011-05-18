@@ -2,7 +2,7 @@
 #
 # ifup hook script for resolvconf
 #
-# Licensed under the GNU GPL.  See /usr/share/common-licenses/GPL.
+# Licensed under the GNU GPL.  See /usr/share/doc/resolvconf/copyright.
 #
 
 [ -x /sbin/resolvconf ] || exit 0

@@ -1,7 +1,7 @@
 #
 # Script fragment to make dhclient3 work with resolvconf
 #
-# Licensed under the GNU GPL.  See /usr/share/common-licenses/GPL.
+# Licensed under the GNU GPL.  See /usr/share/doc/resolvconf/copyright.
 #
 
 # Tips:
