@@ -31,6 +31,12 @@ standard_lib_init_rw_subdirs_created() {
 	&& { [ -d /lib/init/rw/resolvconf/interface ] || mkdir /lib/init/rw/resolvconf/interface ; }
 }
 
+is_installed() {
+	# Sync this function in preinst, postinst, postrm
+	dpkg-query -W -f='${Status}\n' "$1" 2>/dev/null | grep -siq '^[[:alpha:]]\+ [[:alpha:]]\+ installed$' >/dev/null 2>&1
+}
+
+
 ### Create run-time directories ###
 #
 # We create the run-time directories here, in the preinst, so that even if
@@ -113,6 +119,31 @@ case "$1" in
 		fi
 	fi
 	;;
+  # abort-upgrade)
+	# Don't do anything because we don't anything in the postrm on upgrade or on failed-upgrade
+	# ;;
+esac
+
+
+### Prepare to notify already configured packages of our installation ###
+
+case "$1" in
+  install)
+	# Create list of packages that might need to be notified of the installation of resolvconf
+	if [ -d /etc/resolvconf/install-remove.d ] ; then
+		NOTIFICATION_HOOK_SCRIPTS="$(cd /etc/resolvconf/install-remove.d ; run-parts --test .)"
+		PACKAGES_TO_NOTIFY=""
+		for SCRPT in $NOTIFICATION_HOOK_SCRIPTS ; do
+			PKG="${SCRPT#./}"
+			is_installed "$PKG" && PACKAGES_TO_NOTIFY="${PACKAGES_TO_NOTIFY:+$PACKAGES_TO_NOTIFY }$PKG"
+		done
+		rm -f /etc/resolvconf/run/packages-to-notify
+		[ "$PACKAGES_TO_NOTIFY" ] && echo "$PACKAGES_TO_NOTIFY" > /etc/resolvconf/run/packages-to-notify
+	fi
+	;;
+  # upgrade)
+	# Don't do anything
+	# ;;
   # abort-upgrade)
 	# Don't do anything because we don't anything in the postrm on upgrade or on failed-upgrade
 	# ;;

@@ -2,10 +2,11 @@ resolvconf (1.53) unstable; urgency=low
 
   [ Thomas Hood ]
   * Dpkg trigger is now called 'resolvconf-enable-updates' and is now
-    intended only for internal use.  Other packages are notified of
-    the installation of resolvconf via hook scripts as described in
-    the README file. (Closes: #567059)
-  * TODO: IMPLEMENT THIS; UPDATE README
+    intended only for internal use.
+  * Other packages are notified of the installation of resolvconf via
+    hook scripts they install in /etc/resolvconf/install-remove.d/ as
+    described in the README file. (Closes: #567059)
+  * TODO: UPDATE README
   * Update my e-mail address in various places
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 18 May 2011 12:21:02 +0200

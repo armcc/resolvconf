@@ -2,13 +2,16 @@
 
 set -e
 
+is_installed() {
+	# Sync this function in preinst, postinst, postrm
+	dpkg-query -W -f='${Status}\n' "$1" 2>/dev/null | grep -siq '^[[:alpha:]]\+ [[:alpha:]]\+ installed$' >/dev/null 2>&1
+}
+
 #DEBHELPER#
 
 case "$1" in
   remove)
-	#
 	# Restore /etc/resolv.conf if it's a resolvconf symlink
-	#
 	if
 		[ -L /etc/resolv.conf ] \
 		&& {
@@ -24,6 +27,18 @@ case "$1" in
 		else
 			rm -f /etc/resolv.conf
 		fi
+	fi
+
+	# Notify packages of the removal of resolvconf
+	if [ -d /etc/resolvconf/install-remove.d ] ; then
+		NOTIFICATION_HOOK_SCRIPTS="$(cd /etc/resolvconf/install-remove.d ; run-parts --test .)"
+		for SCRPT in $NOTIFICATION_HOOK_SCRIPTS ; do
+			PKG="${SCRPT#./}"
+			if is_installed "$PKG" ; then
+				SCRPT="/etc/resolvconf/install-remove.d/$PKG"
+				[ -x "$SCRPT" ] && "$SCRPT" remove
+			fi 
+		done
 	fi
 	;;
   purge)
@@ -47,9 +62,16 @@ case "$1" in
   # failed-upgrade)
 	# Don't do anything because we don't do anything here (in the postrm) on upgrade
 	# ;;
-  # abort-install|abort-upgrade)
-	# Don't do anything.  In the preinst we do create directories
+  # abort-install)
+	rm -f /etc/resolvconf/run/packages-to-notify
+	# In the preinst we create directories
+	# but there is no immediate need to remove them if there is an error.
+	;;
+  # abort-upgrade)
+	# Don't do anything.
+	# In the preinst we create directories
 	# but there is no immediate need to remove them if there is an error.
 	# ;;
+
 esac
 

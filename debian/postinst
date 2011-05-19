@@ -17,6 +17,9 @@ standard_run_subdirs_created() {
 # We use dh_installinit with --no-start
 #DEBHELPER#
 
+
+### Symlink ###
+
 case "$1" in
   configure)
 	if [ -L /etc/resolvconf/run ] ; then
@@ -113,6 +116,9 @@ case "$1" in
 		ln -nsf /etc/resolvconf/run/resolv.conf /etc/resolv.conf
 	fi
 	;;
+  # triggered)
+	# Don't do anything here
+	# ;;
   # abort-upgrade)
 	# Don't do anything here since we don't do anything in the prerm on upgrade or on failed-upgrade
 	# ;;
@@ -126,6 +132,43 @@ esac
 
 db_stop
 
+
+### Notify others of our installation ###
+
+is_installed() {
+	# Sync this function in preinst, postinst, postrm
+	dpkg-query -W -f='${Status}\n' "$1" 2>/dev/null | grep -siq '^[[:alpha:]]\+ [[:alpha:]]\+ installed$' >/dev/null 2>&1
+}
+
+case "$1" in
+  configure)
+	PACKAGES_TO_NOTIFY=""
+	[ -r /etc/resolvconf/run/packages-to-notify ] && PACKAGES_TO_NOTIFY="$(cat /etc/resolvconf/run/packages-to-notify)"
+	rm -f /etc/resolvconf/run/packages-to-notify
+	for PKG in $PACKAGES_TO_NOTIFY ; do
+		if is_installed "$PKG" ; then
+			SCRPT="/etc/resolvconf/install-remove.d/$PKG"
+			[ -x "$SCRPT" ] && "$SCRPT" install
+		fi 
+	done
+	;;
+  # triggered)
+	# Don't do anything
+	# ;;
+  # abort-upgrade)
+	# Don't do anything here since we don't do anything in the prerm on upgrade or on failed-upgrade
+	# ;;
+  # abort-remove)
+	# Don't do anything extra here since we don't deconfigure anything in the prerm on remove
+	# ;;
+  # abort-deconfigure)
+	# Don't do anything extra here since we don't do anything in the prerm on deconfigure
+	# ;;
+esac
+
+
+### Trigger self to enable updates ###
+
 enable_updates() {
 	if [ -x "/etc/init.d/resolvconf" ] ; then
 		if which invoke-rc.d >/dev/null 2>&1 ; then
@@ -138,10 +181,11 @@ enable_updates() {
 
 case "$1" in
   configure)
+	# Trigger self
 	dpkg-trigger resolvconf-enable-updates
 	;;
   triggered)
-	# Runs after this and possibly other packages have been configured
+	# Runs after this and other packages have been configured
         for trigger in $2 ; do
 		case "$trigger" in
 		  resolvconf-enable-updates)
