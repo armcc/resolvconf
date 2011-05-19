@@ -489,34 +489,9 @@ address with resolvconf.
 
 The correct and complete way to solve the problem would be for all suppliers
 of nameserver information to supply their information to resolvconf after it
-has been installed.  To make this possible the resolvconf package activates
-a trigger in the postinst and the postrm.  Each package containing a program
-that supplies nameserver information to resolvconf should register interest
-in this trigger, named "resolvconf-event", and should have code in its
-postinst which causes nameserver information in the possession of its
-program(s) to be sent to resolvconf if /sbin/resolvconf exists and is
-executable.  Here's the idea.
+has been installed.
 
-    # postinst
-    case "$1" in
-      triggered)
-        for trigger in $2 ; do
-          case "$trigger" in
-            resolvconf-event)
-              if [ -x /sbin/resolvconf ] ; then
-                if we_are_running ; then
-                  echo -n "$NMSRVR_INFO" | /sbin/resolvconf -a "${IFACE}.${MYNAME}"
-                fi
-              else
-                # Resolvconf no longer installed
-                # Do magic things directly to /etc/resolv.conf
-                ...
-              fi
-              ;;
-          esac
-        done
-        ;;
-    esac
+TODO: Implement notification mechanism
 
 Usage information for administrators
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -25,7 +25,6 @@ case "$1" in
 			rm -f /etc/resolv.conf
 		fi
 	fi
-	dpkg-trigger resolvconf-event
 	;;
   purge)
 	#
