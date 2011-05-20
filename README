@@ -505,9 +505,9 @@ The hook script thus has the following form.
     #
     # The resolvconf installation-removal hook script for the foo package
     #
-    if [ "$1" == "install" ] ; then
+    if [ "$1" = "install" ] ; then
         foo-ctrl send-nameserver-info-to-resolvconf
-    elif [ "$1" == "remove" ] ; then
+    elif [ "$1" = "remove" ] ; then
         foo-ctrl do-ugly-things-directly-to-resolv-dot-conf
     fi
 
