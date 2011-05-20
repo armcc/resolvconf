@@ -32,7 +32,7 @@ case "$1" in
 
 	# Notify packages of the removal of resolvconf
 	if [ -d /etc/resolvconf/install-remove.d ] ; then
-		NOTIFICATION_HOOK_SCRIPTS="$(cd /etc/resolvconf/install-remove.d ; run-parts --test .)"
+		NOTIFICATION_HOOK_SCRIPTS="$(cd /etc/resolvconf/install-remove.d >/dev/null ; run-parts --test .)"
 		for SCRPT in $NOTIFICATION_HOOK_SCRIPTS ; do
 			PKG="${SCRPT#./}"
 			if is_installed "$PKG" ; then
