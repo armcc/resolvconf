@@ -511,6 +511,18 @@ The hook script thus has the following form.
         foo-ctrl do-ugly-things-directly-to-resolv-dot-conf
     fi
 
+If foo is controlled by an initscript which checks for the presence of
+resolvconf on start then the following might be appropriate.
+
+    case "$1" in
+      install|remove) /etc/init.d/foo restart ;;
+    esac
+
+The hook script must have its execute permission bits set and must have the
+same name as the package that owns it.
+
+Arguments other than "install" and "remove" must be silently ignored.
+
 The hook script is called (with argument "install") from resolvconf's postinst
 maintainer script when performing "configure" and (with "remove") from its
 postrm when performing "remove".
@@ -519,8 +531,6 @@ The hook script is only called with argument "install" if foo is fully
 installed when resolvconf's "preinst install" and "postinst configure" run.
 The hook script is only called with argument "remove" if foo is fully
 installed when resolvconf's "postrm remove" runs.
-
-N.B.: The hook script MUST have the same name as the package that owns it.
 
 Usage information for administrators
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
