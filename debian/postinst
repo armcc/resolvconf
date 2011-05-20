@@ -149,8 +149,10 @@ case "$1" in
 	for PKG in $PACKAGES_TO_NOTIFY ; do
 		if is_installed "$PKG" ; then
 			SCRPT="/etc/resolvconf/install-remove.d/$PKG"
-			[ -x "$SCRPT" ] && "$SCRPT" install
-		fi 
+			if [ -x "$SCRPT" ] ; then
+				"$SCRPT" install || :
+			fi
+		fi
 	done
 	;;
   # triggered)
@@ -183,7 +185,7 @@ enable_updates() {
 case "$1" in
   configure)
 	# Trigger self
-	dpkg-trigger resolvconf-enable-updates
+	dpkg-trigger resolvconf-enable-updates || enable_updates
 	;;
   triggered)
 	# Runs after this and other packages have been configured

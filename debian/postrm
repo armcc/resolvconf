@@ -37,7 +37,9 @@ case "$1" in
 			PKG="${SCRPT#./}"
 			if is_installed "$PKG" ; then
 				SCRPT="/etc/resolvconf/install-remove.d/$PKG"
-				[ -x "$SCRPT" ] && "$SCRPT" remove
+				if [ -x "$SCRPT" ] ; then
+					"$SCRPT" remove || :
+				fi
 			fi 
 		done
 	fi
