@@ -63,7 +63,7 @@ case "$1" in
   # failed-upgrade)
 	# Don't do anything because we don't do anything here (in the postrm) on upgrade
 	# ;;
-  # abort-install)
+  abort-install)
 	rm -f /etc/resolvconf/run/packages-to-notify
 	# In the preinst we create directories
 	# but there is no immediate need to remove them if there is an error.
