@@ -21,9 +21,8 @@ Credits
 News
 ~~~~
 * Last updated 20 May 2011 for version 1.53
-  - In "Usage information for developers" follow the new convention for record
-    names
-  - Add new section "Usage information for maintainers"
+  - In "Usage information for maintainers" describe the new install/removal
+    notification mechanism
 
 Introduction
 ~~~~~~~~~~~~
