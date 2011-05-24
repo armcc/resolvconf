@@ -4,9 +4,9 @@ Priority: optional
 Maintainer: resolvconf maintainers <resolvconf-devel@lists.alioth.debian.org>
 Uploaders: Daniel Kahn Gillmor <dkg@fifthhorseman.net>, Thomas Hood <jdthood@gmail.com>, Marco Nenciarini <mnencia@debian.org>
 Build-Depends: debhelper (>= 8)
-Vcs-Svn: svn://svn.debian.org/resolvconf/resolvconf/trunk
-Vcs-Browser: http://svn.debian.org/wsvn/resolvconf/resolvconf/trunk
 Homepage: http://alioth.debian.org/projects/resolvconf/
+Vcs-Svn: svn://anonscm.debian.org/resolvconf/resolvconf/trunk
+Vcs-Browser: http://anonscm.debian.org/viewvc/resolvconf/resolvconf/trunk
 DM-Upload-Allowed: yes
 Standards-Version: 3.9.2.0
 

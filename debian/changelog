@@ -15,6 +15,9 @@ resolvconf (1.53) unstable; urgency=low
     for illustration purposes.  Instead of this old script, the bind9
     package should include a hook script /etc/resolvconf/update.d/bind9
     as has been requested in #483098.
+  * Due to changes in Debian infrastructure change debian/control
+    fields Vcs-Svn and Vcs-Browser.  Ref:
+    http://lists.debian.org/debian-devel-announce/2011/05/msg00009.html
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 20 May 2011 12:00:00 +0200
 
