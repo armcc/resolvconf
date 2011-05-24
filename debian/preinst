@@ -131,8 +131,8 @@ esac
 case "$1" in
   install)
 	# Create list of packages that might need to be notified of the installation of resolvconf
-	if [ -d /etc/resolvconf/install-remove.d ] ; then
-		NOTIFICATION_HOOK_SCRIPTS="$(cd /etc/resolvconf/install-remove.d >/dev/null ; run-parts --test .)"
+	if [ -d /etc/resolvconf/packaging-event.d ] ; then
+		NOTIFICATION_HOOK_SCRIPTS="$(cd /etc/resolvconf/packaging-event.d >/dev/null ; run-parts --test .)"
 		PACKAGES_TO_NOTIFY=""
 		for SCRPT in $NOTIFICATION_HOOK_SCRIPTS ; do
 			PKG="${SCRPT#./}"

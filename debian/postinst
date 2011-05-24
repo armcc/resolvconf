@@ -143,17 +143,18 @@ is_installed() {
 
 case "$1" in
   configure)
-	PACKAGES_TO_NOTIFY=""
-	[ -r /etc/resolvconf/run/packages-to-notify ] && PACKAGES_TO_NOTIFY="$(cat /etc/resolvconf/run/packages-to-notify)"
-	rm -f /etc/resolvconf/run/packages-to-notify
-	for PKG in $PACKAGES_TO_NOTIFY ; do
-		if is_installed "$PKG" ; then
-			SCRPT="/etc/resolvconf/install-remove.d/$PKG"
-			if [ -x "$SCRPT" ] ; then
-				"$SCRPT" install || :
+	if [ -f /etc/resolvconf/run/packages-to-notify ] ; then
+		PACKAGES_TO_NOTIFY="$(cat /etc/resolvconf/run/packages-to-notify)"
+		rm -f /etc/resolvconf/run/packages-to-notify
+		for PKG in $PACKAGES_TO_NOTIFY ; do
+			if is_installed "$PKG" ; then
+				SCRPT="/etc/resolvconf/packaging-event.d/$PKG"
+				if [ -x "$SCRPT" ] ; then
+					"$SCRPT" install || :
+				fi
 			fi
-		fi
-	done
+		done
+	fi
 	;;
   # triggered)
 	# Don't do anything

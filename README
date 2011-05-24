@@ -20,8 +20,8 @@ Credits
 
 News
 ~~~~
-* Last updated 20 May 2011 for version 1.53
-  - In "Usage information for maintainers" describe the new install/removal
+* Last updated 24 May 2011 for version 1.53
+  - In "Usage information for maintainers" describe the new packaging event
     notification mechanism
 
 Introduction
@@ -280,12 +280,13 @@ configuration.
     * To make bind9 supply its nameserver address 127.0.0.1 to resolvconf,
       set RESOLVCONF=yes in /etc/default/bind9.
     * To make bind9 use nameserver addresses supplied by other sources as
-      addresses of forwarders, change the /etc/bind/named.conf file so that
-      it includes /var/run/bind/named.options instead of
-      /etc/bind/named.conf.options.  The former will be generated from the
-      latter, as needed, such that the "forwarders" statement inside the
-      "options" statement is added or updated to contain a current list of
-      forwarders.
+      addresses of forwarders, either (1) pursuade the maintainers of the
+      bind9 package to implement this feature (as already requested at
+      http://bugs.debian.org/483098) or (2) add a hook script to
+      /etc/resolvconf/update.d/ which writes out a configuration file
+      fragment and then tells named to re-read is configuration.  A sample
+      hook script meeting this description has been provided in
+      /usr/share/doc/resolvconf/resolvconf-update-bind.
 4. Install the resolvconf package if you have not already done so.
    If you have already done so then consider dpkg-reconfigure'ing it.
    Agree to symlink /etc/resolv.conf to /etc/resolvconf/run/resolv.conf.
@@ -490,7 +491,7 @@ resolvconf has been installed.
 
 As of resolvconf release 1.53 this is supported via the following mechanism.
 Any package, foo, that supports supplying information to resolvconf should
-include a hook script /etc/resolvconf/install-remove.d/foo which, when called
+include a hook script /etc/resolvconf/packaging-event.d/foo which, when called
 with the argument "install", takes whatever actions are necessary to cause the
 program(s) in foo to supply their nameserver information to resolvconf; and
 when called with the argument "remove" takes whatever actions are appropriate
@@ -501,36 +502,40 @@ The hook script thus has the following form.
 
     #!/bin/sh
     #
-    # /etc/resolvconf/install-remove.d/foo
+    # /etc/resolvconf/packaging-event.d/foo
     #
-    # The resolvconf installation-removal hook script for the foo package
+    # The resolvconf packaging event hook script for the foo package
     #
-    if [ "$1" = "install" ] ; then
-        foo-ctrl send-nameserver-info-to-resolvconf
-    elif [ "$1" = "remove" ] ; then
-        foo-ctrl do-ugly-things-directly-to-resolv-dot-conf
+    if foo_is_running ; then
+        if [ "$1" = "install" ] ; then
+            foo-ctrl send-nameserver-info-to-resolvconf
+        elif [ "$1" = "remove" ] ; then
+            ...
+        fi
     fi
 
-If foo is controlled by an initscript which checks for the presence of
-resolvconf on start then the following might be appropriate.
+If foo is controlled by an initscript whose methods take appropriate actions
+conditional upon resolvconf's presence then something like the following might
+be appropriate.
 
-    case "$1" in
-      install|remove) /etc/init.d/foo restart ;;
-    esac
-
-The hook script must have its execute permission bits set and must have the
-same name as the package that owns it.
-
-Arguments other than "install" and "remove" must be silently ignored.
+        case "$1" in
+            install|remove) invoke-rc.d foo force-reload ;;
+        esac
 
 The hook script is called (with argument "install") from resolvconf's postinst
-maintainer script when performing "configure" and (with "remove") from its
-postrm when performing "remove".
+"configure" method and (with "remove") from resolvconf's postrm "remove"
+method.
 
-The hook script is only called with argument "install" if foo is fully
-installed when resolvconf's "preinst install" and "postinst configure" run.
-The hook script is only called with argument "remove" if foo is fully
-installed when resolvconf's "postrm remove" runs.
+The hook script is called with argument "install" if and only if foo is fully
+installed both when resolvconf's preinst install runs and when its postinst
+configure runs.  The hook script is called with argument "remove" if and only
+if foo is fully installed when resolvconf's postrm remove runs.
+
+The hook script must be owned by root and have its execute permission bit set
+and must have the same name as the package that owns it.
+
+Arguments other than "install" and "remove" are reserved for future use and
+must be silently ignored.
 
 Usage information for administrators
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

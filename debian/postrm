@@ -31,12 +31,12 @@ case "$1" in
 	fi
 
 	# Notify packages of the removal of resolvconf
-	if [ -d /etc/resolvconf/install-remove.d ] ; then
-		NOTIFICATION_HOOK_SCRIPTS="$(cd /etc/resolvconf/install-remove.d >/dev/null ; run-parts --test .)"
+	if [ -d /etc/resolvconf/packaging-event.d ] ; then
+		NOTIFICATION_HOOK_SCRIPTS="$(cd /etc/resolvconf/packaging-event.d >/dev/null ; run-parts --test .)"
 		for SCRPT in $NOTIFICATION_HOOK_SCRIPTS ; do
 			PKG="${SCRPT#./}"
 			if is_installed "$PKG" ; then
-				SCRPT="/etc/resolvconf/install-remove.d/$PKG"
+				SCRPT="/etc/resolvconf/packaging-event.d/$PKG"
 				if [ -x "$SCRPT" ] ; then
 					"$SCRPT" remove || :
 				fi
@@ -55,6 +55,7 @@ case "$1" in
 	fi
 	rm -f /etc/resolvconf/resolv.conf.d/tail
 	rm -f /etc/resolvconf/resolv.conf.d/original
+	rm -f /etc/resolvconf/update.d/bind  # Old conffile
 	rm -f /etc/default/resolvconf
 	rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
 	rm -rf /run/resolvconf || :
