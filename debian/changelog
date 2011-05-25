@@ -1,6 +1,9 @@
 resolvconf (1.54) unstable; urgency=low
 
-  * 
+  [ Thomas Hood ]
+  * Put "exit 0" at the end of each maintainer script so that it
+    doesn't exit with the status of the last command executed which
+    could have been merely a failed test.
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 25 May 2011 13:00:00 +0200
 
