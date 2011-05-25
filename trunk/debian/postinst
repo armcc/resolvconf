@@ -1,0 +1,216 @@
+#!/bin/sh
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+MYNAME=resolvconf.postinst
+report() { echo "${MYNAME}: $*" ; }
+report_err() { report "Error: $*" >&2 ; }
+report_info() { report "$*" >&2 ; }
+
+standard_run_subdirs_created() {
+	{ [ -d /run/resolvconf ] || mkdir /run/resolvconf ; } \
+	&& { [ -d /run/resolvconf/interface ] || mkdir /run/resolvconf/interface ; }
+}
+
+# We use dh_installinit with --no-start
+#DEBHELPER#
+
+
+### Symlink ###
+
+case "$1" in
+  configure)
+	if [ -L /etc/resolvconf/run ] ; then
+		# Make sure that the symlink is canonicalizable.
+		RUN_CANONICALPATH="$(readlink -f /etc/resolvconf/run || :)"
+		if [ -z "$RUN_CANONICALPATH" ] ; then
+			# It's not canonicalizable
+			report_err "Deleting old symlink /etc/resolvconf/run, the canonical path of whose target could not be determined"
+			rm -f /etc/resolvconf/run
+		fi
+	fi
+
+	# /etc/resolvconf/run is not a non-canonicalizable symlink.
+	# Attempt migration to new standard location
+	if [ -L /etc/resolvconf/run ] ; then
+		# It's a canonicalizable symlink
+		# If it's standard then try to migrate from old to new standard location.
+		# The initscripts package guarantees that the new standard location is available.
+		if
+			[ "$RUN_CANONICALPATH" = "/lib/init/rw/resolvconf" ] \
+			&& standard_run_subdirs_created
+		then
+			# /etc/resolvconf/run points to the old-standard location
+			# and new-standard run directories are ready for use.
+			# Switch from the old to the new standard location.
+			F="$(echo /lib/init/rw/resolvconf/*)"
+			if [ "$F" ] && [ "$F" != '/lib/init/rw/resolvconf/*' ] ; then
+				if cp -a /lib/init/rw/resolvconf/* /run/resolvconf ; then
+					report_info "Migrated resolvconf run-time data from /lib/init/rw/resolvconf to /run/resolvconf"
+				fi
+			fi
+			ln -nsf /run/resolvconf /etc/resolvconf/run
+		fi
+	elif [ -d /etc/resolvconf/run ] ; then
+		# It's a directory right in /etc/resolvconf
+		# The initscripts package guarantees that the new standard location is available.
+		if standard_run_subdirs_created ; then
+			# /etc/resolvconf/run is a directory in /etc/resolvconf
+			# and new-standard run directories are ready for use.
+			# Switch to the new standard location.
+			F="$(echo /etc/resolvconf/run/*)"
+			if [ "$F" ] && [ "$F" != '/etc/resolvconf/run/*' ] ; then
+				if cp -a /etc/resolvconf/run/* /run/resolvconf ; then
+					report_info "Migrated resolvconf run-time data from /etc/resolvconf/run to /run/resolvconf"
+					rm -rf /etc/resolvconf/run
+				fi
+			else
+				rmdir /etc/resolvconf/run
+			fi
+			ln -nsf /run/resolvconf /etc/resolvconf/run
+		fi
+	fi
+
+	# Link tail to original if appropriate
+	if [ ! -e /etc/resolvconf/resolv.conf.d/tail ] ; then
+		db_get resolvconf/link-tail-to-original
+		if [ "$RET" = "true" ] ; then
+			ln -nsf original /etc/resolvconf/resolv.conf.d/tail
+		else
+			: > /etc/resolvconf/resolv.conf.d/tail
+		fi
+	fi
+
+	# Linkify /etc/resolv.conf if appropriate
+	db_get resolvconf/linkify-resolvconf
+	if [ "$RET" = "true" ] ; then
+		if
+			[ -f /etc/resolv.conf ] \
+			&& {
+				[ ! -L /etc/resolv.conf ] \
+				|| [ ! "$(readlink /etc/resolv.conf)" = "/etc/resolvconf/run/resolv.conf" ]
+			}
+		then
+			# Back up original file
+			if [ ! -e /etc/resolvconf/resolv.conf.d/original ] ; then
+				cp -a /etc/resolv.conf /etc/resolvconf/resolv.conf.d/original
+			else
+				cp -a /etc/resolv.conf /etc/resolv.conf.dpkg-old
+			fi
+			# Before creating the link, make sure that the original file is
+			# at the target of the link.  /sbin/resolvconf will overwrite
+			# this when it does an update, of course.
+			if [ ! -e /etc/resolvconf/run/resolv.conf ] ; then
+				cp -a /etc/resolv.conf /etc/resolvconf/run/resolv.conf
+			fi
+			# Add the original file to the database so that its contents
+			# are included when resolvconf updates.
+			# Yes, this is an ugly workaround for the problem that there
+			# is no way to obtain nameserver information from interface
+			# configurers after they have done their configuration work.
+			cp -a /etc/resolv.conf /etc/resolvconf/run/interface/original.resolvconf
+		fi
+		# Create the link
+		ln -nsf /etc/resolvconf/run/resolv.conf /etc/resolv.conf
+	fi
+	;;
+  # triggered)
+	# Don't do anything here
+	# ;;
+  # abort-upgrade)
+	# Don't do anything here since we don't do anything in the prerm on upgrade or on failed-upgrade
+	# ;;
+  # abort-remove)
+	# Don't do anything extra here since we don't deconfigure anything in the prerm on remove
+	# ;;
+  # abort-deconfigure)
+	# Don't do anything extra here since we don't do anything in the prerm on deconfigure
+	# ;;
+esac
+
+db_stop
+
+
+### Notify others of our installation ###
+
+is_installed() {
+	# Same function in preinst, postinst, postrm
+	[ "$1" ] || return 1
+	dpkg-query -W -f='${Status}\n' "$1" 2>/dev/null | grep -siq '^[[:alpha:]]\+ [[:alpha:]]\+ installed$' >/dev/null 2>&1
+}
+
+case "$1" in
+  configure)
+	if [ -f /etc/resolvconf/run/packages-to-notify ] ; then
+		PACKAGES_TO_NOTIFY="$(cat /etc/resolvconf/run/packages-to-notify)"
+		rm -f /etc/resolvconf/run/packages-to-notify
+		for PKG in $PACKAGES_TO_NOTIFY ; do
+			if is_installed "$PKG" ; then
+				SCRPT="/etc/resolvconf/packaging-event.d/$PKG"
+				if [ -x "$SCRPT" ] ; then
+					"$SCRPT" install || :
+				fi
+			fi
+		done
+	fi
+	;;
+  # triggered)
+	# Don't do anything
+	# ;;
+  # abort-upgrade)
+	# Don't do anything here since we don't do anything in the prerm on upgrade or on failed-upgrade
+	# ;;
+  # abort-remove)
+	# Don't do anything extra here since we don't deconfigure anything in the prerm on remove
+	# ;;
+  # abort-deconfigure)
+	# Don't do anything extra here since we don't do anything in the prerm on deconfigure
+	# ;;
+esac
+
+
+### Trigger self to enable updates ###
+
+enable_updates() {
+	if [ -x "/etc/init.d/resolvconf" ] ; then
+		if which invoke-rc.d >/dev/null 2>&1 ; then
+			invoke-rc.d resolvconf enable-updates || :
+		else
+			/etc/init.d/resolvconf enable-updates
+		fi
+	fi
+}
+
+case "$1" in
+  configure)
+	# Trigger self
+	dpkg-trigger resolvconf-enable-updates || enable_updates
+	;;
+  triggered)
+	# Runs after this and other packages have been configured
+        for trigger in $2 ; do
+		case "$trigger" in
+		  resolvconf-enable-updates)
+			if [ -x /sbin/resolvconf ] ; then
+				enable_updates
+				break
+			fi
+			;;
+		esac
+        done
+	;;
+  abort-remove)
+	# We disable updates in the prerm on remove.
+	# So, enable them again
+	enable_updates
+	;;
+  # abort-upgrade)
+	# Don't do anything here since we don't do anything in the prerm on upgrade or on failed-upgrade
+	# ;;
+  # abort-deconfigure)
+	# Don't do anything extra here since we don't do anything in the prerm on deconfigure
+	# ;;
+esac
+

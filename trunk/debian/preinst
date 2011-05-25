@@ -1,0 +1,154 @@
+#!/bin/sh
+
+set -e
+
+MYNAME=resolvconf.preinst
+report() { echo "${MYNAME}: $*" ; }
+report_err() { report "Error: $*" >&2 ; }
+report_info() { report "$*" >&2 ; }
+
+standard_run_tmpfs_is_available() {
+	[ -d /run ] \
+	&& [ -w /run ] \
+	&& [ -r /proc/mounts ] \
+	&& grep -qs "^tmpfs[[:space:]]\+/run[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts
+}
+
+standard_run_subdirs_created() {
+	{ [ -d /run/resolvconf ] || mkdir /run/resolvconf ; } \
+	&& { [ -d /run/resolvconf/interface ] || mkdir /run/resolvconf/interface ; }
+}
+
+standard_lib_init_rw_tmpfs_is_available() {
+	[ -d /lib/init/rw ] \
+	&& [ -w /lib/init/rw ] \
+	&& [ -r /proc/mounts ] \
+	&& grep -qs "^tmpfs[[:space:]]\+/lib/init/rw[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts
+}
+
+standard_lib_init_rw_subdirs_created() {
+	{ [ -d /lib/init/rw/resolvconf ] || mkdir /lib/init/rw/resolvconf ; } \
+	&& { [ -d /lib/init/rw/resolvconf/interface ] || mkdir /lib/init/rw/resolvconf/interface ; }
+}
+
+is_installed() {
+	# Same function in preinst, postinst, postrm
+	[ "$1" ] || return 1
+	dpkg-query -W -f='${Status}\n' "$1" 2>/dev/null | grep -siq '^[[:alpha:]]\+ [[:alpha:]]\+ installed$' >/dev/null 2>&1
+}
+
+
+### Create run-time directories ###
+#
+# We create the run-time directories here, in the preinst, so that even if
+# resolvconf is run before the postinst runs then there is nevertheless a
+# place for resolvconf to store data.  (The latter can occur if resolvconf
+# is installed simultaneously with a caching nameserver package whose
+# postinst runs resolvconf to add its IP address.)
+#
+# The new standard location is /run;
+# the old standard location was /lib/init/rw.
+#
+case "$1" in
+  install|upgrade)
+	# Ensure that /etc/resolvconf exists.
+	mkdir -p /etc/resolvconf
+
+	if [ -L /etc/resolvconf/run ] ; then
+		# We are upgrading.
+		# Make sure that the symlink is canonicalizable.
+		RUN_CANONICALPATH="$(readlink -f /etc/resolvconf/run || :)"
+		if [ -z "$RUN_CANONICALPATH" ] ; then
+			# It's not canonicalizable
+			report_err "Deleting old symlink /etc/resolvconf/run, the canonical path of whose target could not be determined"
+			rm -f /etc/resolvconf/run
+		fi
+	fi
+
+	# /etc/resolvconf/run is not a non-canonicalizable symlink.
+	# Attempt migration to new standard location
+	if [ -L /etc/resolvconf/run ] ; then
+		# It's a canonicalizable symlink
+		# If it's standard then try to migrate from old to new standard location.
+		if
+			[ "$RUN_CANONICALPATH" = "/lib/init/rw/resolvconf" ] \
+			&& standard_run_tmpfs_is_available \
+			&& standard_run_subdirs_created
+		then
+			# /etc/resolvconf/run points to the old-standard location
+			# and new-standard run directories are ready for use.
+			# Switch from the old to the new standard location.
+			F="$(echo /lib/init/rw/resolvconf/*)"
+			if [ "$F" ] && [ "$F" != '/lib/init/rw/resolvconf/*' ] ; then
+				if cp -a /lib/init/rw/resolvconf/* /run/resolvconf ; then
+					report_info "Migrated resolvconf run-time data from /lib/init/rw/resolvconf to /run/resolvconf"
+				fi
+			fi
+			ln -nsf /run/resolvconf /etc/resolvconf/run
+		fi
+	fi
+
+	# Delete /etc/resolvconf/run if it is neither a directory nor a link to one
+	if [ -e /etc/resolvconf/run ] && [ ! -d /etc/resolvconf/run ] ; then
+		report_info "Deleting /etc/resolvconf/run which isn't a directory"
+		rm -f /etc/resolvconf/run
+	fi
+
+	# OK, now /etc/resolvconf/run is either:
+	# * nonexistent, or
+	# * a dangling but canonicalizable symlink, or
+	# * a symlink to a directory, or
+	# * a directory
+
+	# Create subdirectory
+	if [ -d /etc/resolvconf/run ] ; then
+		# It's a directory or a symlink to one
+		[ -d /etc/resolvconf/run/interface ] || mkdir /etc/resolvconf/run/interface
+	elif [ -L /etc/resolvconf/run ] ; then
+		# It's a dangling but canonicalizable symlink
+		mkdir "$RUN_CANONICALPATH" "${RUN_CANONICALPATH}/interface"
+	else
+		# It's nonexistent
+		# Make directories at one of the standard locations if possible,
+		# otherwise directly under /etc/resolvconf.
+		if standard_run_tmpfs_is_available && standard_run_subdirs_created ; then
+			ln -s /run/resolvconf /etc/resolvconf/run
+		elif standard_lib_init_rw_tmpfs_is_available && standard_lib_init_rw_subdirs_created ; then
+			ln -s /lib/init/rw/resolvconf /etc/resolvconf/run
+		else
+			[ -d /etc/resolvconf/run/interface ] || mkdir /etc/resolvconf/run/interface
+		fi
+	fi
+	;;
+  # abort-upgrade)
+	# Don't do anything because we don't anything in the postrm on upgrade or on failed-upgrade
+	# ;;
+esac
+
+
+### Prepare to notify already configured packages of our installation ###
+
+case "$1" in
+  install)
+	# Create list of packages that might need to be notified of the installation of resolvconf
+	if [ -d /etc/resolvconf/packaging-event.d ] ; then
+		NOTIFICATION_HOOK_SCRIPTS="$(cd /etc/resolvconf/packaging-event.d >/dev/null ; run-parts --test .)"
+		PACKAGES_TO_NOTIFY=""
+		for SCRPT in $NOTIFICATION_HOOK_SCRIPTS ; do
+			PKG="${SCRPT#./}"
+			is_installed "$PKG" && PACKAGES_TO_NOTIFY="${PACKAGES_TO_NOTIFY:+$PACKAGES_TO_NOTIFY }$PKG"
+		done
+		rm -f /etc/resolvconf/run/packages-to-notify
+		[ "$PACKAGES_TO_NOTIFY" ] && echo "$PACKAGES_TO_NOTIFY" > /etc/resolvconf/run/packages-to-notify
+	fi
+	;;
+  # upgrade)
+	# Don't do anything
+	# ;;
+  # abort-upgrade)
+	# Don't do anything because we don't anything in the postrm on upgrade or on failed-upgrade
+	# ;;
+esac
+
+#DEBHELPER#
+

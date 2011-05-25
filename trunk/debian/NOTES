@@ -1,0 +1,9 @@
+                     MAINTAINER NOTES
+                     for resolvconf
+
+TODO
+----
+Remember to run debconf-updatepo after changing templates or po files.
+
+As Ian Jackson says (http://lists.debian.org/debian-dpkg/2008/03/msg00091.html)
+> OH FOR FUCK'S SAKE WHAT DOES IT TAKE TO GET SOMETHING DONE AROUND HERE?

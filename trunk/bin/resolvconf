@@ -1,0 +1,131 @@
+#!/bin/bash
+# Need bash because of use of ${FOO/bar}
+#
+# Licensed under the GNU GPL.  See /usr/share/doc/resolvconf/copyright.
+#
+# resolvconf (-u|-d IFACE|-a IFACE)
+
+set -e
+
+echo_usage() { echo "Usage: resolvconf (-u|-d IFACE|-a IFACE)" ; }
+
+PATH=/sbin:/bin
+MYNAME="${0##*/}"
+# Note that /etc/resolvconf/run may be a symlink
+RUN_DIR=/etc/resolvconf/run
+IFACE_DIR="${RUN_DIR}/interface"
+ENABLE_UPDATES_FLAGFILE="${RUN_DIR}/enable-updates"
+POSTPONED_UPDATE_FLAGFILE="${RUN_DIR}/postponed-update"
+
+report_err() { echo "${MYNAME}: Error: $*" >&2 ; }
+
+# Check arguments
+CMD="$1"
+case "$CMD" in
+  -u)
+  	if [ "$2" ] ; then
+		report_err "The -u option does not take an argument"
+		echo_usage >&2
+		exit 1
+	fi
+	;;
+  -a|-d)
+	IFACE="$2"
+	if [ -z "$IFACE" ] ; then
+		report_err "No interface name specified"
+		echo_usage >&2
+		exit 1
+	fi
+	report_iface_err() {
+		report_err "$* not allowed in interface record name"
+	}
+	[ "${IFACE/\/}" = "$IFACE" ] || { report_iface_err "Slash" ; exit 1 ; }
+	[ "${IFACE/ }" = "$IFACE" ] || { report_iface_err "Space" ; exit 1 ; }
+	[ "${IFACE#.}" = "$IFACE" ] || { report_iface_err "Initial dot" ; exit 1 ; }
+	[ "${IFACE#-}" = "$IFACE" ] || { report_iface_err "Initial hyphen" ; exit 1 ; }
+	[ "${IFACE#\~}" = "$IFACE" ] || { report_iface_err "Initial tilde" ; exit 1 ; }
+	;;
+  *)
+	report_err "Invalid argument"
+	echo_usage >&2
+	exit 1
+	;;
+esac
+
+[ -d "$IFACE_DIR" ] || { report_err "$IFACE_DIR is not a directory" ; exit 1 ; }
+
+cd "$IFACE_DIR"
+
+#	
+# The following function must EXACTLY the same in the resolvconf
+# and test-normalization scripts. And the test must pass!
+#
+### BEGIN FUNCTION TO COPY TO THE test-normalization SCRIPT ###
+#
+# Echo stdin with:
+#	comments removed;
+#	initial and terminal whitespace removed;
+#	whitespace strings replaced by single blanks;
+#	leading zeroes removed from nameserver address fields;
+#	first set of zero fields in an IPv6 address collapsed to '::';
+#	empty lines removed.
+normalized_stdin() {
+	sed                                                                        \
+		-e 's/#.*$//'                                                      \
+		-e 's/[[:blank:]]\+$//'                                            \
+		-e 's/^[[:blank:]]\+//'                                            \
+		-e 's/[[:blank:]]\+/ /g'                                           \
+		-e '/^nameserver/!b ENDOFCYCLE'                                    \
+		-e 's/$/ /'                                                        \
+		-e 's/\([:. ]\)0\+/\10/g'                                          \
+		-e 's/\([:. ]\)0\([123456789abcdefABCDEF][[:xdigit:]]*\)/\1\2/g'   \
+		-e '/::/b ENDOFCYCLE; s/ \(0[: ]\)\+/ ::/'                         \
+		-e '/::/b ENDOFCYCLE; s/:\(0[: ]\)\+/::/'                          \
+		-e ': ENDOFCYCLE'                                                  \
+		- |                                                                \
+	sed                                                                        \
+		-e 's/[[:blank:]]\+$//'                                            \
+		-e '/^$/d'
+}
+### END FUNCTION TO COPY TO THE test-normalization SCRIPT ###
+
+case "$CMD" in
+  -u) : ;;
+  -a)
+	OLD_CONTENT=""
+	[ -f "$IFACE" ] && OLD_CONTENT="$(cat "$IFACE")"
+	NEW_CONTENT="$(normalized_stdin)"
+	# Proceed only if content has changed. The test here can't
+	# eliminate 100% of redundant invocations of update scripts
+	# because we don't do any locking; however it certainly does
+	# eliminate most of them.
+	if [ "$NEW_CONTENT" = "$OLD_CONTENT" ] ; then 
+		exit 0
+	fi
+	IFACE_TMPFILE="${IFACE}_new.$$"
+	cleanup() { rm -f "$IFACE_TMPFILE" ; }
+	trap cleanup EXIT
+	echo "$NEW_CONTENT" > "$IFACE_TMPFILE"
+	mv -f "$IFACE_TMPFILE" "$IFACE"
+	;;
+  -d)
+	if [ ! -s "$IFACE" ] ; then
+		rm -f "$IFACE"
+		exit 0
+	fi
+	rm -f "$IFACE"
+	;;
+  *)
+	report_err "Command not recognized"
+	exit 99
+	;;
+esac
+
+if [ -e "$ENABLE_UPDATES_FLAGFILE" ] ; then
+	exec run-parts "--arg=$CMD" ${IFACE:+--arg="$IFACE"} /etc/resolvconf/update.d
+else
+	# Schedule an update for when updates are enabled
+	: > "$POSTPONED_UPDATE_FLAGFILE"
+fi
+
+
