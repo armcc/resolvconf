@@ -1,9 +1,9 @@
-resolvconf (1.55) natty; urgency=low
+resolvconf (1.55) unstable; urgency=low
 
   * Include old update.d/bind script for illustration purposes
     as /usr/share/doc/resolvconf/resolvconf-update-bind.
 
- -- Thomas Hood <jdthood@gmail.com>  Thu, 26 May 2011 10:54:22 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Thu, 26 May 2011 10:00:00 +0200
 
 resolvconf (1.54) unstable; urgency=low
 
