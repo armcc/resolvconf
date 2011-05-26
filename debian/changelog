@@ -1,3 +1,10 @@
+resolvconf (1.55) natty; urgency=low
+
+  * Include old update.d/bind script for illustration purposes
+    as /usr/share/doc/resolvconf/resolvconf-update-bind.
+
+ -- Thomas Hood <jdthood@gmail.com>  Thu, 26 May 2011 10:54:22 +0200
+
 resolvconf (1.54) unstable; urgency=low
 
   [ Thomas Hood ]
@@ -17,11 +24,9 @@ resolvconf (1.53) unstable; urgency=low
   * Update my e-mail address in various places
   * Update debconf template translations
     * cs.po thanks to Miroslav Kure (Closes: #627440)
-  * Remove /etc/resolvconf/update.d/bind (Closes: #608933, #268073);
-    include it as /usr/share/doc/resolvconf/resolvconf-update-bind
-    for illustration purposes.  Instead of this old script, the bind9
-    package should include a hook script /etc/resolvconf/update.d/bind9
-    as has been requested in #483098.
+  * Remove /etc/resolvconf/update.d/bind (Closes: #608933, #268073).
+    Instead of this, the bind9 package should include a hook script
+    /etc/resolvconf/update.d/bind9 as has been requested in #483098.
   * Due to changes in Debian infrastructure change debian/control
     fields Vcs-Svn and Vcs-Browser.  Ref:
     http://lists.debian.org/debian-devel-announce/2011/05/msg00009.html
