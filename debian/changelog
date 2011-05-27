@@ -2,6 +2,9 @@ resolvconf (1.55) unstable; urgency=low
 
   * Include old update.d/bind script for illustration purposes
     as /usr/share/doc/resolvconf/resolvconf-update-bind.
+  * Use /usr/lib/resolvconf/dpkg-event.d instead of /etc/...
+    for dpkg event hook scripts.  The scripts don't need to be
+    conffiles.
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 26 May 2011 10:00:00 +0200
 
@@ -18,9 +21,8 @@ resolvconf (1.53) unstable; urgency=low
   * Dpkg trigger is now called 'resolvconf-enable-updates' and is now
     intended only for internal use.
   * Other packages are notified of the installation of resolvconf via
-    hook scripts that they put in /etc/resolvconf/packaging-event.d/
-    as described in the "Usage information for maintainers" section of
-    the resolvconf README file. (Closes: #567059, #627691)
+    hook scripts as described in the "Usage information for maintainers"
+    section of the resolvconf README file. (Closes: #567059, #627691)
   * Update my e-mail address in various places
   * Update debconf template translations
     * cs.po thanks to Miroslav Kure (Closes: #627440)

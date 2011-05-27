@@ -31,12 +31,12 @@ case "$1" in
 	fi
 
 	# Notify packages of the removal of resolvconf
-	if [ -d /etc/resolvconf/packaging-event.d ] ; then
-		NOTIFICATION_HOOK_SCRIPTS="$(cd /etc/resolvconf/packaging-event.d >/dev/null ; run-parts --test .)"
+	if [ -d /usr/lib/resolvconf/dpkg-event.d ] ; then
+		NOTIFICATION_HOOK_SCRIPTS="$(cd /usr/lib/resolvconf/dpkg-event.d >/dev/null ; run-parts --test .)"
 		for SCRPT in $NOTIFICATION_HOOK_SCRIPTS ; do
 			PKG="${SCRPT#./}"
 			if is_installed "$PKG" ; then
-				SCRPT="/etc/resolvconf/packaging-event.d/$PKG"
+				SCRPT="/usr/lib/resolvconf/dpkg-event.d/$PKG"
 				if [ -x "$SCRPT" ] ; then
 					"$SCRPT" remove || :
 				fi

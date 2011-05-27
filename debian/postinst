@@ -148,7 +148,7 @@ case "$1" in
 		rm -f /etc/resolvconf/run/packages-to-notify
 		for PKG in $PACKAGES_TO_NOTIFY ; do
 			if is_installed "$PKG" ; then
-				SCRPT="/etc/resolvconf/packaging-event.d/$PKG"
+				SCRPT="/usr/lib/resolvconf/dpkg-event.d/$PKG"
 				if [ -x "$SCRPT" ] ; then
 					"$SCRPT" install || :
 				fi

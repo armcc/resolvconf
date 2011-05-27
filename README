@@ -20,8 +20,8 @@ Credits
 
 News
 ~~~~
-* Last updated 24 May 2011 for version 1.53
-  - In "Usage information for maintainers" describe the new packaging event
+* Last updated 27 May 2011 for version 1.55
+  - In "Usage information for maintainers" describe the new dpkg event
     notification mechanism
 
 Introduction
@@ -491,7 +491,7 @@ resolvconf has been installed.
 
 As of resolvconf release 1.53 this is supported via the following mechanism.
 Any package, foo, that supports supplying information to resolvconf should
-include a hook script /etc/resolvconf/packaging-event.d/foo which, when called
+include a hook script /usr/lib/resolvconf/dpkg-event.d/foo which, when called
 with the argument "install", takes whatever actions are necessary to cause the
 program(s) in foo to supply their nameserver information to resolvconf; and
 when called with the argument "remove" takes whatever actions are appropriate
@@ -502,9 +502,9 @@ The hook script thus has the following form.
 
     #!/bin/sh
     #
-    # /etc/resolvconf/packaging-event.d/foo
+    # /usr/lib/resolvconf/dpkg-event.d/foo
     #
-    # The resolvconf packaging event hook script for the foo package
+    # The resolvconf dpkg event hook script for the foo package
     #
     if foo_is_running ; then
         if [ "$1" = "install" ] ; then
