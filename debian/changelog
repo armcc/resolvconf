@@ -4,7 +4,10 @@ resolvconf (1.55) unstable; urgency=low
     as /usr/share/doc/resolvconf/resolvconf-update-bind.
   * Use /usr/lib/resolvconf/dpkg-event.d instead of a /etc
     path for dpkg event hook scripts.  The scripts don't need
-    to be conffiles.
+    to be conffiles. (Closes: #628524)
+  * THERE IS A BUG THAT ARISES WHEN RESOLVCONF IS PURGED AND
+    RE-INSTALLED: /VAR/RUN/DNSMASQ/RESOLV.CONF ENDS UP WITH
+    127.0.0.1 IN IT.
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 29 May 2011 12:00:00 +0200
 
