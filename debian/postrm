@@ -2,6 +2,10 @@
 
 set -e
 
+MYNAME=resolvconf.postrm
+report() { echo "${MYNAME}: $*" ; }
+report_info() { report "$*" >&2 ; }
+
 is_installed() {
 	# Same function in preinst, postinst, postrm
 	[ "$1" ] || return 1
@@ -29,6 +33,8 @@ case "$1" in
 			rm -f /etc/resolv.conf
 		fi
 	fi
+
+	report_info "Reboot recommended."
 
 	# Notify packages of the removal of resolvconf
 	if [ -d /usr/lib/resolvconf/dpkg-event.d ] ; then
