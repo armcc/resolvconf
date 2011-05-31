@@ -36,7 +36,7 @@ msgstr ""
 "het resolver-configuratiebestand mogelijk te maken. Een gedeelte van de "
 "noodzakelijke infrastructuur is een symbolische koppeling van /etc/resolv."
 "conf naar /etc/resolvconf/run/resolv.conf. Als u deze optie accepteert zal "
-"deze koppeling gemaakt worden; het bestaande /etc/resolv.conf bestand zal "
+"deze koppeling gemaakt worden; het bestaande /etc/resolv.conf-bestand zal "
 "worden bewaard als /etc/resolvconf/resolv.conf.d/original en zal worden "
 "teruggeplaatst als het pakket wordt verwijderd."
 
@@ -106,7 +106,7 @@ msgstr ""
 "installatie over tot aan de volgende herstart. Het nadeel van deze maatregel "
 "is dat naamserver-informatie wordt vastgehouden, zelfs als de bijbehorende "
 "interface later wordt gedeconfigureerd. Dit op zich onjuiste gedrag wordt "
-"algemeen gezien als minder schadelijk dan het alternatief waarbij geldige "
+"beschouwd als minder schadelijk dan het alternatief waarbij geldige "
 "informatie verloren gaat."
 
 #. Type: note
