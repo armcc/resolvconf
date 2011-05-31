@@ -1,4 +1,4 @@
-# Vietnamese translation of resolvconf debconf templates.
+# Vietnamese translation of resolvconf debconf templates
 # Copyright (C) 2005-2008 Clytie Siddall <clytie@riverland.net.au>
 # This file is distributed under the same license as the resolvconf package.
 #
@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.39\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
-"POT-Creation-Date: 2011-05-31 19:07+0200\n"
+"POT-Creation-Date: 2011-05-31 20:26+0200\n"
 "PO-Revision-Date: 2008-02-12 22:24+1030\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -68,7 +68,9 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3001
+#. Type: note
+#. Description
+#: ../templates:3001 ../templates:4001
 msgid "Reboot recommended"
 msgstr ""
 
@@ -108,16 +110,10 @@ msgstr ""
 #. Type: note
 #. Description
 #: ../templates:4001
-msgid "Reboot recommended after removal"
-msgstr ""
-
-#. Type: note
-#. Description
-#: ../templates:4001
 msgid ""
 "The removal of the resolvconf package may have resulted in some information "
 "about name servers becoming unavailable. To correct this problem it is "
-"recommended that the system now be rebooted."
+"recommended that the system be rebooted."
 msgstr ""
 
 #. Type: boolean
@@ -179,23 +175,3 @@ msgstr ""
 "Sau khi các dòng « dns-nameservers » cần thiết đã được thêm vào tập tin « /"
 "etc/network/interfaces », liên kết « /etc/resolvconf/resolv.conf.d/tail » "
 "nên bị thay thế bằng một liên kết tới « /dev/null »."
-
-#~ msgid "Network interfaces reconfiguration mandatory"
-#~ msgstr "Bắt buộc phải cấu hình lại các giao diện mạng"
-
-#~ msgid ""
-#~ "Once resolvconf is installed, interface configurers supply name server "
-#~ "information to it (which it then makes available to the C library "
-#~ "resolver and to DNS caches). However, they do this only when they bring "
-#~ "up interfaces. Therefore for resolvconf's name server information to be "
-#~ "up to date after initial installation it is necessary to reconfigure "
-#~ "interfaces (that is, to take them down and then to bring them up again) "
-#~ "and to restart DNS caches."
-#~ msgstr ""
-#~ "Một khi resolvconf được cài đặt, các phần mềm cấu hình giao diện sẽ cung "
-#~ "cấp cho nó thông tin về máy phục vụ tên (mà nó lần lượt cung cấp cho phần "
-#~ "mềm giải quyết của thư viện C và cho các bộ nhớ tạm DNS). Tuy nhiên, "
-#~ "thông tin này chỉ được cung cấp bởi phần mềm cấu hình giao diện trong khi "
-#~ "kích hoạt giao diện. Vì vậy để resolvconf bảo tồn thông tin hiện thời về "
-#~ "các máy phục vụ tên, cũng cần phải cấu hình lại các giao diện (tức là tắt "
-#~ "rồi bật lại) và khởi chạy lại các bộ nhớ tạm DNS."

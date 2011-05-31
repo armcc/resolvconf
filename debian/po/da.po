@@ -1,4 +1,4 @@
-# Danish translation of resolvconf debconf templates.
+# Danish translation of resolvconf debconf templates
 # Copyright (c) 2011 Joe Hansen <joedalton2@yahoo.dk>
 # This file is distributed under the same license as the resolvconf package.
 #
@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf\n"
+"Project-Id-Version: resolvconf 1.52\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
-"POT-Creation-Date: 2011-05-31 19:07+0200\n"
+"POT-Creation-Date: 2011-05-31 20:26+0200\n"
 "PO-Revision-Date: 2011-05-10 17:30+01:00\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <debian-l10n-danish@lists.debian.org> \n"
@@ -68,7 +68,9 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3001
+#. Type: note
+#. Description
+#: ../templates:3001 ../templates:4001
 msgid "Reboot recommended"
 msgstr "Genstart anbefales"
 
@@ -124,18 +126,10 @@ msgstr ""
 #. Type: note
 #. Description
 #: ../templates:4001
-#, fuzzy
-#| msgid "Reboot recommended"
-msgid "Reboot recommended after removal"
-msgstr "Genstart anbefales"
-
-#. Type: note
-#. Description
-#: ../templates:4001
 msgid ""
 "The removal of the resolvconf package may have resulted in some information "
 "about name servers becoming unavailable. To correct this problem it is "
-"recommended that the system now be rebooted."
+"recommended that the system be rebooted."
 msgstr ""
 
 #. Type: boolean

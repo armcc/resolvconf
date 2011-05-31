@@ -1,12 +1,12 @@
-# Translation of resolvconf debconf templates to Czech
+# Czech translation of resolvconf debconf templates
 # Copyright (C) 2008, 2011 Miroslav Kure <kurem@debian.cz>
 # This file is distributed under the same license as the resolvconf package.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf 1.26\n"
+"Project-Id-Version: resolvconf 1.52\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
-"POT-Creation-Date: 2011-05-31 19:07+0200\n"
+"POT-Creation-Date: 2011-05-31 20:26+0200\n"
 "PO-Revision-Date: 2011-05-20 18:37+0200\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
@@ -65,7 +65,9 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3001
+#. Type: note
+#. Description
+#: ../templates:3001 ../templates:4001
 msgid "Reboot recommended"
 msgstr "Doporučujeme restartovat systém"
 
@@ -118,18 +120,10 @@ msgstr ""
 #. Type: note
 #. Description
 #: ../templates:4001
-#, fuzzy
-#| msgid "Reboot recommended"
-msgid "Reboot recommended after removal"
-msgstr "Doporučujeme restartovat systém"
-
-#. Type: note
-#. Description
-#: ../templates:4001
 msgid ""
 "The removal of the resolvconf package may have resulted in some information "
 "about name servers becoming unavailable. To correct this problem it is "
-"recommended that the system now be rebooted."
+"recommended that the system be rebooted."
 msgstr ""
 
 #. Type: boolean

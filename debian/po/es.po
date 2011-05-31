@@ -1,34 +1,12 @@
-# resolvconf debconf template translation to Spanish
-# Copyright (C) 2006 Javier Fernández-Sanguino
+# Spanish translation of resolvconf debconf templates
+# Copyright (C) 2006 Javier Fernández-Sanguino <jfs@debian.org>
 # This file is distributed under the same license as the resolvconf package.
-#
-#  Traductores, si no conoce el formato PO, merece la pena leer la 
-#  documentación de gettext, especialmente las secciones dedicadas a este
-#  formato, por ejemplo ejecutando:
-#         info -n '(gettext)PO Files'
-#         info -n '(gettext)Header Entry'
-#
-# Equipo de traducción al español, por favor lean antes de traducir
-# los siguientes documentos:
-#
-# - El proyecto de traducción de Debian al español
-#   http://www.debian.org/intl/spanish/
-#   especialmente las notas y normas de traducción en
-#   http://www.debian.org/intl/spanish/notas
-#
-# - La guía de traducción de po's de debconf:
-#   /usr/share/doc/po-debconf/README-trans
-#   o http://www.debian.org/intl/l10n/po-debconf/README-trans
-#
-# Si tiene dudas o consultas sobre esta traducción consulte con el último
-# traductor (campo Last-Translator) y ponga en copia a la lista de
-# traducción de Debian al español (<debian-l10n-spanish@lists.debian.org>)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.36\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
-"POT-Creation-Date: 2011-05-31 19:07+0200\n"
+"POT-Creation-Date: 2011-05-31 20:26+0200\n"
 "PO-Revision-Date: 2008-03-30 23:27+0200\n"
 "Last-Translator: Javier Fernández-Sanguino <jfs@debian.org>\n"
 "Language-Team: Debian Spanish <debian-l10n-spanish@lists.debian.org>\n"
@@ -92,7 +70,9 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3001
+#. Type: note
+#. Description
+#: ../templates:3001 ../templates:4001
 msgid "Reboot recommended"
 msgstr ""
 
@@ -132,16 +112,10 @@ msgstr ""
 #. Type: note
 #. Description
 #: ../templates:4001
-msgid "Reboot recommended after removal"
-msgstr ""
-
-#. Type: note
-#. Description
-#: ../templates:4001
 msgid ""
 "The removal of the resolvconf package may have resulted in some information "
 "about name servers becoming unavailable. To correct this problem it is "
-"recommended that the system now be rebooted."
+"recommended that the system be rebooted."
 msgstr ""
 
 #. Type: boolean
@@ -205,25 +179,3 @@ msgstr ""
 "Debería reemplazar el enlace simbólico «/etc/resolvconf/resolv.conf.d/tail» "
 "para que sea un enlace a «/dev/null» una vez haya añadido las líneas «dns-"
 "nameservers» necesarias a «/etc/network/interfaces»."
-
-#~ msgid "Network interfaces reconfiguration mandatory"
-#~ msgstr "La reconfiguración de las interfaz de red es obligatoria"
-
-#~ msgid ""
-#~ "Once resolvconf is installed, interface configurers supply name server "
-#~ "information to it (which it then makes available to the C library "
-#~ "resolver and to DNS caches). However, they do this only when they bring "
-#~ "up interfaces. Therefore for resolvconf's name server information to be "
-#~ "up to date after initial installation it is necessary to reconfigure "
-#~ "interfaces (that is, to take them down and then to bring them up again) "
-#~ "and to restart DNS caches."
-#~ msgstr ""
-#~ "Una vez haya instalado resolvconf, las aplicaciones que configuren las "
-#~ "interfaces podrán proporcionan la información de los servidores de "
-#~ "nombres disponibles. Esta información se proporciona, a su vez, para la "
-#~ "biblioteca C de resolución y para las cachés de DNS. Sin embargo, este "
-#~ "cambio sólo se produce cuando se activa una interfaz. Para que la "
-#~ "información de los servidores de nombres que proporciona resolvconf esté "
-#~ "actualizada después de la instalación inicial es necesario que se "
-#~ "reconfiguren las interfaces (es decir, que se desactiven y se vuelvan a "
-#~ "activar) y que se reinicien las cachés de DNS."

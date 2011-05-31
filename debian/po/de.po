@@ -1,4 +1,4 @@
-# Translation of resolvconf debconf templates to German
+# German translation of resolvconf debconf templates
 # Copyright (C) 2004, 2008, 2011 Helge Kreutzmann <debian@helgefjell.de>
 # This file is distributed under the same license as the resolvconf package.
 #
@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.52\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
-"POT-Creation-Date: 2011-05-31 19:07+0200\n"
+"POT-Creation-Date: 2011-05-31 20:26+0200\n"
 "PO-Revision-Date: 2011-05-06 18:44+0200\n"
 "Last-Translator: Helge Kreutzmann <debian@helgefjell.de>\n"
 "Language-Team: de <debian-l10n-german@lists.debian.org>\n"
@@ -68,7 +68,9 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3001
+#. Type: note
+#. Description
+#: ../templates:3001 ../templates:4001
 msgid "Reboot recommended"
 msgstr "Systemneustart empfohlen"
 
@@ -125,18 +127,10 @@ msgstr ""
 #. Type: note
 #. Description
 #: ../templates:4001
-#, fuzzy
-#| msgid "Reboot recommended"
-msgid "Reboot recommended after removal"
-msgstr "Systemneustart empfohlen"
-
-#. Type: note
-#. Description
-#: ../templates:4001
 msgid ""
 "The removal of the resolvconf package may have resulted in some information "
 "about name servers becoming unavailable. To correct this problem it is "
-"recommended that the system now be rebooted."
+"recommended that the system be rebooted."
 msgstr ""
 
 #. Type: boolean

@@ -1,12 +1,12 @@
-# Translation of resolvconf-debconf.po to Bahasa Indonesia
+# Bahasa Indonesia translation of resolvconf debconf templates
 # Copyright (C) 2008 Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>
 # This file is distributed under the same license as the resolvconf package.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf-debconf\n"
+"Project-Id-Version: resolvconf\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
-"POT-Creation-Date: 2011-05-31 19:07+0200\n"
+"POT-Creation-Date: 2011-05-31 20:26+0200\n"
 "PO-Revision-Date: 2008-02-12 15:49+0700\n"
 "Last-Translator: Arief S Fitrianto <arief@gurame.fisika.ui.ac.id>\n"
 "Language-Team: Bahasa Indonesia <debian-l10n-id@gurame.fisika.ui.ac.id>\n"
@@ -67,7 +67,9 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3001
+#. Type: note
+#. Description
+#: ../templates:3001 ../templates:4001
 msgid "Reboot recommended"
 msgstr ""
 
@@ -107,16 +109,10 @@ msgstr ""
 #. Type: note
 #. Description
 #: ../templates:4001
-msgid "Reboot recommended after removal"
-msgstr ""
-
-#. Type: note
-#. Description
-#: ../templates:4001
 msgid ""
 "The removal of the resolvconf package may have resulted in some information "
 "about name servers becoming unavailable. To correct this problem it is "
-"recommended that the system now be rebooted."
+"recommended that the system be rebooted."
 msgstr ""
 
 #. Type: boolean
@@ -178,23 +174,3 @@ msgstr ""
 "Setelah baris \"dns-nameservers\" yang dibutuhkan ditambahkan ke /etc/"
 "network/interfaces, maka nara ke /etc/resolvconf/resolv.conf.d/tail harus "
 "diganti dengan /dev/null."
-
-#~ msgid "Network interfaces reconfiguration mandatory"
-#~ msgstr "Konfigurasi ulang terhadap antarmuka jaringan diwajibkan"
-
-#~ msgid ""
-#~ "Once resolvconf is installed, interface configurers supply name server "
-#~ "information to it (which it then makes available to the C library "
-#~ "resolver and to DNS caches). However, they do this only when they bring "
-#~ "up interfaces. Therefore for resolvconf's name server information to be "
-#~ "up to date after initial installation it is necessary to reconfigure "
-#~ "interfaces (that is, to take them down and then to bring them up again) "
-#~ "and to restart DNS caches."
-#~ msgstr ""
-#~ "Sekali resolvconf terpasand, konfigurator jaringan akan memberikan nama "
-#~ "server (yang kemudian akan tersedia bagi resolver pustaka bahasa C dan "
-#~ "cache DNS). Tetapi, hal ini hanya terjadi bila antarmuka jaringan "
-#~ "dihidupkan. Jadi, agar informasi nama server terbarukan setelah proses "
-#~ "instalasi, maka sangat diperlukan untuk mengonfigurasi ulang antarmuka "
-#~ "jaringan. (yaitu mematikannya kemudian menghidupkannya kembali.) dan "
-#~ "menjalankan ulang program DNS."

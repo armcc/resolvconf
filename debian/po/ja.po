@@ -1,8 +1,11 @@
+# Japanese translation of resolvconf debconf templates
+# This file is distributed under the same license as the resolvconf package
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.41\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
-"POT-Creation-Date: 2011-05-31 19:07+0200\n"
+"POT-Creation-Date: 2011-05-31 20:26+0200\n"
 "PO-Revision-Date: 2008-08-03 21:04+0900\n"
 "Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
@@ -61,7 +64,9 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../templates:3001
+#. Type: note
+#. Description
+#: ../templates:3001 ../templates:4001
 msgid "Reboot recommended"
 msgstr ""
 
@@ -101,16 +106,10 @@ msgstr ""
 #. Type: note
 #. Description
 #: ../templates:4001
-msgid "Reboot recommended after removal"
-msgstr ""
-
-#. Type: note
-#. Description
-#: ../templates:4001
 msgid ""
 "The removal of the resolvconf package may have resulted in some information "
 "about name servers becoming unavailable. To correct this problem it is "
-"recommended that the system now be rebooted."
+"recommended that the system be rebooted."
 msgstr ""
 
 #. Type: boolean
@@ -171,22 +170,3 @@ msgstr ""
 "/etc/network/interfaces に必要な \"dns-nameservers\" 行を加えた後、/etc/"
 "resolvconf/resolv.conf.d/tail へのシンボリックリンクを /dev/null へのリンクに"
 "変更する必要があります。"
-
-#~ msgid "Network interfaces reconfiguration mandatory"
-#~ msgstr "ネットワークインターフェイスの再設定を強制的に実行"
-
-#~ msgid ""
-#~ "Once resolvconf is installed, interface configurers supply name server "
-#~ "information to it (which it then makes available to the C library "
-#~ "resolver and to DNS caches). However, they do this only when they bring "
-#~ "up interfaces. Therefore for resolvconf's name server information to be "
-#~ "up to date after initial installation it is necessary to reconfigure "
-#~ "interfaces (that is, to take them down and then to bring them up again) "
-#~ "and to restart DNS caches."
-#~ msgstr ""
-#~ "一旦 resolvconf がインストールされると、インターフェイス設定でネームサーバ"
-#~ "情報を提供します (C ライブラリのリゾルバと DNS キャッシュで利用可能になり"
-#~ "ます)。しかし、これはインターフェイスが起動された時のみです。そのため、"
-#~ "resolvconf のネームサーバ情報を初期インストール後に更新するには、インター"
-#~ "フェイスの再設定 (つまり、インターフェイスを一旦ダウンしてからアップのし直"
-#~ "し) とDNS キャッシュの再起動が必要になります。"
