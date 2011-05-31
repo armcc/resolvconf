@@ -4,7 +4,7 @@ resolvconf (1.55) unstable; urgency=low
     as /usr/share/doc/resolvconf/resolvconf-update-bind.
   * Use /usr/lib/resolvconf/dpkg-event.d instead of a /etc/...
     path for dpkg event hook scripts. The scripts don't need
-    to be conffiles.
+    to be configuration files.
   * In postrm print a message and put up debconf note recommending
     reboot. (Closes: #628524)
   * Remove comments from /etc/resolv.conf on removal.
