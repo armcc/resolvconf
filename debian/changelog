@@ -3,14 +3,14 @@ resolvconf (1.55) unstable; urgency=low
   * Include old update.d/bind script for illustration purposes
     as /usr/share/doc/resolvconf/resolvconf-update-bind.
   * Use /usr/lib/resolvconf/dpkg-event.d instead of a /etc/...
-    path for dpkg event hook scripts.  The scripts don't need
+    path for dpkg event hook scripts. The scripts don't need
     to be conffiles.
-  * In postrm print "Reboot recommended" and add new debconf
-    note to the postrm recommending reboot. (Closes: #628524)
-  * Remove comments from resolv.conf on removal.
+  * In postrm print a message and put up debconf note recommending
+    reboot. (Closes: #628524)
+  * Remove comments from /etc/resolv.conf on removal.
   * Remove /lib/init/rw/resolvconf on purge. (Closes: #628669)
 
- -- Thomas Hood <jdthood@gmail.com>  Thu, 29 May 2011 12:00:00 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Thu, 31 May 2011 12:00:00 +0200
 
 resolvconf (1.54) unstable; urgency=low
 
