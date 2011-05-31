@@ -8,6 +8,7 @@ resolvconf (1.55) unstable; urgency=low
   * In postrm print "Reboot recommended" and add new debconf
     note to the postrm recommending reboot. (Closes: #628524)
   * Remove comments from resolv.conf on removal.
+  * Remove /lib/init/rw/resolvconf on purge. (Closes: #628669)
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 29 May 2011 12:00:00 +0200
 
