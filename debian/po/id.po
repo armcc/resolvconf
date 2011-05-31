@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf\n"
+"Project-Id-Version: resolvconf 1.38\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2011-05-31 20:26+0200\n"
 "PO-Revision-Date: 2008-02-12 15:49+0700\n"
