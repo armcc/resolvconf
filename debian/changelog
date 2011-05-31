@@ -1,4 +1,4 @@
-resolvconf (1.55) unstable; urgency=low
+resolvconf (1.55) unstable; urgency=medium
 
   * Include old update.d/bind script for illustration purposes
     as /usr/share/doc/resolvconf/resolvconf-update-bind.
