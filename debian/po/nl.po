@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.52\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
-"POT-Creation-Date: 2011-05-04 14:46+0200\n"
+"POT-Creation-Date: 2011-05-31 19:07+0200\n"
 "PO-Revision-Date: 2011-05-04 20:32+0000\n"
 "Last-Translator: Vincent Zweije <vincent@zweije.nl>\n"
 "Language-Team: Debian-Dutch <debian-l10n-dutch@lists.debian.org>\n"
@@ -80,11 +80,11 @@ msgid ""
 "resolvconf program. However, although installation of the resolvconf package "
 "triggers them to supply their information, some of them fail to do so."
 msgstr ""
-"Van programma's die naamserver-informatie leveren, zoals lokale "
-"naamservers en interface-configuratieprogramma's, wordt verwacht dat zij "
-"naamserver-informatie aan het resolvconf programma doorgeven. Sommigen "
-"doen dit echter niet, hoewel de installatie van het resolvconf-pakket hun "
-"daartoe een signaal geeft."
+"Van programma's die naamserver-informatie leveren, zoals lokale naamservers "
+"en interface-configuratieprogramma's, wordt verwacht dat zij naamserver-"
+"informatie aan het resolvconf programma doorgeven. Sommigen doen dit echter "
+"niet, hoewel de installatie van het resolvconf-pakket hun daartoe een "
+"signaal geeft."
 
 #. Type: note
 #. Description
@@ -120,15 +120,32 @@ msgstr ""
 "herstarten van het systeem de enige manier om te garanderen dat resolvconf "
 "na installatie volledig juiste naamserver-informatie heeft."
 
-#. Type: boolean
+#. Type: note
 #. Description
 #: ../templates:4001
+#, fuzzy
+#| msgid "Reboot recommended"
+msgid "Reboot recommended after removal"
+msgstr "Herstart aanbevolen"
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid ""
+"The removal of the resolvconf package may have resulted in some information "
+"about name servers becoming unavailable. To correct this problem it is "
+"recommended that the system now be rebooted."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:5001
 msgid "Append original file to dynamic file?"
 msgstr "Originele bestand aan het eind van dynamische bestand toevoegen?"
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "If the original static resolver configuration file (/etc/resolv.conf) "
 "contains name server addresses, those addresses should be listed on \"dns-"
@@ -142,7 +159,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "Until /etc/network/interfaces has been edited and the affected interfaces "
 "brought down and up again, the name server addresses will not be included in "
@@ -155,7 +172,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "If you choose this option, a temporary workaround will be put in place: a "
 "symbolic link will be created (if it does not already exist) from /etc/"
@@ -172,7 +189,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "After the required \"dns-nameservers\" lines have been added to /etc/network/"
 "interfaces, the /etc/resolvconf/resolv.conf.d/tail link should be replaced "
@@ -181,4 +198,3 @@ msgstr ""
 "Nadat de benodigde \"dns-nameservers\"-regels zijn toegevoegd aan /etc/"
 "network/interfaces, dient de symbolische koppeling /etc/resolvconf/resolv."
 "conf.d/tail te worden vervangen door één die naar /dev/null wijst."
-

@@ -28,7 +28,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.36\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
-"POT-Creation-Date: 2011-05-04 14:46+0200\n"
+"POT-Creation-Date: 2011-05-31 19:07+0200\n"
 "PO-Revision-Date: 2008-03-30 23:27+0200\n"
 "Last-Translator: Javier Fernández-Sanguino <jfs@debian.org>\n"
 "Language-Team: Debian Spanish <debian-l10n-spanish@lists.debian.org>\n"
@@ -129,15 +129,30 @@ msgid ""
 "the system."
 msgstr ""
 
-#. Type: boolean
+#. Type: note
 #. Description
 #: ../templates:4001
+msgid "Reboot recommended after removal"
+msgstr ""
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid ""
+"The removal of the resolvconf package may have resulted in some information "
+"about name servers becoming unavailable. To correct this problem it is "
+"recommended that the system now be rebooted."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:5001
 msgid "Append original file to dynamic file?"
 msgstr "¿Añadir el fichero original al final del fichero dinámico?"
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "If the original static resolver configuration file (/etc/resolv.conf) "
 "contains name server addresses, those addresses should be listed on \"dns-"
@@ -152,7 +167,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "Until /etc/network/interfaces has been edited and the affected interfaces "
 "brought down and up again, the name server addresses will not be included in "
@@ -165,7 +180,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "If you choose this option, a temporary workaround will be put in place: a "
 "symbolic link will be created (if it does not already exist) from /etc/"
@@ -181,7 +196,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "After the required \"dns-nameservers\" lines have been added to /etc/network/"
 "interfaces, the /etc/resolvconf/resolv.conf.d/tail link should be replaced "

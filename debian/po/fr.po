@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.52\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
-"POT-Creation-Date: 2011-05-04 14:46+0200\n"
+"POT-Creation-Date: 2011-05-31 19:07+0200\n"
 "PO-Revision-Date: 2011-05-10 20:00+0200\n"
 "Last-Translator: Christian Perrier <bubulle@debian.org>\n"
 "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
@@ -87,10 +87,10 @@ msgid ""
 "resolvconf program. However, although installation of the resolvconf package "
 "triggers them to supply their information, some of them fail to do so."
 msgstr ""
-"Les programmes en charge de la fourniture des informations de service de noms tels que les "
-"programmes locaux de cache de service de noms et les configurateurs "
-"d'interfaces doivent fournir les informations de service de noms au "
-"programme resolvconf. Cependant, bien que l'installation de celui-ci "
+"Les programmes en charge de la fourniture des informations de service de "
+"noms tels que les programmes locaux de cache de service de noms et les "
+"configurateurs d'interfaces doivent fournir les informations de service de "
+"noms au programme resolvconf. Cependant, bien que l'installation de celui-ci "
 "déclenche une demande de mise à jour de ces informations, certains échouent "
 "à l'effectuer."
 
@@ -124,19 +124,36 @@ msgid ""
 "the system."
 msgstr ""
 "En attendant que ce bogue soit corrigé et le contournement retiré, la seule "
-"façon de garantir que resolvconf possède les informations entièrement correctes de "
-"service de noms après son installation sur un système est le redémarrage de "
-"ce système."
+"façon de garantir que resolvconf possède les informations entièrement "
+"correctes de service de noms après son installation sur un système est le "
+"redémarrage de ce système."
+
+#. Type: note
+#. Description
+#: ../templates:4001
+#, fuzzy
+#| msgid "Reboot recommended"
+msgid "Reboot recommended after removal"
+msgstr "Redémarrage recommandé"
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid ""
+"The removal of the resolvconf package may have resulted in some information "
+"about name servers becoming unavailable. To correct this problem it is "
+"recommended that the system now be rebooted."
+msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid "Append original file to dynamic file?"
 msgstr "Faut-il ajouter le fichier original au fichier dynamique ?"
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "If the original static resolver configuration file (/etc/resolv.conf) "
 "contains name server addresses, those addresses should be listed on \"dns-"
@@ -151,7 +168,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "Until /etc/network/interfaces has been edited and the affected interfaces "
 "brought down and up again, the name server addresses will not be included in "
@@ -164,7 +181,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "If you choose this option, a temporary workaround will be put in place: a "
 "symbolic link will be created (if it does not already exist) from /etc/"
@@ -172,15 +189,15 @@ msgid ""
 "This will cause the whole of that original resolver configuration file to be "
 "appended to the dynamically generated file."
 msgstr ""
-"Si vous choisissez cette option, un contournement temporaire sera "
-"établi : un lien symbolique sera créé (s'il n'existe pas déjà), de /etc/"
-"resolvconf/resolv.conf.d/tail vers /etc/resolvconf/resolv.conf.d/original. "
-"Cela ajoutera l'ensemble du fichier initial de configuration du résolveur à "
-"la fin du fichier créé dynamiquement."
+"Si vous choisissez cette option, un contournement temporaire sera établi : "
+"un lien symbolique sera créé (s'il n'existe pas déjà), de /etc/resolvconf/"
+"resolv.conf.d/tail vers /etc/resolvconf/resolv.conf.d/original. Cela "
+"ajoutera l'ensemble du fichier initial de configuration du résolveur à la "
+"fin du fichier créé dynamiquement."
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "After the required \"dns-nameservers\" lines have been added to /etc/network/"
 "interfaces, the /etc/resolvconf/resolv.conf.d/tail link should be replaced "
@@ -189,4 +206,3 @@ msgstr ""
 "Après avoir modifié /etc/network/interfaces pour ajouter les lignes « dns-"
 "nameservers », vous devriez faire pointer le lien symbolique /etc/resolvconf/"
 "resolv.conf.d/tail vers /dev/null."
-

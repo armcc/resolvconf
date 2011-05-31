@@ -1,14 +1,14 @@
 # Danish translation of resolvconf debconf templates.
 # Copyright (c) 2011 Joe Hansen <joedalton2@yahoo.dk>
 # This file is distributed under the same license as the resolvconf package.
-# 
+#
 # resolver -> klarlægger
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
-"POT-Creation-Date: 2011-05-04 14:46+0200\n"
+"POT-Creation-Date: 2011-05-31 19:07+0200\n"
 "PO-Revision-Date: 2011-05-10 17:30+01:00\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <debian-l10n-danish@lists.debian.org> \n"
@@ -81,11 +81,11 @@ msgid ""
 "resolvconf program. However, although installation of the resolvconf package "
 "triggers them to supply their information, some of them fail to do so."
 msgstr ""
-"Leverandører af navneserverinformation såsom lokale navneservere for mellemlageret "
-"(caching) og opsættere af brugerflader forventes at angive navneserverinformation "
-"til resolvconf-programmet. Selvom installationen af pakken resolvconf beder "
-"dem om at angive deres informationer så fejler nogle af dem med hensyn til "
-"denne opgave."
+"Leverandører af navneserverinformation såsom lokale navneservere for "
+"mellemlageret (caching) og opsættere af brugerflader forventes at angive "
+"navneserverinformation til resolvconf-programmet. Selvom installationen af "
+"pakken resolvconf beder dem om at angive deres informationer så fejler nogle "
+"af dem med hensyn til denne opgave."
 
 #. Type: note
 #. Description
@@ -99,10 +99,10 @@ msgid ""
 "deconfigured. (This incorrect behavior is judged to be less harmful than the "
 "alternative of losing valid information.)"
 msgstr ""
-"Denne fejl vil føre til tab af gyldig navneserverinformation ved installation "
-"af pakken resolvconf, hvis den følgende omgåelse ikke blev indarbejdet: "
-"resolvconf inkluderer det fulde indhold af den præinstallerede /etc/resolv."
-"conf i sin database indtil genstart. Dette har den ulempe, at "
+"Denne fejl vil føre til tab af gyldig navneserverinformation ved "
+"installation af pakken resolvconf, hvis den følgende omgåelse ikke blev "
+"indarbejdet: resolvconf inkluderer det fulde indhold af den præinstallerede /"
+"etc/resolv.conf i sin database indtil genstart. Dette har den ulempe, at "
 "navneserverinformation bevares selv om den associerede brugerflade senere "
 "dekonfigureres. (Denne forkerte opførsel er bedømt til at være mindre "
 "skadelig end alternativet, der kan medføre tab af valid information.)"
@@ -121,15 +121,32 @@ msgstr ""
 "pakken resolvconf er blevet installeret på et kørende system, at genstarte "
 "systemet."
 
-#. Type: boolean
+#. Type: note
 #. Description
 #: ../templates:4001
+#, fuzzy
+#| msgid "Reboot recommended"
+msgid "Reboot recommended after removal"
+msgstr "Genstart anbefales"
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid ""
+"The removal of the resolvconf package may have resulted in some information "
+"about name servers becoming unavailable. To correct this problem it is "
+"recommended that the system now be rebooted."
+msgstr ""
+
+#. Type: boolean
+#. Description
+#: ../templates:5001
 msgid "Append original file to dynamic file?"
 msgstr "Tilføj oprindelig fil til dynamisk fil?"
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "If the original static resolver configuration file (/etc/resolv.conf) "
 "contains name server addresses, those addresses should be listed on \"dns-"
@@ -143,7 +160,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "Until /etc/network/interfaces has been edited and the affected interfaces "
 "brought down and up again, the name server addresses will not be included in "
@@ -155,7 +172,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "If you choose this option, a temporary workaround will be put in place: a "
 "symbolic link will be created (if it does not already exist) from /etc/"
@@ -172,7 +189,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../templates:4001
+#: ../templates:5001
 msgid ""
 "After the required \"dns-nameservers\" lines have been added to /etc/network/"
 "interfaces, the /etc/resolvconf/resolv.conf.d/tail link should be replaced "
@@ -181,4 +198,3 @@ msgstr ""
 "Efter de krævede »dns-nameservers«-linjer er blevet tilføjet til /etc/"
 "network/interfaces, bør henvisningen /etc/resolvconf/resolv.conf.d/tail "
 "erstattes med en i /dev/null."
-
