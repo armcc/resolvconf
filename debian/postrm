@@ -2,6 +2,8 @@
 
 set -e
 
+. /usr/share/debconf/confmodule
+
 MYNAME=resolvconf.postrm
 report() { echo "${MYNAME}: $*" ; }
 report_info() { report "$*" >&2 ; }
@@ -35,6 +37,8 @@ case "$1" in
 	fi
 
 	report_info "Reboot recommended."
+	db_input high resolvconf/reboot-recommended-after-removal || :
+	db_go || :
 
 	# Notify packages of the removal of resolvconf
 	if [ -d /usr/lib/resolvconf/dpkg-event.d ] ; then

@@ -50,6 +50,13 @@ _Description: Reboot recommended
  information after the resolvconf package has been installed on a
  running system is to reboot the system.
 
+Template: resolvconf/reboot-recommended-after-removal
+Type: note
+_Description: Reboot recommended after removal
+ The removal of the resolvconf package may have resulted in some
+ information about name servers becoming unavailable. To correct
+ this problem it is recommended that the system now be rebooted.
+
 Template: resolvconf/link-tail-to-original
 Type: boolean
 Default: false
