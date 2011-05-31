@@ -2,11 +2,29 @@
                      for resolvconf
 
 TODO
-----
+====
+piuparts
+--------
+
+Says:
+> 0m32.1s ERROR: FAIL: Package purging left files on system:
+>  /lib/init/rw/resolvconf        not owned
+>  /lib/init/rw/resolvconf/interface      not owned
+
+This is not a problem.  These dirs will disappear on boot.
+
+
+Loop dangers
+------------
 Remember the interesting fact that postinst runs dpkg-event.d/foo
 which probably runs /sbin/resolvconf which probably runs update.d/foo.
 
+Things one tends to forget
+--------------------------
 Remember to run debconf-updatepo after changing templates or po files.
 
+Famous quotations
+-----------------
 As Ian Jackson says (http://lists.debian.org/debian-dpkg/2008/03/msg00091.html)
 > OH FOR FUCK'S SAKE WHAT DOES IT TAKE TO GET SOMETHING DONE AROUND HERE?
+
