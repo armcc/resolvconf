@@ -1,15 +1,16 @@
-# Translation of resolvconf-eu.po to Euskara
+# Basque resolvconf po-debconf translation
 # Copyright (C) 2009 Piarres Beobide EGaña <pi@beobide.net>
+# Copyright (C) 2011 Iñaki Larrañaga Murgoitio <dooteo@zundan.com>
 # This file is distributed under the same license as the resolvconf package.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.52\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2011-05-04 14:46+0200\n"
-"PO-Revision-Date: 2009-06-25 11:48+0200\n"
-"Last-Translator: Piarres Beobide <pi@beobide.net>\n"
-"Language-Team: Euskara <debian-l10n-basque@lists.debian.org>\n"
+"PO-Revision-Date: 2011-05-31 18:47+0200\n"
+"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
+"Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,12 +35,12 @@ msgid ""
 "the existing /etc/resolv.conf file will be preserved as /etc/resolvconf/"
 "resolv.conf.d/original, and will be restored if this package is removed."
 msgstr ""
-"Resolvconf paketeak ebazte konfigurazio fitxategia automatikoki eguneratzeko "
-"beharrezko azpiegitura du. Beharrezko azpiegitura horren zati bat /etc/"
-"resolv.conf eta /etc/resolvconf/run/resolv.conf arteko lotura sinboliko bat "
-"da. Aukera hau hautatuaz gero lotura hori sortu egingo da; aurreko /etc/"
-"resolv.conf fitxategia /etc/resolvconf/resolv.conf.d/original izenaz gordeko "
-"da eta paketea kentzen bada berriz bere lekuan ipiniko da."
+"Resolvconf paketeak ebazlearen konfigurazioko fitxategia automatikoki "
+"eguneratzeko beharrezkoa den azpiegitura du. Beharrezko azpiegitura horren "
+"zati bat /etc/resolv.conf fitxategiaren /etc/resolvconf/run/resolv.conf arteko "
+"esteka sinboliko bat da. Aukera hau hautatzean, esteka hori sortuko da; "
+"aurretik dagoen /etc/resolv.conf fitxategia /etc/resolvconf/resolv.conf.d/original "
+"izenarekin gordeko da, eta berriz leheneratuko da paketea kentzean."
 
 #. Type: boolean
 #. Description
@@ -50,9 +51,9 @@ msgid ""
 "dynamically updated. Dynamic updating can then be activated following "
 "instructions in the README file."
 msgstr ""
-"Aukera hau baztertzeak hurrengo instalazioetan lotura sortzea desgaituko du, "
-"beraz ebazte konfigurazio fitxategia ez da dinamikoki eguneratuko. "
-"Eguneraketa dinamikoa README fitxategiko argibideak jarraituaz gaitu daiteke."
+"Aukera hau baztertzeak hurrengo instalazioetan esteka sortzea desgaituko du, "
+"eta ondorioz, ebazlearen konfigurazioko fitxategia ez da dinamikoki eguneratuko. "
+"Eguneraketa dinamikoa README fitxategiko argibideak jarraituz gaitu daiteke."
 
 #. Type: boolean
 #. Description
@@ -68,7 +69,7 @@ msgstr ""
 #. Description
 #: ../templates:3001
 msgid "Reboot recommended"
-msgstr ""
+msgstr "Berrabiaraztea gomendatzen da"
 
 #. Type: note
 #. Description
@@ -79,6 +80,11 @@ msgid ""
 "resolvconf program. However, although installation of the resolvconf package "
 "triggers them to supply their information, some of them fail to do so."
 msgstr ""
+"Izen-zerbitzarien informazioaren hornitzaileak, hala nola cache lokaleko izen-zerbitzariak "
+"eta konfiguratzaileen interfazeak, espero dira izen-zerbitzarien informazioa "
+"resolvconf programari emateko. Hala ere, nahiz eta resolvconf paketearen "
+"instalazioak haiek abiarazi beraien informazioa emateko, haietariko batzuk "
+"huts egin dezakete."
 
 #. Type: note
 #. Description
@@ -92,6 +98,13 @@ msgid ""
 "deconfigured. (This incorrect behavior is judged to be less harmful than the "
 "alternative of losing valid information.)"
 msgstr ""
+"Akats honek resolvconf paketearen instalazioko baliozko izen-zerbitzariaren informazioa "
+"galtzea eragin dezake honako konponbidea ez bada lantzen: "
+"resolvconf-ek aurre-instalazioko /etc/resolv.conf fitxategiaren eduki osoa "
+"edukitzen du bere datu-basean berrabiarazi arte. Honek badu bere eragozpena, "
+"izen-zerbitzariaren informazioa mantenduko baita nahiz eta esleitutako "
+"interfazea beranduago deskonfiguratua izan. Portaera desegoki honek "
+"baliozko informazioa galtzea baino kalte gutxiago sortzen duela suposatzen da."
 
 #. Type: note
 #. Description
@@ -102,6 +115,10 @@ msgid ""
 "the resolvconf package has been installed on a running system is to reboot "
 "the system."
 msgstr ""
+"Akats hori konpondu eta konponbidea kendu arte, resolvconf-k "
+"baliozko izen-zerbitzariaren informazio osoa duela ziurtatzeko era bakarra "
+"resolvconf paketea instalatu ondoren exekutatzen ari den sistema batean "
+"sistema berrabiaraztea da."
 
 #. Type: boolean
 #. Description
@@ -118,8 +135,8 @@ msgid ""
 "nameservers\" lines in /etc/network/interfaces. For more information, please "
 "consult the resolvconf(8) man page and the README file."
 msgstr ""
-"Jatorrizko ebazpen 'finko' konfigurazio fitxategiak (etc/resolv.conf) izen "
-"zerbitzariak baditu, helbide horiek /etc/network/interfaces fitxategiko "
+"Jatorrizko ebazpen 'finko' konfigurazio fitxategiak (etc/resolv.conf) "
+"izen-zerbitzariak baditu, helbide horiek /etc/network/interfaces fitxategiko "
 "\"dns-nameservers\" lerroetan gehitu beharko dira. Argibide gehiagorako "
 "irakurri itzazu resolvconf(8) manual orrialdea eta README fitxategia."
 
@@ -132,7 +149,7 @@ msgid ""
 "the dynamically generated resolver configuration file."
 msgstr ""
 "Behin /etc/network/interfaces editatua izan denean eta dagozkion interfazeak "
-"desgaitu eta gaitu arte izen zerbitzari helbideak ez dira gehituko "
+"desgaitu eta gaitu arte izen-zerbitzari helbideak ez dira gehituko "
 "dinamikoki sortutako ebazte konfigurazio fitxategian."
 
 #. Type: boolean
@@ -162,22 +179,3 @@ msgstr ""
 "fitxategira gehitu direnean, /etc/resolvconf/resolv.conf.d/tail lotura /dev/"
 "null-erako batez ordeztu beharko zen."
 
-#~ msgid "Network interfaces reconfiguration mandatory"
-#~ msgstr "Sare interfaze birkonfigurazioa beharrezkoa"
-
-#~ msgid ""
-#~ "Once resolvconf is installed, interface configurers supply name server "
-#~ "information to it (which it then makes available to the C library "
-#~ "resolver and to DNS caches). However, they do this only when they bring "
-#~ "up interfaces. Therefore for resolvconf's name server information to be "
-#~ "up to date after initial installation it is necessary to reconfigure "
-#~ "interfaces (that is, to take them down and then to bring them up again) "
-#~ "and to restart DNS caches."
-#~ msgstr ""
-#~ "Behin resolvconf instalaturik dagoela, interfaze konfigurazioak emango "
-#~ "dizkio izen zerbitzariaren argibideak (honek C liburutegi ebazte eta DNS "
-#~ "cache-ei eskurgarri egingo die). Hau bakarrik interfazeak altxatzean "
-#~ "egingo dute. Hala ere resolvconf-ren izen zerbitzari argibideak instalatu "
-#~ "ondoren behar bezala egoteko beharrezkoa da interfazeak birkonfiguratzea "
-#~ "(hau da, interfazeak desgaitu eta berriz gaitzea) eta DNS cache-ak "
-#~ "berrabiaraztea."

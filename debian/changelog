@@ -1,5 +1,6 @@
 resolvconf (1.55) unstable; urgency=medium
 
+  [ Thomas Hood ]
   * Include old update.d/bind script for illustration purposes
     as /usr/share/doc/resolvconf/resolvconf-update-bind.
   * Use /usr/lib/resolvconf/dpkg-event.d instead of a /etc/...
@@ -9,6 +10,8 @@ resolvconf (1.55) unstable; urgency=medium
     reboot. (Closes: #628524)
   * Remove comments from /etc/resolv.conf on removal.
   * Remove /lib/init/rw/resolvconf on purge. (Closes: #628669)
+  * Update debconf template translation
+    * eu.po thanks to Iñaki Larrañaga Murgoitio (Closes: #628719)
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 31 May 2011 12:00:00 +0200
 
@@ -28,7 +31,7 @@ resolvconf (1.53) unstable; urgency=low
     hook scripts as described in the "Usage information for maintainers"
     section of the resolvconf README file. (Closes: #567059, #627691)
   * Update my e-mail address in various places
-  * Update debconf template translations
+  * Update debconf template translation
     * cs.po thanks to Miroslav Kure (Closes: #627440)
   * Remove /etc/resolvconf/update.d/bind (Closes: #608933, #268073).
     Instead of this, the bind9 package should include a hook script
