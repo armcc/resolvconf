@@ -8,7 +8,7 @@ Introduction
 Rationale
 HOWTO
 Order of entries in resolv.conf
-Objectives
+Requirements
 Technical overview
 Usage information for developers
 Usage information for maintainers
@@ -20,7 +20,7 @@ Credits
 
 News
 ~~~~
-* Last updated 27 May 2011 for version 1.55
+* Last updated 1 June 2011 for version 1.55
   - In "Usage information for maintainers" describe the new dpkg event
     notification mechanism
 
@@ -133,13 +133,14 @@ HOWTO
 Resolvconf works with most interface configurers in Debian ('(*)' below
 meaning "with some manual configuration"): 
 
+   isc-dhcp-client, dhcpcd, pump, udhcpc
    ppp
-   dhcp3-client, dhcp-client, dhcpcd, pump, udhcpc
-   ifupdown, laptop-net
+   ifupdown
+   network-manager
 
 DNS caches:
 
-   bind9(*), djbdns dnscache, dnsmasq, pdnsd, totd
+   bind9(*), djbdns dnscache, dnsmasq, nscd, pdnsd, totd
 
 DNS recursing nameservers:
 
@@ -158,8 +159,8 @@ simply a matter of installing the resolvconf package -- especially if you have
 already tried to deal with the above problems locally by customizing your
 configuration.
 
-0. You may have already installed resolvconf at this point.  OK.
-1. Stop obsolete programs from writing to /etc/resolv.conf
+1. You may have already installed resolvconf at this point.  OK.
+2. Stop obsolete programs from writing to /etc/resolv.conf
   * netenv
     + Purge or make sure that /sbin/netenv hasn't been configured such
       that it overwrites /etc/resolv.conf
@@ -167,75 +168,19 @@ configuration.
     + Purge or make sure that there are no resolv.conf files under the
       /etc/switchconf/ directory
   * xisp
-    + Purge, or eliminate the parts of /etc/ppp/ip-up.d/0xisp-dns and
-      /etc/ppp/ip-down.d/0xisp-dns that overwrite /etc/resolv.conf .
+    + Purge
   * divine
     + Purge
   * intuitively
-    + Purge or make sure that there are no resolv.conf files under the
-      /etc/intuitively/ directory
+    + Purge
   * laptop-netconf
-    + Purge or edit configuration files such as
-      /etc/laptop-netconf/<profile> so that these will not touch
-      /etc/resolv.conf
+    + Purge
   * whereami
       Purge or make sure that you aren't using the "setresolver",
       "bind-forwarders" or "setdnsmasq" utility scripts.
   * etc.
       Delete or disable local scripts of any kind that futz with
       /etc/resolv.conf
-2. Update packages to versions that are compatible with resolvconf
-  * dhcp3-client and dhcp3-common >= 4.1.1-P1-15+squeeze1
-  * dhcpcd >= 1:1.3.22pl4-7
-      Earlier versions lack the hooks to interface with resolvconf
-  * pump >= 0.8.15-1
-      Earlier versions overwrite the target of /etc/resolv.conf and
-      don't interface with resolvconf
-  * udhcpc >= 0.9.8cvs20050124-3
-      Earlier versions overwrite the target of /etc/resolv.conf and
-      don't interface with resolvconf properly
-  * pcmcia-cs >= 3.2.5-1
-      Earlier versions overwrite /etc/resolv.conf if certain 
-      configuration options are enabled in /etc/pcmcia/network.opts
-  * dnsmasq >= 1.18-2
-      Versions earlier than 1.13-2 lack the hooks to interface with
-      resolvconf.
-      Versions earlier than 1.18-2 fail when installed or upgraded
-      at the same time as resolvconf is first installed.
-  * pdnsd >= 1.1.10par-4
-      Versions earlier than 1.1.10par-1 lack the hooks to interface
-      with resolvconf.
-      Versions earlier than 1.1.10par-4 don't interface properly
-      with resolvconf.
-  * totd >= 1.4-4
-      Versions earlier than 1.4-4 had a postinst that wrote to
-      /etc/resolv.conf and that (via the totdconfig program)
-      altered /etc/dhclient-enter-hooks in a way incompatible with 
-      resolvconf; these versions did not get their nameserver
-      information from resolvconf
-  * pppconfig >= 2.3.1
-      Some earlier versions contain PPP hook scripts
-        /etc/ppp/ip-up.d/0dns-up
-        /etc/ppp/ip-down.d/0dns-down
-      that futz with /etc/resolv.conf.  Make sure that you tell dpkg to
-      install the scripts that ship with the latest version of the
-      package.  Also make sure that they have execute permission if you
-      want to use them to incorporate per-provider resolver
-      configuration options into the resolver configuration file.
-  * pppoeconf >= 1.0
-      Earlier versions contain a PPP hook script
-        /etc/ppp/ip-up.d/000usepeerdns
-      that futzes with /etc/resolv.conf.  After upgrading pppoeconf make
-      sure that this script is not present.  N.B.: The ppp package's
-      /etc/ppp/ip-up.d/0000usepeerdns and
-      /etc/ppp/ip-down.d/0000usepeerdns (with four zeroes) are OK: they
-      disable themselves if resolvconf is installed.
-  * laptop-net >= 2.21-1
-      Earlier versions can't be prevented from overwriting
-      /etc/resolv.conf and don't interface with resolvconf.
-  * webmin-wvdial >= 1.160-3
-      Earlier versions overwrite /etc/resolv.conf even if it is a
-      symbolic link.
 3. Configure packages not to overwrite /etc/resolv.conf and to work
    properly with resolvconf
   3.1 ppp
@@ -323,17 +268,16 @@ determines the order in which domain names are tried.
 Resolvconf orders these entries according to the names of the interfaces to
 which they relate.  (More truthfully, it orders them according to the record
 names in which they are stored, but it is a convention that records are named
-like the interfaces for which they are the records, possibly with a some
-suffix.)  The particular order is determined by the
-/etc/resolvconf/interface-order file.  See interface-order(5) for more
-information.
+like the interfaces for which they are the records, possibly with some suffix.)
+The particular order is determined by the /etc/resolvconf/interface-order file.
+See interface-order(5) for more information.
 
 If you use ifrename, nameif or udev in order to assign stable names to your
 network interfaces, I recommend that you employ names that begin with the
 traditional pattern but differ from those names that the kernel uses as
 defaults.  E.g., the kernel names Ethernet interfaces 'eth0', 'eth1', and so
 on, so you might rename your Ethernet interfaces to "eth_3com", "eth_cisco",
-etc..  Similarly you might rename your Wi-Fi interfaces "wlan_airo" and
+etc.  Similarly you might rename your Wi-Fi interfaces "wlan_airo" and
 "wlan_atmel".  If you follow this advice then you won't have to modify the
 default interface-order file.
 
@@ -342,9 +286,9 @@ however, it is adequate in most usage situations.  Situations for which it is
 not adequate are generally situations in which it is better to use a local
 caching nameserver that can do things like monitoring and load balancing.
 
-Objectives
-~~~~~~~~~~
-I hope that resolvconf meets the following objectives
+Requirements
+~~~~~~~~~~~~
+I hope that resolvconf satisfies the following requirements.
 * Be opaque
     Resolvconf must be as opaque as possible.  It must have a stable
     interface and mustn't require that maintainers know about its
@@ -406,24 +350,24 @@ of the familiar /etc/resolv.conf file.  Thus, for example, a program foo that
 has configured interface $IFACE would do the following after generating a
 resolv.conf file named 'new-resolv.conf'.
 
-      resolvconf -a ${IFACE}.foo < new-resolv.conf
+      resolvconf -a "${IFACE}.foo" < new-resolv.conf
 
 This command updates the resolver information related to interface $IFACE and
 configurer foo.  Any information previously sent for this interface/configurer
 combination is overwritten.  On bringing the interface down, the configurer
 (foo) would do the following.  
 
-      resolvconf -d ${IFACE}.foo
+      resolvconf -d "${IFACE}.foo"
 
 For another example, the proxy script for pppd forwards to resolvconf the
 resolver information that is made available to ip-up.d/ and ip-down.d/ scripts
 in environment variables DNS1, etc.
 
-      echo "nameserver $DNS1" | resolvconf -a ${IFACE}.pppd
+      echo "nameserver $DNS1" | resolvconf -a "${IFACE}.pppd"
 
-For additional examples, look at the hook scripts for dhcp3-client and
-ifupdown.  Support for other configurers including dhcpcd, pump, dhcp-client,
-udhcpc and laptop-net has been added to those packages.
+For additional examples, look at the hook scripts for isc-dhcp-client and
+ifupdown.  Support for other configurers including dhcpcd, pump and udhcpc has
+been added to those packages.
 
 In general, any package that currently overwrites /etc/resolv.conf can be
 adapted to work with resolvconf while preserving backward compatibility by
@@ -442,17 +386,12 @@ introducing a code fragment like the following.
 
 /sbin/resolvconf stores the information sent to it and then runs the scripts
 in /etc/resolvconf/update.d/ .  One of the latter generates the libc resolver
-configuration file.  Another generates the options portion of the BIND named
-configuration file, containing a "forwarders" statement listing available
-nameserver forwarders.  (This allows named effectively to be used as a DNS
-cache on a system whose network environment varies, e.g., on a laptop.)
-Others generate lists of forwarders for dnsmasq or pdnsd to use.  Any other
-program that needs to take action when resolver information is updated could
-likewise employ a script in /etc/resolvconf/update.d/ .
+configuration file.  Others generate lists of forwarders for dnsmasq or pdnsd
+to use.  Any other program that needs to take action when resolver information
+is updated could likewise employ a script in /etc/resolvconf/update.d/ .
 
 Usage information for maintainers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 Normally, when the resolvconf package is installed the resolvconf program
 takes control of /etc/resolv.conf.  It derives the contents of that file from
 nameserver information that has been sent to it, as described above.
@@ -489,14 +428,14 @@ The correct and complete way to solve the problem is for all suppliers of
 nameserver information to supply their information to resolvconf after
 resolvconf has been installed.
 
-As of resolvconf release 1.53 this is supported via the following mechanism.
+As of resolvconf release 1.55 this is supported via the following mechanism.
 Any package, foo, that supports supplying information to resolvconf should
 include a hook script /usr/lib/resolvconf/dpkg-event.d/foo which, when called
 with the argument "install", takes whatever actions are necessary to cause the
 program(s) in foo to supply their nameserver information to resolvconf; and
 when called with the argument "remove" takes whatever actions are appropriate
 given that the resolvconf package has been removed (and, in being removed, may
-have removed foo's nameserver information from resolv.conf).
+have removed foo's nameserver information).
 
 The hook script thus has the following form.
 
@@ -504,7 +443,7 @@ The hook script thus has the following form.
     #
     # /usr/lib/resolvconf/dpkg-event.d/foo
     #
-    # The resolvconf dpkg event hook script for the foo package
+    # The resolvconf-dpkg event hook script for the foo package
     #
     if foo_is_running ; then
         if [ "$1" = "install" ] ; then
@@ -526,10 +465,10 @@ The hook script is called (with argument "install") from resolvconf's postinst
 "configure" method and (with "remove") from resolvconf's postrm "remove"
 method.
 
-The hook script is called with argument "install" if and only if foo is fully
-installed both when resolvconf's preinst install runs and when its postinst
-configure runs.  The hook script is called with argument "remove" if and only
-if foo is fully installed when resolvconf's postrm remove runs.
+Foo's hook script is called with argument "install" if and only if foo is
+fully installed both when resolvconf's preinst install runs and when its
+postinst configure runs.  The hook script is called with argument "remove" if
+and only if foo is fully installed when resolvconf's postrm remove runs.
 
 The hook script must be owned by root and have its execute permission bit set
 and must have the same name as the package that owns it.
@@ -539,12 +478,13 @@ must be silently ignored.
 
 Usage information for administrators
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The generation of the resolv.conf file can be controlled by editing
-/etc/resolvconf/update.d/libc .  Different strategies can be followed.  For
-example, one possible strategy would be to put only the most recently provided
-information into resolv.conf .  The current default strategy is to put *all*
-available resolver information into resolv.conf, ordered by interface type as
-follows: lo, eth*, ppp* .
+The generation of the resolv.conf file can be controlled by editing the
+/etc/resolvconf/update.d/libc script.  Different strategies can be followed.
+For example, one possible strategy would be to put only the most recently
+provided information into resolv.conf .  The current default strategy is to
+put *all* available resolver information into resolv.conf, ordered by
+interface type as listed in the interface-order(5) file, except that no
+addresses are listed after a loopback address.
 
 The admin can of course disable resolv.conf automagic by deleting the
 /etc/resolv.conf symlink and putting a static file at that location.
@@ -581,7 +521,7 @@ A. Because 'dns-nameservers' can take several address arguments whereas
 TODO
 ~~~~
   * resolvconf
-    + See the Wishlist items at http://bugs.debian.org/resolvconf
+    + See http://bugs.debian.org/resolvconf
   * gnome-ppp
     # 258064: Writes to /etc/resolv.conf
       - NO ACTION for several years
@@ -712,6 +652,8 @@ DONE
       - DONE in 1.13-2
     + Include /etc/resolvconf/update.d/dnsmasq
       - DONE in 1.13-3
+    * Include /usr/lib/resolvconf/dpkg-event.d/dnsmasq
+      - DONE in 2.58-1
   * pdns-recursor
     # 308677: /etc/init.d/pdns-recursor: Please add resolvconf calls
       - DONE in 2.9.18-4

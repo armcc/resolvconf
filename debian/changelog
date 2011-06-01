@@ -13,6 +13,7 @@ resolvconf (1.55) unstable; urgency=medium
   * Update debconf template translation
     * eu.po thanks to Iñaki Larrañaga Murgoitio (Closes: #628719)
   * Clean up many .po headers
+  * Update README
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 31 May 2011 12:00:00 +0200
 
