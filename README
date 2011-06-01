@@ -443,7 +443,7 @@ The hook script thus has the following form.
     #
     # /usr/lib/resolvconf/dpkg-event.d/foo
     #
-    # The resolvconf-dpkg event hook script for the foo package
+    # The resolvconf dpkg-event hook script for the foo package
     #
     if foo_is_running ; then
         if [ "$1" = "install" ] ; then
@@ -652,7 +652,7 @@ DONE
       - DONE in 1.13-2
     + Include /etc/resolvconf/update.d/dnsmasq
       - DONE in 1.13-3
-    * Include /usr/lib/resolvconf/dpkg-event.d/dnsmasq
+    # 628003: Include /usr/lib/resolvconf/dpkg-event.d/dnsmasq
       - DONE in 2.58-1
   * pdns-recursor
     # 308677: /etc/init.d/pdns-recursor: Please add resolvconf calls
@@ -666,6 +666,8 @@ DONE
       - DONE in pdnsd 1.1.10par-4
     # 254768: Should conflict with resolvconf << 1.15
       - NO REPLY
+    # 628846: Include /usr/lib/resolvconf/dpkg-event.d/pdnsd
+      - SUBMITTED
   * totd
     + Use resolvconf to update resolv.conf and to get updated
       nameserver list

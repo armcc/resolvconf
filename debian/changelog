@@ -1,3 +1,10 @@
+resolvconf (1.56) unstable; urgency=low
+
+  [ Thomas Hood ]
+  * Update README
+
+ -- Thomas Hood <jdthood@gmail.com>  Wed, 01 Jun 2011 21:59:15 +0200
+
 resolvconf (1.55) unstable; urgency=medium
 
   [ Thomas Hood ]
