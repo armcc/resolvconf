@@ -10,7 +10,7 @@ adequate_eni()
 	# /etc/network/interfaces then that is adequate and we
 	# don't need to ask the user if he wants to link the
 	# original file to the dynamic file at medium priority
-	grep -q dns-nameservers /etc/network/interfaces > /dev/null
+	[ -f /etc/network/interfaces ] && grep -q dns-nameservers /etc/network/interfaces > /dev/null
 }
 
 case $1 in
