@@ -7,6 +7,8 @@ resolvconf (1.56) unstable; urgency=low
     * Remove /etc/resolv.conf if it's empty
     * Grep /etc/network/interfaces only if it exists
   * Update README
+  * Update debconf template translation
+    * sv.po thanks to Martin Bagge (Closes: #629022)
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 01 Jun 2011 21:59:15 +0200
 

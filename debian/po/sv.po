@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: resolvconf 1.52\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2011-05-31 20:26+0200\n"
-"PO-Revision-Date: 2011-05-06 00:14+0100\n"
+"PO-Revision-Date: 2011-06-03 03:44+0100\n"
 "Last-Translator: Martin Bagge / brother <brother@bsnet.se>\n"
 "Language-Team: Swedish <debian-l10n-swedish@lists.debian.org>\n"
 "Language: sv\n"
@@ -130,6 +130,8 @@ msgid ""
 "about name servers becoming unavailable. To correct this problem it is "
 "recommended that the system be rebooted."
 msgstr ""
+"När paketet resolvconf togs bort kan information om namnserverar ha gått "
+"förlorad. För att korrigera detta problem bör systemet startas om."
 
 #. Type: boolean
 #. Description
