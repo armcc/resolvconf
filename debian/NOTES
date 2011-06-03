@@ -5,9 +5,6 @@ TODO
 ====
 piuparts
 --------
-Fix:
-> ERROR: FAIL: After purging files have been modified:
->   /etc/resolv.conf	 not owned
 
 Loop dangers
 ------------
