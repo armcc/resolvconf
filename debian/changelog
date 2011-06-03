@@ -2,7 +2,7 @@ resolvconf (1.56) unstable; urgency=low
 
   [ Thomas Hood ]
   * Eliminate some warnings brought to light by piuparts
-    * Don't use invoke-rc.d to run our initscript with non-standard
+    * Don't use invoke-rc.d to run initscript with non-standard
       arguments
     * Remove /etc/resolv.conf if it's empty
     * Grep /etc/network/interfaces only if it exists
