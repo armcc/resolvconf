@@ -4,7 +4,7 @@ resolvconf (1.56) unstable; urgency=low
   * Eliminate some warnings brought to light by piuparts
     * Don't use invoke-rc.d to run initscript with non-standard
       arguments
-    * Remove /etc/resolv.conf if it's empty
+    * In postrm remove /etc/resolv.conf if it's empty
     * Grep /etc/network/interfaces only if it exists
   * Update README
   * Update debconf template translation
