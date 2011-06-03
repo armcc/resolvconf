@@ -5,14 +5,9 @@ TODO
 ====
 piuparts
 --------
-
-Says:
-> 0m32.1s ERROR: FAIL: Package purging left files on system:
->  /lib/init/rw/resolvconf        not owned
->  /lib/init/rw/resolvconf/interface      not owned
-
-This is not a problem.  These dirs will disappear on boot.
-
+Fix:
+> ERROR: FAIL: After purging files have been modified:
+>   /etc/resolv.conf	 not owned
 
 Loop dangers
 ------------
@@ -21,7 +16,7 @@ which probably runs /sbin/resolvconf which probably runs update.d/foo.
 
 Things one tends to forget
 --------------------------
-Remember to run debconf-updatepo after changing templates or po files.
+Remember to run debconf-updatepo after changing a template or po file.
 
 Famous quotations
 -----------------
