@@ -34,9 +34,8 @@ case "$1" in
 			grep -v '^#' /etc/resolvconf/run/resolv.conf > /etc/resolv.conf || :
 			rm -f /etc/resolvconf/run/resolv.conf
 			[ -s /etc/resolv.conf ] || rm -f /etc/resolv.conf
-		elif [ -f /etc/resolvconf/resolv.conf.d/original ] ; then
+		elif [ -s /etc/resolvconf/resolv.conf.d/original ] ; then
 			cp -a /etc/resolvconf/resolv.conf.d/original /etc/resolv.conf
-			[ -s /etc/resolv.conf ] || rm -f /etc/resolv.conf
 		fi
 	fi
 
