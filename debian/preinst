@@ -136,10 +136,14 @@ case "$1" in
 		PACKAGES_TO_NOTIFY=""
 		for SCRPT in $NOTIFICATION_HOOK_SCRIPTS ; do
 			PKG="${SCRPT#./}"
-			is_installed "$PKG" && PACKAGES_TO_NOTIFY="${PACKAGES_TO_NOTIFY:+$PACKAGES_TO_NOTIFY }$PKG"
+			if is_installed "$PKG" ; then
+				PACKAGES_TO_NOTIFY="${PACKAGES_TO_NOTIFY:+$PACKAGES_TO_NOTIFY }$PKG"
+			fi
 		done
 		rm -f /etc/resolvconf/run/packages-to-notify
-		[ "$PACKAGES_TO_NOTIFY" ] && echo "$PACKAGES_TO_NOTIFY" > /etc/resolvconf/run/packages-to-notify
+		if [ "$PACKAGES_TO_NOTIFY" ] ; then
+			echo "$PACKAGES_TO_NOTIFY" > /etc/resolvconf/run/packages-to-notify
+		fi
 	fi
 	;;
   # upgrade)
