@@ -1,6 +1,8 @@
 resolvconf (1.56) unstable; urgency=low
 
   [ Thomas Hood ]
+  * Create /etc/resolvconf/run as a directory if no tmpfs is
+    available into which it can symlink. (Closes: #629186)
   * Eliminate warning brought to light by piuparts:
     * Grep /etc/network/interfaces only if it exists
   * Run dpkg-trigger with --no-await

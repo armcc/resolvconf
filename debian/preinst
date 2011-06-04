@@ -116,7 +116,7 @@ case "$1" in
 		elif standard_lib_init_rw_tmpfs_is_available && standard_lib_init_rw_subdirs_created ; then
 			ln -s /lib/init/rw/resolvconf /etc/resolvconf/run
 		else
-			[ -d /etc/resolvconf/run/interface ] || mkdir /etc/resolvconf/run/interface
+			[ -d /etc/resolvconf/run/interface ] || mkdir -p /etc/resolvconf/run/interface
 		fi
 	fi
 	;;
