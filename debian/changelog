@@ -3,11 +3,11 @@ resolvconf (1.56) unstable; urgency=low
   [ Thomas Hood ]
   * Eliminate warning brought to light by piuparts:
     * Grep /etc/network/interfaces only if it exists
+  * Run dpkg-trigger with --no-await
   * Update README
   * Update debconf template translation:
     * sv.po thanks to Martin Bagge (Closes: #629022)
     * ru.po thanks to Yuri Kozlov (Closes: #629165)
-  * Run dpkg-trigger with --no-await
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 01 Jun 2011 21:59:15 +0200
 
