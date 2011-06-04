@@ -5,9 +5,20 @@ TODO
 ====
 piuparts
 --------
-* Reports "invoke-rc.d: policy-rc.d denied execution of enable-updates"
+* Reports
+
+    invoke-rc.d: policy-rc.d denied execution of enable-updates
+
   and ditto for "disable-updates" but this is because the chroot includes
   a policy-rc.d that denies all requests.
+
+* Reports
+
+    ERROR: FAIL: After purging files have been modified:
+      /etc/resolv.conf	 not owned
+
+  but this is not a bug, since resolvconf can justifiably modify
+  that file, which isn't an ordinary configuration file.
 
 Loop dangers
 ------------
