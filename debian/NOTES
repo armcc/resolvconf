@@ -5,6 +5,9 @@ TODO
 ====
 piuparts
 --------
+* Reports "invoke-rc.d: policy-rc.d denied execution of enable-updates"
+  and ditto for "disable-updates" but this is because the chroot includes
+  a policy-rc.d that denies all requests.
 
 Loop dangers
 ------------
