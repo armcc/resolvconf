@@ -1,12 +1,10 @@
 resolvconf (1.56) unstable; urgency=low
 
   [ Thomas Hood ]
-  * Eliminate some warnings brought to light by piuparts
-    * Don't use invoke-rc.d to run initscript with non-standard
-      arguments
+  * Eliminate warning brought to light by piuparts:
     * Grep /etc/network/interfaces only if it exists
   * Update README
-  * Update debconf template translation
+  * Update debconf template translation:
     * sv.po thanks to Martin Bagge (Closes: #629022)
     * ru.po thanks to Yuri Kozlov (Closes: #629165)
   * Run dpkg-trigger with --no-await
@@ -25,7 +23,7 @@ resolvconf (1.55) unstable; urgency=medium
     reboot. (Closes: #628524)
   * Remove comments from /etc/resolv.conf on removal.
   * Remove /lib/init/rw/resolvconf on purge. (Closes: #628669)
-  * Update debconf template translation
+  * Update debconf template translation:
     * eu.po thanks to Iñaki Larrañaga Murgoitio (Closes: #628719)
   * Clean up many .po headers
   * Update README
@@ -48,7 +46,7 @@ resolvconf (1.53) unstable; urgency=low
     hook scripts as described in the "Usage information for maintainers"
     section of the resolvconf README file. (Closes: #567059, #627691)
   * Update my e-mail address in various places
-  * Update debconf template translation
+  * Update debconf template translation:
     * cs.po thanks to Miroslav Kure (Closes: #627440)
   * Remove /etc/resolvconf/update.d/bind (Closes: #608933, #268073).
     Instead of this, the bind9 package should include a hook script
@@ -63,7 +61,7 @@ resolvconf (1.52) unstable; urgency=low
 
   [ Thomas Hood ]
   * Add debian/source/format at lintian's suggestion
-  * Update debconf template translations
+  * Update debconf template translations:
     * ru.po thanks to Yuri Kozlov (Closes: #625623)
     * sv.po thanks to Martin Bagge (Closes: #625786)
     * nl.po thanks to Vincent Zweije (Closes: #625896)
