@@ -540,6 +540,9 @@ TODO
   * ifupdown
     + Handle dns-* commands natively so that the resolver is configured
       before "up" commands are run
+  * pdnsd
+    # 628846: Include /usr/lib/resolvconf/dpkg-event.d/pdnsd
+      - SUBMITTED
   * bind9
     # 483098: bind9: Please switch default to using resolvconf generated
       file if resolvconf is installed
@@ -579,10 +582,10 @@ TODO
     # 266817: Please suggest resolvconf
       - Tagged WONTFIX
   * Users of resolver libraries
-    For any package that contains a program that uses resolver(3) or a
-    compatible library, add a /etc/resolvconf/update-libc.d/ script to
-    notify running instances of the program that the resolver
-    configuration file has changed.
+    + For any package that contains a program that uses resolver(3) or a
+      compatible library, add a /etc/resolvconf/update-libc.d/ script to
+      notify running instances of the program that the resolver
+      configuration file has changed.
 
 DONE
 ~~~~
@@ -625,7 +628,7 @@ DONE
       - DONE in resolvconf package
   * debian-installer
     # 255187: Please add resolvconf support
-      - PENDING
+      - DONE in version netcfg/0.71
   * nscd
     # 252251: Please add resolvconf support
       - DONE in resolvconf 1.15
@@ -664,10 +667,6 @@ DONE
   * pdnsd
     # 247946: Fix resolvconf support
       - DONE in pdnsd 1.1.10par-4
-    # 254768: Should conflict with resolvconf << 1.15
-      - NO REPLY
-    # 628846: Include /usr/lib/resolvconf/dpkg-event.d/pdnsd
-      - SUBMITTED
   * totd
     + Use resolvconf to update resolv.conf and to get updated
       nameserver list
