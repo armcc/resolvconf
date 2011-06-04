@@ -176,8 +176,8 @@ esac
 enable_updates() {
 	if which invoke-rc.d >/dev/null 2>&1 ; then
 		invoke-rc.d resolvconf enable-updates || :
-	else
-		! [ -x /etc/init.d/resolvconf ] || /etc/init.d/resolvconf enable-updates
+	elif [ -x /etc/init.d/resolvconf ] ; then
+		/etc/init.d/resolvconf enable-updates
 	fi
 }
 
