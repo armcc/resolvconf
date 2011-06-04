@@ -457,8 +457,15 @@ If foo is controlled by an initscript whose methods take appropriate actions
 conditional upon resolvconf's presence then something like the following might
 be appropriate.
 
+        force_reload_foo() {
+            if which invoke-rc.d >/dev/null 2>&1 ; then
+                invoke-rc.d foo force-reload
+            elif [ -x /etc/init.d/foo ] ; then
+                /etc/init.d/foo force-reload
+            fi
+        }
         case "$1" in
-            install|remove) invoke-rc.d foo force-reload ;;
+            install|remove) force_reload_foo ;;
         esac
 
 The hook script is called (with argument "install") from resolvconf's postinst
