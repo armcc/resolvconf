@@ -182,7 +182,7 @@ enable_updates() {
 case "$1" in
   configure)
 	# Trigger self
-	dpkg-trigger resolvconf-enable-updates || enable_updates
+	dpkg-trigger --no-await resolvconf-enable-updates || enable_updates
 	;;
   triggered)
 	# Runs after this and other packages have been configured

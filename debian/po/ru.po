@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf 1.52\n"
+"Project-Id-Version: resolvconf 1.56\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2011-05-31 20:26+0200\n"
-"PO-Revision-Date: 2011-05-04 20:16+0400\n"
+"PO-Revision-Date: 2011-06-04 10:55+0400\n"
 "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
 "Language: ru\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. Type: boolean
 #. Description
@@ -130,6 +130,9 @@ msgid ""
 "about name servers becoming unavailable. To correct this problem it is "
 "recommended that the system be rebooted."
 msgstr ""
+"Удаление пакета resolvconf может привести потере информации "
+"о серверах имён. Для устранения проблемы перезагрузите "
+"систему."
 
 #. Type: boolean
 #. Description
@@ -148,7 +151,7 @@ msgid ""
 msgstr ""
 "Если ваш статический файл настройки определителя имён (/etc/resolv.conf) "
 "содержит адреса серверов имён, то эти адреса должны быть записаны в строках "
-"\"dns-nameservers\" в файл /etc/network/interfaces. Подробней об этом "
+"«dns-nameservers» в файл /etc/network/interfaces. Подробней об этом "
 "написано на странице руководства resolvconf(8) и в файле README."
 
 #. Type: boolean
@@ -187,6 +190,7 @@ msgid ""
 "interfaces, the /etc/resolvconf/resolv.conf.d/tail link should be replaced "
 "by one to /dev/null."
 msgstr ""
-"После добавления в /etc/network/interfaces необходимых строк \"dns-"
-"nameservers\", нужно изменить символическую ссылку /etc/resolvconf/resolv."
+"После добавления в /etc/network/interfaces необходимых строк «dns-"
+"nameservers», нужно изменить символическую ссылку /etc/resolvconf/resolv."
 "conf.d/tail, чтобы она указывала на /dev/null."
+
