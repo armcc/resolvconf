@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf 1.52\n"
+"Project-Id-Version: resolvconf 1.55\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2011-05-31 20:26+0200\n"
-"PO-Revision-Date: 2011-05-31 18:47+0200\n"
+"PO-Revision-Date: 2011-06-06 15:34+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
 "Language: eu\n"
@@ -132,6 +132,9 @@ msgid ""
 "about name servers becoming unavailable. To correct this problem it is "
 "recommended that the system be rebooted."
 msgstr ""
+"resolvconf paketea kentzeak izen-zerbitzariei buruzko informazio batzuk "
+"eskuragarri ez egotea eragin dezake. Arazo hau konpontzeko, "
+"sistema berrabiaraztea gomendatzen da."
 
 #. Type: boolean
 #. Description
@@ -191,3 +194,4 @@ msgstr ""
 "Behin beharrezko \"dns-nameservers\" lerroak /etc/network/interfaces "
 "fitxategira gehitu direnean, /etc/resolvconf/resolv.conf.d/tail lotura /dev/"
 "null-erako batez ordeztu beharko zen."
+
