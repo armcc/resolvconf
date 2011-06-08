@@ -12,7 +12,7 @@ disable_updates() {
 
 case "$1" in
   remove)
-	disable-updates
+	disable_updates
 	;;
   # deconfigure)
 	# This code path should not be used.
