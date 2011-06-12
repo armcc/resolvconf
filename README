@@ -20,9 +20,8 @@ Credits
 
 News
 ~~~~
-* Last updated 1 June 2011 for version 1.55
-  - In "Usage information for maintainers" describe the new dpkg event
-    notification mechanism
+* Last updated 12 June 2011 for version 1.58
+  * pppconfig now suggests resolvconf
 
 Introduction
 ~~~~~~~~~~~~
@@ -531,13 +530,14 @@ TODO
     + See http://bugs.debian.org/resolvconf
   * gnome-ppp
     # 258064: Writes to /etc/resolv.conf
-      - NO ACTION for several years
+      - WORKAROUND introduced in July 2004 was to make gnome-ppp Conflict
+        with resolvconf
   * gnome-system-tools
     # 258553: Incompatible with resolvconf
       - OKed by maintainer but NO ACTION has been taken for several years
   * systemconfigurator
     # 272475: Please support resolvconf
-      - NO REPLY for several years
+      - NO REPLY for many years
   * ppp
     # 208095: Please suggest resolvconf
       - Tagged WONTFIX
