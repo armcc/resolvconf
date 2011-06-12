@@ -2,10 +2,15 @@ resolvconf (1.58) unstable; urgency=low
 
   * UNRELEASED
 
+  [ Thomas Hood ]
+  * Update debconf template translation:
+    * da.po thanks to Joe Dalton (Closes: #630241)
+
  -- Thomas Hood <jdthood@gmail.com>  Sun, 12 Jun 2011 15:39:53 +0200
 
 resolvconf (1.57) unstable; urgency=low
 
+  [ Marco Nenciarini ]
   * Update debconf template translations:
     * fr.po thanks to Christian Perrier (Closes: #629560)
   * Fix typo in prerm script

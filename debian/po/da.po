@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf 1.52\n"
+"Project-Id-Version: resolvconf 1.56\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2011-05-31 20:26+0200\n"
-"PO-Revision-Date: 2011-05-10 17:30+01:00\n"
+"PO-Revision-Date: 2011-06-12 17:30+01:00\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <debian-l10n-danish@lists.debian.org> \n"
 "Language: da\n"
@@ -131,6 +131,9 @@ msgid ""
 "about name servers becoming unavailable. To correct this problem it is "
 "recommended that the system be rebooted."
 msgstr ""
+"Fjernelsen af pakken resolvconf kan have medført, at information om "
+"navneservere er blevet utilgængelig. For at rette dette problem anbefales "
+"det, at systemet genstartes."
 
 #. Type: boolean
 #. Description
