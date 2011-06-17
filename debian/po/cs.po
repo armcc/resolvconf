@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf 1.52\n"
+"Project-Id-Version: resolvconf 1.56\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2011-05-31 20:26+0200\n"
-"PO-Revision-Date: 2011-05-20 18:37+0200\n"
+"PO-Revision-Date: 2011-06-15 15:02+0200\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
 "Language: cs\n"
@@ -69,7 +69,7 @@ msgstr ""
 #. Description
 #: ../templates:3001 ../templates:4001
 msgid "Reboot recommended"
-msgstr "Doporučujeme restartovat systém"
+msgstr "Doporučuje se restartovat systém"
 
 #. Type: note
 #. Description
@@ -125,6 +125,9 @@ msgid ""
 "about name servers becoming unavailable. To correct this problem it is "
 "recommended that the system be rebooted."
 msgstr ""
+"Odstranění balíku resolvconf může způsobit, že některé informace o jmenných "
+"serverech nebudou dostupné. Pro nápravu tohoto problému se doporučuje "
+"restartovat systém."
 
 #. Type: boolean
 #. Description
