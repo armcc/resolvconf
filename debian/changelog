@@ -5,9 +5,9 @@ resolvconf (1.58) unstable; urgency=low
   [ Thomas Hood ]
   * Update README
   * Update debconf template translation:
-    * nl.po
     * da.po thanks to Joe Dalton (Closes: #630241)
     * cs.po thanks to Miroslav Kure (Closes: #630669)
+    * nl.po thanks to Jeroen Schot (Closes: #631499)
 
  -- Thomas Hood <jdthood@gmail.com>  Sun, 12 Jun 2011 15:39:53 +0200
 

@@ -2,15 +2,12 @@
 # Copyright (C) 2011 Vincent Zweije <vincent@zweije.nl>
 # This file is distributed under the same license as the resolvconf package.
 #
-# Contributors:
-#   Thomas Hood <jdthood@gmail.com>
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: resolvconf 1.56\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2011-05-31 20:26+0200\n"
-"PO-Revision-Date: 2011-06-17 11:00+0200\n"
+"PO-Revision-Date: 2011-06-24 14:04+0200\n"
 "Last-Translator: Vincent Zweije <vincent@zweije.nl>\n"
 "Language-Team: Dutch <debian-l10n-dutch@lists.debian.org>\n"
 "Language: nl\n"
@@ -133,9 +130,9 @@ msgid ""
 "about name servers becoming unavailable. To correct this problem it is "
 "recommended that the system be rebooted."
 msgstr ""
-"Het verwijderen van het resolvconf-pakket kan tot gevolg hebben gehad dat "
-"nameserver-informatie verloren is gegaan. Om dit probleem te verhelpen "
-"is het aanbevolen om het systeem te herstarten."
+"Door het verwijderen van het resolvconf-pakket is sommige informatie over "
+"naamservers mogelijk niet meer beschikbaar. Om dit probleem op te lossen "
+"wordt een herstart aanbevolen."
 
 #. Type: boolean
 #. Description
