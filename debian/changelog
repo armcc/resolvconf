@@ -1,7 +1,5 @@
 resolvconf (1.58) unstable; urgency=low
 
-  * UNRELEASED
-
   [ Thomas Hood ]
   * Update README
   * Update debconf template translation:
@@ -10,7 +8,7 @@ resolvconf (1.58) unstable; urgency=low
     * nl.po thanks to Jeroen Schot (Closes: #631499)
     * pt.po thanks to Pedro Ribeiro (Closes: #631569)
 
- -- Thomas Hood <jdthood@gmail.com>  Sun, 12 Jun 2011 15:39:53 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Sat, 25 Jun 2011 15:00:00 +0200
 
 resolvconf (1.57) unstable; urgency=low
 
@@ -36,7 +34,7 @@ resolvconf (1.56) unstable; urgency=low
     * de.po thanks to Helge Kreutzmann (Closes: #629201)
     * eu.po thanks to Iñaki Larrañaga Murgoitio (Closes: #629411)
 
- -- Thomas Hood <jdthood@gmail.com>  Sat, 06 Jun 2011 15:00:00 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Mon, 06 Jun 2011 15:00:00 +0200
 
 resolvconf (1.55) unstable; urgency=medium
 
