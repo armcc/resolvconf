@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf_1.52\n"
+"Project-Id-Version: resolvconf_1.56\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2011-05-31 20:26+0200\n"
-"PO-Revision-Date: 2011-05-04 21:33+0000\n"
+"PO-Revision-Date: 2011-06-24 23:33+0000\n"
 "Last-Translator: Pedro Ribeiro <p.m42.ribeiro@gmail.com>\n"
 "Language-Team: Portuguese <traduz@debianpt.org>\n"
 "Language: pt\n"
@@ -33,7 +33,7 @@ msgid ""
 "resolv.conf.d/original, and will be restored if this package is removed."
 msgstr ""
 "O pacote resolvconf contém a infraestrutura requerida para actualizar "
-"dinamicamente o ficheiro de configuração do \"resolver\". Parte da "
+"dinamicamente o ficheiro de configuração do resolver. Parte da "
 "infraestrutura necessária é uma ligação simbólica de /etc/resolv.conf para /"
 "etc/resolvconf/run/resolv.conf. Se concordar, esta ligação será criada. O "
 "ficheiro /etc/resolv.conf existente será mantido como /etc/resolvconf/resolv."
@@ -49,8 +49,8 @@ msgid ""
 "instructions in the README file."
 msgstr ""
 "Não aceitar esta opção irá prevenir futuras instalações de recriar a ligação "
-"simbólica e portanto o ficheiro de configuração do \"resolver\" não será "
-"dinâmicamente actualizado. A actualização dinânica pode então ser activada "
+"simbólica e portanto o ficheiro de configuração do resolver não será "
+"dinamicamente actualizado. A actualização dinâmica pode então ser activada "
 "seguindo as instruções do ficheiro README."
 
 #. Type: boolean
@@ -61,7 +61,7 @@ msgid ""
 "should not be left installed if unconfigured."
 msgstr ""
 "A presença do resolvconf pode afectar o comportamento de outros programas, "
-"porisso não deve ser deixado instalado se não-configurado."
+"por isso não deve ser deixado instalado se não-configurado."
 
 #. Type: note
 #. Description
@@ -127,6 +127,9 @@ msgid ""
 "about name servers becoming unavailable. To correct this problem it is "
 "recommended that the system be rebooted."
 msgstr ""
+"A remoção do pacote resolvconf pode ter resultado na indisponibilidade de "
+"alguma informação acerca de servidores de nomes. Para corrigir este " 
+"problema é recomendável que o sistema seja reiniciado."
 
 #. Type: boolean
 #. Description
@@ -143,7 +146,7 @@ msgid ""
 "nameservers\" lines in /etc/network/interfaces. For more information, please "
 "consult the resolvconf(8) man page and the README file."
 msgstr ""
-"Se o ficheiro origina de configuração estática do \"resolver\" (/etc/resolv."
+"Se o ficheiro original de configuração estática do resolver (/etc/resolv."
 "conf) contém endereços de servidores de nomes, esses endereços devem estar "
 "listados em linhas \"dns-nameservers\" em /etc/network/interfaces.Para mais "
 "informação, por favor consulte a página de manual resolvonf(8) e o ficheiro "
@@ -159,7 +162,7 @@ msgid ""
 msgstr ""
 "Até /etc/networks/interfaces ter sido editado e as interfaces afectadas re-"
 "iniciadas, os endereços dos servidores de nomes não serão incluídos no "
-"ficheiro de configuração do \"resolver\" gerado dinâmicamente."
+"ficheiro de configuração do resolver gerado dinamicamente."
 
 #. Type: boolean
 #. Description
@@ -175,7 +178,7 @@ msgstr ""
 "funcionamento: uma ligação simbólica será criada (se não existir) de /etc/"
 "resolvconf/resolv.conf.d/tail para /etc/resolvconf/resolv.conf.d/original. "
 "Isto irá fazer com que toda a configuração estática seja acrescentada ao "
-"ficheiro gerado dinâmicamente."
+"ficheiro gerado dinamicamente."
 
 #. Type: boolean
 #. Description
