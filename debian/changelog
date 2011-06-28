@@ -10,8 +10,10 @@ resolvconf (1.58) unstable; urgency=low
 
   [ Marco Nenciarini ]
   * Update italian debconf translation
+  * debian/rules: Added build-arch and build-indep target, as required
+    by policy.
 
- -- Marco Nenciarini <mnencia@debian.org>  Tue, 28 Jun 2011 23:49:18 +0200
+ -- Marco Nenciarini <mnencia@debian.org>  Wed, 29 Jun 2011 00:37:58 +0200
 
 resolvconf (1.57) unstable; urgency=low
 

@@ -12,7 +12,13 @@ clean:
 	dh_testroot
 	dh_clean
 
-build:
+build: build-arch build-indep
+
+build-arch: build-stamp
+
+build-indep: build-stamp
+
+build-stamp:
 	debian/test-normalization
 	dh_testdir
 
