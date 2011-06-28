@@ -1,14 +1,15 @@
 # Italian translation of resolvconf debconf templates
 # Copyright (C) 2008 Luca Monducci <luca.mo@tiscali.it>
 # This file is distributed under the same license as the resolvconf package
+# Marco Nenciarini <mnencia@debian.org>, 2011.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: resolvconf 1.39\n"
+"Project-Id-Version: resolvconf 1.57\n"
 "Report-Msgid-Bugs-To: resolvconf@packages.debian.org\n"
 "POT-Creation-Date: 2011-05-31 20:26+0200\n"
-"PO-Revision-Date: 2008-03-16 16:23+0100\n"
-"Last-Translator: Luca Monducci <luca.mo@tiscali.it>\n"
+"PO-Revision-Date: 2011-06-28 11:03+0200\n"
+"Last-Translator: Marco Nenciarini <mnencia@debian.org>\n"
 "Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +71,7 @@ msgstr ""
 #. Description
 #: ../templates:3001 ../templates:4001
 msgid "Reboot recommended"
-msgstr ""
+msgstr "Riavvio consigliato"
 
 #. Type: note
 #. Description
@@ -81,6 +82,11 @@ msgid ""
 "resolvconf program. However, although installation of the resolvconf package "
 "triggers them to supply their information, some of them fail to do so."
 msgstr ""
+"I fornitori di informazioni sui name server, come i name server di cache e i "
+"configuratori di interfacce, sarebbero tenuti a fornire informazioni sui "
+"name server a resolvconf. Comunque, sebbene l'installazione del pacchetto "
+"resolvconf attivi in essi le procedure per comunicare tali informazioni, "
+"alcuni non riescono a farlo correttamente."
 
 #. Type: note
 #. Description
@@ -94,6 +100,14 @@ msgid ""
 "deconfigured. (This incorrect behavior is judged to be less harmful than the "
 "alternative of losing valid information.)"
 msgstr ""
+"Questo bug potrebbe portare a una perdita di informazioni sui name server "
+"durante l'installazione del pacchetto resolvconf se non si adotta la "
+"seguente soluzione temporanea: resolvconf includerà il contenuto completo "
+"del file /etc/resolv.conf come era prima della sua installazione nel suo "
+"database fino al prossimo riavvio. Questo ha lo svantaggio che le "
+"informazioni sui name server saranno mantenute anche se l'interfaccia "
+"associata venisse disattivata. (Questo comportamento scorretto è giudicato "
+"meno dannoso dell'alternativa di perdere informazioni valide)"
 
 #. Type: note
 #. Description
@@ -104,6 +118,10 @@ msgid ""
 "the resolvconf package has been installed on a running system is to reboot "
 "the system."
 msgstr ""
+"Fino a che il bug in questione non sarà corretto e non sarà rimossa la "
+"soluzione temporanea, il solo modo di assicurarsi che resolvconf abbia le "
+"informazioni corrette sui name server dopo che è stato installato su un "
+"sistema in esecuzione è riavviare il sistema."
 
 #. Type: note
 #. Description
@@ -113,6 +131,9 @@ msgid ""
 "about name servers becoming unavailable. To correct this problem it is "
 "recommended that the system be rebooted."
 msgstr ""
+"La rimozione del pacchetto resolvconf potrebbe aver reso indisponibili "
+"alcune informazioni sui name server. Per correggere questo problema si "
+"consiglia un riavvio del sistema."
 
 #. Type: boolean
 #. Description
