@@ -1,5 +1,5 @@
 # Danish translation of resolvconf debconf templates
-# Copyright (c) 2011 Joe Hansen <joedalton2@yahoo.dk>
+# Copyright (C) 2011 Joe Hansen <joedalton2@yahoo.dk>
 # This file is distributed under the same license as the resolvconf package.
 #
 # resolver -> klarlægger

@@ -1,7 +1,7 @@
 # Italian translation of resolvconf debconf templates
-# Copyright (C) 2008 Luca Monducci <luca.mo@tiscali.it>
+# Copyright (C) 2008 Luca Monducci <luca.mo@tiscali.it>,
+#               2011 Marco Nenciarini <mnencia@debian.org>
 # This file is distributed under the same license as the resolvconf package
-# Marco Nenciarini <mnencia@debian.org>, 2011.
 #
 msgid ""
 msgstr ""
@@ -107,7 +107,7 @@ msgstr ""
 "database fino al prossimo riavvio. Questo ha lo svantaggio che le "
 "informazioni sui name server saranno mantenute anche se l'interfaccia "
 "associata venisse disattivata. (Questo comportamento scorretto è giudicato "
-"meno dannoso dell'alternativa di perdere informazioni valide)"
+"meno dannoso dell'alternativa di perdere informazioni valide.)"
 
 #. Type: note
 #. Description

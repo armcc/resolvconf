@@ -1,8 +1,14 @@
+resolvconf (1.59) unstable; urgency=low
+
+  * UNRELEASED
+
+ -- Thomas Hood <jdthood@gmail.com>  Wed, 29 Jun 2011 10:24:58 +0200
+
 resolvconf (1.58) unstable; urgency=low
 
   [ Thomas Hood ]
   * Update README
-  * Update debconf template translation:
+  * Update debconf template translations:
     * da.po thanks to Joe Dalton (Closes: #630241)
     * cs.po thanks to Miroslav Kure (Closes: #630669)
     * nl.po thanks to Jeroen Schot (Closes: #631499)
@@ -10,7 +16,7 @@ resolvconf (1.58) unstable; urgency=low
 
   [ Marco Nenciarini ]
   * Update italian debconf translation
-  * debian/rules: Added build-arch and build-indep target, as required
+  * debian/rules: Add build-arch and build-indep target, as required
     by policy.
 
  -- Marco Nenciarini <mnencia@debian.org>  Wed, 29 Jun 2011 00:37:58 +0200
