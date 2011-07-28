@@ -2,7 +2,11 @@
                      for resolvconf
 
 TODO
-====
+----
+* File bug reports against all suppliers of nameserver information
+  asking each to add a packaging-event hook script, analogous to 
+  #628003 (dnsmasq) and #628846 (pdnsd).
+
 piuparts
 --------
 * Reports:
