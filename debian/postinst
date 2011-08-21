@@ -6,8 +6,16 @@ set -e
 
 MYNAME=resolvconf.postinst
 report() { echo "${MYNAME}: $*" ; }
-report_err() { report "Error: $*" >&2 ; }
+report_warn() { report "Warning: $*" >&2 ; }
 report_info() { report "$*" >&2 ; }
+
+echo_first_arg() { echo "$1" ; }
+is_immutable() {
+	[ "$1" ] || return 2
+	[ -e "$1" ] || return 2
+	which lsattr >/dev/null 2>&1 || return 2
+	echo_first_arg $(lsattr "$1") | grep -sq i
+}
 
 standard_run_subdirs_created() {
 	{ [ -d /run/resolvconf ] || mkdir /run/resolvconf ; } \
@@ -27,7 +35,7 @@ case "$1" in
 		RUN_CANONICALPATH="$(readlink -f /etc/resolvconf/run || :)"
 		if [ -z "$RUN_CANONICALPATH" ] ; then
 			# It's not canonicalizable
-			report_err "Deleting old symlink /etc/resolvconf/run, the canonical path of whose target could not be determined"
+			report_warn "Deleting old symlink /etc/resolvconf/run, the canonical path of whose target could not be determined"
 			rm -f /etc/resolvconf/run
 		fi
 	fi
@@ -86,34 +94,38 @@ case "$1" in
 	# Linkify /etc/resolv.conf if appropriate
 	db_get resolvconf/linkify-resolvconf
 	if [ "$RET" = "true" ] ; then
-		if
-			[ -f /etc/resolv.conf ] \
-			&& {
-				[ ! -L /etc/resolv.conf ] \
-				|| [ ! "$(readlink /etc/resolv.conf)" = "/etc/resolvconf/run/resolv.conf" ]
-			}
-		then
-			# Back up original file
-			if [ ! -e /etc/resolvconf/resolv.conf.d/original ] ; then
-				cp -a /etc/resolv.conf /etc/resolvconf/resolv.conf.d/original
-			else
-				cp -a /etc/resolv.conf /etc/resolv.conf.dpkg-old
+		if is_immutable /etc/resolv.conf ; then
+			report_warn "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable"
+		else
+			if
+				[ -f /etc/resolv.conf ] \
+				&& {
+					[ ! -L /etc/resolv.conf ] \
+					|| [ ! "$(readlink /etc/resolv.conf)" = "/etc/resolvconf/run/resolv.conf" ]
+				}
+			then
+				# Back up original file
+				if [ ! -e /etc/resolvconf/resolv.conf.d/original ] ; then
+					cp -a /etc/resolv.conf /etc/resolvconf/resolv.conf.d/original
+				else
+					cp -a /etc/resolv.conf /etc/resolv.conf.dpkg-old
+				fi
+				# Before creating the link, make sure that the original file is
+				# at the target of the link.  /sbin/resolvconf will overwrite
+				# this when it does an update, of course.
+				if [ ! -e /etc/resolvconf/run/resolv.conf ] ; then
+					cp -a /etc/resolv.conf /etc/resolvconf/run/resolv.conf
+				fi
+				# Add the original file to the database so that its contents
+				# are included when resolvconf updates.
+				# Yes, this is an ugly workaround for the problem that there
+				# is no way to obtain nameserver information from interface
+				# configurers after they have done their configuration work.
+				cp -a /etc/resolv.conf /etc/resolvconf/run/interface/original.resolvconf
 			fi
-			# Before creating the link, make sure that the original file is
-			# at the target of the link.  /sbin/resolvconf will overwrite
-			# this when it does an update, of course.
-			if [ ! -e /etc/resolvconf/run/resolv.conf ] ; then
-				cp -a /etc/resolv.conf /etc/resolvconf/run/resolv.conf
-			fi
-			# Add the original file to the database so that its contents
-			# are included when resolvconf updates.
-			# Yes, this is an ugly workaround for the problem that there
-			# is no way to obtain nameserver information from interface
-			# configurers after they have done their configuration work.
-			cp -a /etc/resolv.conf /etc/resolvconf/run/interface/original.resolvconf
+			# Create the link
+			ln -nsf /etc/resolvconf/run/resolv.conf /etc/resolv.conf
 		fi
-		# Create the link
-		ln -nsf /etc/resolvconf/run/resolv.conf /etc/resolv.conf
 	fi
 	;;
   # triggered)

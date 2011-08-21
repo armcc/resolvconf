@@ -1,8 +1,10 @@
 resolvconf (1.59) unstable; urgency=low
 
-  * Mention in resolvconf.8 that /etc/default/resolvconf has
-    to be created before variables can be assigned in it.
+  * Mention in resolvconf(8) that /etc/default/resolvconf has
+    to be created before variables can be assigned in it
     (Closes: #633014)
+  * dhclient-enter-hooks.d/resolvconf: support DHCPv6 (Closes: #635470)
+  * postinst: Warn if /etc/resolv.conf is immutable (Closes: #635775)
 
  -- Thomas Hood <jdthood@gmail.com>  Fri, 08 Jul 2011 12:00:00 +0200
 
