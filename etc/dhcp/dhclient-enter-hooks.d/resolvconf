@@ -5,18 +5,14 @@
 # Tips:
 # * Be careful about changing the environment since this is sourced
 # * This script fragment uses bash features
-# * As of isc-dhcp-client 4.2 "$reason" can be one of the following.
-#   (Listed on man page:) MEDIUM(0) PREINIT(0)  BOUND(M)  RENEW(M)  REBIND(M)  REBOOT(M)         EXPIRE(D)  FAIL(D) RELEASE(D)  STOP(D)     NBI(-) TIMEOUT(M)
-#   (Also used in upstream script:)                                                                                                                           ARPCHECK(0), ARPSEND(0)
-#   (Also used in upstream script:) PREINIT6(0) BOUND6(M) RENEW6(M) REBIND6(M)        DEPREF6(0) EXPIRE6(D)         RELEASE6(D) STOP6(D)
-#   Annotations about what happens in the master script for each "reason":
-#   (0) = no-op as far as we are concerned
-#   (M) = runs make_resolv_conf
-#   (D) = downs interface
-#   (-) = not used
-
-rcrd="${interface}.dhclient"
-rcrd_ip6="${interface}.ip6.dhclient"
+# * As of isc-dhcp-client 4.2 the "reason" (for running the script) can be one of the following.
+#   (Listed on man page:) MEDIUM(0) PREINIT(0)  BOUND(M)  RENEW(M)  REBIND(M)  REBOOT(M)         EXPIRE(D)  FAIL(D) RELEASE(D)  STOP(D) NBI(-) TIMEOUT(M)
+#   (Also used in master script:)                                                                                                                         ARPCHECK(0), ARPSEND(0)
+#   (Also used in master script:)   PREINIT6(0) BOUND6(M) RENEW6(M) REBIND6(M)        DEPREF6(0) EXPIRE6(D)         RELEASE6(D) STOP6(D)
+#   (0) = master script does not run make_resolv_conf
+#   (M) = master script runs make_resolv_conf
+#   (D) = master script downs interface
+#   (-) = master script does nothing with this
 
 if [ -x /sbin/resolvconf ] ; then
 	# For safety, first undefine the nasty default make_resolv_conf()
@@ -41,7 +37,7 @@ if [ -x /sbin/resolvconf ] ; then
 				R="${R}nameserver $nameserver
 "
 			done
-			[ ! "$interface" ] || echo -n "$R" | /sbin/resolvconf -a "$rcrd"
+			[ ! "$interface" ] || echo -n "$R" | /sbin/resolvconf -a "${interface}.dhclient"
 		}
 		;;
 	  BOUND6|RENEW6|REBIND6)
@@ -70,16 +66,16 @@ if [ -x /sbin/resolvconf ] ; then
 "
 			done
 			shopt -u nocasematch
-			[ ! "$interface" ] || echo -n "$R" | /sbin/resolvconf -a "$rcrd_ip6"
+			[ ! "$interface" ] || echo -n "$R" | /sbin/resolvconf -a "${interface}.ip6.dhclient"
 		}
 		;;
 	  EXPIRE|FAIL|RELEASE|STOP)
 		# Delete resolv.conf info 
-		[ ! "$interface" ] || /sbin/resolvconf -d "$rcrd"
+		[ ! "$interface" ] || /sbin/resolvconf -d "${interface}.dhclient"
 		;;
 	  EXPIRE6|RELEASE6|STOP6)
 		# Delete resolv.conf info 
-		[ ! "$interface" ] || /sbin/resolvconf -d "$rcrd_ip6"
+		[ ! "$interface" ] || /sbin/resolvconf -d "${interface}.ip6.dhclient"
 		;;
 	esac
 fi
