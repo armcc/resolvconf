@@ -1,10 +1,12 @@
-resolvconf (1.59) experimental; urgency=low
+resolvconf (1.59) unstable; urgency=low
 
+  * dhclient-enter-hooks.d/resolvconf: Add support for dhclient
+    DHCPv6 (Closes: #635470)
+  * postinst: Fail with message if /etc/resolv.conf is immutable
+    (Closes: #635775)
   * Mention in resolvconf(8) that /etc/default/resolvconf has
-    to be created before variables can be assigned in it
-    (Closes: #633014)
-  * dhclient-enter-hooks.d/resolvconf: support DHCPv6 (Closes: #635470)
-  * postinst: Warn if /etc/resolv.conf is immutable (Closes: #635775)
+    to be created if it is to be used to set resolvconf environment
+    variables (Closes: #633014)
 
  -- Thomas Hood <jdthood@gmail.com>  Tue, 23 Aug 2011 10:00:00 +0200
 
