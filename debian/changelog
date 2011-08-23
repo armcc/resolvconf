@@ -7,6 +7,7 @@ resolvconf (1.59) unstable; urgency=low
   * Mention in resolvconf(8) that /etc/default/resolvconf has
     to be created if it is to be used to set resolvconf environment
     variables (Closes: #633014)
+  * Drop outdated id.po
 
  -- Thomas Hood <jdthood@gmail.com>  Tue, 23 Aug 2011 10:00:00 +0200
 
