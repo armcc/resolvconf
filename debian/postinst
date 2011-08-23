@@ -11,9 +11,10 @@ report_warn() { report "Warning: $*" >&2 ; }
 report_info() { report "$*" >&2 ; }
 
 echo_first_arg() { echo "$1" ; }
-is_immutable() {
+is_immutable_file() {
 	[ "$1" ] || return 2
-	[ -e "$1" ] || return 2
+	[ -e "$1" ] || return 1
+	[ ! -L "$1" ] || return 1
 	which lsattr >/dev/null 2>&1 || return 2
 	echo_first_arg $(lsattr "$1") | grep -sq i
 }
@@ -95,7 +96,7 @@ case "$1" in
 	# Linkify /etc/resolv.conf if appropriate
 	db_get resolvconf/linkify-resolvconf
 	if [ "$RET" = "true" ] ; then
-		if is_immutable /etc/resolv.conf ; then
+		if is_immutable_file /etc/resolv.conf ; then
 			report_err "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable. To correct this problem, gain root privileges in a terminal and run 'chattr -i /etc/resolv.conf' and then 'dpkg --configure resolvconf'. Aborting."
 			exit 1
 		else
