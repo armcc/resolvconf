@@ -95,7 +95,8 @@ case "$1" in
 	db_get resolvconf/linkify-resolvconf
 	if [ "$RET" = "true" ] ; then
 		if is_immutable /etc/resolv.conf ; then
-			report_warn "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable"
+			report_warn "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable. To correct this problem, gain root privileges in a terminal and run 'chattr -i /etc/resolv.conf' and then 'dpkg --configure resolvconf'."
+			exit 1
 		else
 			if
 				[ -f /etc/resolv.conf ] \
