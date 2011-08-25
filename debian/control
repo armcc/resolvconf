@@ -5,8 +5,8 @@ Maintainer: resolvconf maintainers <resolvconf-devel@lists.alioth.debian.org>
 Uploaders: Thomas Hood <jdthood@gmail.com>, Marco Nenciarini <mnencia@debian.org>
 Build-Depends: debhelper (>= 8)
 Homepage: http://alioth.debian.org/projects/resolvconf/
-Vcs-Svn: svn://anonscm.debian.org/resolvconf/resolvconf/trunk
-Vcs-Browser: http://anonscm.debian.org/viewvc/resolvconf/resolvconf/trunk
+Vcs-Git: git://git.debian.org/git/resolvconf/resolvconf.git
+Vcs-Browser: http://git.debian.org/?p=resolvconf/resolvconf.git
 DM-Upload-Allowed: yes
 Standards-Version: 3.9.2.0
 
