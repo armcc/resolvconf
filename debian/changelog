@@ -1,3 +1,12 @@
+resolvconf (1.60~1.gbp404140) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @40414098e7e0e2e8f190a9e8b6853b21c916e856 **
+
+  * [c30024e] Switch vcs fields to git
+  * [4041409] Add debian/gbp.conf to make easy the usage of git-buildpackage
+
+ -- Marco Nenciarini <mnencia@debian.org>  Thu, 25 Aug 2011 18:03:29 +0200
+
 resolvconf (1.59) unstable; urgency=low
 
   * dhclient-enter-hooks.d/resolvconf: Add support for dhclient
