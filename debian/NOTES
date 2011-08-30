@@ -5,7 +5,15 @@ TODO
 ----
 * File bug reports against all suppliers of nameserver information
   asking each to add a packaging-event hook script, analogous to 
-  #628003 (dnsmasq) and #628846 (pdnsd).
+  * #628003 dnsmasq
+  * #628846 pdnsd
+  Thoughts:
+  * nameservers: bind9, pdns-recursor, totd
+    + Easy to implement: just call initscript or add 127.0.0.1.
+  * DHCP clients: isc-dhcp-client, dhcpcd, pump, udhcpc
+    + Probably easiest and best to trigger DHCP lease renewals.
+  * #639803 network-manager
+    + We should help the authors/maintainers implement this
 
 piuparts
 --------
