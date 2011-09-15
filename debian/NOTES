@@ -3,17 +3,23 @@
 
 TODO
 ----
-* File bug reports against all suppliers of nameserver information
-  asking each to add a packaging-event hook script, analogous to 
+* File bug reports against all packages containing suppliers of nameserver
+  information, asking each to add a resolvconf packaging-event hook script.
+
+  Submitted:
   * #628003 dnsmasq
+    + DONE, but incorrectly (see #641717)
   * #628846 pdnsd
-  Thoughts:
-  * nameservers: bind9, pdns-recursor, totd
-    + Easy to implement: just call initscript or add 127.0.0.1.
-  * DHCP clients: isc-dhcp-client, dhcpcd, pump, udhcpc
-    + Probably easiest and best to trigger DHCP lease renewals.
+  * #641714 bind9
+    + The bind9 maintainers are hopeless; this will never actually get done.
   * #639803 network-manager
-    + We should help the authors/maintainers implement this
+    + We should help the authors/maintainers to implement this.
+
+  To be submitted:
+  * (nameservers:) pdns-recursor, totd
+    + Easy to implement: just call initscript or add 127.0.0.1.
+  * (DHCP clients:) isc-dhcp-client, dhcpcd, pump, udhcpc
+    + Probably easiest and best to trigger DHCP lease renewals.
 
 piuparts
 --------
