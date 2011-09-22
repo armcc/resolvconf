@@ -109,8 +109,8 @@ uniquify_nameserver_list()
 
 RSLVCNFFILES="$(/lib/resolvconf/list-records)"
 
-[ -f "$BASEFILE" ] && RSLVCNFFILES="$BASEFILE
-$RSLVCNFFILES"
+[ -f "$BASEFILE" ] && RSLVCNFFILES="$RSLVCNFFILES
+$BASEFILE"
 
 ### Compile list of nameservers ###
 NMSRVRS=""
