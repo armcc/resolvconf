@@ -1,11 +1,19 @@
-resolvconf (1.60~1.gbp404140) UNRELEASED; urgency=low
+resolvconf (1.60~2.gbp18e2fa) UNRELEASED; urgency=low
 
+  ** SNAPSHOT build @18e2fac3fcd03466d0f1e44ef1eef9078dbbf6ed **
+
+  [ Marco Nenciarini ]
   ** SNAPSHOT build @40414098e7e0e2e8f190a9e8b6853b21c916e856 **
 
   * [c30024e] Switch vcs fields to git
   * [4041409] Add debian/gbp.conf to make easy the usage of git-buildpackage
 
- -- Marco Nenciarini <mnencia@debian.org>  Thu, 25 Aug 2011 18:03:29 +0200
+  [ Thomas Hood ]
+  * [18e2fac] Update es.po thanks to Javier Fernández-Sanguino (Closes: #642360)
+  * [18e2fac] Include resolv.conf.d/base information in resolv.conf *after*
+    dynamic information, rather than before (Closes: #642222)
+
+ -- Thomas Hood <jdthood@gmail.com>  Thu, 22 Sep 2011 11:37:33 +0200
 
 resolvconf (1.59) unstable; urgency=low
 
