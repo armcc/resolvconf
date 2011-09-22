@@ -20,8 +20,7 @@ Credits
 
 News
 ~~~~
-* Last updated 12 June 2011 for version 1.58
-  * pppconfig now suggests resolvconf
+* Last updated 22 September 2011 for version 1.60
 
 Introduction
 ~~~~~~~~~~~~
@@ -526,8 +525,15 @@ A. Because 'dns-nameservers' can take several address arguments whereas
 
 TODO
 ~~~~
-  * resolvconf
-    + See http://bugs.debian.org/resolvconf
+  * bind9
+    # 483098: bind9: Please switch default to using resolvconf generated
+      file if resolvconf is installed
+      - NO REPLY for several months
+    # 641714: Please add resolvconf packaging-event hook script
+      - NO REPLY for several months
+  * dnscache-run (from djbdns)
+    # 582755: Add resolvconf support
+      - NO REPLY for several years
   * gnome-ppp
     # 258064: Writes to /etc/resolv.conf
       - WORKAROUND introduced in July 2004 was to make gnome-ppp Conflict
@@ -535,33 +541,9 @@ TODO
   * gnome-system-tools
     # 258553: Incompatible with resolvconf
       - OKed by maintainer but NO ACTION has been taken for several years
-  * systemconfigurator
-    # 272475: Please support resolvconf
-      - NO REPLY for many years
-  * ppp
-    # 208095: Please suggest resolvconf
-      - Tagged WONTFIX
   * ifupdown
     + Handle dns-* commands natively so that the resolver is configured
       before "up" commands are run
-  * pdnsd
-    # 628846: Include /usr/lib/resolvconf/dpkg-event.d/pdnsd
-      - SUBMITTED
-  * bind9
-    # 483098: bind9: Please switch default to using resolvconf generated
-      file if resolvconf is installed
-      - NO REPLY for several months
-  * dnscache-run (from djbdns)
-    # 582755: Add resolvconf support
-      - NO REPLY for several years
-  * maradns
-    # 608946: resolvconf integration
-      - Its initscript should probably do
-	    echo "nameserver 127.0.0.1" | resolvconf -a lo.maradns
-	as dnsmasq and pdnsd do.
-      - Could it have an update script that sets the "upstream_servers"
-	variable?
-      - Tagged WONTFIX since the maintainer doesn't have any free time
   * libadns1
     + It consults resolv.conf so it should already be supported.
       However, someone should test it.
@@ -578,13 +560,35 @@ TODO
       However, someone should test it.
     + Someone should investigate whether it could be supported better.
       Perhaps /etc/firedns.conf should be dynamically updated?
+  * maradns
+    # 608946: resolvconf integration
+      - Its initscript should probably do
+	    echo "nameserver 127.0.0.1" | resolvconf -a lo.maradns
+	as dnsmasq and pdnsd do.
+      - Could it have an update script that sets the "upstream_servers"
+	variable?
+      - Tagged WONTFIX since the maintainer doesn't have any free time
   * Net::DNS
     + It consults resolv.conf so it should already be supported.
       However, someone should test it.
     + Someone should investigate whether it could be supported better.
+  * network-manager
+    # 639803: Please add resolvconf packaging-event hook script
+      - NO REPLY
   * nscd
     # 266817: Please suggest resolvconf
       - Tagged WONTFIX
+  * pdnsd
+    # 628846: Include /usr/lib/resolvconf/dpkg-event.d/pdnsd
+      - NO REPLY
+  * ppp
+    # 208095: Please suggest resolvconf
+      - Tagged WONTFIX
+  * resolvconf
+    + See http://bugs.debian.org/resolvconf
+  * systemconfigurator
+    # 272475: Please support resolvconf
+      - NO REPLY for many years
   * Users of resolver libraries
     + For any package that contains a program that uses resolver(3) or a
       compatible library, add a /etc/resolvconf/update-libc.d/ script to
@@ -593,51 +597,6 @@ TODO
 
 DONE
 ~~~~
-  * resolvconf
-    + Created and added to dialup and broadband tasks
-  * ppp
-    + Use resolvconf via /etc/ppp/ip-(up|down).d/
-      - DONE in resolvconf package
-  * pppconfig
-    # 242092: Disable pppconfig's futzing with /etc/resolv.conf
-      - DONE in 2.3.1
-    # 266819: Please suggest resolvconf
-      - DONE in 2.3.18+nmu3
-  * pppoeconf
-    # 212756: Eliminate /etc/ppp/ip-up.d/000usepeerdns
-      - DONE in 1.0
-  * dhcp3-client
-    + Use resolvconf via /etc/dhcp3/dhclient-enter-hooks
-      - DONE in resolvconf package
-    # 171798: dhclient-script should source hook scripts, not run-parts them
-      - DONE in 3.0+3.0.1rc11-5
-  * dhcp-client
-    # 248399: Needs resolvconf support
-      - DONE in 2.0pl5-18
-  * dhcpcd
-    + Support resolvconf without requiring local changes
-      - DONE in 1:1.3.22pl4-7
-  * pump
-    # 194204: Please add proper resolvconf support
-      - DONE in 0.8.15-1
-  * udhcpc
-    # 302019: Please use resolvconf
-      - DONE in 0.9.8cvs20050124-3
-  * pcmcia-cs
-    # 212823: pcmcia-cs: please add support for the resolvconf package
-      - DONE in 3.2.5-1
-  * laptop-net
-    + Use resolvconf instead of overwriting /etc/resolv.conf .
-      - DONE in 2.21-1
-  * ifupdown
-    + Use resolvconf via /etc/network/if-(up|down).d/
-      - DONE in resolvconf package
-  * debian-installer
-    # 255187: Please add resolvconf support
-      - DONE in version netcfg/0.71
-  * nscd
-    # 252251: Please add resolvconf support
-      - DONE in resolvconf 1.15
   * bind
     + Drop support for this obsolete version of BIND
       - DONE in resolvconf 1.48
@@ -653,6 +612,20 @@ DONE
       - DONE in 1:9.3.2-2
     # 252285: Please Suggest resolvconf
       - DONE in 1:9.4.2-2
+  * debian-installer
+    # 255187: Please add resolvconf support
+      - DONE in version netcfg/0.71
+  * dhcp3-client
+    + Use resolvconf via /etc/dhcp3/dhclient-enter-hooks
+      - DONE in resolvconf package
+    # 171798: dhclient-script should source hook scripts, not run-parts them
+      - DONE in 3.0+3.0.1rc11-5
+  * dhcp-client
+    # 248399: Needs resolvconf support
+      - DONE in 2.0pl5-18
+  * dhcpcd
+    + Support resolvconf without requiring local changes
+      - DONE in 1:1.3.22pl4-7
   * dnsmasq
     + Create script /etc/resolvconf/update.d/dnsmasq to
       generate /var/run/dnsmasq/resolv.conf
@@ -661,8 +634,23 @@ DONE
       - DONE in 1.13-2
     + Include /etc/resolvconf/update.d/dnsmasq
       - DONE in 1.13-3
-    # 628003: Include /usr/lib/resolvconf/dpkg-event.d/dnsmasq
-      - DONE in 2.58-1
+    # 628003, #641717: Include /usr/lib/resolvconf/dpkg-event.d/dnsmasq
+      - DONE in 2.58-3
+  * fetchmail
+    + Use resolvconf to trigger restart on change of nameserver info
+      - DONE in 6.2.5-4
+  * ifupdown
+    + Use resolvconf via /etc/network/if-(up|down).d/
+      - DONE in resolvconf package
+  * laptop-net
+    + Use resolvconf instead of overwriting /etc/resolv.conf .
+      - DONE in 2.21-1
+  * nscd
+    # 252251: Please add resolvconf support
+      - DONE in resolvconf 1.15
+  * pcmcia-cs
+    # 212823: pcmcia-cs: please add support for the resolvconf package
+      - DONE in 3.2.5-1
   * pdns-recursor
     # 308677: /etc/init.d/pdns-recursor: Please add resolvconf calls
       - DONE in 2.9.18-4
@@ -673,18 +661,34 @@ DONE
   * pdnsd
     # 247946: Fix resolvconf support
       - DONE in pdnsd 1.1.10par-4
-  * totd
-    + Use resolvconf to update resolv.conf and to get updated
-      nameserver list
-  * fetchmail
-    + Use resolvconf to trigger restart on change of nameserver info
-      - DONE in 6.2.5-4
   * postfix
     # 212552: Please reload on change of /etc/resolv.conf
       - DONE in 2.0.16-4
+  * ppp
+    + Use resolvconf via /etc/ppp/ip-(up|down).d/
+      - DONE in resolvconf package
+  * pppconfig
+    # 242092: Disable pppconfig's futzing with /etc/resolv.conf
+      - DONE in 2.3.1
+    # 266819: Please suggest resolvconf
+      - DONE in 2.3.18+nmu3
+  * pppoeconf
+    # 212756: Eliminate /etc/ppp/ip-up.d/000usepeerdns
+      - DONE in 1.0
+  * pump
+    # 194204: Please add proper resolvconf support
+      - DONE in 0.8.15-1
+  * resolvconf
+    + Created and added to dialup and broadband tasks
   * squid
     # 200572: Please use resolvconf resolver-update notification
       - DONE in 2.5.3-7
+  * totd
+    + Use resolvconf to update resolv.conf and to get updated
+      nameserver list
+  * udhcpc
+    # 302019: Please use resolvconf
+      - DONE in 0.9.8cvs20050124-3
   * webmin-core
     # 223483: Please play nicely with resolvconf
       - DONE in 1.150-2

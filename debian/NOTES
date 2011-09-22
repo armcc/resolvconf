@@ -7,13 +7,10 @@ TODO
   information, asking each to add a resolvconf packaging-event hook script.
 
   Submitted:
-  * #628003 dnsmasq
-    + DONE, but incorrectly (see #641717)
+  * #628003, #641717 dnsmasq
   * #628846 pdnsd
   * #641714 bind9
-    + The bind9 maintainers are hopeless; this will never actually get done.
   * #639803 network-manager
-    + We should help the authors/maintainers to implement this.
 
   To be submitted:
   * (nameservers:) pdns-recursor, totd
