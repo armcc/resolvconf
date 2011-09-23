@@ -1,10 +1,12 @@
-resolvconf (1.61~1.gbpcbb510) UNRELEASED; urgency=low
+resolvconf (1.61~2.gbp449294) UNRELEASED; urgency=low
 
-  ** SNAPSHOT build @cbb5105c9ef02b534f404f3d3f95dcb024039839 **
+  ** SNAPSHOT build @4492943f2f1b73432deab9b53b30785fd53e97b2 **
 
   * [cbb5105] list-records: Add comment re: extglob; speed up final loop
+  * [4492943] Eliminate bashisms from /sbin/resolvconf. (Other scripts in this package still use bash, though, so this does not close wish #519364.)
+    Thanks to Stefan Monnier
 
- -- Thomas Hood <jdthood@gmail.com>  Fri, 23 Sep 2011 12:02:14 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Fri, 23 Sep 2011 14:47:03 +0200
 
 resolvconf (1.60) unstable; urgency=low
 
