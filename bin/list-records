@@ -36,15 +36,18 @@ if [ -r /etc/resolvconf/interface-order ] ; then
 		/^$/d
 		' /etc/resolvconf/interface-order)"
 fi
+
 shopt -s nullglob extglob
+# The nullglob option isn't essential since the test -s below will eliminate
+# any unexpanded patterns.
+# The extglob option makes the glob language of interface-order patterns
+# as powerful as regexps, which I imagine might be useful to some users.
+
 # Pathname expansion occurs on the following line resulting, in general,
 # in multiple instances of filenames; duplicates must be removed.
 uniquify $PATTERNS
-RCRDS=""
 for FLNM in $RSLT ; do
 	# Only list records of non-zero size
-	[ -s "$FLNM" ] && RCRDS="${RCRDS}${FLNM}
-"
+	[ -s "$FLNM" ] && echo "$FLNM"
 done
-echo -n "$RCRDS"
 exit 0
