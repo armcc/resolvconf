@@ -1,5 +1,4 @@
-#!/bin/bash
-# Need bash because of use of ${FOO/bar}
+#!/bin/sh
 #
 # Licensed under the GNU GPL.  See /usr/share/doc/resolvconf/copyright.
 #
@@ -39,11 +38,13 @@ case "$CMD" in
 	report_iface_err() {
 		report_err "$* not allowed in interface record name"
 	}
-	[ "${IFACE/\/}" = "$IFACE" ] || { report_iface_err "Slash" ; exit 1 ; }
-	[ "${IFACE/ }" = "$IFACE" ] || { report_iface_err "Space" ; exit 1 ; }
-	[ "${IFACE#.}" = "$IFACE" ] || { report_iface_err "Initial dot" ; exit 1 ; }
-	[ "${IFACE#-}" = "$IFACE" ] || { report_iface_err "Initial hyphen" ; exit 1 ; }
-	[ "${IFACE#\~}" = "$IFACE" ] || { report_iface_err "Initial tilde" ; exit 1 ; }
+	case "$IFACE" in
+	  */*) report_iface_err "Slash" ; exit 1 ;;
+	  *" "*) report_iface_err "Space" ; exit 1 ;;
+	  .*) report_iface_err "Initial dot" ; exit 1 ;;
+	  -*) report_iface_err "Initial hyphen" ; exit 1 ;;
+	  ~*) report_iface_err "Initial tilde" ; exit 1 ;;
+	esac
 	;;
   *)
 	report_err "Invalid argument"
