@@ -1,6 +1,4 @@
-resolvconf (1.61~3.gbp63da54) UNRELEASED; urgency=low
-
-  ** SNAPSHOT build @63da54bc40672f1bb6c52b8bd191034501b3f49b **
+resolvconf (1.61) unstable; urgency=low
 
   * [cbb5105] list-records: Add comment re: extglob; speed up final loop
   * [4492943] Eliminate bashisms from /sbin/resolvconf. (Other scripts in this
