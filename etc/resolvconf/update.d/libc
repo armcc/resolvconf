@@ -173,5 +173,9 @@ then
 fi
 
 # Notify users of the resolver
-exec run-parts ${NSCD_RESTARTED:+--arg="--nscd"} "${ETCRESOLVCONF}/update-libc.d"
+if [ -d "${ETCRESOLVCONF}/update-libc.d" ] ; then
+	exec run-parts ${NSCD_RESTARTED:+--arg="--nscd"} "${ETCRESOLVCONF}/update-libc.d"
+fi
+
+exit 0
 
