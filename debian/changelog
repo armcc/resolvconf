@@ -1,12 +1,14 @@
-resolvconf (1.61~2.gbp449294) UNRELEASED; urgency=low
+resolvconf (1.61~3.gbp63da54) UNRELEASED; urgency=low
 
-  ** SNAPSHOT build @4492943f2f1b73432deab9b53b30785fd53e97b2 **
+  ** SNAPSHOT build @63da54bc40672f1bb6c52b8bd191034501b3f49b **
 
   * [cbb5105] list-records: Add comment re: extglob; speed up final loop
   * [4492943] Eliminate bashisms from /sbin/resolvconf. (Other scripts in this package still use bash, though, so this does not close wish #519364.)
     Thanks to Stefan Monnier
+  * [63da54b] update.d/libc: Only run-parts update-libc.d/ if the latter exists.
+    (Closes: #642965)
 
- -- Thomas Hood <jdthood@gmail.com>  Fri, 23 Sep 2011 14:47:03 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Mon, 26 Sep 2011 09:42:11 +0200
 
 resolvconf (1.60) unstable; urgency=low
 
