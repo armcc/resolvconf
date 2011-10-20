@@ -7,7 +7,7 @@ TODO
   information, asking each to add a resolvconf packaging-event hook script.
 
   Submitted:
-  * #628003, #641717 dnsmasq
+  * #628003, #641717 dnsmasq [both DONE]
   * #628846 pdnsd
   * #641714 bind9
   * #639803 network-manager
@@ -17,6 +17,12 @@ TODO
     + Easy to implement: just call initscript or add 127.0.0.1.
   * (DHCP clients:) isc-dhcp-client, dhcpcd, pump, udhcpc
     + Probably easiest and best to trigger DHCP lease renewals.
+
+
+Ubuntu
+------
+Sander van Grieken has agreed to head up resolvconf maintenance in Ubuntu.
+ 
 
 piuparts
 --------
@@ -35,14 +41,17 @@ piuparts
   but this is not a bug, since resolvconf can justifiably modify
   that file, which isn't an ordinary configuration file.
 
+
 Loop dangers
 ------------
 Remember the interesting fact that postinst runs dpkg-event.d/foo
 which probably runs /sbin/resolvconf which probably runs update.d/foo.
 
+
 Things one tends to forget
 --------------------------
 Remember to run debconf-updatepo after changing a template or po file.
+
 
 Famous quotations
 -----------------
