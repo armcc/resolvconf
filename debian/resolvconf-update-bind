@@ -93,11 +93,6 @@ cat /etc/bind/named.conf.options \
 
 chown root:bind "$TMP_FILE"
 
-if [ "$1" = "-i" ] ; then
-	mv -f "$TMP_FILE" "$DYNAMIC_OPTS_FILE"
-	exit 0
-fi
-
 # Reload named unless we know its options haven't changed
 if [ -x /usr/bin/diff ] && [ -f "$DYNAMIC_OPTS_FILE" ] && /usr/bin/diff -q "$DYNAMIC_OPTS_FILE" "$TMP_FILE" > /dev/null ; then
 	# No change
