@@ -1,16 +1,15 @@
 #!/bin/sh
 #
-# Licensed under the GNU GPL.  See /usr/share/doc/resolvconf/copyright.
+# This file is part of the resolvconf package.
 #
-# resolvconf (-u|-d IFACE|-a IFACE)
 
 set -e
 
-echo_usage() { echo "Usage: resolvconf (-u|-d IFACE|-a IFACE)" ; }
+echo_usage() { echo "Usage: resolvconf (-d IFACE|-a IFACE|-u|--enable-updates|--disable-updates|--updates-are-enabled|--create-runtime-directories)" ; }
 
 PATH=/sbin:/bin
 MYNAME="${0##*/}"
-# Note that /etc/resolvconf/run may be a symlink
+# Note that /etc/resolvconf/run may be (and generally is) a symlink
 RUN_DIR=/etc/resolvconf/run
 IFACE_DIR="${RUN_DIR}/interface"
 ENABLE_UPDATES_FLAGFILE="${RUN_DIR}/enable-updates"
@@ -21,13 +20,6 @@ report_err() { echo "${MYNAME}: Error: $*" >&2 ; }
 # Check arguments
 CMD="$1"
 case "$CMD" in
-  -u)
-  	if [ "$2" ] ; then
-		report_err "The -u option does not take an argument"
-		echo_usage >&2
-		exit 1
-	fi
-	;;
   -a|-d)
 	IFACE="$2"
 	if [ -z "$IFACE" ] ; then
@@ -46,6 +38,13 @@ case "$CMD" in
 	  ~*) report_iface_err "Initial tilde" ; exit 1 ;;
 	esac
 	;;
+  -u|--enable-updates|--disable-updates|--updates-are-enabled|--create-runtime-directories)
+  	if [ "$2" ] ; then
+		report_err "The $CMD option does not take an argument"
+		echo_usage >&2
+		exit 1
+	fi
+	;;
   *)
 	report_err "Invalid argument"
 	echo_usage >&2
@@ -56,6 +55,7 @@ esac
 [ -d "$IFACE_DIR" ] || { report_err "$IFACE_DIR is not a directory" ; exit 1 ; }
 
 cd "$IFACE_DIR"
+
 
 #	
 # The following function must EXACTLY the same in the resolvconf
@@ -90,8 +90,13 @@ normalized_stdin() {
 }
 ### END FUNCTION TO COPY TO THE test-normalization SCRIPT ###
 
+update_and_exit()
+{
+	rm -f "$POSTPONED_UPDATE_FLAGFILE"
+	exec run-parts ${1:+--arg="$1"} ${2:+--arg="$2"} /etc/resolvconf/update.d
+}
+
 case "$CMD" in
-  -u) : ;;
   -a)
 	OLD_CONTENT=""
 	[ -f "$IFACE" ] && OLD_CONTENT="$(cat "$IFACE")"
@@ -108,6 +113,13 @@ case "$CMD" in
 	trap cleanup EXIT
 	echo "$NEW_CONTENT" > "$IFACE_TMPFILE"
 	mv -f "$IFACE_TMPFILE" "$IFACE"
+
+	if [ -e "$ENABLE_UPDATES_FLAGFILE" ] ; then
+		update_and_exit -a "$IFACE"
+	else
+		: >| "$POSTPONED_UPDATE_FLAGFILE"
+		exit 0
+	fi
 	;;
   -d)
 	if [ ! -s "$IFACE" ] ; then
@@ -115,6 +127,55 @@ case "$CMD" in
 		exit 0
 	fi
 	rm -f "$IFACE"
+	if [ -e "$ENABLE_UPDATES_FLAGFILE" ] ; then
+		update_and_exit -d "$IFACE"
+	else
+		: >| "$POSTPONED_UPDATE_FLAGFILE"
+		exit 0
+	fi
+	;;
+  -u)
+	if [ -e "$ENABLE_UPDATES_FLAGFILE" ] ; then
+		update_and_exit -u
+	else
+		: >| "$POSTPONED_UPDATE_FLAGFILE"
+		exit 0
+	fi
+	;;
+  --enable-updates)
+	: >| "$ENABLE_UPDATES_FLAGFILE"
+	if [ -e "$POSTPONED_UPDATE_FLAGFILE" ] ; then
+		update_and_exit -u
+	fi
+	exit 0
+	;;
+  --disable-updates)
+	rm -f "$POSTPONED_UPDATE_FLAGFILE"
+	rm -f "$ENABLE_UPDATES_FLAGFILE" || exit 1
+	exit 0
+	;;
+  --updates-are-enabled)
+	if [ -e "$ENABLE_UPDATES_FLAGFILE" ] ; then
+		exit 0
+	else
+		exit 1
+	fi
+	;;
+  --create-runtime-directories)
+	umask 022
+	if [ ! -d "$RUN_DIR" ] ; then
+		[ -L "$RUN_DIR" ] || { report_err "$RUN_DIR is neither a directory nor a symbolic link" ; exit 1 ; }
+		# It's a symlink. Its target is not a dir.
+		{ RUN_CANONICALDIR="$(readlink -f "$RUN_DIR")" && [ "$RUN_CANONICALDIR" ] ; } || { report_err "Canonical path of the run directory could not be determined" ; exit 1 ; }
+		# Create directory at the target
+		mkdir "$RUN_CANONICALDIR" || { report_err "Error creating directory $RUN_CANONICALDIR" ; exit 1 ; }
+	fi
+	# The resolvconf run directory now exists
+	# Wipe and create the interface subdirectory
+	rm -rf "${RUN_DIR}/interface" || { report_err "Failed to delete ${RUN_DIR}/interface" ; exit 1 ; }
+	mkdir "${RUN_DIR}/interface" || { report_err "Error creating directory ${RUN_DIR}/interface" ; exit 1 ; }
+	# The interface directory now exists
+	exit 0
 	;;
   *)
 	report_err "Command not recognized"
@@ -122,11 +183,4 @@ case "$CMD" in
 	;;
 esac
 
-if [ -e "$ENABLE_UPDATES_FLAGFILE" ] ; then
-	exec run-parts "--arg=$CMD" ${IFACE:+--arg="$IFACE"} /etc/resolvconf/update.d
-else
-	# Schedule an update for when updates are enabled
-	: > "$POSTPONED_UPDATE_FLAGFILE"
-fi
-
-
+# Don't reach here

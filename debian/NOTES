@@ -19,20 +19,8 @@ TODO
     + Probably easiest and best to trigger DHCP lease renewals.
 
 
-Ubuntu
-------
-Sander van Grieken has agreed to head up resolvconf maintenance in Ubuntu.
- 
-
 piuparts
 --------
-* Reports:
-
-    invoke-rc.d: policy-rc.d denied execution of enable-updates
-
-  and ditto for "disable-updates" but this is because the chroot includes
-  a policy-rc.d that denies all requests.
-
 * Reports:
 
     ERROR: FAIL: After purging files have been modified:

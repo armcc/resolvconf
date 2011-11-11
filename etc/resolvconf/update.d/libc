@@ -3,13 +3,9 @@
 # Script to update resolv.conf, the libc resolver configuration file,
 # and to notify users of the libc resolver of changes
 #
-# Assumption: On entry, PWD contains the resolv.conf-type files
+# Assumption: On entry, PWD contains the resolv.conf-type files.
 #
-# This script is part of the resolvconf package
-#
-# Licensed under the GNU GPL.  See /usr/share/doc/resolvconf/copyright.
-#
-# Written by Thomas Hood <jdthood@gmail.com>
+# This script is part of the resolvconf package.
 #
 # Set REPORT_ABSENT_SYMLINK=no to inhibit warning message that
 # /etc/resolv.conf is not a symbolic link
@@ -138,12 +134,6 @@ for N in $NMSRVRS ; do echo "nameserver $N" >> "$TMPFILE" ; done
 [ -f "$TAILFILE" ] && cat "$TAILFILE" >> "$TMPFILE"
 
 ### Put the file in place ###
-
-# On init, just put it in place
-if [ "$1" = "-i" ] ; then
-	mv -f "$TMPFILE" "$DYNAMICRSLVCNFFILE"
-	exit 0
-fi
 
 if [ -f "$DYNAMICRSLVCNFFILE" ] && [ "$(cat $TMPFILE)" = "$(cat $DYNAMICRSLVCNFFILE)" ] ; then
 	# The file has not changed
