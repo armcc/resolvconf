@@ -46,16 +46,31 @@ case "$CMD" in
 	fi
 	;;
   *)
-	report_err "Invalid argument"
+	report_err "Command not recognized"
 	echo_usage >&2
-	exit 1
+	exit 99
 	;;
 esac
 
-[ -d "$IFACE_DIR" ] || { report_err "$IFACE_DIR is not a directory" ; exit 1 ; }
-
-cd "$IFACE_DIR"
-
+# Handle creation of run-time directories
+case "$CMD" in
+  --create-runtime-directories)
+	umask 022
+	if [ ! -d "$RUN_DIR" ] ; then
+		[ -L "$RUN_DIR" ] || { report_err "$RUN_DIR is neither a directory nor a symbolic link" ; exit 1 ; }
+		# It's a symlink. Its target is not a dir.
+		{ RUN_CANONICALDIR="$(readlink -f "$RUN_DIR")" && [ "$RUN_CANONICALDIR" ] ; } || { report_err "Canonical path of the run directory could not be determined" ; exit 1 ; }
+		# Create directory at the target
+		mkdir "$RUN_CANONICALDIR" || { report_err "Error creating directory $RUN_CANONICALDIR" ; exit 1 ; }
+	fi
+	# The resolvconf run directory now exists
+	# Wipe and create the interface subdirectory
+	rm -rf "${RUN_DIR}/interface" || { report_err "Failed to delete ${RUN_DIR}/interface" ; exit 1 ; }
+	mkdir "${RUN_DIR}/interface" || { report_err "Error creating directory ${RUN_DIR}/interface" ; exit 1 ; }
+	# The interface directory now exists
+	exit 0
+	;;
+esac
 
 #	
 # The following function must EXACTLY the same in the resolvconf
@@ -89,6 +104,9 @@ normalized_stdin() {
 		-e '/^$/d'
 }
 ### END FUNCTION TO COPY TO THE test-normalization SCRIPT ###
+
+[ -d "$IFACE_DIR" ] || { report_err "$IFACE_DIR is not a directory" ; exit 1 ; }
+cd "$IFACE_DIR"
 
 update_and_exit()
 {
@@ -160,26 +178,6 @@ case "$CMD" in
 	else
 		exit 1
 	fi
-	;;
-  --create-runtime-directories)
-	umask 022
-	if [ ! -d "$RUN_DIR" ] ; then
-		[ -L "$RUN_DIR" ] || { report_err "$RUN_DIR is neither a directory nor a symbolic link" ; exit 1 ; }
-		# It's a symlink. Its target is not a dir.
-		{ RUN_CANONICALDIR="$(readlink -f "$RUN_DIR")" && [ "$RUN_CANONICALDIR" ] ; } || { report_err "Canonical path of the run directory could not be determined" ; exit 1 ; }
-		# Create directory at the target
-		mkdir "$RUN_CANONICALDIR" || { report_err "Error creating directory $RUN_CANONICALDIR" ; exit 1 ; }
-	fi
-	# The resolvconf run directory now exists
-	# Wipe and create the interface subdirectory
-	rm -rf "${RUN_DIR}/interface" || { report_err "Failed to delete ${RUN_DIR}/interface" ; exit 1 ; }
-	mkdir "${RUN_DIR}/interface" || { report_err "Error creating directory ${RUN_DIR}/interface" ; exit 1 ; }
-	# The interface directory now exists
-	exit 0
-	;;
-  *)
-	report_err "Command not recognized"
-	exit 99
 	;;
 esac
 
