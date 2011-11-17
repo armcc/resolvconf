@@ -16,12 +16,10 @@
 #
 # We really need "X-Stop-Before: networking ifupdown" too because
 # terminal ifdowns shouldn't update resolv.conf;
-# however no "X-Stop-Before" dependency has been defined.
+# however there is unfortunately no such thing as "X-Stop-Before".
 #
-# This script is part of the resolvconf package
-# See /usr/share/doc/resolvconf/copyright
 
-# Don't use set -e; check return status instead
+# Don't use set -e; check return status instead.
 
 [ -x /sbin/resolvconf ] || exit 0
 
@@ -38,39 +36,38 @@ log_action_end_msg_and_exit()
 }
 
 case "$1" in
-start)
-	# The "start" method should ONLY be used at boot time.
-	# On package upgrade, don't run this!
-	# If you want to update the resolv.conf file then use "reload".
+  start)
+	# The "start" method should only be used at boot time.
+	# Don't run this on package upgrade, for example.
 	log_action_begin_msg "Setting up resolvconf"
 	resolvconf --create-runtime-directories || log_action_end_msg_and_exit 1 "failed to create run-time directories"
 	resolvconf --enable-updates || log_action_end_msg_and_exit 1 "failed to enable updates"
 	log_action_end_msg_and_exit 0
 	;;
-stop)
+  stop)
 	# The "stop" method should only be used at shutdown time.
 	log_action_begin_msg "Stopping resolvconf"
 	resolvconf --disable-updates || log_action_end_msg_and_exit 1 "failed to disable updates"
 	log_action_end_msg_and_exit 0
 	;;
-restart)
+  restart)
 	log_action_begin_msg "Restarting resolvconf"
 	resolvconf --enable-updates || log_action_end_msg_and_exit 1 "failed to enable updates"
 	log_action_end_msg_and_exit 0
 	;;
-reload|force-reload)
+  reload|force-reload)
 	resolvconf -u || log_action_end_msg_and_exit 1 "failed to update"
 	exit 0
 	;;
-enable-updates)
+  enable-updates)
 	resolvconf --enable-updates || log_action_end_msg_and_exit 1 "failed to enable updates"
 	exit 0
 	;;
-disable-updates)
+  disable-updates)
 	resolvconf --disable-updates || log_action_end_msg_and_exit 1 "failed to disable updates"
 	exit 0
 	;;
-status)
+  status)
 	if resolvconf --updates-are-enabled ; then
 		log_success_msg "resolvconf updates are enabled"
 	else
@@ -78,10 +75,11 @@ status)
 	fi
 	exit 0
 	;;
-*)
-	echo "Usage: /etc/init.d/resolvconf {start|stop|reload|restart|force-reload|enable-updates|disable-updates|status}" >&2
+  *)
+	echo "Usage: /etc/init.d/resolvconf {start|stop|restart|reload|force-reload|enable-updates|disable-updates|status}" >&2
 	exit 3
 	;;
 esac
 
 # Don't reach here
+exit 99

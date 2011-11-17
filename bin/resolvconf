@@ -22,7 +22,7 @@ CMD="$1"
 case "$CMD" in
   -a|-d)
 	IFACE="$2"
-	if [ -z "$IFACE" ] ; then
+	if [ ! "$IFACE" ] ; then
 		report_err "No interface name specified"
 		echo_usage >&2
 		exit 1
@@ -63,12 +63,69 @@ case "$CMD" in
 		# Create directory at the target
 		mkdir "$RUN_CANONICALDIR" || { report_err "Error creating directory $RUN_CANONICALDIR" ; exit 1 ; }
 	fi
-	# The resolvconf run directory now exists
-	# Wipe and create the interface subdirectory
-	rm -rf "${RUN_DIR}/interface" || { report_err "Failed to delete ${RUN_DIR}/interface" ; exit 1 ; }
-	mkdir "${RUN_DIR}/interface" || { report_err "Error creating directory ${RUN_DIR}/interface" ; exit 1 ; }
-	# The interface directory now exists
+	# The resolvconf run directory now exists.
+	if [ ! -d "${RUN_DIR}/interface" ] ; then
+		mkdir "${RUN_DIR}/interface" || { report_err "Error creating directory ${RUN_DIR}/interface" ; exit 1 ; }
+	fi
+	# The interface directory now exists.  We are done.
 	exit 0
+	;;
+esac
+
+[ -d "$IFACE_DIR" ] || { report_err "$IFACE_DIR either does not exist or is not a directory" ; exit 1 ; }
+cd "$IFACE_DIR"
+
+update_and_exit()
+{
+	rm -f "$POSTPONED_UPDATE_FLAGFILE"
+	exec run-parts ${1:+--arg="$1"} ${2:+--arg="$2"} /etc/resolvconf/update.d
+}
+
+# Handle commands that don't require normalized_stdin()
+
+case "$CMD" in
+  -d)
+	if [ ! -e "$IFACE" ] ; then
+		exit 0
+	fi
+	if [ ! -s "$IFACE" ] ; then
+		rm -f "$IFACE"
+		exit 0
+	fi
+	rm -f "$IFACE"
+	if [ -e "$ENABLE_UPDATES_FLAGFILE" ] ; then
+		update_and_exit -d "$IFACE"
+	else
+		: >| "$POSTPONED_UPDATE_FLAGFILE"
+		exit 0
+	fi
+	;;
+  -u)
+	if [ -e "$ENABLE_UPDATES_FLAGFILE" ] ; then
+		update_and_exit -u
+	else
+		: >| "$POSTPONED_UPDATE_FLAGFILE"
+		exit 0
+	fi
+	;;
+  --enable-updates)
+	: >| "$ENABLE_UPDATES_FLAGFILE"
+	if [ -e "$POSTPONED_UPDATE_FLAGFILE" ] ; then
+		update_and_exit -u
+	fi
+	exit 0
+	;;
+  --disable-updates)
+	rm -f "$POSTPONED_UPDATE_FLAGFILE" || :
+	rm -f "$ENABLE_UPDATES_FLAGFILE" || exit 1
+	exit 0
+	;;
+  --updates-are-enabled)
+	if [ -e "$ENABLE_UPDATES_FLAGFILE" ] ; then
+		exit 0
+	else
+		exit 1
+	fi
 	;;
 esac
 
@@ -105,15 +162,6 @@ normalized_stdin() {
 }
 ### END FUNCTION TO COPY TO THE test-normalization SCRIPT ###
 
-[ -d "$IFACE_DIR" ] || { report_err "$IFACE_DIR is not a directory" ; exit 1 ; }
-cd "$IFACE_DIR"
-
-update_and_exit()
-{
-	rm -f "$POSTPONED_UPDATE_FLAGFILE"
-	exec run-parts ${1:+--arg="$1"} ${2:+--arg="$2"} /etc/resolvconf/update.d
-}
-
 case "$CMD" in
   -a)
 	OLD_CONTENT=""
@@ -139,46 +187,7 @@ case "$CMD" in
 		exit 0
 	fi
 	;;
-  -d)
-	if [ ! -s "$IFACE" ] ; then
-		rm -f "$IFACE"
-		exit 0
-	fi
-	rm -f "$IFACE"
-	if [ -e "$ENABLE_UPDATES_FLAGFILE" ] ; then
-		update_and_exit -d "$IFACE"
-	else
-		: >| "$POSTPONED_UPDATE_FLAGFILE"
-		exit 0
-	fi
-	;;
-  -u)
-	if [ -e "$ENABLE_UPDATES_FLAGFILE" ] ; then
-		update_and_exit -u
-	else
-		: >| "$POSTPONED_UPDATE_FLAGFILE"
-		exit 0
-	fi
-	;;
-  --enable-updates)
-	: >| "$ENABLE_UPDATES_FLAGFILE"
-	if [ -e "$POSTPONED_UPDATE_FLAGFILE" ] ; then
-		update_and_exit -u
-	fi
-	exit 0
-	;;
-  --disable-updates)
-	rm -f "$POSTPONED_UPDATE_FLAGFILE"
-	rm -f "$ENABLE_UPDATES_FLAGFILE" || exit 1
-	exit 0
-	;;
-  --updates-are-enabled)
-	if [ -e "$ENABLE_UPDATES_FLAGFILE" ] ; then
-		exit 0
-	else
-		exit 1
-	fi
-	;;
 esac
 
 # Don't reach here
+exit 99

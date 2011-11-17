@@ -3,9 +3,9 @@
 # PPP up hook script for resolvconf
 #
 # Reconfigures resolver to take into account
-# the appearance of the ppp interface
+# the appearance of the ppp interface.
 #
-# Licensed under the GNU GPL.  See /usr/share/doc/resolvconf/copyright.
+# This file is part of the resolvconf package.
 #
 
 [ -x /sbin/resolvconf ] || exit 0
