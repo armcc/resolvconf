@@ -1,3 +1,17 @@
+resolvconf (1.62) unstable; urgency=low
+
+  * [0352a85] postrm: On removal restore original resolv.conf if current
+    (dynamic) resolv.conf has no content. (Closes: #644956)
+    Thanks to Josep Lladonosa Capell.
+  * [7cdfa73] Move logic details from initscript to /sbin/resolvconf;
+    for this purpose add new options to /sbin/resolvconf:
+    --enable-updates, --disable-updates, --updates-are-enabled,
+    --create-runtime-directories.
+  * [7cdfa73] Eliminate "-i" option supplied to update scripts and
+    the code in /etc/resolvconf/update.d/libc that made use of this.
+
+ -- Thomas Hood <jdthood@gmail.com>  Thu, 24 Nov 2011 15:25:25 +0100
+
 resolvconf (1.61) unstable; urgency=low
 
   * [cbb5105] list-records: Add comment re: extglob; speed up final loop
