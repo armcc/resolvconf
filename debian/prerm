@@ -4,7 +4,7 @@ set -e
 
 case "$1" in
   remove)
-	/sbin/resolvconf --disable-updates || :
+	resolvconf --disable-updates || :
 	;;
   # deconfigure)
 	# This code path should not be used.

@@ -194,14 +194,14 @@ esac
 case "$1" in
   configure)
 	# Trigger self
-	dpkg-trigger --no-await resolvconf-enable-updates || /sbin/resolvconf --enable-updates
+	dpkg-trigger --no-await resolvconf-enable-updates || resolvconf --enable-updates
 	;;
   triggered)
 	# Runs after this and other packages have been configured
         for trggr in $2 ; do
 		case "$trggr" in
 		  resolvconf-enable-updates)
-			/sbin/resolvconf --enable-updates
+			resolvconf --enable-updates
 			break
 			;;
 		esac
@@ -210,7 +210,7 @@ case "$1" in
   abort-remove)
 	# We disable updates in the prerm on remove.
 	# So, enable them again
-	/sbin/resolvconf --enable-updates
+	resolvconf --enable-updates
 	;;
   # abort-upgrade)
 	# Don't do anything here since we don't do anything in the prerm on upgrade or on failed-upgrade
