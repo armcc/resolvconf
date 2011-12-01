@@ -18,6 +18,8 @@
 # terminal ifdowns shouldn't update resolv.conf;
 # however there is unfortunately no such thing as "X-Stop-Before".
 #
+# This file is not used in Ubuntu.
+#
 
 # Don't use set -e; check return status instead.
 
