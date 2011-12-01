@@ -13,7 +13,7 @@ report_err() { report "Error: $*" >&2 ; }
 report_warn() { report "Warning: $*" >&2 ; }
 report_info() { report "$*" >&2 ; }
 
-OLD_RUN_DIR=/lib/init/rw
+OLD_RUN_DIR=/var/run
 
 echo_first_arg() { echo "$1" ; }
 is_immutable_file() {
@@ -60,12 +60,10 @@ case "$1" in
 			# /etc/resolvconf/run points to the old-standard location
 			# and new-standard run directories are ready for use.
 			# Switch from the old to the new standard location.
-			F="$(echo "${OLD_RUN_DIR}/resolvconf/"*)"
-			if [ "$F" ] && [ "$F" != "${OLD_RUN_DIR}/resolvconf/*" ] ; then
-				if cp -a "${OLD_RUN_DIR}/resolvconf/"* /run/resolvconf ; then
-					report_info "Migrated resolvconf run-time data from ${OLD_RUN_DIR}/resolvconf to /run/resolvconf"
-				fi
-			fi
+			#
+			# No need to copy files because the old location, /var/run/resolvconf/,
+			# is via a symlink identical with the new location, /run/resolvconf/.
+			#
 			ln -nsf /run/resolvconf /etc/resolvconf/run
 		fi
 	elif [ -d /etc/resolvconf/run ] ; then
