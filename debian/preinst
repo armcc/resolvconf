@@ -7,6 +7,8 @@ report() { echo "${MYNAME}: $*" ; }
 report_err() { report "Error: $*" >&2 ; }
 report_info() { report "$*" >&2 ; }
 
+OLD_RUN_DIR=/lib/init/rw
+
 standard_run_tmpfs_is_available() {
 	[ -d /run ] \
 	&& [ -w /run ] \
@@ -19,16 +21,16 @@ standard_run_subdirs_created() {
 	&& { [ -d /run/resolvconf/interface ] || mkdir /run/resolvconf/interface ; }
 }
 
-standard_lib_init_rw_tmpfs_is_available() {
-	[ -d /lib/init/rw ] \
-	&& [ -w /lib/init/rw ] \
+standard_old_run_tmpfs_is_available() {
+	[ -d "$OLD_RUN_DIR" ] \
+	&& [ -w "$OLD_RUN_DIR" ] \
 	&& [ -r /proc/mounts ] \
-	&& grep -qs "^tmpfs[[:space:]]\+/lib/init/rw[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts
+	&& grep -qs "^tmpfs[[:space:]]\+${OLD_RUN_DIR}[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts
 }
 
-standard_lib_init_rw_subdirs_created() {
-	{ [ -d /lib/init/rw/resolvconf ] || mkdir /lib/init/rw/resolvconf ; } \
-	&& { [ -d /lib/init/rw/resolvconf/interface ] || mkdir /lib/init/rw/resolvconf/interface ; }
+standard_old_run_subdirs_created() {
+	{ [ -d "${OLD_RUN_DIR}/resolvconf" ] || mkdir "${OLD_RUN_DIR}/resolvconf" ; } \
+	&& { [ -d "${OLD_RUN_DIR}/resolvconf/interface" ] || mkdir "${OLD_RUN_DIR}/resolvconf/interface" ; }
 }
 
 is_installed() {
@@ -47,7 +49,7 @@ is_installed() {
 # postinst runs resolvconf to add its IP address.)
 #
 # The new standard location is /run;
-# the old standard location was /lib/init/rw.
+# the old standard location was /lib/init/rw on Debian, /var/run/ on Ubuntu.
 #
 case "$1" in
   install|upgrade)
@@ -71,17 +73,17 @@ case "$1" in
 		# It's a canonicalizable symlink
 		# If it's standard then try to migrate from old to new standard location.
 		if
-			[ "$RUN_CANONICALPATH" = "/lib/init/rw/resolvconf" ] \
+			[ "$RUN_CANONICALPATH" = "${OLD_RUN_DIR}/resolvconf" ] \
 			&& standard_run_tmpfs_is_available \
 			&& standard_run_subdirs_created
 		then
 			# /etc/resolvconf/run points to the old-standard location
 			# and new-standard run directories are ready for use.
 			# Switch from the old to the new standard location.
-			F="$(echo /lib/init/rw/resolvconf/*)"
-			if [ "$F" ] && [ "$F" != '/lib/init/rw/resolvconf/*' ] ; then
-				if cp -a /lib/init/rw/resolvconf/* /run/resolvconf ; then
-					report_info "Migrated resolvconf run-time data from /lib/init/rw/resolvconf to /run/resolvconf"
+			F="$(echo "${OLD_RUN_DIR}/resolvconf/"*)"
+			if [ "$F" ] && [ "$F" != "${OLD_RUN_DIR}/resolvconf/*" ] ; then
+				if cp -a "${OLD_RUN_DIR}/resolvconf/"* /run/resolvconf ; then
+					report_info "Migrated resolvconf run-time data from ${OLD_RUN_DIR}/resolvconf to /run/resolvconf"
 				fi
 			fi
 			ln -nsf /run/resolvconf /etc/resolvconf/run
@@ -113,8 +115,8 @@ case "$1" in
 		# otherwise directly under /etc/resolvconf.
 		if standard_run_tmpfs_is_available && standard_run_subdirs_created ; then
 			ln -s /run/resolvconf /etc/resolvconf/run
-		elif standard_lib_init_rw_tmpfs_is_available && standard_lib_init_rw_subdirs_created ; then
-			ln -s /lib/init/rw/resolvconf /etc/resolvconf/run
+		elif standard_old_run_tmpfs_is_available && standard_old_run_subdirs_created ; then
+			ln -s "${OLD_RUN_DIR}/resolvconf" /etc/resolvconf/run
 		else
 			[ -d /etc/resolvconf/run/interface ] || mkdir -p /etc/resolvconf/run/interface
 		fi

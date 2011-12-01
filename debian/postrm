@@ -8,6 +8,8 @@ MYNAME=resolvconf.postrm
 report() { echo "${MYNAME}: $*" ; }
 report_info() { report "$*" >&2 ; }
 
+OLD_RUN_DIR=/lib/init/rw
+
 is_installed() {
 	# Same function in preinst, postinst, postrm
 	[ "$1" ] || return 1
@@ -87,7 +89,7 @@ case "$1" in
 	rm -f /etc/resolvconf/update.d/bind  # Old conffile
 	rm -f /etc/default/resolvconf
 	rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
-	rm -rf /lib/init/rw/resolvconf || :
+	rm -rf "${OLD_RUN_DIR}/resolvconf" || :
 	rm -rf /run/resolvconf || :
 	;;
   # disappear|upgrade)

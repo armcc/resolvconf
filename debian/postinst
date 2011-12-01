@@ -13,6 +13,8 @@ report_err() { report "Error: $*" >&2 ; }
 report_warn() { report "Warning: $*" >&2 ; }
 report_info() { report "$*" >&2 ; }
 
+OLD_RUN_DIR=/lib/init/rw
+
 echo_first_arg() { echo "$1" ; }
 is_immutable_file() {
 	[ "$1" ] || return 2
@@ -52,16 +54,16 @@ case "$1" in
 		# If it's standard then try to migrate from old to new standard location.
 		# The initscripts package guarantees that the new standard location is available.
 		if
-			[ "$RUN_CANONICALPATH" = "/lib/init/rw/resolvconf" ] \
+			[ "$RUN_CANONICALPATH" = "${OLD_RUN_DIR}/resolvconf" ] \
 			&& standard_run_subdirs_created
 		then
 			# /etc/resolvconf/run points to the old-standard location
 			# and new-standard run directories are ready for use.
 			# Switch from the old to the new standard location.
-			F="$(echo /lib/init/rw/resolvconf/*)"
-			if [ "$F" ] && [ "$F" != '/lib/init/rw/resolvconf/*' ] ; then
-				if cp -a /lib/init/rw/resolvconf/* /run/resolvconf ; then
-					report_info "Migrated resolvconf run-time data from /lib/init/rw/resolvconf to /run/resolvconf"
+			F="$(echo "${OLD_RUN_DIR}/resolvconf/"*)"
+			if [ "$F" ] && [ "$F" != "${OLD_RUN_DIR}/resolvconf/*" ] ; then
+				if cp -a "${OLD_RUN_DIR}/resolvconf/"* /run/resolvconf ; then
+					report_info "Migrated resolvconf run-time data from ${OLD_RUN_DIR}/resolvconf to /run/resolvconf"
 				fi
 			fi
 			ln -nsf /run/resolvconf /etc/resolvconf/run
