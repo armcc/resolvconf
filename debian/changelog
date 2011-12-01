@@ -1,7 +1,8 @@
-resolvconf (1.63ubuntu1) UNRELEASED; urgency=low
+resolvconf (1.63ppa1~oneiric) oneiric; urgency=low
 
   [ Thomas Hood ]
-  * Foo the bar
+  * Carry forward old Ubuntu changes
+  * Add upstart configuration file
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 01 Dec 2011 14:00:01 +0100
 
