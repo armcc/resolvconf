@@ -1,0 +1,14 @@
+# upstart script for resolvconf
+
+start on starting udev
+
+stop on runlevel [06]
+
+pre-start script
+	resolvconf --create-runtime-directories
+	resolvconf --enable-updates
+end script
+
+pre-stop script
+	resolvconf --disable-updates
+end script
