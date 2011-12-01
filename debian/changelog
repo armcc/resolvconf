@@ -1,8 +1,14 @@
-resolvconf (1.63ppa1~oneiric) oneiric; urgency=low
+resolvconf (1.63ppa2~oneiric) oneiric; urgency=low
 
   [ Thomas Hood ]
-  * Carry forward old Ubuntu changes
-  * Add upstart configuration file
+  * Differences from Debian:
+    - bin/resolvconf:
+      + Fail if /etc/resolv.conf is not a symlink.
+    - debian/{pre,post}inst
+      + Migrate to /run from /var/run, not from /lib/init/rw.
+    - debian/rules:
+      + Install upstart script rather than initscript
+  * Thanks to Sander van Grieken for his assistance with this release.
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 01 Dec 2011 14:00:01 +0100
 

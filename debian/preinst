@@ -21,18 +21,6 @@ standard_run_subdirs_created() {
 	&& { [ -d /run/resolvconf/interface ] || mkdir /run/resolvconf/interface ; }
 }
 
-standard_old_run_tmpfs_is_available() {
-	[ -d "$OLD_RUN_DIR" ] \
-	&& [ -w "$OLD_RUN_DIR" ] \
-	&& [ -r /proc/mounts ] \
-	&& grep -qs "^tmpfs[[:space:]]\+${OLD_RUN_DIR}[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts
-}
-
-standard_old_run_subdirs_created() {
-	{ [ -d "${OLD_RUN_DIR}/resolvconf" ] || mkdir "${OLD_RUN_DIR}/resolvconf" ; } \
-	&& { [ -d "${OLD_RUN_DIR}/resolvconf/interface" ] || mkdir "${OLD_RUN_DIR}/resolvconf/interface" ; }
-}
-
 is_installed() {
 	# Same function in preinst, postinst, postrm
 	[ "$1" ] || return 1
@@ -113,8 +101,6 @@ case "$1" in
 		# otherwise directly under /etc/resolvconf.
 		if standard_run_tmpfs_is_available && standard_run_subdirs_created ; then
 			ln -s /run/resolvconf /etc/resolvconf/run
-		elif standard_old_run_tmpfs_is_available && standard_old_run_subdirs_created ; then
-			ln -s "${OLD_RUN_DIR}/resolvconf" /etc/resolvconf/run
 		else
 			[ -d /etc/resolvconf/run/interface ] || mkdir -p /etc/resolvconf/run/interface
 		fi
