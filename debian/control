@@ -1,7 +1,8 @@
 Source: resolvconf
 Section: net
 Priority: optional
-Maintainer: resolvconf maintainers <resolvconf-devel@lists.alioth.debian.org>
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: resolvconf maintainers <resolvconf-devel@lists.alioth.debian.org>
 Uploaders: Thomas Hood <jdthood@gmail.com>, Marco Nenciarini <mnencia@debian.org>
 Build-Depends: debhelper (>= 8)
 Homepage: http://alioth.debian.org/projects/resolvconf/
