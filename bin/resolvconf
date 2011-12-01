@@ -17,6 +17,8 @@ POSTPONED_UPDATE_FLAGFILE="${RUN_DIR}/postponed-update"
 
 report_err() { echo "${MYNAME}: Error: $*" >&2 ; }
 
+[ -L /etc/resolv.conf ] || { report_err "/etc/resolv.conf must be a symbolic link -- aborting" ; exit 1 ; }
+
 # Check arguments
 CMD="$1"
 case "$CMD" in
