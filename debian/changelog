@@ -1,4 +1,4 @@
-resolvconf (1.63) UNRELEASED; urgency=low
+resolvconf (1.63ubuntu1) UNRELEASED; urgency=low
 
   * [a83fce3] Depend on a later version of the initscripts package
   * [cfc8349] Use variable instead of hard-coded path for old run dir
@@ -253,6 +253,24 @@ resolvconf (1.49) experimental; urgency=low
 
  -- Marco Nenciarini <mnencia@debian.org>  Tue, 19 Apr 2011 22:30:30 +0200
 
+resolvconf (1.48ubuntu1) natty; urgency=low
+
+  * Merge from debian unstable. Remaining changes:
+    - bin/resolvconf:
+      + fail with non-zero exit code when /etc/resolv.conf is not a symlink.
+    - debian/postinst:
+      + use default /var/run.
+      + make sure all run files are sent to /var/run, not /lib/init/rw
+      + update regex to check that /var/run is a tmpfs (LP: #386822)
+      + fix typo in comments
+    - debian/rules:
+      + don't install the init script in runlevels 0 and 6.
+    - debian/postrm:
+      + remove /var/run/resolvconf, not /lib/init/rw/resolvconf
+      + also purge /var/run/resolvconf/interface
+
+ -- Bhavani Shankar <bhavi@ubuntu.com>  Thu, 13 Jan 2011 19:22:32 +0530
+
 resolvconf (1.48) unstable; urgency=low
 
   [ Thomas Hood ]
@@ -268,6 +286,24 @@ resolvconf (1.48) unstable; urgency=low
 
  -- Marco Nenciarini <mnencia@debian.org>  Wed, 12 Jan 2011 20:15:47 +0100
 
+resolvconf (1.47ubuntu1) natty; urgency=low
+
+  * Merge from debian unstable.  Remaining changes:
+    - bin/resolvconf:
+      + fail with non-zero exit code when /etc/resolv.conf is not a symlink.
+    - debian/postinst:
+      + use default /var/run.
+      + make sure all run files are sent to /var/run, not /lib/init/rw
+      + update regex to check that /var/run is a tmpfs (LP: #386822)
+      + fix typo in comments
+    - debian/rules:
+      + don't install the init script in runlevels 0 and 6.
+    - debian/postrm:
+      + remove /var/run/resolvconf, not /lib/init/rw/resolvconf
+      + also purge /var/run/resolvconf/interface
+
+ -- Bhavani Shankar <bhavi@ubuntu.com>  Sat, 04 Dec 2010 00:54:18 +0530
+
 resolvconf (1.47) unstable; urgency=low
 
   [ Thomas Hood ]
@@ -278,6 +314,24 @@ resolvconf (1.47) unstable; urgency=low
   * Bump Standards-Version to 3.9.1.0; no changes required
 
  -- Marco Nenciarini <mnencia@debian.org>  Wed, 01 Dec 2010 16:21:54 +0100
+
+resolvconf (1.46ubuntu1) maverick; urgency=low
+
+  * Merge from debian unstable (LP: #605116), remaining changes:
+    - bin/resolvconf:
+      + fail with non-zero exit code when /etc/resolv.conf is not a symlink.
+    - debian/postinst:
+      + use default /var/run.
+      + make sure all run files are sent to /var/run, not /lib/init/rw
+      + update regex to check that /var/run is a tmpfs (LP: #386822)
+      + fix typo in comments
+    - debian/rules:
+      + don't install the init script in runlevels 0 and 6.
+    - debian/postrm:
+      + remove /var/run/resolvconf, not /lib/init/rw/resolvconf
+      + also purge /var/run/resolvconf/interface
+
+ -- Lorenzo De Liso <blackz@ubuntu.com>  Tue, 13 Jul 2010 19:35:38 +0200
 
 resolvconf (1.46) unstable; urgency=low
 
@@ -309,6 +363,25 @@ resolvconf (1.46) unstable; urgency=low
 
  -- Marco Nenciarini <mnencia@debian.org>  Mon, 12 Jul 2010 12:41:37 +0200
 
+resolvconf (1.45ubuntu1) lucid; urgency=low
+
+  * Merge from debian unstable, remaining changes (LP: #495998):
+    - bin/resolvconf:
+      + fail with non-zero exit code when /etc/resolv.conf is not a symlink.
+    - debian/postinst:
+      + use default /var/run.
+    - debian/rules:
+      + don't install the init script in runlevels 0 and 6.
+  * debian/postinst:
+    - make sure all run files are sent to /var/run, not /lib/init/rw
+    - update regex to check that /var/run is a tmpfs (LP: #386822)
+    - fix typo in comments
+  * debian/postrm:
+    - remove /var/run/resolvconf, not /lib/init/rw/resolvconf
+    - also purge /var/run/resolvconf/interface
+
+ -- Mathieu Trudel <mathieu-tl@ubuntu.com>  Wed, 30 Dec 2009 16:17:58 -0500
+
 resolvconf (1.45) unstable; urgency=low
 
   [ Thomas Hood ]
@@ -318,6 +391,18 @@ resolvconf (1.45) unstable; urgency=low
   * Add eu.po (Closes: #534558)
 
  -- Marco Nenciarini <mnencia@debian.org>  Thu, 13 Aug 2009 20:01:51 +0200
+
+resolvconf (1.44ubuntu1) karmic; urgency=low
+
+  * Merge from debian unstable, remaining changes (LP: #384131):
+    - bin/resolvconf: 
+      + fail with non-zero exit code when /etc/resolv.conf is not a symlink.
+    - debian/postinst:
+      + use default /var/run.
+    - debian/rules:
+      + don't install the init script in runlevels 0 and 6.
+
+ -- Nick Ellery <nick.ellery@ubuntu.com>  Thu, 04 Jun 2009 16:38:43 -0700
 
 resolvconf (1.44) unstable; urgency=low
 
@@ -337,6 +422,18 @@ resolvconf (1.44) unstable; urgency=low
 
  -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 02 Jun 2009 18:02:23 -0400
 
+resolvconf (1.43ubuntu1) jaunty; urgency=low
+
+  * Merge from debian unstable, remaining changes (LP: #306092):
+    - bin/resolvconf: 
+      + fail with non-zero exit code when /etc/resolv.conf is not a symlink.
+    - debian/postinst:
+      + use default /var/run.
+    - debian/rules:
+      + don't install the init script in runlevels 0 and 6.
+
+ -- Nick Ellery <nick.ellery@ubuntu.com>  Sun, 07 Dec 2008 15:12:34 -0800
+
 resolvconf (1.43) unstable; urgency=low
 
   [ Thomas Hood ]
@@ -352,6 +449,27 @@ resolvconf (1.43) unstable; urgency=low
 
  -- Marco Nenciarini <mnencia@debian.org>  Sat, 06 Dec 2008 10:17:36 +0100
 
+resolvconf (1.42ubuntu2) intrepid; urgency=low
+
+  * bin/resolvconf: fail with non-zero exit code when /etc/resolv.conf is not
+    a symlink. This allows network-manager to recognize such an error and
+    fallback to default behaviour when resolvconf is installed, but is not
+    used.
+
+ -- Alexander Sack <asac@ubuntu.com>  Wed, 10 Sep 2008 10:08:56 +0200
+
+resolvconf (1.42ubuntu1) intrepid; urgency=low
+
+  * Merge from debian unstable, remaining changes:
+   + debian/postinst:
+    - use default /var/run.
+   + debian/rules: 
+    - don't install the init script in runlevels 0 and 6
+   + debian/control:
+    - Update Standards-Version.
+
+ -- Emanuele Gentili <emgent@ubuntu.com>  Wed, 20 Aug 2008 02:32:47 +0200
+
 resolvconf (1.42) unstable; urgency=high
 
   [ Thomas Hood ]
@@ -362,6 +480,14 @@ resolvconf (1.42) unstable; urgency=high
   * Swedish (Closes: #491780)
 
  -- Thomas Hood <jdthood@yahoo.co.uk>  Sun, 03 Aug 2008 21:27:56 +0200
+
+resolvconf (1.41ubuntu1) intrepid; urgency=low
+
+  * Merge from Debian unstable. Remaining Ubuntu changes: (LP: #241328)
+   + debian/postinst: use default /var/run.
+   + Update maintainer field in debian/control.
+
+ -- Emanuele Gentili <emgent@ubuntu.com>  Thu, 19 Jun 2008 16:26:51 +0200
 
 resolvconf (1.41) unstable; urgency=low
 
@@ -384,6 +510,14 @@ resolvconf (1.41) unstable; urgency=low
   * debian/control: added Dm-Upload-Allowed: yes
 
  -- Daniel Kahn Gillmor <dkg-debian.org@fifthhorseman.net>  Tue, 17 Jun 2008 16:51:15 -0400
+
+resolvconf (1.40ubuntu1) intrepid; urgency=low
+
+  * Merge from debian unstable, Ubuntu remaining changes (LP: #226679):
+   + debian/postinst: use default /var/run.
+   + Update maintainer field in debian/control. 
+
+ -- Emanuele Gentili <emgent@emanuele-gentili.com>  Mon, 05 May 2008 00:23:04 +0200
 
 resolvconf (1.40) unstable; urgency=low
 
@@ -439,6 +573,14 @@ resolvconf (1.39) unstable; urgency=low
 
  -- Marco Nenciarini <mnencia@debian.org>  Thu, 13 Mar 2008 12:48:18 +0100
 
+resolvconf (1.38ubuntu1) hardy; urgency=low
+
+  * Merge from debian unstable, remaining changes (LP: #182433):
+    - use /var/run instead of /dev/shm
+    - debian/rules: don't install the init script in runlevels 0 and 6
+
+ -- Emanuele Gentili <emgent@emanuele-gentili.com>  Sun, 13 Jan 2008 01:36:43 +0100
+
 resolvconf (1.38) unstable; urgency=low
 
   [ Thomas Hood ]
@@ -457,6 +599,14 @@ resolvconf (1.38) unstable; urgency=low
 
  -- Thomas Hood <jdthood@yahoo.co.uk>  Tue, 31 Dec 2007 12:00:00 +0100
 
+resolvconf (1.37ubuntu1) feisty; urgency=low
+
+  * Merge from debian unstable, remaining changes:
+    - use /var/run instead of /dev/shm
+    - debian/rules: don't install the init script in runlevels 0 and 6
+
+ -- Michael Bienia <geser@ubuntu.com>  Tue, 19 Dec 2006 14:19:02 +0100
+
 resolvconf (1.37) unstable; urgency=high
 
   [ Thomas Hood ]
@@ -470,6 +620,20 @@ resolvconf (1.37) unstable; urgency=high
   * Urgency set to high due to RC bug fix.
 
  -- Marco Nenciarini <mnencia@debian.org>  Wed, 13 Dec 2006 15:13:02 +0100
+
+resolvconf (1.36ubuntu1) edgy; urgency=low
+
+  [ William Alexander Grant ]
+  * Readded patch to use /var/run rather than /dev/shm (it was lost in a sync
+    a while back)
+  (Closes Ubuntu: #61310).
+
+  [ Daniel T. Chen ]
+  * debian/rules: Follow multiuser semantics for dh_installinit(1) --
+    that is, we don't need to save anything for runlevels 0 or 6, so
+    don't create those symlinks.
+
+ -- Daniel T Chen <crimsun@ubuntu.com>  Wed, 20 Sep 2006 03:12:20 -0400
 
 resolvconf (1.36) unstable; urgency=low
 
@@ -1274,3 +1438,4 @@ resolvconf (0.38) experimental; urgency=low
   * Initial Debian release. Closes: #204677
 
  -- Thomas Hood <jdthood@yahoo.co.uk>  Wed, 27 Aug 2003 17:53:54 -0100
+
