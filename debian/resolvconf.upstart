@@ -1,5 +1,7 @@
 # upstart script for resolvconf
 
+description "Initialize or finalize resolvconf"
+
 start on starting udev
 
 stop on runlevel [06]
