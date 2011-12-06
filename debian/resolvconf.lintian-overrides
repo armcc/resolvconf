@@ -1,9 +1,6 @@
 # We really only want the stop method to run in runlevels 0 and 6
 resolvconf binary: init.d-script-possible-missing-stop
 
-# What are called aren't initscripts
-resolvconf binary: script-calls-init-script-directly
-
 # The use of debconf has been carefully considered
 resolvconf binary: possible-debconf-note-abuse
 
