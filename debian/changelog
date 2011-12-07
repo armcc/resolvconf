@@ -17,8 +17,9 @@ resolvconf (1.63) UNRELEASED; urgency=low
   * [a83fce3] Depend on a later version of the initscripts package
   * [cfc8349] Use variable instead of hard-coded path for old run dir
     in maintainer scripts, to help shrink the Ubuntu diff.
+  * [9921902] Update and improve resolvconf(8)
 
- -- Thomas Hood <jdthood@gmail.com>  Thu, 01 Dec 2011 14:00:00 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Wed, 07 Dec 2011 14:31:08 +0100
 
 resolvconf (1.62) unstable; urgency=low
 
