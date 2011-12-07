@@ -1,4 +1,4 @@
-resolvconf (1.63ppa4~oneiric) oneiric; urgency=low
+resolvconf (1.63ppa5~oneiric) oneiric; urgency=low
 
   [ Thomas Hood ]
   * Debian fixed bugs (LP: #797339, #871058, #471975, #378844, #894417)
