@@ -9,7 +9,7 @@ resolvconf (1.63ppa6~oneiric) oneiric; urgency=low
       + Install upstart script rather than initscript (LP: #366967, #750423)
   * Thanks to Sander van Grieken for his assistance with this release.
 
- -- Thomas Hood <jdthood@gmail.com>  Thu, 01 Dec 2011 14:00:01 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Thu, 12 Dec 2011 22:00:00 +0100
 
 resolvconf (1.63) UNRELEASED; urgency=low
 
