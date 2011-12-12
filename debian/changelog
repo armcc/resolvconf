@@ -5,8 +5,9 @@ resolvconf (1.63) UNRELEASED; urgency=low
   * [cfc8349] Use variable instead of hard-coded path for old run dir
     in maintainer scripts, to help shrink the Ubuntu diff.
   * [9921902] Update and improve resolvconf(8)
+  * [719dc9b] Run update on boot (Closes: #651827)
 
- -- Thomas Hood <jdthood@gmail.com>  Wed, 07 Dec 2011 14:31:08 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Mon, 12 Dec 2011 21:56:51 +0100
 
 resolvconf (1.62) unstable; urgency=low
 
