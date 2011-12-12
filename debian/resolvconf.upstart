@@ -8,6 +8,9 @@ stop on runlevel [06]
 
 pre-start script
 	resolvconf --create-runtime-directories
+	# Request a postponed update (needed in case the base file has content).
+	resolvconf -u
+	# Enable updates and perform the postponed update.
 	resolvconf --enable-updates
 end script
 
