@@ -6,8 +6,9 @@ resolvconf (1.63) UNRELEASED; urgency=low
     in maintainer scripts, to help shrink the Ubuntu diff.
   * [9921902] Update and improve resolvconf(8)
   * [719dc9b] Run update on boot (Closes: #651801, #651827)
+  * [5fc985c] Don't trigger on reconfigure (Closes: #651803)
 
- -- Thomas Hood <jdthood@gmail.com>  Mon, 12 Dec 2011 21:56:51 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Wed, 14 Dec 2011 12:07:09 +0100
 
 resolvconf (1.62) unstable; urgency=low
 
