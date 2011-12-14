@@ -192,9 +192,16 @@ esac
 ### (Trigger self to) enable updates ###
 
 case "$1" in
+  reconfigure)
+		resolvconf --enable-updates
+	;;
   configure)
-	# Trigger self
-	dpkg-trigger --no-await resolvconf-enable-updates || resolvconf --enable-updates
+	if [ "$DEBCONF_RECONFIGURE" = 1 ] ; then
+		resolvconf --enable-updates
+	else
+		# Trigger self to enable updates later
+		dpkg-trigger --no-await resolvconf-enable-updates || resolvconf --enable-updates
+	fi
 	;;
   triggered)
 	# Runs after this and other packages have been configured
