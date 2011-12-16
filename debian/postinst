@@ -29,9 +29,9 @@ standard_run_subdirs_created() {
 	&& { [ -d /run/resolvconf/interface ] || mkdir /run/resolvconf/interface ; }
 }
 
-# We use dh_installinit with --no-start
-#DEBHELPER#
-
+### Clean out old sysv init script and symlinks ###
+[ ! -f /etc/init.d/resolvconf ] || mv -f /etc/init.d/resolvconf /etc/init.d/resolvconf.dpkg-old
+update-rc.d resolvconf remove >/dev/null || :
 
 ### Symlink ###
 
