@@ -1,12 +1,15 @@
-resolvconf (1.63ppa7) oneiric; urgency=low
+resolvconf (1.63ppa8) oneiric; urgency=low
 
   [ Thomas Hood ]
   * Debian fixed bugs (LP: #797339, #871058, #471975, #378844, #894417)
   * Differences from Debian:
-    - debian/{pre,post}inst
-      + Migrate (to /run) from /var/run, not from /lib/init/rw.
+    - /sbin/resolvconf:
+      + Exit if /etc/resolv.conf is not a symlink
     - debian/rules:
       + Install upstart script rather than initscript (LP: #366967, #750423)
+    - debian/{pre,post}inst
+      + Migrate (to /run) from /var/run, not from /lib/init/rw.
+      + [0706f28] Remove old Sys V init scripts and symlinks
   * Thanks to Sander van Grieken for his assistance with this release.
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 12 Dec 2011 22:00:00 +0100
