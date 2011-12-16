@@ -5,7 +5,7 @@
 
 set -e
 
-echo_usage() { echo "Usage: resolvconf (-d IFACE|-a IFACE|-u|--enable-updates|--disable-updates|--updates-are-enabled|--create-runtime-directories)" ; }
+echo_usage() { echo "Usage: resolvconf (-d IFACE|-a IFACE|-u|--enable-updates|--disable-updates|--updates-are-enabled|--create-runtime-directories|--wipe-runtime-directories)" ; }
 
 PATH=/sbin:/bin
 MYNAME="${0##*/}"
@@ -40,7 +40,7 @@ case "$CMD" in
 	  ~*) report_iface_err "Initial tilde" ; exit 1 ;;
 	esac
 	;;
-  -u|--enable-updates|--disable-updates|--updates-are-enabled|--create-runtime-directories)
+  -u|--enable-updates|--disable-updates|--updates-are-enabled|--create-runtime-directories|--wipe-runtime-directories)
   	if [ "$2" ] ; then
 		report_err "The $CMD option does not take an argument"
 		echo_usage >&2
@@ -54,7 +54,7 @@ case "$CMD" in
 	;;
 esac
 
-# Handle creation of run-time directories
+# Handle creation and wiping of run-time directories
 case "$CMD" in
   --create-runtime-directories)
 	umask 022
@@ -70,6 +70,12 @@ case "$CMD" in
 		mkdir "${RUN_DIR}/interface" || { report_err "Error creating directory ${RUN_DIR}/interface" ; exit 1 ; }
 	fi
 	# The interface directory now exists.  We are done.
+	exit 0
+	;;
+  --wipe-runtime-directories)
+	# Delete everything in the main run directory (target) but not the directory itself
+	[ -d "$RUN_DIR" ] || exit 0
+	rm -rf "$RUN_DIR"/*
 	exit 0
 	;;
 esac

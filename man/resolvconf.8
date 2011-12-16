@@ -13,7 +13,7 @@ cat \fIFILE\fR |
 \fB\-u\fR
 .PP
 .B resolvconf
-\fB\-\-enable\-updates\fR|\fB\-\-disable\-updates\fR|\fB\-\-updates\-are\-enabled\fR|\fB\-\-create\-runtime\-directories\fR
+\fB\-\-enable\-updates\fR|\fB\-\-disable\-updates\fR|\fB\-\-updates\-are\-enabled\fR|\fB\-\-create\-runtime\-directories\fR|\fB\-\-wipe\-runtime\-directories\fR
 .SH DESCRIPTION
 Overwrite (\fB\-a\fR) or delete (\fB\-d\fR) the nameserver information
 record \fIIFACE.PROG\fR.
@@ -228,6 +228,10 @@ otherwise return 1.
 .TP
 \fB\-\-create\-runtime\-directories\fR
 Create the directories where resolver information records
+and other run-time files are stored.
+.TP
+\fB\-\-wipe\-runtime\-directories\fR
+Delete everything in the directories where resolver information records
 and other run-time files are stored.
 .SH ENVIRONMENT VARIABLES
 The following variables can be set in the default-override file
