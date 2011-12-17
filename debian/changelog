@@ -1,4 +1,4 @@
-resolvconf (1.63) UNRELEASED; urgency=low
+resolvconf (1.63) unstable; urgency=low
 
   [ Thomas Hood ]
   * [a83fce3] Depend on a later version of the initscripts package
@@ -8,7 +8,7 @@ resolvconf (1.63) UNRELEASED; urgency=low
   * [719dc9b] Run update on boot (Closes: #651801, #651827)
   * [5fc985c] Don't trigger on reconfigure (Closes: #651803)
 
- -- Thomas Hood <jdthood@gmail.com>  Wed, 14 Dec 2011 12:07:09 +0100
+ -- Marco Nenciarini <mnencia@debian.org>  Sat, 17 Dec 2011 23:25:04 +0100
 
 resolvconf (1.62) unstable; urgency=low
 
