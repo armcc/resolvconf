@@ -71,8 +71,9 @@ case "$CMD" in
 	exit 0
 	;;
   --wipe-runtime-directories)
-	# Delete everything in the main run directory (target) but not the directory itself
+	# Delete files in the resolvconf run directory (target) but not the directory itself
 	[ -d "$RUN_DIR" ] || exit 0
+	rm -f "$RUN_DIR"/resolv.conf
 	rm -f "$ENABLE_UPDATES_FLAGFILE"
 	rm -f "$POSTPONED_UPDATE_FLAGFILE"
 	rm -rf "$IFACE_DIR"
