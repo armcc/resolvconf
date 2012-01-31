@@ -73,7 +73,9 @@ case "$CMD" in
   --wipe-runtime-directories)
 	# Delete everything in the main run directory (target) but not the directory itself
 	[ -d "$RUN_DIR" ] || exit 0
-	rm -rf "$RUN_DIR"/*
+	rm -f "$ENABLE_UPDATES_FLAGFILE"
+	rm -f "$POSTPONED_UPDATE_FLAGFILE"
+	rm -rf "$IFACE_DIR"
 	exit 0
 	;;
 esac
