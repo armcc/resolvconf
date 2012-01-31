@@ -1,3 +1,10 @@
+resolvconf (1.64) unstable; urgency=low
+
+  [ Thomas Hood ]
+  * [da2bfa4] Wipe more selectively (Closes: #657259)
+
+ -- Thomas Hood <jdthood@gmail.com>  Tue, 31 Jan 2012 09:00:00 +0100
+
 resolvconf (1.63) unstable; urgency=low
 
   [ Thomas Hood ]
