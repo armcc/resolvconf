@@ -118,9 +118,9 @@ case "$CMD" in
 	fi
 	;;
   --enable-updates)
-	: >| "$ENABLE_UPDATES_FLAGFILE"
+	: >| "$ENABLE_UPDATES_FLAGFILE" || exit 1
 	if [ -e "$POSTPONED_UPDATE_FLAGFILE" ] ; then
-		update_and_exit -u
+		(update_and_exit -u) || :
 	fi
 	exit 0
 	;;
