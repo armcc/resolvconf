@@ -2,8 +2,11 @@ resolvconf (1.64) unstable; urgency=low
 
   [ Thomas Hood ]
   * [da2bfa4] Wipe more selectively (Closes: #657259)
+  * [e5fbaef] Ubuntu backport: on enable-updates, exit with nonzero
+    status if and only if updates could not be enabled (i.e., ignore
+    update script errors).
 
- -- Thomas Hood <jdthood@gmail.com>  Tue, 31 Jan 2012 09:00:00 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Wed, 22 Feb 2012 11:33:22 +0100
 
 resolvconf (1.63) unstable; urgency=low
 
