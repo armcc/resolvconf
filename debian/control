@@ -8,7 +8,7 @@ Homepage: http://alioth.debian.org/projects/resolvconf/
 Vcs-Git: git://git.debian.org/git/resolvconf/resolvconf.git
 Vcs-Browser: http://git.debian.org/?p=resolvconf/resolvconf.git
 DM-Upload-Allowed: yes
-Standards-Version: 3.9.2.0
+Standards-Version: 3.9.3
 
 Package: resolvconf
 Architecture: all
