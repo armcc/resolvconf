@@ -5,8 +5,9 @@ resolvconf (1.64) unstable; urgency=low
   * [e5fbaef] Ubuntu backport: on enable-updates, exit with nonzero
     status if and only if updates could not be enabled (i.e., ignore
     update script errors).
+  * [e1cb96e] Bump Standards-Version
 
- -- Thomas Hood <jdthood@gmail.com>  Wed, 22 Feb 2012 11:33:22 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Thu, 23 Feb 2012 10:00:33 +0100
 
 resolvconf (1.63) unstable; urgency=low
 
