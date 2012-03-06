@@ -1,10 +1,10 @@
-resolvconf (1.65~1) UNRELEASED; urgency=low
+resolvconf (1.65) unstable; urgency=low
 
   [ Thomas Hood ]
-  * [3f0a1a1] Also create /etc/resolvconf/run and its target and subdir
-    in the postinst (Closes: #662724)
+  * [3f0a1a1] Create /etc/resolvconf/run and its target and subdir
+    in the postinst as well as in the preinst (Closes: #662724)
 
- -- Thomas Hood <jdthood@gmail.com>  Tue, 06 Mar 2012 13:53:55 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Tue, 06 Mar 2012 15:00:00 +0100
 
 resolvconf (1.64) unstable; urgency=low
 
