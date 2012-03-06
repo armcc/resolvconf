@@ -89,6 +89,7 @@ case "$1" in
 	rm -f /etc/resolvconf/update.d/bind  # Old conffile
 	rm -f /etc/default/resolvconf
 	rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
+	rm -f /etc/init.d/resolvconf.dpkg-old
 	rm -rf "${OLD_RUN_DIR}/resolvconf" || :
 	rm -rf /run/resolvconf || :
 	;;
