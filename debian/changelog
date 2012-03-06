@@ -4,7 +4,7 @@ resolvconf (1.65) unstable; urgency=low
   * [3f0a1a1] Create /etc/resolvconf/run and its target and subdir
     in the postinst as well as in the preinst (Closes: #662724)
   * [25711bf] ifupdown hook scripts: Don't return error to ifupdown
-    (Closes: #661591)
+    (Addresses #661591 so far as resolvconf is concerned)
 
  -- Thomas Hood <jdthood@gmail.com>  Tue, 06 Mar 2012 15:25:25 +0100
 
