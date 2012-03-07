@@ -40,8 +40,14 @@ standard_run_subdirs_created() {
 #DEBHELPER#
 
 
-### Symlink ###
-
+### Create run-time directories and linkify ###
+#
+# We create the run-time directories here, in the postinst, even though
+# we also do so in the preinst, because
+# * the system may have rebooted since the preinst ran, causing
+#   everything on tmpfses to disappear;
+# * multistrap doesn't run the preinst at all.
+#
 case "$1" in
   configure)
 	if [ -L /etc/resolvconf/run ] ; then
@@ -101,16 +107,11 @@ case "$1" in
 		rm -f /etc/resolvconf/run
 	fi
 
-	# N.B.: Don't make assumptions here about what the preinst did, because:
-	# * the system may have rebooted since the preinst ran,
-	#   causing everything on tmpfses to disappear;
-	# * multistrap doesn't run the preinst at all.
-
 	# OK, now /etc/resolvconf/run is either:
 	# * nonexistent, or
 	# * a dangling but canonicalizable symlink, or
 	# * a symlink to a directory, or
-	# * a directory
+	# * a directory.
 
 	# Create subdirectory
 	if [ -d /etc/resolvconf/run ] ; then
@@ -120,13 +121,13 @@ case "$1" in
 		# It's a dangling but canonicalizable symlink
 		mkdir "$RUN_CANONICALPATH" "${RUN_CANONICALPATH}/interface"
 	else
-		# It's nonexistent
-		# Make directory in the standard location if possible,
-		# otherwise directly under /etc/resolvconf.
+		# It's nonexistent.
+		# Make directory in the standard location
 		if standard_run_tmpfs_is_available && standard_run_subdirs_created ; then
 			ln -s /run/resolvconf /etc/resolvconf/run
 		else
-			[ -d /etc/resolvconf/run/interface ] || mkdir -p /etc/resolvconf/run/interface
+			report_err "Could not create run-time directories; aborting"
+			exit 1
 		fi
 	fi
 
@@ -144,7 +145,7 @@ case "$1" in
 	db_get resolvconf/linkify-resolvconf
 	if [ "$RET" = "true" ] ; then
 		if is_immutable_file /etc/resolv.conf ; then
-			report_err "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable. To correct this problem, gain root privileges in a terminal and run 'chattr -i /etc/resolv.conf' and then 'dpkg --configure resolvconf'. Aborting."
+			report_err "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable; to correct this problem, gain root privileges in a terminal and run 'chattr -i /etc/resolv.conf' and then 'dpkg --configure resolvconf'; aborting"
 			exit 1
 		else
 			if

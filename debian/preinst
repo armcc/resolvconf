@@ -4,7 +4,7 @@ set -e
 
 MYNAME=resolvconf.preinst
 report() { echo "${MYNAME}: $*" ; }
-report_err() { report "Error: $*" >&2 ; }
+report_warn() { report "Warning: $*" >&2 ; }
 report_info() { report "$*" >&2 ; }
 
 OLD_RUN_DIR=/lib/init/rw
@@ -43,13 +43,10 @@ is_installed() {
 ### Create run-time directories ###
 #
 # We create the run-time directories here, in the preinst, so that even if
-# resolvconf is run before the postinst runs then there is nevertheless a
-# place for resolvconf to store data.  (The latter can occur if resolvconf
+# resolvconf is run before the postinst runs there is nevertheless a place
+# for resolvconf to store data.  The latter can occur if resolvconf
 # is installed simultaneously with a caching nameserver package whose
-# postinst runs resolvconf to add its IP address.)
-#
-# The new standard location is /run;
-# the old standard location was /lib/init/rw on Debian, /var/run/ on Ubuntu.
+# postinst runs resolvconf to add its IP address.
 #
 case "$1" in
   install|upgrade)
@@ -57,12 +54,11 @@ case "$1" in
 	mkdir -p /etc/resolvconf
 
 	if [ -L /etc/resolvconf/run ] ; then
-		# We are upgrading.
 		# Make sure that the symlink is canonicalizable.
 		RUN_CANONICALPATH="$(readlink -f /etc/resolvconf/run || :)"
 		if [ -z "$RUN_CANONICALPATH" ] ; then
 			# It's not canonicalizable
-			report_err "Deleting old symlink /etc/resolvconf/run, the canonical path of whose target could not be determined"
+			report_warn "Deleting old symlink /etc/resolvconf/run, the canonical path of whose target could not be determined"
 			rm -f /etc/resolvconf/run
 		fi
 	fi
@@ -72,6 +68,7 @@ case "$1" in
 	if [ -L /etc/resolvconf/run ] ; then
 		# It's a canonicalizable symlink
 		# If it's standard then try to migrate from old to new standard location.
+		# Note that the new standard location may not yet be available.
 		if
 			[ "$RUN_CANONICALPATH" = "${OLD_RUN_DIR}/resolvconf" ] \
 			&& standard_run_tmpfs_is_available \
@@ -100,7 +97,7 @@ case "$1" in
 	# * nonexistent, or
 	# * a dangling but canonicalizable symlink, or
 	# * a symlink to a directory, or
-	# * a directory
+	# * a directory.
 
 	# Create subdirectory
 	if [ -d /etc/resolvconf/run ] ; then
@@ -110,9 +107,9 @@ case "$1" in
 		# It's a dangling but canonicalizable symlink
 		mkdir "$RUN_CANONICALPATH" "${RUN_CANONICALPATH}/interface"
 	else
-		# It's nonexistent
+		# It's nonexistent.
 		# Make directories at one of the standard locations if possible,
-		# otherwise directly under /etc/resolvconf.
+		# otherwise directly under /etc/resolvconf
 		if standard_run_tmpfs_is_available && standard_run_subdirs_created ; then
 			ln -s /run/resolvconf /etc/resolvconf/run
 		elif standard_old_run_tmpfs_is_available && standard_old_run_subdirs_created ; then
