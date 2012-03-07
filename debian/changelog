@@ -3,10 +3,10 @@ resolvconf (1.65) unstable; urgency=low
   [ Thomas Hood ]
   * [3f0a1a1] Create /etc/resolvconf/run and its target and subdir
     in the postinst as well as in the preinst (Closes: #662724)
-  * [25711bf] ifupdown hook scripts: Don't return error to ifupdown
-    (Addresses #661591 so far as resolvconf is concerned)
   * [ae16ea8] In postinst, as last resort, create /run/resolvconf/
      even if /run isn't a tmpfs.
+  * [25711bf] ifupdown hook scripts: Don't return error to ifupdown
+    (Addresses #661591 so far as resolvconf is concerned)
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 07 Mar 2012 11:00:00 +0100
 
