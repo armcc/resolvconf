@@ -24,16 +24,8 @@ is_immutable_file() {
 	echo_first_arg $(lsattr "$1") | grep -sq i
 }
 
-standard_run_tmpfs_is_available() {
-	[ -d /run ] \
-	&& [ -w /run ] \
-	&& [ -r /proc/mounts ] \
-	&& grep -qs "^tmpfs[[:space:]]\+/run[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts
-}
-
 standard_run_subdirs_created() {
-	{ [ -d /run/resolvconf ] || mkdir /run/resolvconf ; } \
-	&& { [ -d /run/resolvconf/interface ] || mkdir /run/resolvconf/interface ; }
+	[ -d /run/resolvconf/interface ] || mkdir -p /run/resolvconf/interface
 }
 
 # We use dh_installinit with --no-start
@@ -103,7 +95,7 @@ case "$1" in
 
 	# Delete /etc/resolvconf/run if it is neither a directory nor a link to one
 	if [ -e /etc/resolvconf/run ] && [ ! -d /etc/resolvconf/run ] ; then
-		report_info "Deleting /etc/resolvconf/run which isn't a directory"
+		report_warn "Deleting /etc/resolvconf/run which isn't a directory"
 		rm -f /etc/resolvconf/run
 	fi
 
@@ -122,8 +114,8 @@ case "$1" in
 		mkdir "$RUN_CANONICALPATH" "${RUN_CANONICALPATH}/interface"
 	else
 		# It's nonexistent.
-		# Make directory in the standard location
-		if standard_run_tmpfs_is_available && standard_run_subdirs_created ; then
+		# Make directory in the standard location and link to it
+		if standard_run_subdirs_created ; then
 			ln -s /run/resolvconf /etc/resolvconf/run
 		else
 			report_err "Could not create run-time directories; aborting"

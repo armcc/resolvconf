@@ -89,7 +89,7 @@ case "$1" in
 
 	# Delete /etc/resolvconf/run if it is neither a directory nor a link to one
 	if [ -e /etc/resolvconf/run ] && [ ! -d /etc/resolvconf/run ] ; then
-		report_info "Deleting /etc/resolvconf/run which isn't a directory"
+		report_warn "Deleting /etc/resolvconf/run which isn't a directory"
 		rm -f /etc/resolvconf/run
 	fi
 
@@ -108,8 +108,8 @@ case "$1" in
 		mkdir "$RUN_CANONICALPATH" "${RUN_CANONICALPATH}/interface"
 	else
 		# It's nonexistent.
-		# Make directories at one of the standard locations if possible,
-		# otherwise directly under /etc/resolvconf
+		# Make directory at one of the standard locations if possible,
+		# otherwise directly under /etc/resolvconf, and link to it
 		if standard_run_tmpfs_is_available && standard_run_subdirs_created ; then
 			ln -s /run/resolvconf /etc/resolvconf/run
 		elif standard_old_run_tmpfs_is_available && standard_old_run_subdirs_created ; then
