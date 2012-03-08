@@ -7,8 +7,9 @@ resolvconf (1.65) unstable; urgency=low
      even if /run isn't a tmpfs.
   * [25711bf] ifupdown hook scripts: Don't return error to ifupdown
     (Addresses #661591 so far as resolvconf is concerned)
+  * [a998de3] Update default interface order patterns in list-records
 
- -- Thomas Hood <jdthood@gmail.com>  Wed, 07 Mar 2012 11:00:00 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Thu, 08 Mar 2012 10:16:52 +0100
 
 resolvconf (1.64) unstable; urgency=low
 
