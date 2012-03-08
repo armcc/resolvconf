@@ -3,7 +3,7 @@
 #
 # list-records
 #
-# Print, one per line, names of files in the current directory
+# Print, one per line, names of non-empty files in the current directory
 # that match the shell glob patterns in /etc/resolvconf/interface-order
 
 set -e
@@ -24,7 +24,7 @@ uniquify()
 }
 
 ### Compile ordered list of resolv.conf-type files ###
-PATTERNS="lo.inet* lo.dnsmasq lo.pdnsd lo.!(pdns|pdns-recursor) lo tun* tap* hso* eth* ath* wlan* ppp* *"
+PATTERNS="lo.inet* lo.dnsmasq lo.pdnsd lo.!(pdns|pdns-recursor) lo tun* tap* hso* em+([0-9])_+([0-9]) p+([0-9])p+([0-9])_+([0-9]) eth* ath* wlan* ppp* *"
 if [ -r /etc/resolvconf/interface-order ] ; then
 	PATTERNS="$(sed -e '
 		s/^[[:space:]]\+//
