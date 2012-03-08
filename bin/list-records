@@ -24,7 +24,7 @@ uniquify()
 }
 
 ### Compile ordered list of resolv.conf-type files ###
-PATTERNS="lo.inet* lo.dnsmasq lo.pdnsd lo.!(pdns|pdns-recursor) lo tun* tap* hso* em+([0-9])_+([0-9]).* p+([0-9])p+([0-9])_+([0-9]).* eth* ath* wlan* ppp* *"
+PATTERNS="lo.inet* lo.dnsmasq lo.pdnsd lo.!(pdns|pdns-recursor) lo tun* tap* hso* em+([0-9])?(_+([0-9]))* p+([0-9])p+([0-9])?(_+([0-9]))* eth* ath* wlan* ppp* *"
 if [ -r /etc/resolvconf/interface-order ] ; then
 	PATTERNS="$(sed -e '
 		s/^[[:space:]]\+//
