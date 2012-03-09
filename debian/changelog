@@ -7,9 +7,9 @@ resolvconf (1.65) unstable; urgency=low
      even if /run isn't a tmpfs.
   * [25711bf] ifupdown hook scripts: Don't return error to ifupdown
     (Addresses #661591 so far as resolvconf is concerned)
-  * [a998de3] Update default interface order patterns in list-records
-  * [8da29c3] Document that list-records doesn't list empty records
+  * [8da29c3] Document that list-records doesn't list empty records.
     Add patterns for biosdevnames (See LP#949473)
+  * [a998de3] Update default interface order patterns in list-records
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 08 Mar 2012 10:45:15 +0100
 
