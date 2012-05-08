@@ -15,13 +15,13 @@ report_info() { report "$*" >&2 ; }
 
 OLD_RUN_DIR=/lib/init/rw
 
-echo_first_arg() { echo "$1" ; }
 is_immutable_file() {
 	[ "$1" ] || return 2
 	[ -e "$1" ] || return 1
 	[ ! -L "$1" ] || return 1
-	which lsattr >/dev/null 2>&1 || return 2
-	echo_first_arg $(lsattr "$1") | grep -sq i
+	local ATTR="$(lsattr "$1" 2>/dev/null || :)"
+	[ "$ATTR" ] || return 1
+	echo "$ATTR" | awk '$1 ~ /i/ { exit 0; }; { exit 1; }'
 }
 
 standard_run_subdirs_created() {
