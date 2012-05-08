@@ -18,6 +18,10 @@ TODO
   * (DHCP clients:) isc-dhcp-client, dhcpcd, pump, udhcpc
     + Probably easiest and best to trigger DHCP lease renewals.
 
+awk
+---
+We mustn't use awk in any runtime code but we may use it in the
+maintainer scripts where convenient.
 
 piuparts
 --------
