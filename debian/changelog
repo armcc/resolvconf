@@ -1,9 +1,12 @@
 resolvconf (1.66~2) unstable; urgency=low
 
   [ Thomas Hood ]
-  * Silence lsattr error message in postinst
+  * [ed8ab34] Silence lsattr error message in postinst
+  * [23217c3] resolvconf(8): List allowed dns-* interfaces(5) options
+  * [b69c873] Describe more verbosely how the libc update script
+    generates the dynamic resolv.conf file
 
- -- Thomas Hood <jdthood@gmail.com>  Tue, 08 May 2012 21:36:14 +0200
+ -- Thomas Hood <jdthood@turgutlu>  Wed, 16 May 2012 14:24:18 +0200
 
 resolvconf (1.65) unstable; urgency=low
 
