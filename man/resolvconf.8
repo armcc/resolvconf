@@ -72,7 +72,8 @@ To make
 .B ifup
 push nameserver information to
 .B resolvconf
-when it configures an interface, add
+when it configures an interface
+the administrator must add
 .B dns\-
 lines to the relevant
 .B iface
@@ -98,7 +99,7 @@ and note the `s' at the end of the option name.
 option
 .BR nameserver .)
 
-To add a search domain, add a line beginning with
+To add a search domain name, add a line beginning with
 .BR dns\-search .
 .PP
 .EX
@@ -119,9 +120,7 @@ The resulting stanza might look like the following example.
 See the resolvconf package's
 .I README
 file for more detailed information.
-For more information about the dns-* options, e.g.,
-.BR dns\-search ,
-see
+For more information about the dns-* options see
 .BR resolv.conf (5).
 .PP
 The administrator \fIcan\fR run
@@ -152,9 +151,32 @@ that make up the GNU C Library
 When nameserver information is updated, the script
 .I /etc/resolvconf/update.d/libc
 writes a new resolver configuration file to
-.I /etc/resolvconf/run/resolv.conf
-and then runs the scripts in
+.I /etc/resolvconf/run/resolv.conf 
+and if this file has changed it runs the scripts in
 .IR /etc/resolvconf/update-libc.d/ .
+The resolver configuration file starts with the contents of
+.I /etc/resolvconf/resolv.conf.d/head
+and ends with the contents of
+.IR /etc/resolvconf/resolv.conf.d/tail ;
+between these comes the content of
+.I /etc/resolvconf/resolv.conf.d/base
+which has been combined
+with available dynamic nameserver information
+according to the order of precedence defined in
+.IR /etc/resolvconf/interface-order (5),
+with dynamic information taking precedence over static information
+related to interfaces of the same type.
+The number of nameserver addresses is limited to three,
+or possibly fewer
+if one of the addresses is a loopback address
+and the
+.I TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS 
+environment variable is affirmatively set (see below).
+Note that "domain" and "search" information is combined
+onto a single
+.B search
+line in the generated file.
+
 To make the resolver use the dynamically generated resolver configuration
 file the administrator should ensure that
 .I /etc/resolv.conf
