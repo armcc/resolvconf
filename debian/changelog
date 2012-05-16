@@ -1,5 +1,6 @@
-resolvconf (1.66~1) unstable; urgency=low
+resolvconf (1.66~2) unstable; urgency=low
 
+  [ Thomas Hood ]
   * Silence lsattr error message in postinst
 
  -- Thomas Hood <jdthood@gmail.com>  Tue, 08 May 2012 21:36:14 +0200

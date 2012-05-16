@@ -78,34 +78,41 @@ lines to the relevant
 .B iface
 stanza in
 .IR /etc/network/interfaces .
-To add nameserver addresses add a line beginning with
+The available option names are
+.BR dns\-nameservers ,
+.BR dns\-search ,
+and
+.BR dns\-sortlist .
+
+To add nameserver addresses, add a line beginning with
 .BR dns\-nameservers .
 .PP
 .EX
-    dns\-nameservers 11.22.33.44 55.66.77.88
+    dns\-nameservers 192.168.1.254 8.8.8.8
 .EE
 .PP
-Note that one or more addresses can be given,
+Note that one or more addresses can be given
 and note the `s' at the end of the option name.
 (Contrast with the 
 .BR resolv.conf (5)
 option
 .BR nameserver .)
-For each other valid
-.BR resolv.conf (5)
-configuration option,
-you can include, in the stanza,
-one line beginning with that option name with a
-.B dns\-
-prefix.
+
+To add a search domain, add a line beginning with
+.BR dns\-search .
+.PP
+.EX
+    dns\-search foo.org bar.com
+.EE
+
 The resulting stanza might look like the following example.
 .PP
 .EX
     iface eth0 inet static
-        address 192.168.3.3
+        address 192.168.1.3
         netmask 255.255.255.0
-        gateway 192.168.3.1
-        dns\-nameservers 192.168.3.45 192.168.8.10
+        gateway 192.168.1.1
+        dns\-nameservers 192.168.1.254 8.8.8.8
         dns\-search foo.org bar.com
 .EE
 .PP
