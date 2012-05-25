@@ -37,28 +37,27 @@ options.
 .SH PUBLICATION
 Normally
 .B resolvconf
-is run only by hook scripts attached to network interface configurers
+is run only by network interface configuration programs
 such as
 .BR pppd (8) 
-(for ppp interfaces),
-to DHCP clients such as
-.BR dhclient (8),
-to
+(for ppp interfaces);
+by DHCP clients such as
+.BR dhclient (8);
+by
 .BR ifup (8) 
 and
-.BR ifdown ,
-and
-to DNS caches such as
+.BR ifdown ;
+and by DNS caches such as
 .BR dnsmasq (8)
 (for the loopback interface).
-These hook scripts furnish
+These configurers furnish
 .B resolvconf
 with information about nameservers.
 .SS dhclient
 .BR dhclient ,
 for example,
-receives one or more nameserver addresses
-and possibly a search domain name
+receives zero or more nameserver addresses
+and zero or more search domain names
 during its negotiation with the DHCP server;
 its hook script
 .I /etc/dhcp/dhclient\-enter\-hooks.d/resolvconf
@@ -82,9 +81,22 @@ lines to the relevant
 stanza in
 .IR /etc/network/interfaces .
 .PP
-The available
-.I interfaces
-option names are
+N.B.: On a machine where 
+.B resolvconf
+has been or is to be installed
+and which previously relied on a static
+.I /etc/resolv.conf
+file,
+the nameserver information in the static file
+should be migrated to the appropriate
+.B iface
+stanza(s).
+.PP
+The option names that can be used in
+.B iface
+stanzas in
+.I /etc/network/interfaces
+are
 .BR dns\-nameservers ,
 .BR dns\-search ,
 and
@@ -94,22 +106,21 @@ The
 option is deprecated in favor of
 .BR dns\-search .
 .PP
-To add nameserver addresses, add one line beginning with
+To add nameserver addresses, add a single line beginning with
 .BR dns\-nameservers .
 .PP
 .EX
     dns\-nameservers 192.168.1.254 8.8.8.8
 .EE
 .PP
-Note that one or more addresses can be given after
-.B dns\-nameservers
+Note that one or more addresses can be given on this line
 and note the `s' at the end of the option name,
 in contrast with the 
 .BR resolv.conf (5)
-option
+option name
 .BR nameserver .
 Remember that in
-.IR /etc/network/interfaces
+.IR interfaces
 each option can be used at most once per stanza.
 .PP
 To add a search domain name, add a line beginning with
@@ -190,13 +201,13 @@ information published for configured interfaces;
 second,
 static information from
 .IR /etc/resolvconf/resolv.conf.d/base .
-From that combined information, it writes:
+Specifically, it writes:
 .IP "  1)" 5
 up to three 
 .B nameserver
 lines,
 ordered according to
-.IR /etc/resolvconf/interface\-order (5),
+.IR /etc/resolvconf/interface\-order ,
 possibly fewer
 if one of the addresses is a loopback address and the
 .B TRUNCATE_NAMESERVER_LIST_AFTER_LOOPBACK_ADDRESS 
@@ -208,8 +219,8 @@ up to one
 .B search
 line containing the combined domain search list from all
 "domain" and "search" input lines,
-ordered according to
-.IR /etc/resolvconf/interface\-order (5);
+also ordered according to
+.IR interface\-order (5);
 .IP "  3)" 5
 all other non-comment input lines.
 .PP
@@ -220,8 +231,8 @@ the administrator should ensure that
 is a symbolic link to
 .IR /etc/resolvconf/run/resolv.conf .
 This link is normally created on installation of the
-resolvconf package;
-the link is never modified by the
+resolvconf package.
+The link is never modified by the
 .BR resolvconf (8)
 program itself.
 If you find that \fI/etc/resolv.conf\fR is not being updated,
@@ -239,7 +250,7 @@ has changed should install a script in
 .I /etc/resolvconf/update\-libc.d/
 rather than in
 .IR /etc/resolvconf/update.d/ .
-(For example, two packages which include
+(For example, two packages that include
 .I update\-libc.d/
 hook scripts are
 .B fetchmail
@@ -335,7 +346,9 @@ script will include
 no more nameserver addresses
 after the first nameserver address
 that is a loopback address.
-In IPv4 a loopback address starts with "127.".
+(In IPv4 a loopback address is any one that starts with "127.".
+In IPv6 the loopback address is "::1".)
+.IP 
 The advantage of truncating the nameserver list after a loopback address
 is that doing so inhibits unnecessary changes to
 .I resolv.conf 
@@ -354,8 +367,9 @@ the local caching nameserver crash.
 Insofar as a local nameserver crash can be regarded
 as an unlikely event,
 this is a relatively minor disadvantage.
-Set to "no" to disable this truncation feature.
+Set to "no" to disable truncation.
 The default is "yes".
+.IP 
 A deprecated synonym for this variable is 
 .BR TRUNCATE_NAMESERVER_LIST_AFTER_127 .
 .SH FILES
@@ -365,18 +379,24 @@ See the ENVIRONMENT VARIABLES section.
 .TP
 .I /etc/resolvconf/run
 This is a symbolic link to a location where nameserver information is stored.
+The location must be on a filesystem that is writable
+early in the boot sequence.
+In Debian the default location is
+.I /run/resolvconf
+and
+in the future this will be
+the only supported location;
+configurability of the location via
+.I /etc/resolvconf/run
+will be dropped.
+Nevertheless, clients should not make any assumptions
+about the location or the canonical path of this directory
+or the hierarchy that is constructed under it.
+.IP
 The target of this symbolic link will be created if
 .B resolvconf
 is called with the
 \fB\-\-create\-runtime\-directories\fR option.
-Clients should not make any assumptions about the location
-or the canonical path of this directory
-or the hierarchy that is constructed under it.
-It is normally a symbolic link to
-.I /run/resolvconf
-and
-in the future this will be
-the only supported configuration.
 .TP
 .I /etc/resolvconf/interface\-order
 Determines the order of precedence of nameserver addresses and search domain names.
