@@ -83,7 +83,7 @@ push nameserver information to
 when it configures an interface
 the administrator must add
 .B dns\-
-lines to the relevant
+option lines to the relevant
 .B iface
 stanza in
 .IR interfaces (5).
@@ -104,7 +104,8 @@ To add nameserver addresses, add a single line beginning with
     dns\-nameservers 192.168.1.254 8.8.8.8
 .EE
 .PP
-Note that one or more addresses can be given on this line
+Note that one or more addresses can be given on this line,
+separated by spaces,
 and note the `s' at the end of the option name,
 in contrast with the 
 .IR resolv.conf (5)
@@ -114,7 +115,7 @@ Remember that in
 .IR interfaces (5)
 each option can be used at most once per stanza.
 .PP
-To add a search domain name, add a line beginning with
+To add search domain names, add a line beginning with
 .BR dns\-search .
 .PP
 .EX
