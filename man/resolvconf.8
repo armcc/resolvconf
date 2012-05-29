@@ -31,8 +31,9 @@ Resolvconf thus sets itself up as the intermediary between programs that
 supply nameserver information and applications that use 
 that information.
 .PP
-See the \fBOPTIONS\fR section below for a discussion of all available
-options.
+See the
+.B OPTIONS
+section below for a discussion of all available options.
 .SH SUPPLIERS OF NAMESERVER INFORMATION
 Normally the
 .B resolvconf
@@ -124,8 +125,7 @@ The resulting stanza might look like the following example.
         dns\-search foo.org bar.com
 .EE
 .PP
-N.B.: On a machine where 
-.B resolvconf
+N.B.: On a machine where resolvconf
 has just been or is about to be installed
 and which previously relied on a static
 .I /etc/resolv.conf
@@ -137,14 +137,18 @@ stanza(s) in
 .IR interfaces (5).
 .PP
 .SS Command line
-The administrator \fIcan\fR run
+The administrator
+.I can
+run
 .B resolvconf
 from the command line to add or delete nameserver information,
 but this is not normally necessary or advisable.
 .SH CONSUMERS OF NAMESERVER INFORMATION
 Nameserver information provided to
 .B resolvconf
-is stored for use by subscribers to \fBresolvconf\fR's notification service.
+is stored for use by subscribers to
+.BR resolvconf 's
+notification service.
 Subscriber packages that need to know when nameserver information has changed
 should install a script in
 .I /etc/resolvconf/update.d/
@@ -225,12 +229,13 @@ the administrator should ensure that
 .I /etc/resolv.conf
 is a symbolic link to
 .IR /etc/resolvconf/run/resolv.conf .
-This link is normally created on installation of the
-resolvconf package.
+This link is normally created on installation of the resolvconf package.
 The link is never modified by the
 .B resolvconf
 program itself.
-If you find that \fI/etc/resolv.conf\fR is not being updated,
+If you find that
+.I /etc/resolv.conf
+is not being updated,
 please check to make sure that the link is intact.
 .PP
 The GNU C Library resolver library isn't the only resolver library available.
@@ -253,7 +258,8 @@ and
 This is important for synchronization purposes:
 scripts in
 .I update\-libc.d/
-are run \fIafter\fR
+are run
+.I after
 .I resolv.conf
 has been updated;
 the same is not necessarily true of scripts in
@@ -261,7 +267,8 @@ the same is not necessarily true of scripts in
 .SH OPTIONS
 .TP
 \fB\-a\fR \fIIFACE.PROG\fR
-Add or overwrite the record \fIIFACE.PROG\fR
+Add or overwrite the record
+.I IFACE.PROG
 then run the update scripts if updating is enabled.
 When this option is used the information must be provided to
 .B resolvconf
@@ -271,19 +278,24 @@ file.
 Each line in the file must be terminated by a newline.
 .TP
 \fB\-d\fR \fIIFACE.PROG\fR
-Delete the record \fIIFACE.PROG\fR
+Delete the record
+.I IFACE.PROG
 then run the update scripts if updating is enabled.
 .PP
-The string \fIIFACE.PROG\fR name may not contain
+The string
+.I IFACE.PROG
+may not contain
 spaces,
 slashes,
-an initial dot, an initial hyphen or an initial tilde.
+an initial dot,
+an initial hyphen
+or an initial tilde.
 It is conventionally formed from
-\fIIFACE\fR,
+.IR IFACE ,
 the name of the interface involved,
 a dot,
 and
-\fIPROG\fR,
+.IR IPROG ,
 the name of the interface configuration program,
 e.g., `eth0.dhclient'.
 .TP
@@ -390,7 +402,8 @@ or the hierarchy that is constructed under it.
 The target of this symbolic link will be created if
 .B resolvconf
 is called with the
-\fB\-\-create\-runtime\-directories\fR option.
+.B \-\-create\-runtime\-directories
+option.
 .TP
 .I /etc/resolvconf/interface\-order
 Determines the order of precedence of nameserver addresses and search domain names.
@@ -418,10 +431,14 @@ line if one is needed, e.g.,
 .EE
 .TP
 .I /etc/resolvconf/resolv.conf.d/original
-Copy of the \fI/etc/resolv.conf\fR file before the resolvconf package was installed.
+Copy of the
+.I /etc/resolv.conf
+file before the resolvconf package was installed.
 This file has no effect on the functioning of resolvconf;
-it is retained so that \fI/etc/resolv.conf\fR can be restored
-to its original state if the resolvconf package is removed.
+it is retained so that
+.I /etc/resolv.conf
+can be restored to its original state
+if the resolvconf package is removed.
 
 Note also that a copy of this file is included in the database
 until the first reboot after installation of the resolvconf package;
@@ -432,13 +449,17 @@ not all suppliers of nameserver information may have supplied their
 information to
 .BR resolvconf (8).
 
-Note also that the administrator can choose to create a symbolic link
-in \fI/etc/resolvconf/resolv.conf.d/\fR from
+Note also
+that the administrator can choose to create a symbolic link in
+.I /etc/resolvconf/resolv.conf.d/
+from
 .I tail
 to
 .I original
-so that the contents of the latter are always added to the end of the
-dynamically generated \fIresolv.conf\fR.
+so that the contents of
+.I original
+are always added to the end of the
+dynamically generated file.
 
 .SH BUGS
 Currently
@@ -456,8 +477,6 @@ This is free software; see the source for copying conditions.
 .BR resolv.conf (5),
 .BR resolver (3).
 .PP
-Read the
-.B resolvconf
-package
+Read the resolvconf package
 .I README
 file for more in-depth information.
