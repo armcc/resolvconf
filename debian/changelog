@@ -1,4 +1,4 @@
-resolvconf (1.66~4) unstable; urgency=low
+resolvconf (1.66~4) experimental; urgency=low
 
   [ Thomas Hood ]
   * [ed8ab34] Silence lsattr error message in postinst
@@ -7,7 +7,7 @@ resolvconf (1.66~4) unstable; urgency=low
     generates the dynamic resolv.conf file (Fixes LP##990660, 999337)
     Thanks to Nathan Stratton Treadway
 
- -- Thomas Hood <jdthood@turgutlu>  Tue, 29 May 2012 09:51:25 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Thu, 07 Jun 2012 14:00:00 +0200
 
 resolvconf (1.65) unstable; urgency=low
 
