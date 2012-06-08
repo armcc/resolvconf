@@ -56,7 +56,11 @@ fi
 
 report_warning() { echo "$0: Warning: $*" >&2 ; }
 
-if [ ! -L ${ETC}/resolv.conf ] || [ ! "$(readlink ${ETC}/resolv.conf)" = "$DYNAMICRSLVCNFFILE" ] ; then
+resolv_conf_is_symlinked_to_dynamic_file() {
+	[ -L ${ETC}/resolv.conf ] && [ "$(readlink ${ETC}/resolv.conf)" = "$DYNAMICRSLVCNFFILE" ]
+}
+
+if ! resolv_conf_is_symlinked_to_dynamic_file ; then
 	case "$REPORT_ABSENT_SYMLINK" in
 	  y|Y|yes|YES|Yes)
 		report_warning "${ETC}/resolv.conf is not a symbolic link to $DYNAMICRSLVCNFFILE"
@@ -143,6 +147,10 @@ fi
 
 # The file has changed
 mv -f "$TMPFILE" "$DYNAMICRSLVCNFFILE"
+
+# Only notify users of /etc/resolv.conf if /etc/resolv.conf is actually
+# symlinked to the file we have just updated.
+resolv_conf_is_symlinked_to_dynamic_file || exit 0
 
 # Restart nscd
 NSCD_RESTARTED=""
