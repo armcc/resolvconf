@@ -4,10 +4,12 @@ resolvconf (1.66~5) unstable; urgency=low
   * [ed8ab34] Silence lsattr error message in postinst
   * [23217c3] resolvconf(8): List allowed dns-* interfaces(5) options
   * [b69c873] and describe more verbosely how the libc update script
-    generates the dynamic resolv.conf file (Fixes LP##990660, 999337)
-    Thanks to Nathan Stratton Treadway
+              generates the dynamic resolv.conf file (Fixes LP##990660
+              and LP#999337).  Thanks to Nathan Stratton Treadway.
+  * [aa99b9b] update.d/libc: Only run hook scripts if /etc/resolv.conf
+              is a symbolic link to the updated dynamic file.
 
- -- Thomas Hood <jdthood@gmail.com>  Thu, 07 Jun 2012 14:00:00 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Fri, 08 Jun 2012 10:26:53 +0200
 
 resolvconf (1.65) unstable; urgency=low
 
