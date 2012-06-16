@@ -1,3 +1,10 @@
+resolvconf (1.67~1) UNRELEASED; urgency=low
+
+  * [5e645ac] Use more conventional name for record created by pppd
+              hook script
+
+ -- Thomas Hood <jdthood@gmail.com>  Sat, 16 Jun 2012 15:03:58 +0200
+
 resolvconf (1.66) unstable; urgency=low
 
   [ Thomas Hood ]
