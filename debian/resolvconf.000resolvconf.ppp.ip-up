@@ -20,5 +20,5 @@ if [ "$DNS2" ] ; then
 "
 fi
 
-echo -n "$R" | /sbin/resolvconf -a "$PPP_IFACE"
+echo -n "$R" | /sbin/resolvconf -a "${PPP_IFACE}.pppd"
 

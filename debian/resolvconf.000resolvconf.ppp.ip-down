@@ -10,5 +10,6 @@
 
 [ -x /sbin/resolvconf ] || exit 0
 
-/sbin/resolvconf -d "$PPP_IFACE"
+/sbin/resolvconf -d "$PPP_IFACE"  # Old name. Remove this line after wheezy.
+/sbin/resolvconf -d "${PPP_IFACE}.pppd"
 
