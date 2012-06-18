@@ -10,6 +10,13 @@
 
 [ -x /sbin/resolvconf ] || exit 0
 
+case "$6" in
+  nm-pptp-service-*)
+    # NetworkManager handles it
+    exit 0
+    ;;
+esac
+
 R=""
 if [ "$DNS1" ] ; then
 	R="${R}nameserver $DNS1
