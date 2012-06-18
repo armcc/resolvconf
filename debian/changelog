@@ -1,9 +1,11 @@
-resolvconf (1.67~1) UNRELEASED; urgency=low
+resolvconf (1.67~2) UNRELEASED; urgency=low
 
   * [5e645ac] Use more conventional name for record created by pppd
               hook script
+  * [58da88f] Change resolvconf's pppd hook script such that it does
+              not call resolvconf if pppd was run by nm-pptp-servce
 
- -- Thomas Hood <jdthood@gmail.com>  Sat, 16 Jun 2012 15:03:58 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Mon, 18 Jun 2012 06:34:56 +0200
 
 resolvconf (1.66) unstable; urgency=low
 
