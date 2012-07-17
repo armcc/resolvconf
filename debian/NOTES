@@ -18,6 +18,9 @@ TODO
   * (DHCP clients:) isc-dhcp-client, dhcpcd, pump, udhcpc
     + Probably easiest and best to trigger DHCP lease renewals.
 
+* After wheezy, remove /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
+  (Closes: #681623)
+
 awk
 ---
 We mustn't use awk in any runtime code but we may use it in the
