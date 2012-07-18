@@ -699,8 +699,12 @@ DONE
 Credits
 ~~~~~~~
 The basic idea for resolvconf was expressed by Emile van Bergen on the
-debian-devel mailing list. I claim any braindamage in the implementation as
-my own.
+debian-devel mailing list.
+
+    http://lists.debian.org/debian-devel/2003/04/msg00580.html
+    http://lists.debian.org/debian-devel/2003/04/msg00629.html
+
+I claim any braindamage in the implementation as my own.
 
 I thank all the maintainers who have helped with this effort by adding
 resolvconf support to their packages.
