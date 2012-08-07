@@ -1,3 +1,10 @@
+resolvconf (1.68~1) UNRELEASED; urgency=low
+
+  * [1527598] Add sk.po.
+    Thanks to Slavko (Closes: #683672)
+
+ -- Thomas Hood <jdthood@gmail.com>  Tue, 07 Aug 2012 14:01:28 +0200
+
 resolvconf (1.67) unstable; urgency=low
 
   [ Thomas Hood ]
