@@ -13,7 +13,7 @@
 /sbin/resolvconf -d "$PPP_IFACE" # Old name. Remove this line after next upgrade horizon.
 
 case "$6" in
-  nm-pptp-service-*)
+  nm-pptp-service-*|/org/freedesktop/NetworkManager/PPP/*)
     # NetworkManager handles it
     exit 0
     ;;

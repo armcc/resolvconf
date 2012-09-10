@@ -11,7 +11,7 @@
 [ -x /sbin/resolvconf ] || exit 0
 
 case "$6" in
-  nm-pptp-service-*)
+  nm-pptp-service-*|/org/freedesktop/NetworkManager/PPP/*)
     # NetworkManager handles it
     exit 0
     ;;
