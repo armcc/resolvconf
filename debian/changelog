@@ -1,6 +1,6 @@
 resolvconf (1.69~1) UNRELEASED; urgency=low
 
-  * [276fc24] Update Standards-Version to 3.9.4 -- no changes needed
+  * [276fc24] Bump Standards-Version; no changes
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 19 Sep 2012 13:22:44 +0200
 
