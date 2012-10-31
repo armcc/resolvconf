@@ -20,7 +20,7 @@ Credits
 
 News
 ~~~~
-* Last updated 22 September 2011 for version 1.60
+* Last updated 31 October 2011 for version 1.69
 
 Introduction
 ~~~~~~~~~~~~
@@ -117,6 +117,9 @@ laptop-net (42)
 
 Several other packages recommend to the user that scripts be written to alter
 or replace resolv.conf.
+
+Third-party software packages also futz with /etc/resolv.conf. Among them
+are the Cisco AnyConnect, Juniper AnyConnect and FortiClient SSL VPN clients.
 
 These packages do not cooperate; they simply overwrite one another's changes.
 Even those that back up and restore the file will corrupt it if interfaces are
