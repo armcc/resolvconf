@@ -548,7 +548,7 @@ TODO
     + Handle dns-* commands natively so that the resolver is configured
       before "up" commands are run
   * kppp
-    LP# 1086336: Writes to /etc/resolvconf
+    # 695121; LP#1086336: Writes to /etc/resolvconf
       - SUBMITTED
   * libadns1
     + It consults resolv.conf so it should already be supported.
