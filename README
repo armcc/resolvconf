@@ -20,7 +20,7 @@ Credits
 
 News
 ~~~~
-* Last updated 31 October 2011 for version 1.69
+* Last updated 4 December 2012 for version 1.69
 
 Introduction
 ~~~~~~~~~~~~
@@ -529,8 +529,8 @@ A. Because 'dns-nameservers' can take several address arguments whereas
 TODO
 ~~~~
   * bind9
-    # 483098: bind9: Please switch default to using resolvconf generated
-      file if resolvconf is installed
+    # 483098: bind9: Please add resolvconf hook script to update
+      forwarders list
       - NO REPLY for several months
     # 641714: Please add resolvconf packaging-event hook script
       - NO REPLY for several months
@@ -543,10 +543,13 @@ TODO
         with resolvconf
   * gnome-system-tools
     # 258553: Incompatible with resolvconf
-      - OKed by maintainer but NO ACTION has been taken for several years
+      - NO ACTION for several years
   * ifupdown
     + Handle dns-* commands natively so that the resolver is configured
       before "up" commands are run
+  * kppp
+    LP# 1086336: Writes to /etc/resolvconf
+      - SUBMITTED
   * libadns1
     + It consults resolv.conf so it should already be supported.
       However, someone should test it.
@@ -577,13 +580,13 @@ TODO
     + Someone should investigate whether it could be supported better.
   * network-manager
     # 639803: Please add resolvconf packaging-event hook script
-      - NO REPLY
+      - NO REPLY for several months
   * nscd
     # 266817: Please suggest resolvconf
       - Tagged WONTFIX
   * pdnsd
     # 628846: Include /usr/lib/resolvconf/dpkg-event.d/pdnsd
-      - NO REPLY
+      - NO REPLY for several months
   * ppp
     # 208095: Please suggest resolvconf
       - Tagged WONTFIX

@@ -1,6 +1,8 @@
 resolvconf (1.69~1) UNRELEASED; urgency=low
 
   * [276fc24] Bump Standards-Version; no changes
+  * [6982da6] README: Mention some third-party packages that clobber /etc/resolv.conf
+  * [044e9a3] /etc/ppp/ip-up.d/000resolvconf: Don't do anything if USEPEERDNS is not set
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 19 Sep 2012 13:22:44 +0200
 
