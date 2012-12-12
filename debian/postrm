@@ -86,7 +86,8 @@ case "$1" in
 	fi
 	rm -f /etc/resolvconf/resolv.conf.d/tail
 	rm -f /etc/resolvconf/resolv.conf.d/original
-	rm -f /etc/resolvconf/update.d/bind  # Old conffile
+	rm -f /etc/resolvconf/update.d/bind
+	rm -f /etc/resolvconf/update.d/bind.dpkg-old
 	rm -f /etc/default/resolvconf
 	rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
 	rm -f /etc/init.d/resolvconf.dpkg-old

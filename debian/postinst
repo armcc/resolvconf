@@ -28,6 +28,10 @@ standard_run_subdirs_created() {
 	[ -d /run/resolvconf/interface ] || mkdir -p /run/resolvconf/interface
 }
 
+### Deal with obsolete configuration files ###
+rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
+[ -f /etc/resolvconf/update.d/bind ] && mv -f /etc/resolvconf/update.d/bind /etc/resolvconf/update.d/bind.dpkg-old
+
 # We use dh_installinit with --no-start
 #DEBHELPER#
 
