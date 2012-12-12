@@ -4,7 +4,7 @@ resolvconf (1.69~3) UNRELEASED; urgency=low
   * [6982da6] README: Name packages that clobber /etc/resolv.conf
   * [4cb082a] README: Update
   * [044e9a3] ip-up.d/000resolvconf: Do nothing if USEPEERDNS not set
-  * [d988a9e] ip-up.d/000resolvconf: Silently (for now) accept option
+  * [d988a9e] if-up.d/000resolvconf: Silently (for now) accept option
     name 'dns-nameserver' as a synonym for 'dns-nameservers' in
     anticipation of support in ifupdown (no sooner than wheezy+1) for
     duplicate options in a stanza, after which it will make sense to
