@@ -1,8 +1,8 @@
 resolvconf (1.69~3) UNRELEASED; urgency=low
 
-  * [276fc24] Bump Standards-Version; no changes
-  * [4cb082a] Update README
-  * [6982da6] README: Mention packages that clobber /etc/resolv.conf
+  * [276fc24] Bump Standards-Version; no changes required
+  * [6982da6] README: Name packages that clobber /etc/resolv.conf
+  * [4cb082a] README: Update
   * [044e9a3] ip-up.d/000resolvconf: Do nothing if USEPEERDNS not set
   * [d988a9e] ip-up.d/000resolvconf: Silently (for now) accept option
     name 'dns-nameserver' as a synonym for 'dns-nameservers' in
