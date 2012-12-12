@@ -18,8 +18,10 @@ TODO
   * (DHCP clients:) isc-dhcp-client, dhcpcd, pump, udhcpc
     + Probably easiest and best to trigger DHCP lease renewals.
 
-* After wheezy, rm /etc/dhcp3/dhclient-enter-hooks.d/resolvconf (Closes: #681623)
-  and /etc/resolvconf/update.d/bind (Closes: #687507)
+* After the first Debian release to include an ifupdown that supports
+  duplicated options in a stanza (not 0.7.5, despite a changelog entry
+  implying otherwise, and thus not wheezy), document the fact that the
+  option "dns-nameserver" can be given multiple times in a stanza.
 
 awk
 ---
