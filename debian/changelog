@@ -1,14 +1,12 @@
-resolvconf (1.69~1) UNRELEASED; urgency=low
+resolvconf (1.69~2) UNRELEASED; urgency=low
 
   * [276fc24] Bump Standards-Version; no changes
+  * [4cb082a] Update README
   * [6982da6] README: Mention packages that clobber /etc/resolv.conf
   * [044e9a3] ip-up.d/000resolvconf: Do nothing if USEPEERDNS not set
-  * [4cb082a] Update README
   * [d988a9e] Silently accept 'dns-nameserver' as synonym for
     'dns-nameservers' in anticipation of support in ifupdown for
-    repeated options whose arguments are concatenated, delimited
-    with newlines --- support that was announced in 0.7 but hasn't
-    really been implemented yet.
+    repeated options.
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 19 Sep 2012 13:22:44 +0200
 
