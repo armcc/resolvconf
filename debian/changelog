@@ -1,4 +1,4 @@
-resolvconf (1.69~3) UNRELEASED; urgency=low
+resolvconf (1.69) unstable; urgency=low
 
   * [276fc24] Bump Standards-Version; no changes required
   * [6982da6] README: Name packages that clobber /etc/resolv.conf
@@ -12,7 +12,7 @@ resolvconf (1.69~3) UNRELEASED; urgency=low
     "dns-nameserver" lines
   * [e0db2cb] Deal with obsolete conf files (Closes: #687507, #681623)
 
- -- Thomas Hood <jdthood@gmail.com>  Wed, 19 Sep 2012 13:22:44 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Mon, 17 Dec 2012 12:00:00 +0100
 
 resolvconf (1.68) unstable; urgency=low
 
