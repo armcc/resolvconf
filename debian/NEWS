@@ -1,0 +1,32 @@
+resolvconf (1.70) unstable; urgency=low
+
+  In Debian 6.0 (Squeeze) the resolvconf package included a resolvconf
+  update script named "bind" which copied /etc/bind/named.conf.options
+  to /var/run/bind/named.options while overwriting the forwarders{}
+  statement to list addresses from resolvconf's database. BIND 8's
+  named could thus use nameserver addresses known to resolvconf as
+  forwarder addresses, provided some further manual configuration was
+  done so that named would read the dynamically written options file.
+  The manual configuration steps were described in the README file.
+
+  The script was written for BIND 8. After the removal of BIND 8 from
+  the Debian archive the script in question was dropped from the 
+  resolvconf package, in version 1.53 and thus in Debian 7.0 (Wheezy),
+  but not deleted from the filesystem unless the resolvconf package
+  was purged. Thus, machines on which earlier versions of resolvconf
+  had been installed continued to have the script.
+  
+  As of resolvconf 1.69 and thus in Debian 8.0 (Jessie), the script is
+  deactivated by renaming it to "bind.dpkg-old". See Debian bug report
+  #687507.
+
+  BIND 9 has replaced BIND 8. The same old script could be used with
+  BIND 9 but, due to enhancements in BIND 9, a better, safer script
+  named "bind9" can be written. Such a script should, moreover, be
+  included in the bind9 package and not in resolvconf. This has been
+  requested in Debian bug report #483098 and in Ubuntu bug LP#1091602
+  (https://bugs.launchpad.net/ubuntu/+source/bind9/+bug/1091602).
+  Anyone who would like to have this feature is invited to add their
+  voice to one of the aforementioned bug reports.
+
+ -- Thomas Hood <jdthood@gmail.com>  Thu, 10 Jan 2013 12:00:00 +0100
