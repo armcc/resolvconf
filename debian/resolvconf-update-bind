@@ -3,7 +3,7 @@
 #
 # Example script illustrating updating a named options file
 # 
-# This example was prepared for Bind version 8.  For Bind 9
+# This example was prepared for BIND version 8.  For BIND 9
 # the script should be modified so that it generates only the
 # forwarders{} substatement, not the whole options{} statement.
 #
@@ -14,6 +14,7 @@
 # Assumption: On entry, PWD contains the resolv.conf-type files.
 #
 # Written by Thomas Hood <jdthood@gmail.com>
+#
 # Licensed under the GNU GPL.  See /usr/share/doc/resolvconf/copyright.
 
 set -e
