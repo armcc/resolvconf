@@ -6,7 +6,7 @@ resolvconf (1.70) unstable; urgency=low
   update script /etc/resolvconf/update.d/bind which generated the file
   /var/run/bind/named.options from /etc/bind/named.conf.options such
   that name server addresses from resolvconf's database were inserted
-  in the forwarders{} statement inside the options{} statement. If
+  into the forwarders{} statement inside the options{} statement. If
   configured to read this file, BIND 8's named would thus use name
   server addresses registered with resolvconf as forwarder addresses.
   The necessary manual configuration steps were described in the
@@ -15,19 +15,18 @@ resolvconf (1.70) unstable; urgency=low
   The script was written for BIND 8. BIND 8 was removed from Debian in
   Debian 5.0 (Lenny) and the script in question was dropped from the
   resolvconf package in Debian 7.0 (Wheezy), but was not deleted from
-  the filesystem unless the resolvconf package was purged. Hence,
-  machines on which earlier versions of resolvconf had been installed
-  continued to have the script. In Debian 8.0 (Jessie) the script is
-  deactivated by renaming it to "bind.dpkg-old". See Debian bug report
-  #687507.
+  the filesystem at that time unless the resolvconf package was purged.
+  Hence, on machines on which earlier versions of resolvconf had been
+  installed the script was still present. In Debian 8.0 (Jessie) the
+  script is deactivated by renaming it to "bind.dpkg-old". See Debian
+  bug report #687507.
 
-  BIND 9 has replaced BIND 8. It would be possible to write a similar
-  update script for BIND 9, named "/etc/resolvconf/update.d/bind9",
-  and include this in the bind9 package. This has been requested in
-  Debian bug report #483098 and also in Ubuntu bug LP#1091602
-  (https://bugs.launchpad.net/ubuntu/+source/bind9/+bug/1091602).
+  BIND 9 has replaced BIND 8. It is proposed that an update script,
+  to be named "/etc/resolvconf/update.d/bind9", be included in the
+  bind9 package which provides the same benefits as the old script.
   Anyone who would like to have this feature is encouraged to add
-  their voice to one of the aforementioned bug reports.
+  their voice either to Debian bug report #483098 or to Ubuntu bug
+  report https://bugs.launchpad.net/ubuntu/+source/bind9/+bug/1091602.
 
   If you were still using the old update script and want to re-enable
   it then do the following.
