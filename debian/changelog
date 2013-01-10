@@ -2,7 +2,8 @@ resolvconf (1.70~1) unstable; urgency=low
 
   * [ec06f8d] Add NEWS item about removal of "bind" update script
               (Closes: #697435)
-  * [ec06f8d] Update interface-order (Fixes LP#1094345).
+  * [ec06f8d] Change interface-order to prioritize IPv6 over IPv4
+              and ifup over DHCP clients (Fixes LP#1094345).
 
  -- Thomas Hood <jdthood@gmail.com>  Sun, 06 Jan 2013 21:21:15 +0100
 
