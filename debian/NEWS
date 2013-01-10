@@ -18,8 +18,8 @@ resolvconf (1.70) unstable; urgency=low
   the filesystem at that time unless the resolvconf package was purged.
   Hence, on machines on which earlier versions of resolvconf had been
   installed the script was still present. In Debian 8.0 (Jessie) the
-  is renamed to "bind.dpkg-old" and thus deactivated. See Debian bug
-  report #687507 for more information.
+  script is renamed to "bind.dpkg-old" and thus deactivated. See Debian
+  bug report #687507 for more information.
 
   BIND 9 has replaced BIND 8. It is proposed that an update script,
   /etc/resolvconf/update.d/bind9, be included in the bind9 package
