@@ -7,10 +7,10 @@ resolvconf (1.70) unstable; urgency=low
   file /var/run/bind/named.options from /etc/bind/named.conf.options
   such that name server addresses from resolvconf's database were
   written inside the forwarders{} statement. If configured to read
-  the named.options file, BIND 8's named would thus use name server
-  addresses registered with resolvconf as forwarder addresses.  The
-  necessary manual configuration steps were described in resolvconf's
-  README file.
+  this dynamic named.options file, BIND 8's named would thus use name
+  server addresses registered with resolvconf as forwarder addresses.
+  The necessary manual configuration steps were described in
+  resolvconf's README file.
 
   The script was written for BIND 8. BIND 8 was removed from Debian in
   Debian 5.0 (Lenny) and the script in question was dropped from the
