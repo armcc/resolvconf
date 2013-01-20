@@ -16,7 +16,7 @@ resolvconf (1.69) unstable; urgency=low
   * [044e9a3] ip-up.d/000resolvconf: Do nothing if USEPEERDNS not set
   * [d988a9e] if-up.d/000resolvconf: Silently (for now) accept option
     name 'dns-nameserver' as a synonym for 'dns-nameservers' in
-    anticipation of support in ifupdown (no sooner than wheezy+1) for
+    anticipation of support in ifupdown (no sooner than Jessie) for
     duplicate options in a stanza, after which it will make sense to
     specify multiple nameserver addresses on equally many
     "dns-nameserver" lines

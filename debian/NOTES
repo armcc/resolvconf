@@ -20,8 +20,9 @@ TODO
 
 * After the first Debian release to include an ifupdown that supports
   duplicated options in a stanza (not 0.7.5, despite a changelog entry
-  implying otherwise, and thus not wheezy), document the fact that the
-  option "dns-nameserver" can be given multiple times in a stanza.
+  implying otherwise, and thus not in Wheezy but in Jessie), document
+  the fact that the option "dns-nameserver" can be given multiple times
+  in a stanza.
 
 awk
 ---
