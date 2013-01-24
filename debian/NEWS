@@ -24,7 +24,7 @@ resolvconf (1.70) unstable; urgency=low
   BIND 9 has replaced BIND 8. It is proposed that an update script,
   /etc/resolvconf/update.d/bind9, be included in the bind9 package
   which provides the same benefits as the old script. Anyone who would
-  like to make use of this feature is encouraged to add their voice
+  like this feature to be implemented is encouraged to add their voice
   either to Debian bug report #483098 or to Ubuntu bug report #1091602
   (https://bugs.launchpad.net/ubuntu/+source/bind9/+bug/1091602).
 
