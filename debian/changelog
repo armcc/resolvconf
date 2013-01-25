@@ -2,8 +2,13 @@ resolvconf (1.70~2) unstable; urgency=low
 
   * [ec06f8d] Add NEWS item about demise of "bind" update script
               (Closes: #697435)
-  * [ec06f8d] Change interface-order to prioritize IPv6 over IPv4
-              and ifup over DHCP clients (Fixes LP#1094345).
+  * [ec06f8d] Change interface-order such that it more consistently
+              prioritizes IPv6 over IPv4 and ifup over DHCP clients
+              (Fixes LP#1094345). Previously "eth0.dhclient" had higher
+              priority than "eth0.inet". Thus, now, a dns-nameservers
+              option in an "inet dhcp" stanza in interfaces(5) can be
+              used to override a bad nameserver address coming in via
+              DHCP. (Closes: #513445)
   * [9e26ca4] Drop DM-Upload-Allowed
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 10 Jan 2013 10:10:10 +0100
