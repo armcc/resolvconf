@@ -9,6 +9,9 @@ resolvconf (1.70~2) unstable; urgency=low
               option in an "inet dhcp" stanza in interfaces(5) can be
               used to override a bad nameserver address coming in via
               DHCP. (Closes: #513445)
+  * [e2a95db] On second thought, don't accept "dns-nameserver" option
+              now, as it may be useful to introduce this option later
+              with an enhanced syntax
   * [9e26ca4] Drop DM-Upload-Allowed
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 10 Jan 2013 10:10:10 +0100
