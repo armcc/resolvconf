@@ -1,20 +1,20 @@
-resolvconf (1.70~2) unstable; urgency=low
+resolvconf (1.70) unstable; urgency=low
 
-  * [ec06f8d] Add NEWS item about demise of "bind" update script
-              (Closes: #697435)
+  * [ec06f8d] Add NEWS item about the "bind" update script being
+              disabled (Closes: #697435)
   * [ec06f8d] Change interface-order such that it more consistently
-              prioritizes IPv6 over IPv4 and ifup over DHCP clients
-              (Fixes LP#1094345). Previously "eth0.dhclient" had higher
-              priority than "eth0.inet". Thus, now, a dns-nameservers
-              option in an "inet dhcp" stanza in interfaces(5) can be
-              used to override a bad nameserver address coming in via
-              DHCP. (Closes: #513445)
+              prioritizes IPv6 over IPv4 and ifup over DHCP clients'
+              records (Fixes LP#1094345. Previously "eth0.dhclient"
+              had higher priority than "eth0.inet".) So now, a
+              "dns-nameservers" option in an "inet dhcp" stanza in
+              /etc/network/interfaces used to override a bad IPv4
+              nameserver address provided via DHCP. (Closes: #513445)
   * [e2a95db] On second thought, don't accept "dns-nameserver" option
-              now, as it may be useful to introduce this option later
-              with an enhanced syntax
+              yet, as it may be useful to introduce this option later
+              with a different syntax
   * [9e26ca4] Drop DM-Upload-Allowed
 
- -- Thomas Hood <jdthood@gmail.com>  Thu, 10 Jan 2013 10:10:10 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Sun, 27 Jan 2013 12:00:00 +0100
 
 resolvconf (1.69) unstable; urgency=low
 
