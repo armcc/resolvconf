@@ -21,16 +21,17 @@ resolvconf (1.70) unstable; urgency=low
   script is renamed to "bind.dpkg-old" and thus deactivated. See Debian
   bug report #687507 for more information.
 
-  BIND 9 has replaced BIND 8. It is proposed that a new update script,
-  /etc/resolvconf/update.d/bind9, be included in the bind9 package
-  which provides the same benefits as the old script. Anyone who would
-  like this feature to be implemented is encouraged to add their voice
-  either to Debian bug report #483098 or to Ubuntu bug report #1091602
-  (https://bugs.launchpad.net/ubuntu/+source/bind9/+bug/1091602).
+  BIND 9 has replaced BIND 8 in Debian. It is proposed that a new
+  update script, /etc/resolvconf/update.d/bind9, be included in the
+  bind9 package to enhance BIND 9 in the same way that the old script
+  enhanced BIND 8. Anyone who would like this feature to be implemented
+  is encouraged to add their voice either to Debian bug report #483098
+  or to Ubuntu bug report #1091602.
 
-  If you want to re-enable the old script then please do the following.
+  If you just want to re-enable the old script then please run the 
+  following commands in a terminal.
 
       cd /etc/resolvconf/update.d
       sudo mv bind.dpkg-old mybind
 
- -- Thomas Hood <jdthood@gmail.com>  Thu, 10 Jan 2013 12:00:00 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Sun, 27 Jan 2013 12:00:00 +0100
