@@ -24,6 +24,10 @@ TODO
   the fact that the option "dns-nameserver" can be given multiple times
   in a stanza.
 
+interface-order
+---------------
+When changing this file, also change the patterns in bin/list-records.
+
 awk
 ---
 We mustn't use awk in any runtime code but we may use it in the
