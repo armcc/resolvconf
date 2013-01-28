@@ -30,7 +30,7 @@ When changing this file, also change the patterns in bin/list-records.
 
 normalize_stdin
 ---------------
-When changning this function, also update it in debian/test-normalization.
+When changing this function, also update it in debian/test-normalization.
 
 awk
 ---
