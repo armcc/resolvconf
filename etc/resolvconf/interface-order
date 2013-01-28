@@ -10,13 +10,13 @@ hso*
 em+([0-9])?(_+([0-9]))*
 p+([0-9])p+([0-9])?(_+([0-9]))*
 eth*([^.]).inet6
-eth*([^.]).inet
 eth*([^.]).ip6.@(dhclient|dhcpcd|pump|udhcpc)
+eth*([^.]).inet
 eth*([^.]).@(dhclient|dhcpcd|pump|udhcpc)
 eth*
 @(ath|wifi|wlan)*([^.]).inet6
-@(ath|wifi|wlan)*([^.]).inet
 @(ath|wifi|wlan)*([^.]).ip6.@(dhclient|dhcpcd|pump|udhcpc)
+@(ath|wifi|wlan)*([^.]).inet
 @(ath|wifi|wlan)*([^.]).@(dhclient|dhcpcd|pump|udhcpc)
 @(ath|wifi|wlan)*
 ppp*
