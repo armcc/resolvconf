@@ -28,6 +28,10 @@ interface-order
 ---------------
 When changing this file, also change the patterns in bin/list-records.
 
+normalize_stdin
+---------------
+When changning this function, also update it in debian/test-normalization.
+
 awk
 ---
 We mustn't use awk in any runtime code but we may use it in the
