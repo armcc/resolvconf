@@ -7,10 +7,13 @@ set -e
 adequate_eni()
 {
 	# Assume that if _any_ dns-nameservers line appears in
-	# /etc/network/interfaces then that is adequate and we
-	# don't need to ask the user if he wants to link the
+	# the interfaces file then that is adequate and we don't
+	# need to ask the user if he or she wants to link the
 	# original file to the dynamic file at medium priority
-	[ -f /etc/network/interfaces ] && grep -q dns-nameservers /etc/network/interfaces > /dev/null
+	#
+	# Formerly: [ -f /etc/network/interfaces ] && grep -q dns-nameservers /etc/network/interfaces > /dev/null
+	# but now we use ifquery for correctness
+	ifquery $(ifquery --list -a) | grep -q '^dns-nameservers'
 }
 
 case $1 in
