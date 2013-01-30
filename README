@@ -20,7 +20,7 @@ Credits
 
 News
 ~~~~
-* Last updated 4 December 2012 for version 1.69
+* Last updated 30 January 2013 for version 1.70
 
 Introduction
 ~~~~~~~~~~~~
@@ -341,8 +341,8 @@ Technical overview
 * "/etc/init.d/resolvconf reload" calls scripts in
   /etc/resolvconf/update.d/ which update DNS cache configuration file
   fragments, reload daemons and regenerate /etc/resolv.conf.  If
-  the latter has changed then nscd is restarted and scripts in
-  /etc/resolvconf/update-libc.d/ are run.
+  the latter has changed then scripts in /etc/resolvconf/update-libc.d/
+  are run.
 
 Usage information for developers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

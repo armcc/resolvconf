@@ -27,20 +27,6 @@ TODO
   * #641714 bind9
   * #639803 network-manager
 
-* Investigate whether or not we still have to restart nscd now that
-  resolver clients are asked to re-initialize their resolver states
-  when /etc/resolv.conf changes.
-
-  The patch in question was discussed on the eglibc mailing list.
-
-      http://www.eglibc.org/archives/patches/msg00977.html
-
-  It
-
-      http://patch-tracker.debian.org/patch/series/view/eglibc/2.11.3-4/any/submitted-resolv.conf-thread.diff
-
-  was present in Squeeze and was later included upstream.
-
 interface-order
 ---------------
 When changing this file, also change the patterns in bin/list-records.
