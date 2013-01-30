@@ -3,14 +3,17 @@
 
 TODO
 ----
+* For Jessie (which has /run, which was introduced in Wheezy), simplify
+  the maintainer scripts by stripping out code that is only there to deal
+  with the possibility that /run is not yet available at preinst time.
+
+* In Jessie (which allows an option to occur multiple times in a stanza)
+  introduce a "dns-nameserver" option. Initially allow exactly one address
+  as argument. This allows us to enhance the syntax later if necessary
+  through addition, for example, of modifier keywords after the address.
+
 * File bug reports against all packages containing suppliers of nameserver
   information, asking each to add a resolvconf packaging-event hook script.
-
-  Submitted:
-  * #628003, #641717 dnsmasq [both DONE]
-  * #628846 pdnsd
-  * #641714 bind9
-  * #639803 network-manager
 
   To be submitted:
   * (nameservers:) pdns-recursor, totd
@@ -18,11 +21,11 @@ TODO
   * (DHCP clients:) isc-dhcp-client, dhcpcd, pump, udhcpc
     + Probably easiest and best to trigger DHCP lease renewals.
 
-* After the first Debian release to include an ifupdown that supports
-  duplicated options in a stanza (not 0.7.5, despite a changelog entry
-  implying otherwise, and thus not in Wheezy but in Jessie), document
-  the fact that the option "dns-nameserver" can be given multiple times
-  in a stanza.
+  Already submitted:
+  * #628003, #641717 dnsmasq [both DONE]
+  * #628846 pdnsd
+  * #641714 bind9
+  * #639803 network-manager
 
 interface-order
 ---------------
