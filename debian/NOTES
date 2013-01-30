@@ -27,6 +27,29 @@ TODO
   * #641714 bind9
   * #639803 network-manager
 
+* Investigate whether or not we still have to restart nscd now that
+  resolver clients are asked to re-initialize their resolver states
+  when /etc/resolv.conf changes.
+
+  The patch in question was discussed on the eglibc mailing list.
+
+      http://www.eglibc.org/archives/patches/msg00977.html
+
+  It
+
+      http://patch-tracker.debian.org/patch/series/view/eglibc/2.11.3-4/any/submitted-resolv.conf-thread.diff
+
+  was present in Squeeze and was later included upstream.
+
+  I think we still have to restart nscd because we modify
+  /run/resolvconf/resolv.conf and not /etc/resolv.conf whereas eglibc
+  monitors the mtime of /etc/resolv.conf which in our case is a
+  static symbolic link.
+
+  This looks like a nice feature. To make it nice for resolvconf too
+  I fear that eglibc has to be changed so that it looks at the mtime
+  of the target of the symlink.
+
 interface-order
 ---------------
 When changing this file, also change the patterns in bin/list-records.
