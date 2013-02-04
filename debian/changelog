@@ -1,4 +1,4 @@
-resolvconf (1.71~1) unstable; urgency=low
+resolvconf (1.71~2) unstable; urgency=low
 
   [ Thomas Hood ]
   * [0863189] Use ifquery instead of "grep /e/n/i" in
@@ -10,6 +10,9 @@ resolvconf (1.71~1) unstable; urgency=low
       (Fixes LP#1110331). This shouldn't have much effect since the
       hosts cache was disabled by default in 2007.
       http://www.eglibc.org/archives/patches/msg00977.html
+  * [f559774] resolvconf.8: Undocument the now-deprecated
+      *-runtime-directories options and mention that resolver
+      options should be migrated to resolv.conf.d/base.
 
  -- Thomas Hood <jdthood@gmail.com>  Wed, 30 Jan 2013 21:21:13 +0100
 
