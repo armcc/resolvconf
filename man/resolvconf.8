@@ -1,4 +1,4 @@
-.TH RESOLVCONF "8" "28 May 2012" "resolvconf" "resolvconf"
+.TH RESOLVCONF "8" "3 Feb 2013" "resolvconf" "resolvconf"
 .SH NAME
 resolvconf \- manage nameserver information
 .SH SYNOPSIS
@@ -18,10 +18,6 @@ cat \fIFILE\fR |
 .B \-\-disable\-updates
 |
 .B \-\-updates\-are\-enabled
-|
-.B \-\-create\-runtime\-directories
-|
-.B \-\-wipe\-runtime\-directories
 .SH DESCRIPTION
 The resolvconf package comprises a simple database
 for run-time nameserver information
@@ -44,17 +40,14 @@ Normally the
 .B resolvconf
 program is run only by network interface configuration programs
 such as
-.BR pppd (8) 
-(for ppp interfaces);
-by DHCP clients such as
-.BR dhclient (8);
-by
-.BR ifup (8) 
+.BR ifup (8),
+.BR ifdown ,
+.BR NetworkManager (8),
+.BR dhclient (8),
 and
-.BR ifdown ;
-and by DNS caches such as
-.BR dnsmasq (8)
-(for the loopback interface).
+.BR pppd (8);
+and by local nameservers such as
+.BR dnsmasq (8).
 These programs obtain nameserver information from some source
 and push it to
 .BR resolvconf .
@@ -138,11 +131,27 @@ has just been or is about to be installed
 and which previously relied on a static
 .I /etc/resolv.conf
 file,
-the nameserver information in that static file
+.IP \[bu]
+the nameserver information in that static file,
+(which is to say the information on
+.BR nameserver ,
+.BR domain ,
+.B search
+and
+.B sortlist
+lines)
 should be migrated to the appropriate
 .B iface
 stanza(s) in
-.IR interfaces (5).
+.IR /etc/network/interfaces (5)
+as just described;
+.IP \[bu]
+options
+(which is to say, any
+.B options
+lines)
+should be migrated to
+.IR /etc/resolvconf/resolv.conf.d/base .
 .PP
 .SS Command line
 The administrator
@@ -328,14 +337,6 @@ Clear the flag.
 \fB\-\-updates\-are\-enabled\fR
 Return 0 if the flag is set,
 otherwise return 1.
-.TP
-\fB\-\-create\-runtime\-directories\fR
-Create the directories where resolver information records
-and other run-time files are stored.
-.TP
-\fB\-\-wipe\-runtime\-directories\fR
-Delete everything in the directories where resolver information records
-and other run-time files are stored.
 .SH ENVIRONMENT VARIABLES
 The following variables can be set in the configuration file
 .IR /etc/default/resolvconf .
@@ -406,12 +407,6 @@ will be dropped.
 Nevertheless, clients should not make any assumptions
 about the location or the canonical path of this directory
 or the hierarchy that is constructed under it.
-.IP
-The target of this symbolic link will be created if
-.B resolvconf
-is called with the
-.B \-\-create\-runtime\-directories
-option.
 .TP
 .I /etc/resolvconf/interface\-order
 Determines the order of precedence of nameserver addresses and search domain names.
@@ -477,7 +472,7 @@ does not check the sanity of the information provided to it.
 Written by Thomas Hood <jdthood@gmail.com>
 with contributions by Nathan Stratton Treadway.
 .SH COPYRIGHT
-Copyright \(co 2004-2012 Thomas Hood.
+Copyright \(co 2004-2013 Thomas Hood.
 .br
 This is free software; see the source for copying conditions.
 .SH "SEE ALSO"
