@@ -14,7 +14,7 @@ resolvconf (1.70) unstable; urgency=low
   * [9e26ca4] Drop DM-Upload-Allowed
   * [0863189] Use ifquery instead of "grep /e/n/i" in
       debian/config.  Because of need for ifquery, add versioned
-      Dependency on ifupdown.
+      Dependency on ifupdown. Instigated by debian-devel thread:
       http://lists.debian.org/debian-devel/2013/01/msg00159.html
   * [eef5e1c] update.d/libc: Don't restart nscd any more. Nscd now
       spontaneously re-reads resolv.conf when it changes
