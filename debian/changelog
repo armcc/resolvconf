@@ -1,7 +1,7 @@
 resolvconf (1.71~1) unstable; urgency=low
 
   [ Thomas Hood ]
-  * [1152eb6] Accept "dns-nameserver" options in /e/n/i
+  * [7e4b50a] Accept "dns-nameserver" options in /e/n/i
 
  -- Thomas Hood <jdthood@gmail.com>  Mon, 11 Feb 2013 21:55:36 +0100
 
