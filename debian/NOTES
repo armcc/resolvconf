@@ -7,11 +7,6 @@ TODO
   the maintainer scripts by stripping out code that is only there to deal
   with the possibility that /run is not yet available at preinst time.
 
-* In Jessie (which allows an option to occur multiple times in a stanza)
-  introduce a "dns-nameserver" option. Initially allow exactly one address
-  as argument. Restricting to one address allows us to enhance the syntax
-  later if necessary, through addition, for example, of modifier keywords.
-
 * Add an Upstart job file obeying the dictates of policy §9.11.1.
 
 * Add a Systemd unit file  obeying the dictates of policy §9.11.

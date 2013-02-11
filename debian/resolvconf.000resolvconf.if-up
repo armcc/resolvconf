@@ -38,7 +38,7 @@ IFS='
 for OPT in $IF_DNS_NAMESERVER ; do
 	IFS="$STANDARD_IFS"
 	set_NS_to_first_arg $OPT
-	R="${R}nameserver $NS
+	[ "$NS" ] && R="${R}nameserver $NS
 "
 done
 IFS="$STANDARD_IFS"
