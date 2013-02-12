@@ -3,6 +3,8 @@ resolvconf (1.71~1) unstable; urgency=low
   [ Thomas Hood ]
   * [7e4b50a] Accept "dns-nameserver" options in /e/n/i, allowing
       at most one address per option line.
+  * [cd7f88b] Simplify maintainer scripts: no longer handle upgrading
+      from Squeeze.
 
  -- Thomas Hood <jdthood@gmail.com>  Mon, 11 Feb 2013 21:55:36 +0100
 
