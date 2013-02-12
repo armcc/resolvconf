@@ -7,12 +7,6 @@ TODO
 
 * Add a Systemd unit file  obeying the dictates of policy §9.11.
 
-* Remove the create-runtime-directories feature which was intended to ease
-  maintenance when only one person was maintaining both the Debian and
-  Ubuntu flavors of the package. Now that the Ubuntu package is maintained
-  by the core team and makes no use of create-runtime-directories, the
-  raison d'être for the feature has disappeared.
-
 * File bug reports against all packages containing suppliers of nameserver
   information, asking each to add a resolvconf packaging-event hook script.
 

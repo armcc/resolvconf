@@ -5,7 +5,7 @@
 
 set -e
 
-echo_usage() { echo "Usage: resolvconf (-d IFACE|-a IFACE|-u|--enable-updates|--disable-updates|--updates-are-enabled|--create-runtime-directories|--wipe-runtime-directories)" ; }
+echo_usage() { echo "Usage: resolvconf (-d IFACE|-a IFACE|-u|--enable-updates|--disable-updates|--updates-are-enabled)" ; }
 
 PATH=/sbin:/bin
 MYNAME="${0##*/}"
@@ -38,7 +38,7 @@ case "$CMD" in
 	  ~*) report_iface_err "Initial tilde" ; exit 1 ;;
 	esac
 	;;
-  -u|--enable-updates|--disable-updates|--updates-are-enabled|--create-runtime-directories|--wipe-runtime-directories)
+  -u|--enable-updates|--disable-updates|--updates-are-enabled)
   	if [ "$2" ] ; then
 		report_err "The $CMD option does not take an argument"
 		echo_usage >&2
@@ -49,35 +49,6 @@ case "$CMD" in
 	report_err "Command not recognized"
 	echo_usage >&2
 	exit 99
-	;;
-esac
-
-# Handle creation and wiping of run-time directories
-case "$CMD" in
-  --create-runtime-directories)
-	umask 022
-	if [ ! -d "$RUN_DIR" ] ; then
-		[ -L "$RUN_DIR" ] || { report_err "$RUN_DIR is neither a directory nor a symbolic link" ; exit 1 ; }
-		# It's a symlink. Its target is not a dir.
-		{ RUN_CANONICALDIR="$(readlink -f "$RUN_DIR")" && [ "$RUN_CANONICALDIR" ] ; } || { report_err "Canonical path of the run directory could not be determined" ; exit 1 ; }
-		# Create directory at the target
-		mkdir "$RUN_CANONICALDIR" || { report_err "Error creating directory $RUN_CANONICALDIR" ; exit 1 ; }
-	fi
-	# The resolvconf run directory now exists.
-	if [ ! -d "${RUN_DIR}/interface" ] ; then
-		mkdir "${RUN_DIR}/interface" || { report_err "Error creating directory ${RUN_DIR}/interface" ; exit 1 ; }
-	fi
-	# The interface directory now exists.  We are done.
-	exit 0
-	;;
-  --wipe-runtime-directories)
-	# Delete files in the resolvconf run directory (target) but not the directory itself
-	[ -d "$RUN_DIR" ] || exit 0
-	rm -f "$RUN_DIR"/resolv.conf
-	rm -f "$ENABLE_UPDATES_FLAGFILE"
-	rm -f "$POSTPONED_UPDATE_FLAGFILE"
-	rm -rf "$IFACE_DIR"
-	exit 0
 	;;
 esac
 
