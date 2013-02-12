@@ -1,7 +1,8 @@
 resolvconf (1.71~1) unstable; urgency=low
 
   [ Thomas Hood ]
-  * [7e4b50a] Accept "dns-nameserver" options in /e/n/i
+  * [7e4b50a] Accept "dns-nameserver" options in /e/n/i, allowing
+      at most one address per option line.
 
  -- Thomas Hood <jdthood@gmail.com>  Mon, 11 Feb 2013 21:55:36 +0100
 
@@ -23,12 +24,14 @@ resolvconf (1.70) unstable; urgency=low
       debian/config.  Because of need for ifquery, add versioned
       Dependency on ifupdown. Instigated by debian-devel thread:
       http://lists.debian.org/debian-devel/2013/01/msg00159.html
-  * [eef5e1c] update.d/libc: Don't restart nscd any more. Nscd now
-      spontaneously re-reads resolv.conf when it changes
-      (Fixes LP#1110331). This shouldn't have much effect since nscd's
-      hosts cache was disabled by default in 2007 and restarting
-      nscd unnecessarily did no harm.
-      http://www.eglibc.org/archives/patches/msg00977.html
+  * [eef5e1c] update.d/libc: Don't restart nscd any more. Nscd's hosts
+      cache was disabled by default in 2007 so this was, by default,
+      an unused feature. Nscd now spontaneously re-reads resolv.conf
+      when it changes, so restarting nscd is no longer necessary.
+      Ref: http://www.eglibc.org/archives/patches/msg00977.html
+      Fixes LP#1110331.  Unfortunately, this change exposes a bug in
+      nscd (http://bugs.debian.org/700385): nscd does not clear its
+      hosts cache when it re-reads resolv.conf.
   * [f559774] resolvconf.8: Undocument the now-deprecated
       *-runtime-directories options and mention that static resolver
       options should be migrated to resolv.conf.d/base.

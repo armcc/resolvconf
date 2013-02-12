@@ -3,10 +3,6 @@
 
 TODO
 ----
-* For Jessie (which has /run, which was introduced in Wheezy), simplify
-  the maintainer scripts by stripping out code that is only there to deal
-  with the possibility that /run is not yet available at preinst time.
-
 * Add an Upstart job file obeying the dictates of policy §9.11.1.
 
 * Add a Systemd unit file  obeying the dictates of policy §9.11.
@@ -31,6 +27,8 @@ TODO
   * #628846 pdnsd
   * #641714 bind9
   * #639803 network-manager
+
+* Eliminate forks where possible in shell scripts
 
 awk
 ---

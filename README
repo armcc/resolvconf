@@ -20,7 +20,7 @@ Credits
 
 News
 ~~~~
-* Last updated 30 January 2013 for version 1.70
+* Last updated 12 February 2013 for version 1.71
 
 Introduction
 ~~~~~~~~~~~~
@@ -584,6 +584,9 @@ TODO
   * nscd
     # 266817: Please suggest resolvconf
       - Tagged WONTFIX
+    # 700385: Invalidate hosts cache on resolv.conf change, or
+              include resolvconf update script to invalidate it
+      - SUBMITTED
   * pdnsd
     # 628846: Include /usr/lib/resolvconf/dpkg-event.d/pdnsd
       - NO REPLY for several months
