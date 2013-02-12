@@ -55,6 +55,8 @@ case "$1" in
 		fi
 	fi
 
+	rm -f /etc/resolvconf/already-linkified
+
 	report_info "Reboot recommended"
 	db_input high resolvconf/reboot-recommended-after-removal || :
 	db_go || :

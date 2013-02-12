@@ -113,9 +113,12 @@ case "$1" in
 	fi
 
 	# Linkify /etc/resolv.conf if appropriate
+	if [ "$DEBCONF_RECONFIGURE" = 1 ] || [ "$1" = reconfigure ] ; then
+		rm -f /etc/resolvconf/already-linkified
+	fi
 	db_get resolvconf/linkify-resolvconf
 	if
-		[ "$RET" = "true" ]
+		[ "$RET" = "true" ] && [ ! -e /etc/resolvconf/already-linkified ]
 	then
 		if is_immutable_file /etc/resolv.conf ; then
 			report_err "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable; to correct this problem, gain root privileges in a terminal and run 'chattr -i /etc/resolv.conf' and then 'dpkg --configure resolvconf'; aborting"
@@ -148,6 +151,19 @@ case "$1" in
 			fi
 			# Create the link
 			ln -nsf /etc/resolvconf/run/resolv.conf /etc/resolv.conf
+			# Make a record that we have created it
+			echo "This is a flag file whose presence indicates that
+the resolvconf package has already created a symbolic link
+at /etc/resolv.conf and should not do so again.
+
+If you remove this file then the resolvconf package will
+create the symbolic link again the next time the package
+is upgraded, provided of course the linkify-resolvconf
+debconf question has an affirmative answer.
+
+If the administrator runs 'dpkg-reconfigure resolvconf'
+then this file is deleted so that the package can make
+another attempt to create the symbolic link." > /etc/resolvconf/already-linkified
 		fi
 	fi
 	;;

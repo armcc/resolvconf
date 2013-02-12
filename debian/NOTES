@@ -28,8 +28,6 @@ TODO
   * #641714 bind9
   * #639803 network-manager
 
-* Eliminate forks where possible in shell scripts
-
 awk
 ---
 We mustn't use awk in any runtime code but we may use it in the
