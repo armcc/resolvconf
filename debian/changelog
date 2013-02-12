@@ -7,14 +7,14 @@ resolvconf (1.71~1) unstable; urgency=low
       from Squeeze.
   * [03d5e66] Only linkify once; our memory that we have linkified is
       the existence of flag file /etc/resolvconf/already-linkified.
-  * Remove the *-runtime-directories options which were intended to
-    ease maintenance when only one person was maintaining both the
-    Debian and Ubuntu flavors of the package. Now that the Ubuntu
-    package is maintained by the Ubuntu Core Team and makes no use of
-    *-runtime-directories, the raison d'être for these options has
-    disappeared.
+  * [9b72d0e] Remove the *-runtime-directories options which were
+      intended to ease maintenance when the Debian and Ubuntu
+      versions were being maintained together. Now that the Ubuntu
+      package is maintained by the Ubuntu Core Team and makes no use
+      of *-runtime-directories, the raison d'être for these options
+      has disappeared.
 
- -- Thomas Hood <jdthood@gmail.com>  Mon, 11 Feb 2013 21:55:36 +0100
+ -- Thomas Hood <jdthood@gmail.com> Tue, 12 Feb 2013 21:57:30 +0100 
 
 resolvconf (1.70) unstable; urgency=low
 
