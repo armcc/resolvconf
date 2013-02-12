@@ -114,7 +114,9 @@ case "$1" in
 
 	# Linkify /etc/resolv.conf if appropriate
 	db_get resolvconf/linkify-resolvconf
-	if [ "$RET" = "true" ] ; then
+	if
+		[ "$RET" = "true" ]
+	then
 		if is_immutable_file /etc/resolv.conf ; then
 			report_err "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable; to correct this problem, gain root privileges in a terminal and run 'chattr -i /etc/resolv.conf' and then 'dpkg --configure resolvconf'; aborting"
 			exit 1
