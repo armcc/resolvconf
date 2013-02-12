@@ -5,6 +5,8 @@ resolvconf (1.71~1) unstable; urgency=low
       at most one address per option line.
   * [cd7f88b] Simplify maintainer scripts: no longer handle upgrading
       from Squeeze.
+  * [03d5e66] Only linkify once; our memory that we have linkified is
+      the existence of flag file /etc/resolvconf/already-linkified.
 
  -- Thomas Hood <jdthood@gmail.com>  Mon, 11 Feb 2013 21:55:36 +0100
 
