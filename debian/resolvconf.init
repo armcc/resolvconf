@@ -25,6 +25,13 @@
 
 [ -x /sbin/resolvconf ] || exit 0
 
+# Abort if Upstart is in use, as per Policy §9.11.1.
+case "$1" in
+  start|stop|restart|reload|force-reload)
+	which initctl >/dev/null 2>&1 && initctl version | grep -q upstart && exit 1
+	;;
+esac
+
 PATH=/sbin:/bin
 RUN_DIR=/etc/resolvconf/run
 ENABLE_UPDATES_FLAGFILE="${RUN_DIR}/enable-updates"
