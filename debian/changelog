@@ -14,7 +14,7 @@ resolvconf (1.71~1) unstable; urgency=low
       of *-runtime-directories, the raison d'être for these options
       has disappeared.
 
- -- Thomas Hood <jdthood@gmail.com> Tue, 12 Feb 2013 21:57:30 +0100 
+ -- Thomas Hood <jdthood@gmail.com>  Tue, 12 Feb 2013 21:57:30 +0100 
 
 resolvconf (1.70) unstable; urgency=low
 
