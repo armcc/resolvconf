@@ -72,7 +72,7 @@ wipe_runtime_directories()
 	rm -f "$RUN_DIR"/resolv.conf
 	rm -f "$ENABLE_UPDATES_FLAGFILE"
 	rm -f "$POSTPONED_UPDATE_FLAGFILE"
-	rm -rf "${RUN_DIR}/interface"
+	rm -rf "${RUN_DIR}/interface/*"
 	return
 }
 
@@ -86,7 +86,7 @@ case "$1" in
 	# Create runtime directories in case they are on a tmpfs
 	create_runtime_directories
 	# Request a postponed update (needed in case the base file has content).
-	resolvconf -u || log_action_end_msg_and_exit 1 "failed requesting update"
+	:> "$POSTPONED_UPDATE_FLAGFILE" || log_action_end_msg_and_exit 1 "failed requesting update"
 	# Enable updates and perform the postponed update.
 	resolvconf --enable-updates || log_action_end_msg_and_exit 1 "failed to enable updates"
 	log_action_end_msg_and_exit 0
