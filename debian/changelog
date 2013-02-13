@@ -7,6 +7,7 @@ resolvconf (1.71~2) unstable; urgency=low
       from Squeeze; bump Pre-Depends initscripts to Wheezy version.
   * [03d5e66] Only linkify once; our memory that we have linkified is
       the existence of flag file /etc/resolvconf/already-linkified.
+      Linkify again on dpkg-reconfigure. Same behavior as in Ubuntu.
   * [9b72d0e] resolvconf: Remove the *-runtime-directories options
       which were intended to ease maintenance when the Debian and
       Ubuntu versions were being maintained together. Now that the
