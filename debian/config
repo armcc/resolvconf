@@ -17,7 +17,7 @@ adequate_eni()
 }
 
 db_input low resolvconf/linkify-resolvconf || :
-db_go || :
+db_go
 db_get resolvconf/linkify-resolvconf
 if \
 	[ "$RET" = "true" ] \
@@ -32,7 +32,7 @@ then
 fi
 
 db_input medium resolvconf/downup-interfaces || :
-db_go || :
+db_go
 
 db_stop
 
