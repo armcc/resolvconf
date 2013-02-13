@@ -30,8 +30,6 @@ then
 		db_input medium resolvconf/link-tail-to-original || :
 	fi
 	db_go || :
-else
-	db_set resolvconf/link-tail-to-original false
 fi
 
 db_input medium resolvconf/downup-interfaces || :
