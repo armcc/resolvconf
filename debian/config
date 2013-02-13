@@ -16,30 +16,26 @@ adequate_eni()
 	ifquery $(ifquery --list -a) | grep -q '^dns-nameserver'
 }
 
-case $1 in
-configure|reconfigure)
-	db_input low resolvconf/linkify-resolvconf || :
-	db_go || :
-	db_get resolvconf/linkify-resolvconf
-	if \
-		[ "$RET" = "true" ] \
-		&& [ ! -e /etc/resolvconf/resolv.conf.d/tail ] \
-		&& [ ! -L /etc/resolvconf/resolv.conf.d/tail ]
-	then
-		if adequate_eni ; then
-			db_input low resolvconf/link-tail-to-original || :
-		else
-			db_input medium resolvconf/link-tail-to-original || :
-		fi
-		db_go || :
+db_input low resolvconf/linkify-resolvconf || :
+db_go || :
+db_get resolvconf/linkify-resolvconf
+if \
+	[ "$RET" = "true" ] \
+	&& [ ! -e /etc/resolvconf/resolv.conf.d/tail ] \
+	&& [ ! -L /etc/resolvconf/resolv.conf.d/tail ]
+then
+	if adequate_eni ; then
+		db_input low resolvconf/link-tail-to-original || :
 	else
-		db_set resolvconf/link-tail-to-original false
+		db_input medium resolvconf/link-tail-to-original || :
 	fi
-
-	db_input medium resolvconf/downup-interfaces || :
 	db_go || :
-	;;
-esac
+else
+	db_set resolvconf/link-tail-to-original false
+fi
+
+db_input medium resolvconf/downup-interfaces || :
+db_go || :
 
 db_stop
 
