@@ -1,10 +1,10 @@
-resolvconf (1.71~1) unstable; urgency=low
+resolvconf (1.71~2) unstable; urgency=low
 
   [ Thomas Hood ]
   * [7e4b50a] Accept "dns-nameserver" options in /e/n/i, allowing
       at most one address per option line.
   * [cd7f88b] Simplify maintainer scripts: no longer handle upgrading
-      from Squeeze.
+      from Squeeze; bump Pre-Depends initscripts to Wheezy version.
   * [03d5e66] Only linkify once; our memory that we have linkified is
       the existence of flag file /etc/resolvconf/already-linkified.
   * [9b72d0e] Remove the *-runtime-directories options which were

@@ -12,7 +12,7 @@ Standards-Version: 3.9.4.0
 Package: resolvconf
 Architecture: all
 Enhances: isc-dhcp-client, dhcpcd, pump, udhcpc, ppp, ifupdown, network-manager, dnsmasq, pdnsd, totd, libc6, nscd
-Pre-Depends: ifupdown (>= 0.7.5), initscripts (>= 2.88dsf-13.10), ${misc:Pre-Depends}
+Pre-Depends: ifupdown (>= 0.7.5), initscripts (>= 2.88dsf-34), ${misc:Pre-Depends}
 Depends: lsb-base, ${misc:Depends}
 Breaks: dnscache-run, dhcp3-client (<< 4.1.1-P1-15+squeeze1)
 Description: name server information handler
