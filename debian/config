@@ -21,8 +21,8 @@ db_go
 db_get resolvconf/linkify-resolvconf
 if \
 	[ "$RET" = "true" ] \
-	&& [ ! -e /etc/resolvconf/resolv.conf.d/tail ] \
-	&& [ ! -L /etc/resolvconf/resolv.conf.d/tail ]
+	&& ! [ -e /etc/resolvconf/resolv.conf.d/tail ] \
+	&& ! [ -L /etc/resolvconf/resolv.conf.d/tail ]
 then
 	if adequate_eni ; then
 		db_input low resolvconf/link-tail-to-original || :
