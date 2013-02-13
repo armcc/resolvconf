@@ -29,7 +29,6 @@ then
 	else
 		db_input medium resolvconf/link-tail-to-original || :
 	fi
-	db_go || :
 fi
 
 db_input medium resolvconf/downup-interfaces || :
