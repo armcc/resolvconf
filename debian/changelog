@@ -1,4 +1,4 @@
-resolvconf (1.71~3) unstable; urgency=low
+resolvconf (1.71~4) unstable; urgency=low
 
   [ Thomas Hood ]
   * [7e4b50a] Accept "dns-nameserver" options in /e/n/i, allowing
@@ -15,8 +15,9 @@ resolvconf (1.71~3) unstable; urgency=low
       no use these options, their raison d'être has disappeared.
       Code transferred to the initscript.
   * [9b854f8] if-down.d/resolvconf: Drop workaround for fixed #338348
+  * [27551b1] Add Upstart job file from Ubuntu
 
- -- Thomas Hood <jdthood@gmail.com>  Wed, 13 Feb 2013 20:58:32 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Wed, 13 Feb 2013 21:12:47 +0100
 
 resolvconf (1.70) unstable; urgency=low
 
