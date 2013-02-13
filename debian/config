@@ -4,7 +4,7 @@ set -e
 
 . /usr/share/debconf/confmodule
 
-adequate_eni()
+eni_seems_adequate()
 {
 	# Assume that if _any_ dns-nameserver[s] line appears in
 	# the interfaces file then that is adequate and we don't
@@ -25,7 +25,7 @@ if \
 	&& ! [ -e /etc/resolvconf/resolv.conf.d/tail ] \
 	&& ! [ -L /etc/resolvconf/resolv.conf.d/tail ]
 then
-	if adequate_eni ; then
+	if eni_seems_adequate ; then
 		db_input low resolvconf/link-tail-to-original || :
 	else
 		db_input medium resolvconf/link-tail-to-original || :
