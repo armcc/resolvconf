@@ -11,16 +11,15 @@ TODO
   information, asking each to add a resolvconf packaging-event hook script.
 
   To be submitted:
-  * (nameservers:) pdns-recursor
-    + Easy to implement: just call initscript or add 127.0.0.1.
   * (DHCP clients:) isc-dhcp-client, dhcpcd, pump, udhcpc
     + Probably easiest and best to trigger DHCP lease renewals.
 
   Already submitted:
   * #628003, #641717 dnsmasq [Both DONE — Simon Kelley rocks.]
   * #628846 pdnsd [No response in over a year]
-  * #641714 bind9 [No response in over a year]
   * #639803 network-manager [No response in over a year]
+  * #641714 bind9 [No response in over a year]
+  * #700850 pdns-recursor
 
 awk
 ---
