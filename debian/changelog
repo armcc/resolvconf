@@ -16,8 +16,9 @@ resolvconf (1.71~4) unstable; urgency=low
       Code transferred to the initscript.
   * [9b854f8] if-down.d/resolvconf: Drop workaround for fixed #338348
   * [27551b1] Add Upstart job file from Ubuntu
+  * [27f6103] Remove refs to totd which has been removed from Debian
 
- -- Thomas Hood <jdthood@gmail.com>  Wed, 13 Feb 2013 21:12:47 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Mon, 18 Feb 2013 12:08:42 +0100
 
 resolvconf (1.70) unstable; urgency=low
 
