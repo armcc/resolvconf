@@ -75,7 +75,8 @@ totd (5)
     but SFAICT are effectively no-ops if resolvconf is installed.  Hard
     to tell.  Postinst does things to /etc/resolv.conf and also rewrites
     dhclient_enter_hooks in a way incompatible with resolvconf.  As of
-    1.4-4 totd plays nicely with resolvconf.
+    1.4-4 totd plays nicely with resolvconf. As of Wheezy, totd is gone
+    from Debian.
 dhcp-client (4005)
     Prior to version 2.0pl5-17, overwrites resolv.conf without making a
     backup.
@@ -141,7 +142,7 @@ meaning "with some manual configuration"):
 
 DNS caches:
 
-   bind9(*), djbdns dnscache, dnsmasq, nscd, pdnsd, totd
+   bind9(*), djbdns dnscache, dnsmasq, nscd, pdnsd
 
 DNS recursing nameservers:
 

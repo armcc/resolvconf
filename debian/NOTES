@@ -3,24 +3,24 @@
 
 TODO
 ----
-* Add a Systemd unit file  obeying the dictates of policy §9.11.
+* Add a Systemd unit file obeying the dictates of policy §9.11.
 
-* After Jessie, drop use of /etc/resolvconf/run
+* In Jessie + 1, drop use of /etc/resolvconf/run
 
 * File bug reports against all packages containing suppliers of nameserver
   information, asking each to add a resolvconf packaging-event hook script.
 
   To be submitted:
-  * (nameservers:) pdns-recursor, totd
+  * (nameservers:) pdns-recursor
     + Easy to implement: just call initscript or add 127.0.0.1.
   * (DHCP clients:) isc-dhcp-client, dhcpcd, pump, udhcpc
     + Probably easiest and best to trigger DHCP lease renewals.
 
   Already submitted:
-  * #628003, #641717 dnsmasq [both DONE]
-  * #628846 pdnsd
-  * #641714 bind9
-  * #639803 network-manager
+  * #628003, #641717 dnsmasq [Both DONE — Simon Kelley rocks.]
+  * #628846 pdnsd [No response in over a year]
+  * #641714 bind9 [No response in over a year]
+  * #639803 network-manager [No response in over a year]
 
 awk
 ---
