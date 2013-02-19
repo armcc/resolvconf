@@ -532,9 +532,9 @@ TODO
   * bind9
     # 483098: bind9: Please add resolvconf hook script to update
       forwarders list
-      - NO REPLY for several months
+      - NO REPLY for over a year
     # 641714: Please add resolvconf packaging-event hook script
-      - NO REPLY for several months
+      - NO REPLY for over a year
   * dnscache-run (from djbdns)
     # 582755: Add resolvconf support
       - NO REPLY for several years
@@ -548,6 +548,9 @@ TODO
   * ifupdown
     + Handle dns-* commands natively so that the resolver is configured
       before "up" commands are run
+  * isc-dhcp-client
+    # 700966: Please add resolvconf packaging-event hook script
+      - SUBMITTED
   * kppp
     # 695121; LP#1086336: Writes to /etc/resolvconf
       - SUBMITTED
@@ -581,16 +584,19 @@ TODO
     + Someone should investigate whether it could be supported better.
   * network-manager
     # 639803: Please add resolvconf packaging-event hook script
-      - NO REPLY for several months
+      - NO REPLY for over a year
   * nscd
     # 266817: Please suggest resolvconf
       - Tagged WONTFIX
     # 700385: Invalidate hosts cache on resolv.conf change, or
               include resolvconf update script to invalidate it
       - SUBMITTED
+  * pdns-recursor
+    # 700850: Please add resolvconf packaging-event hook script
+      - SUBMITTED
   * pdnsd
-    # 628846: Include /usr/lib/resolvconf/dpkg-event.d/pdnsd
-      - NO REPLY for several months
+    # 628846: Please add resolvconf packaging-event hook script
+      - NO REPLY for over a year
   * ppp
     # 208095: Please suggest resolvconf
       - Tagged WONTFIX
@@ -610,6 +616,7 @@ DONE
   * bind
     + Drop support for this obsolete version of BIND
       - DONE in resolvconf 1.48
+      - bind is now gone from Debian
   * bind9
     + Create script /etc/resolvconf/update.d/bind to:
       . Convert /etc/bind/named.options.sed into /var/run/bind/named.options
@@ -644,7 +651,7 @@ DONE
       - DONE in 1.13-2
     + Include /etc/resolvconf/update.d/dnsmasq
       - DONE in 1.13-3
-    # 628003, #641717: Include /usr/lib/resolvconf/dpkg-event.d/dnsmasq
+    # 628003, #641717: Add resolvconf packaging-event hook script
       - DONE in 2.58-3
   * fetchmail
     + Use resolvconf to trigger restart on change of nameserver info
@@ -655,9 +662,6 @@ DONE
   * laptop-net
     + Use resolvconf instead of overwriting /etc/resolv.conf .
       - DONE in 2.21-1
-  * nscd
-    # 252251: Please add resolvconf support
-      - DONE in resolvconf 1.15
   * pcmcia-cs
     # 212823: pcmcia-cs: please add support for the resolvconf package
       - DONE in 3.2.5-1
