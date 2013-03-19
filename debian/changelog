@@ -13,7 +13,7 @@ resolvconf (1.71) unstable; urgency=low
       which were intended to ease maintenance when the Debian and
       Ubuntu versions were being maintained together. Now that the
       Ubuntu package is maintained by Ubuntu developers and makes no
-      use these options, their raison d'être has disappeared.
+      use these options, the options' raison d'être has disappeared.
       Code transferred to the initscript.
   * [9b854f8] if-down.d/resolvconf: Drop workaround for fixed #338348
   * [27551b1] Add Upstart job file from Ubuntu
