@@ -1,26 +1,27 @@
 resolvconf (1.71) unstable; urgency=low
 
   [ Thomas Hood ]
-  * [7e4b50a] Accept "dns-nameserver" options in /e/n/i, allowing
-      at most one address per option line.
+  * [7e4b50a] Accept multiple "dns-nameserver" options in /e/n/i,
+      allowing at most one address per option line. Requires Jessie.
   * [cd7f88b] Simplify maintainer scripts: no longer handle upgrading
-      from Squeeze; bump Pre-Depends on initscripts to Wheezy version.
+      from Squeeze; Pre-Depend on Wheezy version of initscripts.
   * [68654a4] Only linkify once; our memory that we have linkified is
-      the existence of file /etc/resolvconf/do-not-linkify-resolvconf.
-      Do linkify again on dpkg-reconfigure; same behavior as Ubuntu
-      but implemented without changing debconf answers.
+      the existence of file /etc/resolvconf/do-not-linkify-resolvconf
+      which can of course be created or deleted by the admin. *Do*
+      linkify on dpkg-reconfigure --- same behavior as in Ubuntu but
+      implemented without changing debconf answers.
+  * [27551b1] Add Upstart job file from Ubuntu
   * [9b72d0e] resolvconf: Remove the *-runtime-directories options
       which were intended to ease maintenance when the Debian and
       Ubuntu versions were being maintained together. Now that the
-      Ubuntu package is maintained by Ubuntu developers and makes no
-      use of these options, the options' raison d'être has vanished.
-      Code transferred to the initscript.
+      Ubuntu package is maintained separately and makes no use of
+      these options, their raison d'être has vanished.  Transfer the
+      underlying code to the initscript and to the Upstart job file.
   * [9b854f8] if-down.d/resolvconf: Drop workaround for fixed #338348
-  * [27551b1] Add Upstart job file from Ubuntu
   * [27f6103] Remove refs to totd which has been removed from Debian
   * [06a14e1] Update README
 
- -- Thomas Hood <jdthood@gmail.com>  Tue, 19 Mar 2013 12:00:00 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Mon, 25 Mar 2013 12:00:00 +0100
 
 resolvconf (1.70) unstable; urgency=low
 
