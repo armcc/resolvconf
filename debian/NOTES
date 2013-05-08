@@ -10,8 +10,7 @@ TODO
 
 * File bug reports against all packages containing suppliers of nameserver
   information, asking each to add a resolvconf packaging-event hook script.
-
-  Still to be submitted: dhcpcd, pump, udhcpc
+  Still to be submitted: dhcpcd5, pump, udhcpc
 
 awk
 ---
