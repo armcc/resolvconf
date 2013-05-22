@@ -20,7 +20,7 @@ Credits
 
 News
 ~~~~
-* Last updated 12 February 2013 for version 1.71
+* Last updated 22 May 2013 for version 1.73
 
 Introduction
 ~~~~~~~~~~~~
@@ -398,18 +398,21 @@ Normally, when the resolvconf package is installed the resolvconf program
 takes control of /etc/resolv.conf.  It derives the contents of that file from
 nameserver information that has been sent to it, as described above.
 
-Resolvconf is not part of the base system.  It is generally installed after
-the system has fully booted.  At that point interface configurers have already
-configured interfaces and obtained nameserver information.  Caching
-nameservers may also have started.  Because resolvconf is installed only
-later, the latter programs have (obviously) not sent their nameserver
-information to resolvconf.  This means that after installation resolvconf
-does not have complete nameserver information.  The most reliable solution to
-this problem is to reboot.  But Debian rightly frowns on requirements to
-reboot, so the resolvconf package has been so designed that it partially
-addresses the problem just mentioned, as described below.  In the future the
-problem may be fully solved, but this will require the cooperation of other
-Debian package maintainers.
+Resolvconf is not part of the base system in Debian.  It is generally
+installed on a Debian system after the system has fully booted.  At that
+point interface configurers have already configured interfaces and obtained
+nameserver information.  Caching nameservers may also have started.  Because
+resolvconf is installed only later, the latter programs have (obviously) not
+sent their nameserver information to resolvconf.  This means that after
+installation resolvconf does not have complete nameserver information.
+The most reliable solution to this problem is to reboot.  But Debian rightly
+frowns on requirements to reboot, so the resolvconf package has been so
+designed that it partially addresses the problem just mentioned, as
+described below.  In the future the problem may be fully solved, but this
+will require the cooperation of other Debian package maintainers.  (This
+is much less of a problem in Ubuntu, where resolvconf is part of the base
+system.)
+
 
 In order partially to address the problem of resolvconf having incomplete
 information after installation until the first reboot, resolvconf includes
