@@ -9,7 +9,7 @@
 set -e
 
 # Stores arguments (minus duplicates) in RSLT, separated by newlines
-# Doesn't work properly if an argument itself contain whitespace
+# Doesn't work properly if an argument itself contains whitespace
 uniquify()
 {
 	RSLT=""
