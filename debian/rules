@@ -26,7 +26,7 @@ binary-arch:
 
 binary-indep: build
 	dh_testroot
-	dh_installdirs etc sbin lib/resolvconf etc/network/if-up.d etc/network/if-down.d
+	dh_installdirs etc sbin lib/resolvconf etc/network/if-up.d etc/network/if-down.d var/lib/resolvconf
 	cp -a etc $(DESTDIR)
 	install -p --owner=root --group=root --mode=0755 bin/resolvconf $(DESTDIR)/sbin
 	install -p --owner=root --group=root --mode=0755 bin/list-records $(DESTDIR)/lib/resolvconf

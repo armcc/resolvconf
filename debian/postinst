@@ -113,12 +113,13 @@ case "$1" in
 	fi
 
 	# Linkify /etc/resolv.conf if appropriate
+	rm -f /etc/resolvconf/do-not-linkify-resolvconf  # Remove old flag file
 	if [ "$DEBCONF_RECONFIGURE" = 1 ] || [ "$1" = reconfigure ] ; then
-		rm -f /etc/resolvconf/do-not-linkify-resolvconf
+		rm -f /var/lib/resolvconf/resolvconf-linkified
 	fi
 	db_get resolvconf/linkify-resolvconf
 	if
-		[ "$RET" = "true" ] && [ ! -e /etc/resolvconf/do-not-linkify-resolvconf ]
+		[ "$RET" = "true" ] && [ ! -e /var/lib/resolvconf/resolvconf-linkified ]
 	then
 		if is_immutable_file /etc/resolv.conf ; then
 			report_err "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable; to correct this problem, gain root privileges in a terminal and run 'chattr -i /etc/resolv.conf' and then 'dpkg --configure resolvconf'; aborting"
@@ -152,21 +153,7 @@ case "$1" in
 			# Create the link
 			ln -nsf /etc/resolvconf/run/resolv.conf /etc/resolv.conf
 			# Make a record that we have created it
-			echo "This is a flag file whose presence indicates that
-the resolvconf package should not create a symbolic link
-at /etc/resolv.conf even if the linkify-resolvconf debconf
-question was answered in the affirmative.
-
-If you remove this file then the resolvconf package may
-create the symbolic link again the next time the package
-is upgraded, provided the linkify-resolvconf debconf
-question was answered in the affirmative.
-
-If the administrator runs 'dpkg-reconfigure resolvconf'
-then this file is removed.
-
-This file was created by the resolvconf package's postinst
-maintainer script." > /etc/resolvconf/do-not-linkify-resolvconf
+			:> /var/lib/resolvconf/resolvconf-linkified
 		fi
 	fi
 	;;
