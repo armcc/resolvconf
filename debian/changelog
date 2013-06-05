@@ -2,7 +2,7 @@ resolvconf (1.73) unstable; urgency=low
 
   [ Thomas Hood ]
   * [3d014a7] Update README
-  * [3397a94] Store flag file in /var/lib/resolvconf/
+  * [3397a94] Move flag file to /var/lib/resolvconf (Closes: #710957)
 
  -- Thomas Hood <jdthood@gmail.com>  Tue, 04 Jun 2013 21:32:54 +0200
 
