@@ -6,7 +6,8 @@ TODO
 * Add a Systemd unit file obeying the dictates of policy §9.11.
   See #700846.
 
-* In Jessie+1, drop /etc/resolvconf/run; use /run/resolvconf directly.
+* In Jessie+1, drop the deletion of /etc/resolvconf/do-not-linkify-resolvconf.
+* In Jessie+1, drop the use of /etc/resolvconf/run; use /run/resolvconf directly.
 
 * File bug reports against all packages containing suppliers of nameserver
   information, asking each to add a resolvconf packaging-event hook script.

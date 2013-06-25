@@ -20,7 +20,7 @@ Credits
 
 News
 ~~~~
-* Last updated 22 May 2013 for version 1.73
+* Last updated 25 June 2013 for version 1.73
 
 Introduction
 ~~~~~~~~~~~~
@@ -394,38 +394,41 @@ is updated could likewise employ a script in /etc/resolvconf/update.d/ .
 
 Usage information for maintainers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Normally, when the resolvconf package is installed the resolvconf program
-takes control of /etc/resolv.conf.  It derives the contents of that file from
-nameserver information that has been sent to it, as described above.
+Normally, when the resolvconf package is first installed the resolvconf
+program takes control of /etc/resolv.conf: it writes the file
+/run/resolvconf/resolv.conf to which /etc/resolv.conf is a symbolic link.
+Resolvconf derives the contents of that file from nameserver information
+that has been sent to it by other programs, as described above.
 
-Resolvconf is not part of the base system in Debian.  It is generally
-installed on a Debian system after the system has fully booted.  At that
-point interface configurers have already configured interfaces and obtained
-nameserver information.  Caching nameservers may also have started.  Because
-resolvconf is installed only later, the latter programs have (obviously) not
-sent their nameserver information to resolvconf.  This means that after
-installation resolvconf does not have complete nameserver information.
-The most reliable solution to this problem is to reboot.  But Debian rightly
-frowns on requirements to reboot, so the resolvconf package has been so
-designed that it partially addresses the problem just mentioned, as
-described below.  In the future the problem may be fully solved, but this
-will require the cooperation of other Debian package maintainers.  (This
-is much less of a problem in Ubuntu, where resolvconf is part of the base
-system.)
-
+Resolvconf is not part of the base system in Debian; it is generally
+installed on a Debian system after the system has fully booted.  At that point
+interface configurers have already configured the machine's network interfaces
+and obtained nameserver information.  A local forwarding nameserver may also
+have started.  Because resolvconf is installed only later, the latter programs
+have not sent their nameserver information to resolvconf.  This means that
+after installation resolvconf does not have complete nameserver information.
+The most reliable solution to this problem is to reboot.  After reboot, all
+other programs detect resolvconf's presence when they start or configure
+interfaces and send their information to resolvconf and/or obtain their
+nameserver information from resolvconf.  But Debian rightly discourages
+requiring the administrator to reboot, so the resolvconf package has been so
+designed that it partially addresses the problem just outlined, in the manner
+described below.  (In the future the problem may be fully solved, but this
+will require the cooperation of other Debian package maintainers.  This is
+less of a problem in Ubuntu, where resolvconf is part of the base system.)
 
 In order partially to address the problem of resolvconf having incomplete
 information after installation until the first reboot, resolvconf includes
 the entire contents of the original (i.e., pre-resolvconf-installation)
-resolv.conf in its database.  Consequently, nameserver addresses are not lost
-when resolvconf is installed.  Unfortunately this also means that those
-addresses are not removed when interfaces are brought down.
+resolv.conf in its runtime database.  Consequently, nameserver addresses are
+not lost when resolvconf is installed.  Unfortunately this also means that
+those addresses are not removed when interfaces are brought down.
 
-Another way the resolvconf package addresses the problem is to allow other
-parties to call /sbin/resolvconf as soon as it appears in the filesystem:
-nameserver information can be registered with resolvconf before the
-resolvconf's postinst runs.  This means that when, for example, dnsmasq and
-resolvconf are installed in the same dpkg run, and dnsmasq happens to be
+Another way that the resolvconf package addresses helps to the problem is to
+allow other parties to call /sbin/resolvconf as soon as it appears in the
+filesystem: nameserver information can be registered with resolvconf before
+the resolvconf's postinst runs.  This means that when, for example, dnsmasq
+and resolvconf are installed in the same dpkg run, and dnsmasq happens to be
 configured first, dnsmasq can still successfully register its nameserver
 address with resolvconf.
 
@@ -439,8 +442,7 @@ include a hook script /usr/lib/resolvconf/dpkg-event.d/foo which, when called
 with the argument "install", takes whatever actions are necessary to cause the
 program(s) in foo to supply their nameserver information to resolvconf; and
 when called with the argument "remove" takes whatever actions are appropriate
-given that the resolvconf package has been removed (and, in being removed, may
-have removed foo's nameserver information).
+given that the resolvconf package has been removed.
 
 The hook script thus has the following form.
 
@@ -488,6 +490,29 @@ and must have the same name as the package that owns it.
 Arguments other than "install" and "remove" are reserved for future use and
 must be silently ignored.
 
+When the resolvconf package is installed it performs configuration actions
+that are governed by the following two debconf settings.
+
+1. resolvconf/linkify-resolvconf
+
+When this is true, the package makes a single attempt to create a symbolic
+link /etc/resolv.conf with target /etc/resolvconf/run/resolv.conf (Debian)
+or /run/resolvconf/resolv.conf (Ubuntu).
+
+2. resolvconf/link-tail-to-original
+
+When this is true, the package makes a single attempt to create a symbolic
+link /etc/resolvconf/resolv.conf.d/tail -> original. The purpose of this is
+to cause original nameserver configuration to be included in the dynamic
+resolv.conf even after reboot.
+
+In either case, after making the single attempt the package postinst writes
+a flag file /var/lib/resolvconf/resolvconf-linkified whose presence causes
+the postinst not to make another attempt to create either symlink. However,
+"dpkg-reconfigure resolvconf" ignores the flag and causes the package to
+attempt once again to create each symlink if the corresponding debconf
+setting is in the affirmative.
+
 Usage information for administrators
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The generation of the resolv.conf file can be controlled by editing the
@@ -509,8 +534,8 @@ I knew of another host belonging to by ISP that I could use so I simply did:
 
     # echo "nameserver ww.xx.yy.zz" | resolvconf -a dummy
 
-This added the necessary nameserver line to /etc/resolv.conf and to dnsmasq's
-nameserver list.  When my ISP's regular nameserver was fixed I did:
+This added the necessary nameserver line to dnsmasq's nameserver list.  When
+my ISP's regular nameserver was fixed I did:
 
     # resolvconf -d dummy
 

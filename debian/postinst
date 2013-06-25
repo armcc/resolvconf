@@ -102,8 +102,20 @@ case "$1" in
 		fi
 	fi
 
+	# Move flag file from old to new location.
+	# Drop this code after release of Jessie, since the old location was only used in a few post-Wheezy pre-Jessie releases
+	if [ -e "/etc/resolvconf/do-not-linkify-resolvconf" ] ; then
+		:> /var/lib/resolvconf/resolvconf-linkified
+		rm -f "/etc/resolvconf/do-not-linkify-resolvconf"
+	fi
+
+	# Do linkify once again on dpkg-reconfigure
+	if [ "$DEBCONF_RECONFIGURE" = 1 ] || [ "$1" = reconfigure ] ; then
+		rm -f /var/lib/resolvconf/resolvconf-linkified
+	fi
+
 	# Link tail to original if appropriate
-	if [ ! -e /etc/resolvconf/resolv.conf.d/tail ] ; then
+	if [ ! -e /etc/resolvconf/resolv.conf.d/tail ] && [ ! -e /var/lib/resolvconf/resolvconf-linkified ] ; then
 		db_get resolvconf/link-tail-to-original
 		if [ "$RET" = "true" ] ; then
 			ln -nsf original /etc/resolvconf/resolv.conf.d/tail
@@ -113,47 +125,43 @@ case "$1" in
 	fi
 
 	# Linkify /etc/resolv.conf if appropriate
-	rm -f /etc/resolvconf/do-not-linkify-resolvconf  # Remove old flag file
-	if [ "$DEBCONF_RECONFIGURE" = 1 ] || [ "$1" = reconfigure ] ; then
-		rm -f /var/lib/resolvconf/resolvconf-linkified
-	fi
-	db_get resolvconf/linkify-resolvconf
-	if
-		[ "$RET" = "true" ] && [ ! -e /var/lib/resolvconf/resolvconf-linkified ]
-	then
-		if is_immutable_file /etc/resolv.conf ; then
-			report_err "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable; to correct this problem, gain root privileges in a terminal and run 'chattr -i /etc/resolv.conf' and then 'dpkg --configure resolvconf'; aborting"
-			exit 1
-		else
-			if
-				[ -f /etc/resolv.conf ] \
-				&& {
-					[ ! -L /etc/resolv.conf ] \
-					|| [ ! "$(readlink /etc/resolv.conf)" = "/etc/resolvconf/run/resolv.conf" ]
-				}
-			then
-				# Back up original file
-				if [ ! -e /etc/resolvconf/resolv.conf.d/original ] ; then
-					cp -a /etc/resolv.conf /etc/resolvconf/resolv.conf.d/original
-				else
-					cp -a /etc/resolv.conf /etc/resolv.conf.dpkg-old
+	if [ ! -e /var/lib/resolvconf/resolvconf-linkified ] ; then
+		db_get resolvconf/linkify-resolvconf
+		if [ "$RET" = "true" ] ; then
+			if is_immutable_file /etc/resolv.conf ; then
+				report_err "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable; to correct this problem, gain root privileges in a terminal and run 'chattr -i /etc/resolv.conf' and then 'dpkg --configure resolvconf'; aborting"
+				exit 1
+			else
+				if
+					[ -f /etc/resolv.conf ] \
+					&& {
+						[ ! -L /etc/resolv.conf ] \
+						|| [ ! "$(readlink /etc/resolv.conf)" = "/etc/resolvconf/run/resolv.conf" ]
+					}
+				then
+					# Back up original file
+					if [ ! -e /etc/resolvconf/resolv.conf.d/original ] ; then
+						cp -a /etc/resolv.conf /etc/resolvconf/resolv.conf.d/original
+					else
+						cp -a /etc/resolv.conf /etc/resolv.conf.dpkg-old
+					fi
+					# Before creating the link, make sure that the original file is
+					# at the target of the link.  /sbin/resolvconf will overwrite
+					# this when it does an update, of course.
+					if [ ! -e /etc/resolvconf/run/resolv.conf ] ; then
+						cp -a /etc/resolv.conf /etc/resolvconf/run/resolv.conf
+					fi
+					# Add the original file to the database so that its contents
+					# are included when resolvconf updates.
+					# Yes, this is an ugly workaround for the problem that some
+					# interface configurers haven't added a dpkg-event.d script.
+					cp -a /etc/resolv.conf /etc/resolvconf/run/interface/original.resolvconf
 				fi
-				# Before creating the link, make sure that the original file is
-				# at the target of the link.  /sbin/resolvconf will overwrite
-				# this when it does an update, of course.
-				if [ ! -e /etc/resolvconf/run/resolv.conf ] ; then
-					cp -a /etc/resolv.conf /etc/resolvconf/run/resolv.conf
-				fi
-				# Add the original file to the database so that its contents
-				# are included when resolvconf updates.
-				# Yes, this is an ugly workaround for the problem that some
-				# interface configurers haven't added a dpkg-event.d script.
-				cp -a /etc/resolv.conf /etc/resolvconf/run/interface/original.resolvconf
+				# Create the link
+				ln -nsf /etc/resolvconf/run/resolv.conf /etc/resolv.conf
+				# Make a record that we have created it
+				:> /var/lib/resolvconf/resolvconf-linkified
 			fi
-			# Create the link
-			ln -nsf /etc/resolvconf/run/resolv.conf /etc/resolv.conf
-			# Make a record that we have created it
-			:> /var/lib/resolvconf/resolvconf-linkified
 		fi
 	fi
 	;;
