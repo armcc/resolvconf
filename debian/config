@@ -28,7 +28,7 @@ db_go
 db_get resolvconf/linkify-resolvconf
 if \
 	[ "$RET" = "true" ] \
-	&& ! [ -e /var/lib/resolvconf/resolvconf-linkified ] \
+	&& ! [ -e /var/lib/resolvconf/linkified ] \
 	&& ! [ -e /etc/resolvconf/resolv.conf.d/tail ] \
 	&& ! [ -L /etc/resolvconf/resolv.conf.d/tail ]
 then

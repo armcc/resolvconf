@@ -507,8 +507,8 @@ to cause original nameserver configuration to be included in the dynamic
 resolv.conf even after reboot.
 
 In either case, after making the single attempt the package postinst writes
-a flag file /var/lib/resolvconf/resolvconf-linkified whose presence causes
-the postinst not to make another attempt to create either symlink. However,
+a flag file /var/lib/resolvconf/linkified whose presence causes the postinst
+not to make another attempt to create either symlink. However, the command
 "dpkg-reconfigure resolvconf" ignores the flag and causes the package to
 attempt once again to create each symlink if the corresponding debconf
 setting is in the affirmative.

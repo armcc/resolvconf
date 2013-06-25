@@ -55,7 +55,7 @@ case "$1" in
 		fi
 	fi
 
-	rm -f /var/lib/resolvconf/resolvconf-linkified
+	rm -f /var/lib/resolvconf/linkified
 
 	report_info "Reboot recommended"
 	db_input high resolvconf/reboot-recommended-after-removal || :
