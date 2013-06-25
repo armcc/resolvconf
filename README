@@ -424,12 +424,12 @@ resolv.conf in its runtime database.  Consequently, nameserver addresses are
 not lost when resolvconf is installed.  Unfortunately this also means that
 those addresses are not removed when interfaces are brought down.
 
-Another way that the resolvconf package addresses helps to the problem is to
+Another way that the resolvconf package helps to address the problem is to
 allow other parties to call /sbin/resolvconf as soon as it appears in the
 filesystem: nameserver information can be registered with resolvconf before
 the resolvconf's postinst runs.  This means that when, for example, dnsmasq
 and resolvconf are installed in the same dpkg run, and dnsmasq happens to be
-configured first, dnsmasq can still successfully register its nameserver
+configured first, dnsmasq will still successfully register its nameserver
 address with resolvconf.
 
 The correct and complete way to solve the problem is for all suppliers of
@@ -511,7 +511,7 @@ a flag file /var/lib/resolvconf/linkified whose presence causes the postinst
 not to make another attempt to create either symlink. However, the command
 "dpkg-reconfigure resolvconf" ignores the flag and causes the package to
 attempt once again to create each symlink if the corresponding debconf
-setting is in the affirmative.
+setting is true.
 
 Usage information for administrators
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
