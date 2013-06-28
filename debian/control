@@ -13,7 +13,7 @@ Package: resolvconf
 Architecture: all
 Enhances: isc-dhcp-client, dhcpcd, pump, udhcpc, ppp, ifupdown, network-manager, dnsmasq, pdnsd, libc6, nscd
 Pre-Depends: ifupdown (>= 0.7.5), initscripts (>= 2.88dsf-34), ${misc:Pre-Depends}
-Depends: lsb-base, ${misc:Depends}
+Depends: lsb-base (>= 4.1+Debian3), ${misc:Depends}
 Breaks: dnscache-run, dhcp3-client (<< 4.1.1-P1-15+squeeze1)
 Description: name server information handler
  Resolvconf is a framework for keeping up to date the system's
