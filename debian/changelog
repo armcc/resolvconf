@@ -4,8 +4,9 @@ resolvconf (1.73) unstable; urgency=low
   * [3d014a7] Update README
   * [8da8cf7] Move flag file to /var/lib/resolvconf (Closes: #710957)
   * [e2b2026] Update ja.po. Thanks to Victory. (Closes: #712921)
+  * [d727533] Use init_is_upstart
 
- -- Thomas Hood <jdthood@gmail.com>  Tue, 25 Jun 2013 16:06:42 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Fri, 28 Jun 2013 16:04:14 +0200
 
 resolvconf (1.72) unstable; urgency=low
 
