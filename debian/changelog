@@ -1,12 +1,12 @@
 resolvconf (1.73) unstable; urgency=low
 
   [ Thomas Hood ]
-  * [3d014a7] Update README
+  * [a55738e] Update README; mention unbound's resolvconf support
   * [8da8cf7] Move flag file to /var/lib/resolvconf (Closes: #710957)
   * [e2b2026] Update ja.po. Thanks to Victory. (Closes: #712921)
   * [d727533] Use init_is_upstart
 
- -- Thomas Hood <jdthood@gmail.com>  Fri, 28 Jun 2013 16:04:14 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Sun, 30 Jun 2013 12:10:29 +0200
 
 resolvconf (1.72) unstable; urgency=low
 
