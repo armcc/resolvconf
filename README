@@ -20,7 +20,7 @@ Credits
 
 News
 ~~~~
-* Last updated 25 June 2013 for version 1.73
+* Last updated 30 June 2013 for version 1.73
 
 Introduction
 ~~~~~~~~~~~~
@@ -146,7 +146,7 @@ DNS caches:
 
 DNS recursing nameservers:
 
-   bind9(*), pdns-recursor(*)
+   bind9(*), pdns-recursor(*), unbound
 
 and with any program that uses a DNS client library that consults
 /etc/resolv.conf to obtain its list of nameservers:
@@ -731,6 +731,10 @@ DONE
   * udhcpc
     # 302019: Please use resolvconf
       - DONE in 0.9.8cvs20050124-3
+  * unbound
+    # 562031: Pleage tell resolvconf about unbound on localhost
+    # 567879: Please add resolvconf integration
+      - DONE in 1.4.9-1
   * webmin-core
     # 223483: Please play nicely with resolvconf
       - DONE in 1.150-2
