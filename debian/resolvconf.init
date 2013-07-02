@@ -38,7 +38,7 @@ case "$1" in
 	init_is_upstart && exit 1
 	;;
   stop)
-	init_is_upstart && echo 0
+	init_is_upstart && exit 0
 	;;
 esac
 
