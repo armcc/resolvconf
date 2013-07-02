@@ -6,7 +6,10 @@ resolvconf (1.73) unstable; urgency=low
   * [e2b2026] Update ja.po. Thanks to Victory. (Closes: #712921)
   * [d727533] Use init_is_upstart
 
- -- Thomas Hood <jdthood@gmail.com>  Sun, 30 Jun 2013 12:10:29 +0200
+  [ Marco Nenciarini ]
+  * [44f6d68] Canonicalize VCS-* field URI in debian/control
+
+ -- Marco Nenciarini <mnencia@debian.org>  Tue, 02 Jul 2013 17:47:41 +0200
 
 resolvconf (1.72) unstable; urgency=low
 
