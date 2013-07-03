@@ -207,7 +207,7 @@ configuration.
           dns-nameserver 55.66.77.88
           dns-search foo.org bar.com
 
-      A final, rarely used, option identifier is 'dns-sortlist'.  These
+      The option "dns-sortlist" is also available but rarely used.  These
       option names correspond to the option names used in the resolv.conf
       file. See resolv.conf(5) for more information.  The lines entered
       in /etc/network/interfaces will be added to the resolver
