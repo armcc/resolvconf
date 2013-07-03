@@ -203,21 +203,19 @@ configuration.
     * For each inet static logical interface through which a nameserver is
       accessible, add lines like the following to /etc/network/interfaces .
 
-          dns-nameservers 11.22.33.44 55.66.77.88
+          dns-nameserver 11.22.33.44
+          dns-nameserver 55.66.77.88
           dns-search foo.org bar.com
 
-      Other recognized option words are 'dns-domain' and 'dns-sortlist'.
-      These option names correspond to the option names used in the
-      resolv.conf file with one exception: whereas one lists several
-      nameserver addresses in /etc/resolv.conf on several "nameserver"
-      lines, here one should list them all on a single "dns-nameservers"
-      line.  See resolv.conf(5) for more information.  The lines entered
+      A final, rarely used, option identifier is 'dns-sortlist'.  These
+      option names correspond to the option names used in the resolv.conf
+      file. See resolv.conf(5) for more information.  The lines entered
       in /etc/network/interfaces will be added to the resolver
       configuration file (without the "dns-" prefix, of course) when a
       physical interface is brought up as that logical interface.
       Note that the resolver configuration is updated AFTER all the "up"
       commands have been run; therefore "up" commands cannot make use of
-      nameservers listed on "dns-nameservers" lines in the same logical
+      nameservers listed on "dns-nameserver" lines in the same logical
       interface stanza.  Changing this will require modifying ifupdown
       so that it talks to resolvconf; currently resolvconf hooks into
       ifupdown using the script /etc/network/if-up.d/000resolvconf. Note
@@ -545,18 +543,6 @@ Q. Why call it 'resolvconf' instead of 'update-resolver' or so?
 A. Debian's update-* commands are mostly maintainer programs that update
    static configuration files in /etc/.  Mostly they run at package
    install time.  Resolvconf, in contrast, is a run-time configurer.
-
-Q. Why use 'dns-nameservers' instead of 'dns-nameserver' as the option
-   name in /etc/network/interfaces?
-A. Because 'dns-nameservers' can take several address arguments whereas
-   the 'nameserver' line in resolv.conf can take only a single argument.
-   We use a single option to specify all nameserver addresses in an
-   /etc/network/interfaces stanza because ifupdown allows an option to
-   be included at most once in a given stanza. This will change in
-   Jessie. In Jessie, ifupdown allows an option to be included more than
-   once in a given stanza. Accordingly, as of version 1.71, resolvconf
-   recognizes the 'dns-nameserver' option (with as argument a single
-   IP address) which can be repeated within a stanza.
 
 TODO
 ~~~~
