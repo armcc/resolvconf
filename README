@@ -326,9 +326,7 @@ Technical overview
       'search x.y.z' then the resulting file will have
       'search a.b.c x.y.z'.
   + run/
-    Directory where run time files are stored.  This can be replaced by
-    a symlink if the admin so desires.  Standardly this is a symlink to
-    /run/resolvconf/.
+    Symbolic link to /run/resolvconf/
   + update.d/
     Scripts to run when nameserver information is updated
   + update-libc.d/
@@ -551,9 +549,14 @@ A. Debian's update-* commands are mostly maintainer programs that update
 Q. Why use 'dns-nameservers' instead of 'dns-nameserver' as the option
    name in /etc/network/interfaces?
 A. Because 'dns-nameservers' can take several address arguments whereas
-   the 'nameserver' line in /etc/resolv.conf can take only a single
-   argument, and because there can be only one instance of any given
-   option in a logical interface definition.
+   the 'nameserver' line in resolv.conf can take only a single argument.
+   We use a single option to specify all nameserver addresses in an
+   /etc/network/interfaces stanza because ifupdown allows an option to
+   be included at most once in a given stanza. This will change in
+   Jessie. In Jessie, ifupdown allows an option to be included more than
+   once in a given stanza. Accordingly, as of version 1.71, resolvconf
+   recognizes the 'dns-nameserver' option (with as argument a single
+   IP address) which can be repeated within a stanza.
 
 TODO
 ~~~~
