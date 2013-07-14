@@ -1,19 +1,27 @@
 #!/bin/bash
 # Need bash because we use nullglob, extglob
 #
-# list-records
+# list-records [--omit-up-to RECORD]
 #
 # Print, one per line, names of non-empty files in the current directory
 # that match the shell glob patterns in /etc/resolvconf/interface-order
+# optionally omitting all items up to and including RECORD if RECORD is
+# one of the items.
 
 set -e
 
-# Stores arguments (minus duplicates) in RSLT, separated by newlines
+RECORD_TO_OMIT_UP_TO=""
+[ "$1" = "--omit-up-to" ] && RECORD_TO_OMIT_UP_TO="$2"
+
+# Stores arguments (minus duplicates) in RSLT, separated by newlines.
+# Also clears RECORD_TO_OMIT_UP_TO if it's not among the arguments.
 # Doesn't work properly if an argument itself contains whitespace
 uniquify()
 {
 	RSLT=""
+	FOUND_RECORD_TO_OMIT_UP_TO=""
 	while [ "$1" ] ; do
+		[ ! "$FOUND_RECORD_TO_OMIT_UP_TO" ] && [ "$1" = "$RECORD_TO_OMIT_UP_TO" ] && FOUND_RECORD_TO_OMIT_UP_TO=y
 		for E in $RSLT ; do
 			[ "$1" = "$E" ] && { shift ; continue 2 ; }
 		done
@@ -21,6 +29,7 @@ uniquify()
 }$1"
 		shift
 	done
+	[ "$FOUND_RECORD_TO_OMIT_UP_TO" ] || RECORD_TO_OMIT_UP_TO=""
 }
 
 ### Compile ordered list of resolv.conf-type files ###
@@ -68,7 +77,18 @@ shopt -s nullglob extglob
 # Pathname expansion occurs on the following line resulting, in general,
 # in multiple instances of filenames; duplicates must be removed.
 uniquify $PATTERNS
+# Result is in RSLT
+if [ "$RECORD_TO_OMIT_UP_TO" ] ; then
+	# Only start blabbing after seeing the RECORD_TO_OMIT_UP_TO
+	BLAB=""
+else
+	BLAB=y
+fi
 for FLNM in $RSLT ; do
+	if ! [ "$BLAB" ] ; then
+		[ "$FLNM" = "$RECORD_TO_OMIT_UP_TO" ] && BLAB=y
+		continue
+	fi
 	# Only list records of non-zero size
 	[ -s "$FLNM" ] && echo "$FLNM"
 done
