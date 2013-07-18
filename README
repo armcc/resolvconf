@@ -492,8 +492,9 @@ that are governed by the following two debconf settings.
 1. resolvconf/linkify-resolvconf
 
 When this is true, the package makes a single attempt to create a symbolic
-link /etc/resolv.conf with target /etc/resolvconf/run/resolv.conf (Debian)
-or /run/resolvconf/resolv.conf (Ubuntu).
+link /etc/resolv.conf with target ../run/resolvconf/resolv.conf (Ubuntu) or
+/etc/resolvconf/run/resolv.conf (Debian). (N.B. In both Ubuntu and Debian
+this points ultimately to /run/resolvconf/resolv.conf .)
 
 2. resolvconf/link-tail-to-original
 
