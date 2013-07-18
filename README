@@ -670,6 +670,8 @@ DONE
       - DONE in 1.13-3
     # 628003, #641717: Add resolvconf packaging-event hook script
       - DONE in 2.58-3
+    # 716908: Apply patch to use "--after" option
+      - SUBMITTED
   * fetchmail
     + Use resolvconf to trigger restart on change of nameserver info
       - DONE in 6.2.5-4
