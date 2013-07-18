@@ -1,20 +1,10 @@
-resolvconf (1.74~1ubuntu1) UNRELEASED; urgency=low
-
-  * [bb84ffc] Tweak the README
-  * [e3910a7] Recommend use of 'dns-nameserver'.
-              No longer mention useless and deprecated 'dns-domain'.
-  * [2fe6083] Add dump-debug-info script (Closes: #275487)
-  * [b24b66d] Add "--after" option to list-records
-
- -- Thomas Hood <jdthood@gmail.com>  Sun, 14 Jul 2013 21:58:02 +0200
-
-resolvconf (1.74~1) unstable; urgency=low
+resolvconf (1.74) unstable; urgency=low
 
   * [bb84ffc] Tweak the README
   * [e3910a7] Recommend use of 'dns-nameserver'.
               No longer mention the useless deprecated 'dns-domain'.
   * [2fe6083] Add dump-debug-info script
-  * [b24b66d] Add "--omit-up-to" option to list-records
+  * [b24b66d] Add "--after" option to list-records
 
  -- Thomas Hood <jdthood@gmail.com>  Sun, 14 Jul 2013 21:56:52 +0200
 
