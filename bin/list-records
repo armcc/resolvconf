@@ -5,8 +5,8 @@
 #
 # Print, one per line, names of non-empty files in the current directory
 # that match the shell glob patterns in /etc/resolvconf/interface-order
-# printing only those records after RECORD if given. If RECORD does not
-# occur then print nothing.
+# printing only those records after RECORD if given. If "--after RECORD"
+# is given and the RECORD does not occur then print nothing.
 # 
 
 set -e
