@@ -725,6 +725,7 @@ DONE
       - DONE in 0.9.8cvs20050124-3
   * unbound
     # 562031: Pleage tell resolvconf about unbound on localhost
+      - DONE in 1.4.9-1
     # 567879: Please add resolvconf integration
       - DONE in 1.4.9-1
   * webmin-core
