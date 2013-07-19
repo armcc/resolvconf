@@ -12,8 +12,10 @@
 
 set -e
 
-RECORD_TO_BLAB_AFTER=""
-[ "$1" != "--after" ] || RECORD_TO_BLAB_AFTER="$1"
+RECORD_TO_WAIT_FOR=""  # This means: blab all records
+[ "$1" = "--after" ] && RECORD_TO_WAIT_FOR="$2"
+FIRST_ARG_WITHOUT_OPTION_PREFIX="${1#--after=}"
+[ "$FIRST_ARG_WITHOUT_OPTION_PREFIX" != "$1" ] && RECORD_TO_WAIT_FOR="$FIRST_ARG_WITHOUT_OPTION_PREFIX"
 
 #
 # Store arguments (minus duplicates) in RSLT, separated by newlines.
@@ -81,14 +83,9 @@ shopt -s nullglob extglob
 uniquify $PATTERNS
 # Result is in RSLT
 
-if [ "$RECORD_TO_BLAB_AFTER" ] ; then
-	BLAB=""
-else
-	BLAB=y
-fi
 for FLNM in $RSLT ; do
-	if ! [ "$BLAB" ] ; then
-		[ "$FLNM" = "$RECORD_TO_BLAB_AFTER" ] && BLAB=y
+	if [ "$RECORD_TO_WAIT_FOR" ] ; then
+		[ "$FLNM" = "$RECORD_TO_WAIT_FOR" ] && RECORD_TO_WAIT_FOR=""
 		continue
 	fi
 	# Only list records of non-zero size
