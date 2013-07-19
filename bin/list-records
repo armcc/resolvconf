@@ -4,15 +4,15 @@
 # list-records [--after RECORD]
 #
 # Print, one per line, names of non-empty files in the current directory
-# that match the shell glob patterns in /etc/resolvconf/interface-order
-# starting with the first record after RECORD if "--after RECORD" is
-# given. If "--after RECORD" is given and the RECORD does not occur then
-# print nothing.
+# that match the shell glob patterns in /etc/resolvconf/interface-order.
+# If the "--after RECORD" option is given and RECORD is not null then only
+# start listing after RECORD (i.e., do not print RECORD itself, and if
+# RECORD is not found then print nothing).
 # 
 
 set -e
 
-RECORD_TO_WAIT_FOR=""  # This means: blab all records
+RECORD_TO_WAIT_FOR=""  # This means: don't wait before printing
 [ "$1" = "--after" ] && RECORD_TO_WAIT_FOR="$2"
 FIRST_ARG_WITHOUT_OPTION_PREFIX="${1#--after=}"
 [ "$FIRST_ARG_WITHOUT_OPTION_PREFIX" != "$1" ] && RECORD_TO_WAIT_FOR="$FIRST_ARG_WITHOUT_OPTION_PREFIX"
