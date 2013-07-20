@@ -12,12 +12,12 @@ dump_dir()
 echo "###### Start of debugging information for resolvconf ######"
 dump_dir /etc/resolvconf
 dump_dir /etc/resolvconf/resolv.conf.d
+echo "### ls -l /etc/resolvconf/run"
+ls -l /etc/resolvconf/run || :
 dump_dir /run/resolvconf
 dump_dir /run/resolvconf/interface
 echo "### ls -l /etc/resolv.conf"
 ls -l /etc/resolv.conf || :
-echo "### ls -l /etc/resolvconf/run"
-ls -l /etc/resolvconf/run || :
 echo "### lsattr /etc/resolv.conf"
 which lsattr >/dev/null 2>&1 && lsattr /etc/resolv.conf || :
 echo "### cat /etc/resolv.conf"
