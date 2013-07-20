@@ -1,12 +1,12 @@
 resolvconf (1.74) unstable; urgency=low
 
-  * [bb84ffc] Tweak the README
+  * [bb84ffc] Tweak the README:
   * [e3910a7] Recommend use of 'dns-nameserver'.
               No longer mention the useless deprecated 'dns-domain'.
   * [2fe6083] Add dump-debug-info script
   * [b24b66d] Add "--after" option to list-records
 
- -- Thomas Hood <jdthood@gmail.com>  Sun, 14 Jul 2013 21:56:52 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Sat, 20 Jul 2013 21:00:00 +0200
 
 resolvconf (1.73) unstable; urgency=low
 
