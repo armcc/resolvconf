@@ -80,30 +80,25 @@ option lines to the relevant
 .B iface
 stanza in
 .IR interfaces (5).
-The following option names are supported:
-.BR dns\-nameservers ,
+The following option names are accepted:
+.BR dns\-nameserver ,
 .BR dns\-search ,
 and
 .BR dns\-sortlist .  
-The 
-.B dns\-domain
-option is deprecated in favor of
-.BR dns\-search .
 .PP
-To add nameserver addresses, add a single line beginning with
-.BR dns\-nameservers .
+To add a nameserver IP address,
+add an option line consisting of 
+.B dns\-nameserver 
+and the address.
+To add multiple nameserver addresses,
+include multiple such
+.B dns\-nameserver 
+lines.
 .PP
 .EX
-    dns\-nameservers 192.168.1.254 8.8.8.8
+    dns\-nameserver 192.168.1.254
+    dns\-nameserver 8.8.8.8
 .EE
-.PP
-Note that one or more addresses can be given on this line,
-separated by spaces,
-and note the "s" at the end of the option name,
-in contrast with the 
-.IR resolv.conf (5)
-option name
-.BR nameserver .
 .PP
 To add search domain names, add a line beginning with
 .BR dns\-search .
@@ -111,6 +106,19 @@ To add search domain names, add a line beginning with
 .EX
     dns\-search foo.org bar.com
 .EE
+.PP
+The
+.B dns\-nameservers 
+option is also accepted and, unlike
+.BR dns\-nameserver ,
+can be given multiple arguments,
+separated by spaces.
+.PP
+The 
+.B dns\-domain
+option is deprecated in favor of
+.BR dns\-search .
+.PP
 
 The resulting stanza might look like the following example.
 .PP
@@ -119,7 +127,8 @@ The resulting stanza might look like the following example.
         address 192.168.1.3
         netmask 255.255.255.0
         gateway 192.168.1.1
-        dns\-nameservers 192.168.1.254 8.8.8.8
+        dns\-nameserver 192.168.1.254
+        dns\-nameserver 8.8.8.8
         dns\-search foo.org bar.com
 .EE
 .PP
