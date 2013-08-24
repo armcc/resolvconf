@@ -745,12 +745,13 @@ debian-devel mailing list.
 
 I claim any braindamage in the implementation as my own.
 
-I thank all the maintainers who have helped with this effort by adding
-resolvconf support to their packages.
-
-Werner Heuser, Joe Nahmias and Andreas Barth have been helpful sponsors.
+Werner Heuser, Joe Nahmias, Andreas Barth and Marco Nenciarini have all
+been helpful sponsors.
 
 This document was written by Thomas Hood <jdthood@gmail.com> using some
 material written by John Hasler.
+
+I thank all the maintainers who have helped with this effort by adding
+resolvconf support to their packages.
 
 This document is part of resolvconf.
