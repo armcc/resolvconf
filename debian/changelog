@@ -1,10 +1,12 @@
-resolvconf (1.75~2) unstable; urgency=low
+resolvconf (1.75~3) unstable; urgency=low
 
   * [49dedb8] Update man page re: "dns-nameserver" (Closes: 718021)
   * [6195584] Don't give update-rc.d start and stop (Closes: #718232)
   * [eed7eb1] Add pt_BR.po. Thanks to A. R. Gomes (Closes: #718714)
+  * [a84a8f2] Remove buggy dnscache update script which should be in
+              dnscache-run anyway
 
- -- Thomas Hood <jdthood@gmail.com>  Sat, 24 Aug 2013 20:44:13 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Thu, 10 Apr 2014 14:21:16 +0200
 
 resolvconf (1.74) unstable; urgency=low
 
