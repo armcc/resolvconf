@@ -1,4 +1,4 @@
-resolvconf (1.75~4) unstable; urgency=low
+resolvconf (1.75) unstable; urgency=low
 
   * [49dedb8] Update man page re: "dns-nameserver" (Closes: 718021)
   * [6195584] Don't give update-rc.d start and stop (Closes: #718232)
@@ -6,7 +6,7 @@ resolvconf (1.75~4) unstable; urgency=low
   * [a84a8f2] Remove buggy dnscache update script which should be in
               dnscache-run anyway
   * [b93b150] Fix typo in README (Closes: #737158)
-  * [6a47a50] Add systemd unit. Thanks to Martin Pitt (Closes: #700846)
+  * [6a47a50] Add systemd unit. Thanks Martin Pitt (Closes: #700846)
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 08 May 2014 11:57:29 +0200
 
