@@ -527,7 +527,7 @@ Once you have installed resolvconf properly you don't normally need to run
 /sbin/resolvconf from the command line.  However, I once encountered a
 situation in which I did that.  Perhaps it is a useful illustration.  My ISP's
 nameserver went down and thus my caching nameserver could not resolve names.
-I knew of another host belonging to by ISP that I could use so I simply did:
+I knew of another host belonging to my ISP that I could use so I simply did:
 
     # echo "nameserver ww.xx.yy.zz" | resolvconf -a dummy
 

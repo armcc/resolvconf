@@ -1,4 +1,4 @@
-resolvconf (1.75~3) unstable; urgency=low
+resolvconf (1.75~4) unstable; urgency=low
 
   * [49dedb8] Update man page re: "dns-nameserver" (Closes: 718021)
   * [6195584] Don't give update-rc.d start and stop (Closes: #718232)
