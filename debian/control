@@ -3,7 +3,7 @@ Section: net
 Priority: optional
 Maintainer: resolvconf maintainers <resolvconf-devel@lists.alioth.debian.org>
 Uploaders: Thomas Hood <jdthood@gmail.com>, Marco Nenciarini <mnencia@debian.org>
-Build-Depends: debhelper (>= 8)
+Build-Depends: debhelper (>= 8), dh-systemd
 Homepage: http://alioth.debian.org/projects/resolvconf/
 Vcs-Git: git://anonscm.debian.org/resolvconf/resolvconf.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=resolvconf/resolvconf.git
