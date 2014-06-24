@@ -1,7 +1,7 @@
 resolvconf (1.76) unstable; urgency=medium
 
-  * [c12fc6e] resolvconf.service: Install into sysinit.target, not
-              network.target (Closes: #749405)
+  * resolvconf.service: Install into sysinit.target, not into
+    network.target (Closes: #749405)
 
  -- Thomas Hood <jdthood@gmail.com>  Tue, 24 Jun 2014 11:50:33 +0200
 
