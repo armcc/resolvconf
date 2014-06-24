@@ -32,9 +32,9 @@ rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
 ### Clean up old symlinks from release 1.75: see #749405 ###
 case "$1" in
   configure)
-	if [ "$2" = "1.75" ] && type systemctl >/dev/null 2>&1 ; then
-		# Does: rm /etc/systemd/system/network.target.wants/resolvconf.service
-		systemctl reenable resolvconf
+	if [ "$2" = "1.75" ] ; then
+		rm -f /etc/systemd/system/network.target.wants/resolvconf.service || :
+		which systemctl >/dev/null 2>&1 && systemctl reenable resolvconf
 	fi
 	;;
 esac
