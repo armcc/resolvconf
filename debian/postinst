@@ -26,14 +26,8 @@ is_immutable_file() {
 rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
 [ -f /etc/resolvconf/update.d/bind ] && mv -f /etc/resolvconf/update.d/bind /etc/resolvconf/update.d/bind.dpkg-old
 
-# Remove in 1.77
-if [ "$2" ] && dpkg --compare-versions "$2" lt "1.76" && type systemctl >/dev/null 2>&1 ; then
-	systemctl reenable resolvconf
-fi
-
 # We use dh_installinit with --no-start
 #DEBHELPER#
-
 
 ### Create run-time directories and linkify ###
 #
