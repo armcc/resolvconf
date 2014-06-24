@@ -2,7 +2,6 @@
 Description=Nameserver information manager
 Documentation=man:resolvconf(8)
 DefaultDependencies=no
-Before=networking.service
 
 [Service]
 RemainAfterExit=yes
