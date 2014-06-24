@@ -33,8 +33,11 @@ rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
 case "$1" in
   configure)
 	if [ "$2" = "1.75" ] ; then
-		rm -f /etc/systemd/system/network.target.wants/resolvconf.service || :
-		which systemctl >/dev/null 2>&1 && systemctl reenable resolvconf
+		if which systemctl >/dev/null 2>&1 ; then
+			systemctl reenable resolvconf
+		else
+			rm -f /etc/systemd/system/network.target.wants/resolvconf.service || :
+		fi
 	fi
 	;;
 esac
