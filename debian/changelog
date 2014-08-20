@@ -2,6 +2,7 @@ resolvconf (1.76) unstable; urgency=medium
 
   * resolvconf.service: Install into sysinit.target, not into
     network.target (Closes: #749405)
+    Thanks to Martin Pitt and Edward Allcutt
   * [c405030] Add exclusion for L2TP VPN plugin (LP#1349011)
 
  -- Thomas Hood <jdthood@gmail.com>  Fri, 15 Aug 2014 13:19:53 +0200
