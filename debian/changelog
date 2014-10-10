@@ -4,8 +4,9 @@ resolvconf (1.76) unstable; urgency=low
     network.target (Closes: #749405)
     Thanks to Martin Pitt and Edward Allcutt
   * [c405030] Add exclusion for L2TP VPN plugin (LP#1349011)
+  * [4cbd73d] Bump Standards-Version
 
- -- Thomas Hood <jdthood@gmail.com>  Wed, 20 Aug 2014 13:00:00 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Fri, 10 Oct 2014 13:42:54 +0200
 
 resolvconf (1.75) unstable; urgency=low
 
