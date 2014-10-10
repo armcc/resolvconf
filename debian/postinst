@@ -30,7 +30,7 @@ rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
 case "$1" in
   configure)
 	if [ "$2" = "1.75" ] ; then
-		deb-systemd-helper purge resolvconf
+		deb-systemd-helper purge resolvconf.service
 	fi
 	;;
 esac
