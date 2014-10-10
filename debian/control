@@ -7,7 +7,7 @@ Build-Depends: debhelper (>= 8), dh-systemd
 Homepage: http://alioth.debian.org/projects/resolvconf/
 Vcs-Git: git://anonscm.debian.org/resolvconf/resolvconf.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=resolvconf/resolvconf.git
-Standards-Version: 3.9.4.0
+Standards-Version: 3.9.6.0
 
 Package: resolvconf
 Architecture: all
