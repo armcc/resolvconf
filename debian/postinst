@@ -26,15 +26,6 @@ is_immutable_file() {
 rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
 [ -f /etc/resolvconf/update.d/bind ] && mv -f /etc/resolvconf/update.d/bind /etc/resolvconf/update.d/bind.dpkg-old
 
-### Clean up old systemd symlinks from release 1.75: see #749405 ###
-case "$1" in
-  configure)
-	if [ "$2" = "1.75" ] ; then
-		deb-systemd-helper purge resolvconf.service
-	fi
-	;;
-esac
-
 # We use dh_installinit with --no-start
 #DEBHELPER#
 
