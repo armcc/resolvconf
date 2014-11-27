@@ -1,3 +1,9 @@
+resolvconf (1.77~1) unstable; urgency=medium
+
+  * [fead9d3] Remove obsolete code to upgrade from 1.75
+
+ -- Thomas Hood <jdthood@gmail.com>  Thu, 27 Nov 2014 16:35:22 +0100
+
 resolvconf (1.76) unstable; urgency=low
 
   * resolvconf.service: Install into sysinit.target, not into
