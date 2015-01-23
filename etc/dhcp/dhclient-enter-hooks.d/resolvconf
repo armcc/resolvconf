@@ -47,7 +47,7 @@ if [ -x /sbin/resolvconf ] ; then
 			local R
 			local N
 			local N_LOW
-			local zone_id
+			local ZONE_ID
 			R=""
 			if [ "$new_dhcp6_name_servers" ] && [ "$new_dhcp6_domain_search" ] ; then
 				R="${R}search $new_dhcp6_domain_search
@@ -59,11 +59,11 @@ if [ -x /sbin/resolvconf ] ; then
 				# then add a zone ID (interface name) to it.
 				N_LOW="$(echo "$N" | tr '[:upper:]' '[:lower:]')"
 				if expr "$N_LOW" : ^fe80:: >/dev/null ; then
-					zone_id="%$interface"
+					ZONE_ID="%$interface"
 				else
-					zone_id=""
+					ZONE_ID=""
 				fi
-				R="${R}nameserver $N$zone_id
+				R="${R}nameserver $N$ZONE_ID
 "
 			done
 			[ ! "$interface" ] || echo -n "$R" | /sbin/resolvconf -a "${interface}.ip6.dhclient"
