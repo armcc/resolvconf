@@ -1,4 +1,4 @@
-resolvconf (1.77) unstable; urgency=medium
+resolvconf (1.76.1) unstable; urgency=medium
 
   * [eb81ca0] Eliminate bashisms.
     Thanks to Michael Gilbert (Closes: #775356)
