@@ -1,8 +1,15 @@
-resolvconf (1.77~1) unstable; urgency=medium
+resolvconf (1.78~1) unstable; urgency=low
 
   * Remove obsolete upgrade code
 
- -- Thomas Hood <jdthood@gmail.com>  Thu, 27 Nov 2014 16:35:22 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Mon, 26 Jan 2015 12:00:00 +0100
+
+resolvconf (1.77) unstable; urgency=medium
+
+  * [eb81ca0] Eliminate bashisms.
+    Thanks to Michael Gilbert (Closes: #775356)
+
+ -- Thomas Hood <jdthood@gmail.com>  Fri, 23 Jan 2015 21:46:34 +0100
 
 resolvconf (1.76) unstable; urgency=low
 
