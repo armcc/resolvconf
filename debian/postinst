@@ -22,6 +22,10 @@ is_immutable_file() {
 	echo "$ATTR" | awk '$1 ~ /i/ { exit 0; }; { exit 1; }'
 }
 
+dnssec_trigger_is_installed() {
+	[ -x /usr/sbin/dnssec-triggerd ]
+}
+
 ### Deal with obsolete configuration files ###
 rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
 [ -f /etc/resolvconf/update.d/bind ] && mv -f /etc/resolvconf/update.d/bind /etc/resolvconf/update.d/bind.dpkg-old
@@ -121,8 +125,14 @@ case "$1" in
 		db_get resolvconf/linkify-resolvconf
 		if [ "$RET" = "true" ] ; then
 			if is_immutable_file /etc/resolv.conf ; then
-				report_err "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable; to correct this problem, gain root privileges in a terminal and run 'chattr -i /etc/resolv.conf' and then 'dpkg --configure resolvconf'; aborting"
-				exit 1
+				if dnssec_trigger_is_installed ; then
+					# dnssec-trigger sets the immutability attribute. Override it.
+					chattr -i /etc/resolv.conf
+				else
+					# Respect the admin
+					report_err "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable; to correct this problem, gain root privileges in a terminal and run 'chattr -i /etc/resolv.conf' and then 'dpkg --configure resolvconf'; aborting"
+					exit 1
+				fi
 			else
 				if
 					[ -f /etc/resolv.conf ] \
