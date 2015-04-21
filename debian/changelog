@@ -1,10 +1,11 @@
-resolvconf (1.77~2) unstable; urgency=low
+resolvconf (1.77~3) unstable; urgency=low
 
+  * [0781847] interface-order: match br ifaces like eth ifaces
   * Remove obsolete upgrade code
   * [00ad4bf] Override immutability attrib on /etc/resolv.conf
     if dnssec-trigger is installed. See #776778 for background.
 
- -- Thomas Hood <jdthood@gmail.com>  Fri, 06 Feb 2015 15:40:05 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Tue, 21 Apr 2015 21:04:08 +0200
 
 resolvconf (1.76.1) unstable; urgency=medium
 
