@@ -1,8 +1,8 @@
 resolvconf (1.78~1) UNRELEASED; urgency=medium
 
   [ Marco Nenciarini ]
-  * [dd83369] debian/gbp.conf: Renamed old style config sections removing the "git" prefix
-
+  * [dd83369] debian/gbp.conf: Renamed old style config sections
+              removing the "git" prefix
   [ Thomas Hood ]
   * [ac8f46e] Delete bogus rc symlink field. See #787457.
 
