@@ -26,15 +26,19 @@ dnssec_trigger_is_installed() {
 	[ -x /usr/sbin/dnssec-triggerd ]
 }
 
-### Deal with obsolete configuration files ###
-rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
-[ -f /etc/resolvconf/update.d/bind ] && mv -f /etc/resolvconf/update.d/bind /etc/resolvconf/update.d/bind.dpkg-old
+case "$1" in
+  configure)
+	### Deal with obsolete configuration files ###
+	rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
+	[ -f /etc/resolvconf/update.d/bind ] && mv -f /etc/resolvconf/update.d/bind /etc/resolvconf/update.d/bind.dpkg-old
 
-# Delete bogus rc symlink fields. See bug report #787457.
-G='/etc/rc[2-5].d/S??resolvconf'
-if [ "$(echo $G)" != "$G" ] ; then
-    update-rc.d resolvconf remove >/dev/null || :
-fi
+	### If there are rc symlinks in runlevels 1-5 then they are probably a result of #787457. Delete them. ###
+	G='/etc/rc[1-5].d/S??resolvconf'
+	if [ "$(echo $G)" != "$G" ] ; then
+		update-rc.d resolvconf remove >/dev/null || :
+	fi
+	;;
+esac
 
 #DEBHELPER#
 
