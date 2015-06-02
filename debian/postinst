@@ -30,7 +30,9 @@ dnssec_trigger_is_installed() {
 rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
 [ -f /etc/resolvconf/update.d/bind ] && mv -f /etc/resolvconf/update.d/bind /etc/resolvconf/update.d/bind.dpkg-old
 
-# We use dh_installinit with --no-start
+# Delete bogus rc symlink fields. See bug report #787457.
+update-rc.d resolvconf remove >/dev/null || :
+
 #DEBHELPER#
 
 ### Create run-time directories and linkify ###
