@@ -31,7 +31,10 @@ rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
 [ -f /etc/resolvconf/update.d/bind ] && mv -f /etc/resolvconf/update.d/bind /etc/resolvconf/update.d/bind.dpkg-old
 
 # Delete bogus rc symlink fields. See bug report #787457.
-update-rc.d resolvconf remove >/dev/null || :
+G='/etc/rc[2-5].d/S??resolvconf'
+if [ "$(echo $G)" != "$G" ] ; then
+    update-rc.d resolvconf remove >/dev/null || :
+fi
 
 #DEBHELPER#
 
