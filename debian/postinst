@@ -32,7 +32,7 @@ case "$1" in
 	rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
 	[ -f /etc/resolvconf/update.d/bind ] && mv -f /etc/resolvconf/update.d/bind /etc/resolvconf/update.d/bind.dpkg-old
 
-	### If there are "S" runlevel symlinks in runlevels 1-5 then they are probably a result of #787457. Delete them. ###
+	### If there are "S" runlevel symlinks in runlevels 1-5 then that is bad. Delete them. ###
 	G='/etc/rc[1-5].d/S??resolvconf'
 	if [ "$(echo $G)" != "$G" ] ; then
 		update-rc.d resolvconf remove >/dev/null || :
