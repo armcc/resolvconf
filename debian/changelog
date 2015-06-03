@@ -1,13 +1,14 @@
-resolvconf (1.78~2) UNRELEASED; urgency=medium
+resolvconf (1.78) unstable; urgency=low
 
   [ Marco Nenciarini ]
-  * [dd83369] debian/gbp.conf: Renamed old style config sections
-              removing the "git" prefix
+  * [dd83369] debian/gbp.conf: Use new-style sections sans "git-"
   [ Thomas Hood ]
-  * [ac8f46e] Delete bogus rc symlink field. See #787457.
-  * [f73de5c] Add dependency on sysv-rc (Closes: #787457)
+  * [f73de5c] Add sysv-rc dependency which should have been added
+              in release 1.75 when start and stop were no longer
+              given to update-rc.d (Closes: #787457)
+  * [ac8f46e] postinst: Delete bad rc symlinks arising from #787457.
 
- -- Marco Nenciarini <mnencia@debian.org>  Tue, 02 Jun 2015 11:34:46 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Wed, 03 Jun 2015 12:00:00 +0200
 
 resolvconf (1.77) unstable; urgency=low
 
