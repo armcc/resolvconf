@@ -1,3 +1,9 @@
+resolvconf (1.79~1) UNRELEASED; urgency=low
+
+  * UNRELEASED
+
+ -- Thomas Hood <jdthood@ypenburg.bb55>  Tue, 08 Sep 2015 12:54:09 +0200
+
 resolvconf (1.78) unstable; urgency=low
 
   [ Marco Nenciarini ]
