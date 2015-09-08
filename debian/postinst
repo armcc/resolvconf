@@ -23,7 +23,7 @@ is_immutable_file() {
 }
 
 dnssec_trigger_is_installed() {
-	[ -x /usr/sbin/dnssec-triggerd ]
+	which dnssec-triggerd >/dev/null 2>&1 ;
 }
 
 case "$1" in
@@ -136,6 +136,7 @@ case "$1" in
 			if is_immutable_file /etc/resolv.conf ; then
 				if dnssec_trigger_is_installed ; then
 					# dnssec-trigger sets the immutability attribute. Override it.
+					# See #776778 for background.
 					chattr -i /etc/resolv.conf
 				else
 					# Respect the admin
