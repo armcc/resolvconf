@@ -1,6 +1,7 @@
 resolvconf (1.79~1) UNRELEASED; urgency=low
 
   * UNRELEASED
+  * Use which to test for availability of dnssec-triggerd
   * [19003cb] Drop obsolete versioned dependencies.
     Thanks to biebl (Closes: 804976)
 
