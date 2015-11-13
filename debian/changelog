@@ -1,6 +1,8 @@
 resolvconf (1.79~1) UNRELEASED; urgency=low
 
   * UNRELEASED
+  * [19003cb] Drop obsolete versioned dependencies.
+    Thanks to biebl (Closes: 804976)
 
  -- Thomas Hood <jdthood@ypenburg.bb55>  Tue, 08 Sep 2015 12:54:09 +0200
 
