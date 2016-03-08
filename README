@@ -621,9 +621,6 @@ TODO
       - Tagged WONTFIX
   * resolvconf
     + See http://bugs.debian.org/resolvconf
-  * unbound
-    # 777228: Please add resolvconf packaging-event hook script
-      - SUBMITTED
   * Users of resolver libraries
     + For any package that contains a program that uses resolver(3) or a
       compatible library, add a /etc/resolvconf/update-libc.d/ script to
@@ -729,6 +726,8 @@ DONE
       - DONE in 1.4.9-1
     # 567879: Please add resolvconf integration
       - DONE in 1.4.9-1
+    # 777228: Please add resolvconf packaging-event hook script
+      - DONE in 1.5.7-2
   * webmin-core
     # 223483: Please play nicely with resolvconf
       - DONE in 1.150-2
