@@ -1,4 +1,4 @@
-resolvconf (1.79~2) UNRELEASED; urgency=low
+resolvconf (1.79) unstable; urgency=low
 
   [ Thomas Hood ]
   * Use which to test for availability of dnssec-triggerd
