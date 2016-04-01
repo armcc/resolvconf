@@ -1,12 +1,14 @@
-resolvconf (1.79~1) UNRELEASED; urgency=low
+resolvconf (1.79~2) UNRELEASED; urgency=low
 
   * UNRELEASED
   * Use which to test for availability of dnssec-triggerd
   * [19003cb] Drop obsolete versioned dependencies.
     Thanks to biebl (Closes: 804976)
   * [b348580] Update README
+  * [7e33af8] Omit chown from example script resolvconf-update-bind.
+    Thanks to Marc Haber (Closes: #819498)
 
- -- Thomas Hood <jdthood@ypenburg.bb55>  Tue, 08 Sep 2015 12:54:09 +0200
+ -- Thomas Hood <jdthood@gmail.com>  Fri, 01 Apr 2016 12:00:00 +0200
 
 resolvconf (1.78) unstable; urgency=low
 
