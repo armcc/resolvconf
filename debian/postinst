@@ -13,81 +13,52 @@ report_err() { report "Error: $*" >&2 ; }
 report_warn() { report "Warning: $*" >&2 ; }
 report_info() { report "$*" >&2 ; }
 
-OLD_RUN_DIR=/var/run
-
-echo_first_arg() { echo "$1" ; }
 is_immutable_file() {
 	[ "$1" ] || return 2
 	[ -e "$1" ] || return 1
 	[ ! -L "$1" ] || return 1
-	which lsattr >/dev/null 2>&1 || return 2
-	echo_first_arg $(lsattr "$1") | grep -sq i
+	local ATTR="$(lsattr "$1" 2>/dev/null || :)"
+	[ "$ATTR" ] || return 1
+	echo "$ATTR" | awk '$1 ~ /i/ { exit 0; }; { exit 1; }'
 }
 
-standard_run_subdirs_created() {
-	{ [ -d /run/resolvconf ] || mkdir /run/resolvconf ; } \
-	&& { [ -d /run/resolvconf/interface ] || mkdir /run/resolvconf/interface ; }
+dnssec_trigger_is_installed() {
+	which dnssec-triggerd >/dev/null 2>&1 ;
 }
-
-### Clean out old sysv init script and symlinks ###
-[ ! -f /etc/init.d/resolvconf ] || mv -f /etc/init.d/resolvconf /etc/init.d/resolvconf.dpkg-old
-update-rc.d resolvconf remove >/dev/null || :
-
-### Symlink ###
 
 case "$1" in
   configure)
-	if [ -L /etc/resolvconf/run ] ; then
-		# Make sure that the symlink is canonicalizable.
-		RUN_CANONICALPATH="$(readlink -f /etc/resolvconf/run || :)"
-		if [ -z "$RUN_CANONICALPATH" ] ; then
-			# It's not canonicalizable
-			report_warn "Deleting old symlink /etc/resolvconf/run, the canonical path of whose target could not be determined"
-			rm -f /etc/resolvconf/run
-		fi
-	fi
+	### Deal with obsolete configuration files ###
+	rm -f /etc/dhcp3/dhclient-enter-hooks.d/resolvconf
+	[ -f /etc/resolvconf/update.d/bind ] && mv -f /etc/resolvconf/update.d/bind /etc/resolvconf/update.d/bind.dpkg-old
 
-	# /etc/resolvconf/run is not a non-canonicalizable symlink.
-	# Attempt migration to new standard location
-	if [ -L /etc/resolvconf/run ] ; then
-		# It's a canonicalizable symlink
-		# If it's standard then try to migrate from old to new standard location.
-		# The initscripts package guarantees that the new standard location is available.
-		if
-			[ "$RUN_CANONICALPATH" = "${OLD_RUN_DIR}/resolvconf" ] \
-			&& standard_run_subdirs_created
-		then
-			# /etc/resolvconf/run points to the old-standard location
-			# and new-standard run directories are ready for use.
-			# Switch from the old to the new standard location.
-			#
-			# No need to copy files because the old location, /var/run/resolvconf/,
-			# is via a symlink identical with the new location, /run/resolvconf/.
-			#
-			ln -nsf /run/resolvconf /etc/resolvconf/run
-		fi
-	elif [ -d /etc/resolvconf/run ] ; then
-		# It's a directory right in /etc/resolvconf
-		# The initscripts package guarantees that the new standard location is available.
-		if standard_run_subdirs_created ; then
-			# /etc/resolvconf/run is a directory in /etc/resolvconf
-			# and new-standard run directories are ready for use.
-			# Switch to the new standard location.
-			F="$(echo /etc/resolvconf/run/*)"
-			if [ "$F" ] && [ "$F" != '/etc/resolvconf/run/*' ] ; then
-				if cp -a /etc/resolvconf/run/* /run/resolvconf ; then
-					report_info "Migrated resolvconf run-time data from /etc/resolvconf/run to /run/resolvconf"
-					rm -rf /etc/resolvconf/run
-				fi
-			else
-				rmdir /etc/resolvconf/run
-			fi
-			ln -nsf /run/resolvconf /etc/resolvconf/run
-		fi
+	### If there are "S" runlevel symlinks in runlevels 1-5 then that is bad. Delete them. ###
+	G='/etc/rc[1-5].d/S??resolvconf'
+	if [ "$(echo $G)" != "$G" ] ; then
+		update-rc.d resolvconf remove >/dev/null || :
+	fi
+	;;
+esac
+
+#DEBHELPER#
+
+### Create run-time directories and linkify ###
+#
+# We create the run-time directories here, in the postinst, even though
+# we also do so in the preinst, because
+# * the system may have rebooted since the preinst ran, causing
+#   everything on tmpfses to disappear;
+# * multistrap doesn't run the preinst at all.
+#
+case "$1" in
+  configure)
+	# Do linkify once again on dpkg-reconfigure
+	if [ "$DEBCONF_RECONFIGURE" = 1 ] || [ "$1" = reconfigure ] ; then
+		rm -f /var/lib/resolvconf/linkified
 	fi
 
 	# Link tail to original if appropriate
-	if [ ! -e /etc/resolvconf/resolv.conf.d/tail ] ; then
+	if [ ! -e /etc/resolvconf/resolv.conf.d/tail ] && [ ! -e /var/lib/resolvconf/linkified ] ; then
 		db_get resolvconf/link-tail-to-original
 		if [ "$RET" = "true" ] ; then
 			ln -nsf original /etc/resolvconf/resolv.conf.d/tail
@@ -97,40 +68,52 @@ case "$1" in
 	fi
 
 	# Linkify /etc/resolv.conf if appropriate
-	db_get resolvconf/linkify-resolvconf
-	if [ "$RET" = "true" ] ; then
-		if is_immutable_file /etc/resolv.conf ; then
-			report_err "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable. To correct this problem, gain root privileges in a terminal and run 'chattr -i /etc/resolv.conf' and then 'dpkg --configure resolvconf'. Aborting."
-			exit 1
-		else
-			if
-				[ -f /etc/resolv.conf ] \
-				&& {
-					[ ! -L /etc/resolv.conf ] \
-					|| [ ! "$(readlink /etc/resolv.conf)" = "/etc/resolvconf/run/resolv.conf" ]
-				}
-			then
-				# Back up original file
-				if [ ! -e /etc/resolvconf/resolv.conf.d/original ] ; then
-					cp -a /etc/resolv.conf /etc/resolvconf/resolv.conf.d/original
+	if [ ! -e /var/lib/resolvconf/linkified ] ; then
+		db_get resolvconf/linkify-resolvconf
+		if [ "$RET" = "true" ] ; then
+			if is_immutable_file /etc/resolv.conf ; then
+				if dnssec_trigger_is_installed ; then
+					# dnssec-trigger sets the immutability attribute. Override it.
+					# See #776778 for background.
+					chattr -i /etc/resolv.conf
 				else
-					cp -a /etc/resolv.conf /etc/resolv.conf.dpkg-old
+					# Respect the admin
+					report_err "Cannot replace the current /etc/resolv.conf with a symbolic link because it is immutable; to correct this problem, gain root privileges in a terminal and run 'chattr -i /etc/resolv.conf' and then 'dpkg --configure resolvconf'; aborting"
+					exit 1
 				fi
-				# Before creating the link, make sure that the original file is
-				# at the target of the link.  /sbin/resolvconf will overwrite
-				# this when it does an update, of course.
-				if [ ! -e /etc/resolvconf/run/resolv.conf ] ; then
-					cp -a /etc/resolv.conf /etc/resolvconf/run/resolv.conf
+			else
+				if
+					[ -f /etc/resolv.conf ] \
+					&& {
+						[ ! -L /etc/resolv.conf ] \
+						|| [ ! "$(readlink /etc/resolv.conf)" = "/run/resolvconf/resolv.conf" ]
+					}
+				then
+					# Back up original file
+					if [ ! -e /etc/resolvconf/resolv.conf.d/original ] ; then
+						cp -a /etc/resolv.conf /etc/resolvconf/resolv.conf.d/original
+					else
+						cp -a /etc/resolv.conf /etc/resolv.conf.dpkg-old
+					fi
+					# Before creating the link, make sure that the original file is
+					# at the target of the link.  /sbin/resolvconf will overwrite
+					# this when it does an update, of course.
+					if [ ! -e /run/resolvconf/resolv.conf ] ; then
+						cp -a /etc/resolv.conf /run/resolvconf/resolv.conf
+					fi
+					# Add the original file to the database so that its contents
+					# are included when resolvconf updates.
+					# Yes, this is an ugly workaround for the problem that some
+					# interface configurers haven't added a dpkg-event.d script.
+					cp -a /etc/resolv.conf /run/resolvconf/interface/original.resolvconf
 				fi
-				# Add the original file to the database so that its contents
-				# are included when resolvconf updates.
-				# Yes, this is an ugly workaround for the problem that there
-				# is no way to obtain nameserver information from interface
-				# configurers after they have done their configuration work.
-				cp -a /etc/resolv.conf /etc/resolvconf/run/interface/original.resolvconf
+				# Create the link
+				# The link is relative to allow for cp from outside a chroot into a chroot
+				# to work without overwriting the file outside the chroot (or failing)
+				ln -nsf ../run/resolvconf/resolv.conf /etc/resolv.conf
+				# Make a record that we have created it
+				:> /var/lib/resolvconf/linkified
 			fi
-			# Create the link
-			ln -nsf /etc/resolvconf/run/resolv.conf /etc/resolv.conf
 		fi
 	fi
 	;;
@@ -161,9 +144,9 @@ is_installed() {
 
 case "$1" in
   configure)
-	if [ -f /etc/resolvconf/run/packages-to-notify ] ; then
-		PACKAGES_TO_NOTIFY="$(cat /etc/resolvconf/run/packages-to-notify)"
-		rm -f /etc/resolvconf/run/packages-to-notify
+	if [ -f /run/resolvconf/packages-to-notify ] ; then
+		PACKAGES_TO_NOTIFY="$(cat /run/resolvconf/packages-to-notify)"
+		rm -f /run/resolvconf/packages-to-notify
 		for PKG in $PACKAGES_TO_NOTIFY ; do
 			if is_installed "$PKG" ; then
 				SCRPT="/usr/lib/resolvconf/dpkg-event.d/$PKG"

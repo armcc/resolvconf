@@ -5,21 +5,8 @@ set -e
 MYNAME=resolvconf.preinst
 report() { echo "${MYNAME}: $*" ; }
 report_err() { report "Error: $*" >&2 ; }
+report_warn() { report "Warning: $*" >&2 ; }
 report_info() { report "$*" >&2 ; }
-
-OLD_RUN_DIR=/var/run
-
-standard_run_tmpfs_is_available() {
-	[ -d /run ] \
-	&& [ -w /run ] \
-	&& [ -r /proc/mounts ] \
-	&& grep -qs "^tmpfs[[:space:]]\+/run[[:space:]]\+tmpfs[[:space:]]\+\([^[:space:]]\+,\)\?rw" /proc/mounts
-}
-
-standard_run_subdirs_created() {
-	{ [ -d /run/resolvconf ] || mkdir /run/resolvconf ; } \
-	&& { [ -d /run/resolvconf/interface ] || mkdir /run/resolvconf/interface ; }
-}
 
 is_installed() {
 	# Same function in preinst, postinst, postrm
@@ -31,80 +18,18 @@ is_installed() {
 ### Create run-time directories ###
 #
 # We create the run-time directories here, in the preinst, so that even if
-# resolvconf is run before the postinst runs then there is nevertheless a
-# place for resolvconf to store data.  (The latter can occur if resolvconf
+# resolvconf is run before the postinst runs there is nevertheless a place
+# for resolvconf to store data.  The latter can occur if resolvconf
 # is installed simultaneously with a caching nameserver package whose
-# postinst runs resolvconf to add its IP address.)
-#
-# The new standard location is /run;
-# the old standard location was /lib/init/rw on Debian, /var/run/ on Ubuntu.
+# postinst runs resolvconf to add its IP address.
 #
 case "$1" in
   install|upgrade)
 	# Ensure that /etc/resolvconf exists.
 	mkdir -p /etc/resolvconf
 
-	if [ -L /etc/resolvconf/run ] ; then
-		# We are upgrading.
-		# Make sure that the symlink is canonicalizable.
-		RUN_CANONICALPATH="$(readlink -f /etc/resolvconf/run || :)"
-		if [ -z "$RUN_CANONICALPATH" ] ; then
-			# It's not canonicalizable
-			report_err "Deleting old symlink /etc/resolvconf/run, the canonical path of whose target could not be determined"
-			rm -f /etc/resolvconf/run
-		fi
-	fi
-
-	# /etc/resolvconf/run is not a non-canonicalizable symlink.
-	# Attempt migration to new standard location
-	if [ -L /etc/resolvconf/run ] ; then
-		# It's a canonicalizable symlink
-		# If it's standard then try to migrate from old to new standard location.
-		if
-			[ "$RUN_CANONICALPATH" = "${OLD_RUN_DIR}/resolvconf" ] \
-			&& standard_run_tmpfs_is_available \
-			&& standard_run_subdirs_created
-		then
-			# /etc/resolvconf/run points to the old-standard location
-			# and new-standard run directories are ready for use.
-			# Switch from the old to the new standard location.
-			#
-			# No need to copy files because the old location, /var/run/resolvconf/,
-			# is via a symlink identical with the new location, /run/resolvconf/.
-			#
-			ln -nsf /run/resolvconf /etc/resolvconf/run
-		fi
-	fi
-
-	# Delete /etc/resolvconf/run if it is neither a directory nor a link to one
-	if [ -e /etc/resolvconf/run ] && [ ! -d /etc/resolvconf/run ] ; then
-		report_info "Deleting /etc/resolvconf/run which isn't a directory"
-		rm -f /etc/resolvconf/run
-	fi
-
-	# OK, now /etc/resolvconf/run is either:
-	# * nonexistent, or
-	# * a dangling but canonicalizable symlink, or
-	# * a symlink to a directory, or
-	# * a directory
-
-	# Create subdirectory
-	if [ -d /etc/resolvconf/run ] ; then
-		# It's a directory or a symlink to one
-		[ -d /etc/resolvconf/run/interface ] || mkdir /etc/resolvconf/run/interface
-	elif [ -L /etc/resolvconf/run ] ; then
-		# It's a dangling but canonicalizable symlink
-		mkdir "$RUN_CANONICALPATH" "${RUN_CANONICALPATH}/interface"
-	else
-		# It's nonexistent
-		# Make directories at one of the standard locations if possible,
-		# otherwise directly under /etc/resolvconf.
-		if standard_run_tmpfs_is_available && standard_run_subdirs_created ; then
-			ln -s /run/resolvconf /etc/resolvconf/run
-		else
-			[ -d /etc/resolvconf/run/interface ] || mkdir -p /etc/resolvconf/run/interface
-		fi
-	fi
+	# Ensure that /run/resolvconf/interface exists.
+	mkdir -p /run/resolvconf/interface
 	;;
   # abort-upgrade)
 	# Don't do anything because we don't anything in the postrm on upgrade or on failed-upgrade
@@ -126,9 +51,9 @@ case "$1" in
 				PACKAGES_TO_NOTIFY="${PACKAGES_TO_NOTIFY:+$PACKAGES_TO_NOTIFY }$PKG"
 			fi
 		done
-		rm -f /etc/resolvconf/run/packages-to-notify
+		rm -f /run/resolvconf/packages-to-notify
 		if [ "$PACKAGES_TO_NOTIFY" ] ; then
-			echo "$PACKAGES_TO_NOTIFY" > /etc/resolvconf/run/packages-to-notify
+			echo "$PACKAGES_TO_NOTIFY" > /run/resolvconf/packages-to-notify
 		fi
 	fi
 	;;

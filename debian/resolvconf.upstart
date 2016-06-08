@@ -2,18 +2,18 @@
 
 description "Initialize or finalize resolvconf"
 
-start on starting udev
+start on mounted MOUNTPOINT=/run
 
 stop on runlevel [06]
 
 pre-start script
-	resolvconf --create-runtime-directories
+	mkdir -p /run/resolvconf/interface
 	# Request a postponed update (needed in case the base file has content).
-	resolvconf -u
+	touch /run/resolvconf/postponed-update
 	# Enable updates and perform the postponed update.
 	resolvconf --enable-updates
 end script
 
-pre-stop script
+post-stop script
 	resolvconf --disable-updates
 end script
