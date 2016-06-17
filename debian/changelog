@@ -1,6 +1,7 @@
-resolvconf (1.80) UNRELEASED; urgency=low
+resolvconf (1.80) unstable; urgency=low
 
   * [af5576b] Bump Standards-Version; no changes required
+  * [05a25d1] Fix postrm for Ubuntu - lp bug 1593489
 
  -- Thomas Hood <jdthood@gmail.com>  Tue, 24 May 2016 13:42:47 +0200
 
