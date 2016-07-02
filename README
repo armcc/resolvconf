@@ -613,9 +613,6 @@ TODO
   * pdns-recursor
     # 700850: Please add resolvconf packaging-event hook script
       - IN PROGRESS
-  * pdnsd
-    # 628846: Please add resolvconf packaging-event hook script
-      - NO REPLY for over a year
   * ppp
     # 208095: Please suggest resolvconf
       - Tagged WONTFIX
@@ -693,6 +690,8 @@ DONE
   * pdnsd
     # 247946: Fix resolvconf support
       - DONE in pdnsd 1.1.10par-4
+    # 628846: Please add resolvconf packaging-event hook script
+      - NOT IMPLEMENTED but pdnsd removed from the archive
   * postfix
     # 212552: Please reload on change of /etc/resolv.conf
       - DONE in 2.0.16-4
