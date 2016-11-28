@@ -1,3 +1,13 @@
+resolvconf (1.79ubuntu2) zesty; urgency=medium
+
+  * etc/resolvconf/resolv.conf.d/head: add comment about
+    'systemd-resolve --status', since systemd-resolved is now in use in all
+    but the most unusual configurations, and expert users should be given
+    guidance where to find the actual nameservers for debugging purposes.
+    LP: #1638836.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Mon, 28 Nov 2016 15:39:18 -0800
+
 resolvconf (1.79ubuntu1) yakkety; urgency=medium
 
   * Merge with Debian unstable. Remaining Ubuntu changes:
