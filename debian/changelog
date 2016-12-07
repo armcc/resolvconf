@@ -1,3 +1,11 @@
+resolvconf (1.79ubuntu3) zesty; urgency=medium
+
+  * debian/resolvconf.service: resolvconf service must run before any of the
+  possible network configuration services (ifupdown, networkd, NetworkManager)
+  so use network-pre.target instead of service names. (LP: #1636912)
+
+ -- Ryan Harper <ryan.harper@canonical.com>  Wed, 07 Dec 2016 03:30:55 -0600
+
 resolvconf (1.79ubuntu2) zesty; urgency=medium
 
   * etc/resolvconf/resolv.conf.d/head: add comment about
