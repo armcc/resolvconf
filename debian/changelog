@@ -1,3 +1,9 @@
+resolvconf (1.79ubuntu4) zesty; urgency=medium
+
+  * debian/resolvconf.service: Add missing Wants=network-pre.target.
+
+ -- Martin Pitt <martin.pitt@ubuntu.com>  Thu, 08 Dec 2016 10:21:12 +0100
+
 resolvconf (1.79ubuntu3) zesty; urgency=medium
 
   * debian/resolvconf.service: resolvconf service must run before any of the
