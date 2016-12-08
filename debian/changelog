@@ -3,7 +3,7 @@ resolvconf (1.80) unstable; urgency=low
   * [af5576b] Bump Standards-Version; no changes required
   * [05a25d1] Fix postrm for Ubuntu - lp bug 1593489
   * [a742b50] Update README to reflect the removal of pdnsd from the archive
-  * [a1555e0] In unit file use network-pre.target
+  * [a1555e0] In unit file use network-pre.target. Thanks to Ryan Harper.
 
  -- Thomas Hood <jdthood@gmail.com>  Thu, 08 Dec 2016 12:22:15 +0100
 
