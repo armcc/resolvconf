@@ -7,8 +7,6 @@ Wants=network-pre.target
 
 [Service]
 RemainAfterExit=yes
-ExecStartPre=/bin/mkdir -p /run/resolvconf/interface
-ExecStartPre=/bin/touch /run/resolvconf/postponed-update
 ExecStart=/sbin/resolvconf --enable-updates
 ExecStop=/sbin/resolvconf --disable-updates
 

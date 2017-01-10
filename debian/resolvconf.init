@@ -60,10 +60,14 @@ create_runtime_directories()
 		# Create directory at the target
 		mkdir "$RUN_CANONICALDIR" || log_action_end_msg_and_exit 1 "Error creating directory $RUN_CANONICALDIR"
 	fi
+	[ -x /sbin/restorecon ] && /sbin/restorecon "$RUN_CANONICALDIR"
+
 	# The resolvconf run directory now exists.
 	if [ ! -d "${RUN_DIR}/interface" ] ; then
 		mkdir "${RUN_DIR}/interface" || log_action_end_msg_and_exit 1 "Error creating directory ${RUN_DIR}/interface"
 	fi
+	[ -x /sbin/restorecon ] && /sbin/restorecon "${RUN_DIR}/interface" "${RUN_DIR}/resolv.conf "${RUN_DIR}/enable-updates
+
 	# The interface directory now exists.  We are done.
 	return
 }
