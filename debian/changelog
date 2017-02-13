@@ -5,8 +5,10 @@ resolvconf (1.80) unstable; urgency=low
   * [a742b50] Update README to reflect the removal of pdnsd from the archive
   * [a1555e0] In unit file use network-pre.target (Closes: #847440
               and Lp bug 1636912). Thanks to Ryan Harper.
+  * [4fcfb02] Add systemd predictable interface name patterns.
+              Thanks to Kevin Otte for the patch in Lp bug 1610479
 
- -- Thomas Hood <jdthood@gmail.com>  Thu, 08 Dec 2016 12:22:15 +0100
+ -- Thomas Hood <jdthood@gmail.com>  Mon, 13 Feb 2017 12:00:00 +0100
 
 resolvconf (1.79) unstable; urgency=low
 
