@@ -86,7 +86,7 @@ case "$1" in
 					[ -f /etc/resolv.conf ] \
 					&& {
 						[ ! -L /etc/resolv.conf ] \
-						|| [ ! "$(readlink /etc/resolv.conf)" = "/run/resolvconf/resolv.conf" ]
+						|| [ ! "$(readlink -m /etc/resolv.conf)" = "/run/resolvconf/resolv.conf" ]
 					}
 				then
 					# Back up original file

@@ -1,3 +1,14 @@
+resolvconf (1.79ubuntu5) artful; urgency=medium
+
+  * debian/postrm debian/postinst: resurrect using readlink -m when
+    checking if /etc/resolv.conf is managed by resolvconf or not. Change
+    from 1.63ubuntu7 precise got lost somwhere along the way. Thus
+    uninstalling resolvconf has been broken for a while.
+  * debian/postrm: if resolved managed stub config is available, migrate
+    to it upon resolvconf removal.
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Fri, 21 Jul 2017 11:47:26 +0100
+
 resolvconf (1.79ubuntu4) zesty; urgency=medium
 
   * debian/resolvconf.service: Add missing Wants=network-pre.target.
