@@ -1,3 +1,9 @@
+resolvconf (1.79ubuntu6) artful; urgency=medium
+
+  * Drop upstart system job.
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Tue, 15 Aug 2017 04:05:05 +0100
+
 resolvconf (1.79ubuntu5) artful; urgency=medium
 
   * debian/postrm debian/postinst: resurrect using readlink -m when
