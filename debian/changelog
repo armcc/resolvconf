@@ -1,3 +1,9 @@
+resolvconf (1.79ubuntu7) artful; urgency=medium
+
+  * Drop ifupdown dependency.
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Sat, 19 Aug 2017 20:19:26 +0100
+
 resolvconf (1.79ubuntu6) artful; urgency=medium
 
   * Drop upstart system job.
