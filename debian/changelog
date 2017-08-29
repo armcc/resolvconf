@@ -1,3 +1,14 @@
+resolvconf (1.79ubuntu8) artful; urgency=medium
+
+  * Dereference /etc/resolf.conf when creating runtime configuration when
+    migrating to resolvconf managed /etc/resolv.conf. The contents of
+    /etc/resolv.conf (rather than the symlink target information) is
+    needed in /run/resolvconf/resolv.conf and
+    /run/resolvconf/interface/original.resolvconf during migration until
+    resolvconf updates the config next. LP: #1713149
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Tue, 29 Aug 2017 14:04:33 +0100
+
 resolvconf (1.79ubuntu7) artful; urgency=medium
 
   * Drop ifupdown dependency.

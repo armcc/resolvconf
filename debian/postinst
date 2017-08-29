@@ -99,13 +99,13 @@ case "$1" in
 					# at the target of the link.  /sbin/resolvconf will overwrite
 					# this when it does an update, of course.
 					if [ ! -e /run/resolvconf/resolv.conf ] ; then
-						cp -a /etc/resolv.conf /run/resolvconf/resolv.conf
+						cp -aH /etc/resolv.conf /run/resolvconf/resolv.conf
 					fi
 					# Add the original file to the database so that its contents
 					# are included when resolvconf updates.
 					# Yes, this is an ugly workaround for the problem that some
 					# interface configurers haven't added a dpkg-event.d script.
-					cp -a /etc/resolv.conf /run/resolvconf/interface/original.resolvconf
+					cp -aH /etc/resolv.conf /run/resolvconf/interface/original.resolvconf
 				fi
 				# Create the link
 				# The link is relative to allow for cp from outside a chroot into a chroot
