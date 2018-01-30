@@ -1,3 +1,11 @@
+resolvconf (1.79ubuntu9) bionic; urgency=medium
+
+  * Move resolvconf & resolved integration system units from src:systemd
+    to src:resolvconf. Also use a different unit name, to avoid
+    breaks/replaces.
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Tue, 30 Jan 2018 14:17:27 +0000
+
 resolvconf (1.79ubuntu8) artful; urgency=medium
 
   * Dereference /etc/resolf.conf when creating runtime configuration when
