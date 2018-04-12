@@ -1,3 +1,10 @@
+resolvconf (1.79ubuntu10) bionic; urgency=medium
+
+  * Fix race of not injecting resolved config into resolvconf on LXD
+    container boot. LP: #1763108
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Thu, 12 Apr 2018 12:46:24 +0100
+
 resolvconf (1.79ubuntu9) bionic; urgency=medium
 
   * Move resolvconf & resolved integration system units from src:systemd
