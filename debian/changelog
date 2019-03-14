@@ -1,3 +1,14 @@
+resolvconf (1.79ubuntu12) disco; urgency=medium
+
+  * d/resolvconf.resolvconf-pull-resolved.path
+    Revert last change, so we go back to using stub-resolv.conf again.
+
+  * d/resolvconf.resolvconf-pull-resolved.service
+    Instead hack out the 'edns0' option that systemd-resolved has
+    recently added to its stub-resolv.conf.
+
+ -- Dan Streetman <ddstreet@canonical.com>  Thu, 14 Mar 2019 17:17:51 -0400
+
 resolvconf (1.79ubuntu11) disco; urgency=medium
 
   * Pull systemd-resolved conf from non-stub file; the stub file should
