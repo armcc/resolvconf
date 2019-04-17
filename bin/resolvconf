@@ -5,6 +5,11 @@
 
 set -e
 
+{
+# Make sure that we do not end up with a broken resolv.conf if resolvconf
+# is invoked in parallel.
+flock -w 10 9 || exit 1
+
 echo_usage() { echo "Usage: resolvconf (-d IFACE|-a IFACE|-u|--enable-updates|--disable-updates|--updates-are-enabled)" ; }
 
 PATH=/sbin:/bin
@@ -170,3 +175,5 @@ esac
 
 # Don't reach here
 exit 99
+
+} 9>/run/resolvconf/run-lock

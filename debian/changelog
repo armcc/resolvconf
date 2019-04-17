@@ -1,3 +1,10 @@
+resolvconf (1.79ubuntu13) disco; urgency=medium
+
+  * bin/resolvconf: use flock so resolvconf can be called in parallel
+    safely (LP: #1825194).
+
+ -- Alfonso Sanchez-Beato (email Canonical) <alfonso.sanchez-beato@canonical.com>  Wed, 17 Apr 2019 16:53:53 +0200
+
 resolvconf (1.79ubuntu12) disco; urgency=medium
 
   * d/resolvconf.resolvconf-pull-resolved.path
