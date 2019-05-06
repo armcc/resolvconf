@@ -5,14 +5,9 @@
 
 set -e
 
-{
-# Make sure that we do not end up with a broken resolv.conf if resolvconf
-# is invoked in parallel.
-flock -w 10 9 || exit 1
-
 echo_usage() { echo "Usage: resolvconf (-d IFACE|-a IFACE|-u|--enable-updates|--disable-updates|--updates-are-enabled)" ; }
 
-PATH=/sbin:/bin
+PATH=/sbin:/bin:/usr/bin
 MYNAME="${0##*/}"
 RUN_DIR=/run/resolvconf
 ENABLE_UPDATES_FLAGFILE="${RUN_DIR}/enable-updates"
@@ -58,6 +53,13 @@ esac
 [ -d "${RUN_DIR}/interface" ] || { mkdir -p "${RUN_DIR}/interface" ; }
 [ -d "${RUN_DIR}/interface" ] || { report_err "${RUN_DIR}/interface either does not exist or is not a directory" ; exit 1 ; }
 cd "${RUN_DIR}/interface"
+
+{
+# Make sure that we do not end up with a broken resolv.conf if resolvconf
+# is invoked in parallel.
+LOCK_WAIT_S=10
+flock -w $LOCK_WAIT_S 9 ||
+	{ report_err "Run lock held by another process for longer than $LOCK_WAIT_S seconds"; exit 1; }
 
 update_and_exit()
 {
@@ -176,4 +178,4 @@ esac
 # Don't reach here
 exit 99
 
-} 9>/run/resolvconf/run-lock
+} 9>"${RUN_DIR}/run-lock"
