@@ -1,7 +1,7 @@
 Source: resolvconf
 Section: net
 Priority: optional
-Maintainer: resolvconf maintainers <resolvconf-devel@lists.alioth.debian.org>
+Maintainer: resolvconf team <team+resolvconf@tracker.debian.org>
 Uploaders: Thomas Hood <jdthood@gmail.com>, Marco Nenciarini <mnencia@debian.org>
 Build-Depends: debhelper (>= 8), dh-systemd
 Homepage: http://alioth.debian.org/projects/resolvconf/
