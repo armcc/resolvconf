@@ -3,6 +3,7 @@ Section: net
 Priority: optional
 Maintainer: resolvconf team <team+resolvconf@tracker.debian.org>
 Uploaders:
+ Andrej Shadura <andrewsh@debian.org>,
  Thomas Hood <jdthood@gmail.com>,
  Marco Nenciarini <mnencia@debian.org>
 Build-Depends:
