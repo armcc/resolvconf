@@ -1,4 +1,4 @@
-resolvconf (1.80) UNRELEASED; urgency=low
+resolvconf (1.80) UNRELEASED; urgency=medium
 
   [ Thomas Hood ]
   * Bump Standards-Version; no changes required
@@ -6,8 +6,8 @@ resolvconf (1.80) UNRELEASED; urgency=low
   * Update README to reflect the removal of pdnsd from the archive
   * In unit file use network-pre.target (Closes: #847440
     and LP: #1636912). Thanks to Ryan Harper.
-  * Add systemd predictable interface name patterns.
-    Thanks to Kevin Otte for the patch in LP: 1610479
+  * Add systemd predictable interface name patterns (Closes: #877695,
+    #905907). Thanks to Kevin Otte for the patch in LP: #1610479.
 
   [ Steve Langasek ]
   * Eliminate all references to /etc/resolvconf/run.  This should all be done
@@ -52,8 +52,16 @@ resolvconf (1.80) UNRELEASED; urgency=low
 
   [ Andrej Shadura ]
   * Add /usr/sbin and /usr/bin to PATH (Closes: #832394).
+  * Update the team email address.
+  * Wrap and sort.
+  * Add myself as a co-maintainer.
+  * Verify ifquery is available before running it (we no longer require
+    ifupdown).
+  * Remove id-length from gbp.conf so commit hashes are not prepended
+    to the changelog entries.
+  * Port debian/rules to the dh 12 short form.
 
- -- Thomas Hood <jdthood@gmail.com>  Mon, 13 Feb 2017 12:00:00 +0100
+ -- Andrej Shadura <andrewsh@debian.org>  Fri, 01 Nov 2019 16:58:57 +0100
 
 resolvconf (1.79) unstable; urgency=low
 
