@@ -62,6 +62,7 @@ resolvconf (1.80) UNRELEASED; urgency=medium
   * Port debian/rules to the dh 12 short form.
   * d/copyright: Use https protocol in Format field.
   * d/changelog: Remove trailing whitespaces.
+  * d/control: Set Vcs-* to salsa.debian.org.
 
  -- Andrej Shadura <andrewsh@debian.org>  Fri, 01 Nov 2019 16:58:57 +0100
 
