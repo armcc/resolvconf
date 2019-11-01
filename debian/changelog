@@ -1,12 +1,57 @@
-resolvconf (1.80) unstable; urgency=low
+resolvconf (1.80) UNRELEASED; urgency=low
 
-  * [af5576b] Bump Standards-Version; no changes required
-  * [05a25d1] Fix postrm for Ubuntu - Lp bug 1593489
-  * [a742b50] Update README to reflect the removal of pdnsd from the archive
-  * [a1555e0] In unit file use network-pre.target (Closes: #847440
-              and Lp bug 1636912). Thanks to Ryan Harper.
-  * [4fcfb02] Add systemd predictable interface name patterns.
-              Thanks to Kevin Otte for the patch in Lp bug 1610479
+  [ Thomas Hood ]
+  * Bump Standards-Version; no changes required
+  * Fix postrm for Ubuntu (LP: 1593489)
+  * Update README to reflect the removal of pdnsd from the archive
+  * In unit file use network-pre.target (Closes: #847440
+    and LP: #1636912). Thanks to Ryan Harper.
+  * Add systemd predictable interface name patterns.
+    Thanks to Kevin Otte for the patch in LP: 1610479
+
+  [ Steve Langasek ]
+  * Eliminate all references to /etc/resolvconf/run.  This should all be done
+    directly in /run, there is no reason to support making any of this
+    configurable with a symlink since we already have a versioned dependency
+    on the version of initscripts that introduces the /run transition.
+  * etc/resolvconf/resolv.conf.d/head: add comment about
+    'systemd-resolve --status', since systemd-resolved is now in use in all
+    but the most unusual configurations, and expert users should be given
+    guidance where to find the actual nameservers for debugging purposes.
+    LP: #1638836.
+
+  [ Martin Pitt ]
+  * debian/postinst: Make /etc/resolv.conf a relative symlink so that it
+    works when setting up chroots.
+
+  [ Dimitri John Ledkov ]
+  * Drop ifupdown dependency.
+  * Drop upstart system job.
+  * Use readlink -m when checking the link's destination.
+    (LP: #924836)
+  * Dereference /etc/resolf.conf when creating runtime configuration when
+    migrating to resolvconf managed /etc/resolv.conf. The contents of
+    /etc/resolv.conf (rather than the symlink target information) is
+    needed in /run/resolvconf/resolv.conf and
+    /run/resolvconf/interface/original.resolvconf during migration until
+    resolvconf updates the config next. (LP: #1713149)
+  * Move resolvconf & resolved integration system units from src:systemd
+    to src:resolvconf. Also use a different unit name, to avoid
+    breaks/replaces.
+  * debian/postrm: if resolved managed stub config is available, migrate
+    to it upon resolvconf removal.
+
+  [ Dan Streetman ]
+  * Filter out the edns0 option that systemd-resolved has recently added
+    to its stub-resolv.conf. Using the stub conf with edns0 set with
+    non-local DNS servers can break name resolution. (LP: #1817903)
+
+  [ Alfonso Sánchez-Beato ]
+  * bin/resolvconf: use flock so resolvconf can be called in parallel
+    safely (LP: #1825194).
+
+  [ Andrej Shadura ]
+  * Add /usr/sbin and /usr/bin to PATH (Closes: #832394).
 
  -- Thomas Hood <jdthood@gmail.com>  Mon, 13 Feb 2017 12:00:00 +0100
 
