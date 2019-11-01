@@ -60,6 +60,7 @@ resolvconf (1.80) UNRELEASED; urgency=medium
   * Remove id-length from gbp.conf so commit hashes are not prepended
     to the changelog entries.
   * Port debian/rules to the dh 12 short form.
+  * d/copyright: Use https protocol in Format field.
 
  -- Andrej Shadura <andrewsh@debian.org>  Fri, 01 Nov 2019 16:58:57 +0100
 
