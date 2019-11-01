@@ -61,6 +61,7 @@ resolvconf (1.80) UNRELEASED; urgency=medium
     to the changelog entries.
   * Port debian/rules to the dh 12 short form.
   * d/copyright: Use https protocol in Format field.
+  * d/changelog: Remove trailing whitespaces.
 
  -- Andrej Shadura <andrewsh@debian.org>  Fri, 01 Nov 2019 16:58:57 +0100
 
@@ -513,7 +514,7 @@ resolvconf (1.49) experimental; urgency=low
     postinst. (Closes: #551999, #563386).  (Do this in /run if that is
     already already available, otherwise in /lib/init/rw, otherwise in
     /etc/resolvconf.)  Now when other packages call resolvconf before
-    resolvconf's postinst runs, the data are not lost and no error 
+    resolvconf's postinst runs, the data are not lost and no error
     message is printed.
   * If someone has run resolvconf while updates were disabled, update
     when updates are enabled.
@@ -521,7 +522,7 @@ resolvconf (1.49) experimental; urgency=low
     database until the first reboot after installation.  The old behavior
     was to omit these contents unless link-tail-to-original was
     selected with the result that information was missing from
-    resolv.conf until ifdown-ifup cycles.  The new behavior is not 
+    resolv.conf until ifdown-ifup cycles.  The new behavior is not
     correct either, since nameserver addresses are not removed when
     corresponding interfaces are deconfigured, but should have less
     unpleasant consequences than the old behavior.
@@ -628,7 +629,7 @@ resolvconf (1.44) unstable; urgency=low
     (Closes: #522814)
   * Remove /lib/init/rw/resolvconf on purge  (Closes: #531283)
     Thanks to Holger Levsen.
-  
+
   [ Daniel Kahn Gillmor ]
   * debian/control: Update my e-mail address in Uploaders
   * Fix typo in initscript.  Thanks, Peter Eisentraut (Closes: #525681)
@@ -672,7 +673,7 @@ resolvconf (1.41) unstable; urgency=low
     already have been performed on all systems upgraded to sarge.)
     (Closes: #477752)
   * No longer #! bash in postinst
-  
+
   [ Daniel Kahn Gillmor]
   * don't try to manipulate forwarding dnscaches which are marked as
     "down" (Thanks, Soeren Sonnenburg!) (Closes: #479867)
@@ -964,7 +965,7 @@ resolvconf (1.19) unstable; urgency=high
 
   * debian/control:
     + Downgrade Recommendations to Suggestions so that installing
-      resolvconf doesn't pull in packages such as bind9 if the 
+      resolvconf doesn't pull in packages such as bind9 if the
       user has configured her package manager to install all
       Recommended packages.  Thanks to LaMont Jones for pointing
       out this problem.  (Closes: #266027)
@@ -1111,7 +1112,7 @@ resolvconf (1.13) unstable; urgency=low
   * /etc/resolvconf/resolv.conf.d/head
     + Make warning sterner  (Closes: #248964)
   * /etc/dhcp3/dhclient-enter-hooks.d/resolvconf:
-    + Handle STOP  (Closes: #246558) 
+    + Handle STOP  (Closes: #246558)
     + On TIMEOUT don't always run resolvconf -d
 
  -- Thomas Hood <jdthood@yahoo.co.uk>  Sun, 18 May 2004 10:00:00 +0200
@@ -1333,7 +1334,7 @@ resolvconf (1.1) unstable; urgency=low
     /etc/resolvconf/resolv.conf.d/base is to be used for base (static)
     entries that may be sorted and merged with other entries.
     /etc/resolvconf/resolv.conf.d/tail may be a symlink to ./original
-    on initial installation but the admin can point this somewhere 
+    on initial installation but the admin can point this somewhere
     else or replace it with a real file as he or she wishes.
     To "disable" it, point it at /dev/null.
 
@@ -1461,7 +1462,7 @@ resolvconf (0.44) unstable; urgency=low
         /etc/ppp/ip-down.d/000resolvconf
       (Closes: #212548)
   * debian/preinst:
-    * On upgrade rename 
+    * On upgrade rename
         /etc/ppp/ip-up.d/resolvconf
         /etc/ppp/ip-down.d/resolvconf
       to
