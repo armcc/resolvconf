@@ -1,4 +1,4 @@
-resolvconf (1.80) UNRELEASED; urgency=medium
+resolvconf (1.80) unstable; urgency=medium
 
   [ Thomas Hood ]
   * Bump Standards-Version; no changes required
@@ -64,7 +64,10 @@ resolvconf (1.80) UNRELEASED; urgency=medium
   * d/changelog: Remove trailing whitespaces.
   * d/control: Set Vcs-* to salsa.debian.org.
 
- -- Andrej Shadura <andrewsh@debian.org>  Fri, 01 Nov 2019 16:58:57 +0100
+  [ Théophile Helleboid ]
+  * Add vpn* to the interfaces-order list.
+
+ -- Andrej Shadura <andrewsh@debian.org>  Tue, 10 Dec 2019 16:45:20 +0100
 
 resolvconf (1.79) unstable; urgency=low
 
