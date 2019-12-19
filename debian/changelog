@@ -1,3 +1,14 @@
+resolvconf (1.81) unstable; urgency=medium
+
+  [ Russell Coker ]
+  * Set correct SE Linux context on created directories and files
+    (Closes: #850783).
+
+  [ Jakub Wilk ]
+  * Drop symlink resolving logic from the init script (Closes: #946609).
+
+ -- Andrej Shadura <andrewsh@debian.org>  Thu, 19 Dec 2019 15:19:16 +0100
+
 resolvconf (1.80) unstable; urgency=medium
 
   [ Thomas Hood ]
