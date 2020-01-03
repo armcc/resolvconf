@@ -1,3 +1,17 @@
+resolvconf (1.82) unstable; urgency=medium
+
+  [ Andrej Shadura ]
+  * Update the debconf translation templates (Closes: #947164).
+  * Update translations.
+
+  [ Helge Kreutzmann ]
+  * Update German debconf translation (Closes: #947171).
+
+  [ Frans Spiesschaert ]
+  * Update Dutch debconf translation (Closes: #948037).
+
+ -- Andrej Shadura <andrewsh@debian.org>  Fri, 03 Jan 2020 18:32:03 +0100
+
 resolvconf (1.81) unstable; urgency=medium
 
   [ Russell Coker ]
