@@ -1,7 +1,8 @@
 Source: resolvconf
 Section: net
 Priority: optional
-Maintainer: resolvconf team <team+resolvconf@tracker.debian.org>
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: resolvconf team <team+resolvconf@tracker.debian.org>
 Uploaders:
  Andrej Shadura <andrewsh@debian.org>,
  Thomas Hood <jdthood@gmail.com>,

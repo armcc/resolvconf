@@ -1,3 +1,10 @@
+resolvconf (1.82ubuntu1) groovy; urgency=medium
+
+  * Skip pulling data into resolvconf, if isc-dhcp/ifupdown already push
+    the same data to systemd-resolved and it is in use.
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Wed, 05 Aug 2020 14:21:25 +0100
+
 resolvconf (1.82) unstable; urgency=medium
 
   [ Andrej Shadura ]
