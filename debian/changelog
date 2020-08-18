@@ -1,5 +1,13 @@
+resolvconf (1.84) unstable; urgency=medium
+
+  [ Rob Leslie ]
+  * Escape "~*" to prevent spurious NSS lookups (Closes: #954175)
+
+ -- Andrej Shadura <andrewsh@debian.org>  Tue, 18 Aug 2020 18:40:14 +0200
+
 resolvconf (1.83) unstable; urgency=high
 
+  * Non-maintainer upload.
   * Update resolvconf system units to prevent infinite restarts due to
     continious re-execution of the PathExists stanza (Closes:
     #968015). Thanks to Michael Biebl.
