@@ -1,3 +1,28 @@
+resolvconf (1.84ubuntu1) groovy; urgency=medium
+
+  * Merge from Debian unstable
+    - Remaining changes:
+      * Skip pulling data into resolvconf, if isc-dhcp/ifupdown already push
+        the same data to systemd-resolved and it is in use.
+
+ -- Balint Reczey <rbalint@ubuntu.com>  Thu, 20 Aug 2020 00:32:11 +0200
+
+resolvconf (1.84) unstable; urgency=medium
+
+  [ Rob Leslie ]
+  * Escape "~*" to prevent spurious NSS lookups (Closes: #954175)
+
+ -- Andrej Shadura <andrewsh@debian.org>  Tue, 18 Aug 2020 18:40:14 +0200
+
+resolvconf (1.83) unstable; urgency=high
+
+  * Non-maintainer upload.
+  * Update resolvconf system units to prevent infinite restarts due to
+    continious re-execution of the PathExists stanza (Closes:
+    #968015). Thanks to Michael Biebl.
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Tue, 18 Aug 2020 11:56:53 +0100
+
 resolvconf (1.82ubuntu1) groovy; urgency=medium
 
   * Skip pulling data into resolvconf, if isc-dhcp/ifupdown already push
