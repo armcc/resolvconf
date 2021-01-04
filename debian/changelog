@@ -1,3 +1,14 @@
+resolvconf (1.85) unstable; urgency=medium
+
+  [ Dimitri John Ledkov ]
+  * Skip pulling data into resolvconf, if isc-dhcp/ifupdown already pushed
+    the same data to systemd-resolved and it is in use.
+
+  [ Michael Biebl ]
+  * Stop using deprecated systemd-resolve tool.
+
+ -- Andrej Shadura <andrewsh@debian.org>  Mon, 04 Jan 2021 19:46:45 +0100
+
 resolvconf (1.84) unstable; urgency=medium
 
   [ Rob Leslie ]
