@@ -12,15 +12,6 @@ case "$ADDRFAM" in
   *) exit 0 ;;
 esac
 
-# ifupdown hook pushes into systemd-resolved for non-lo interfaces
-# thus skip pulling info into resolvconf
-if systemctl --quiet is-enabled systemd-resolved ; then
-    case "$IFACE" in
-        lo) : ;;
-        *) exit 0 ;;
-    esac
-fi
-
 R=""
 if [ "$IF_DNS_DOMAIN" ] ; then
 	R="${R}domain $IF_DNS_DOMAIN
