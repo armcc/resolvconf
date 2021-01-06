@@ -1,3 +1,17 @@
+resolvconf (1.87) unstable; urgency=medium
+
+  * Undo the damage on an incorrect merge commit:
+    - Fix the maintainer’s address (Closes: #943735)
+    - Revert "Skip pulling data into resolvconf, if isc-dhcp/ifupdown
+      already push the same data to systemd-resolved and it is in use".
+      Debian does not ship said hooks in ifupdown or isc-dhcp-client,
+      so these fixes won’t work. Also, they use systemctl unconditionally
+      which is fine in Ubuntu but not in Debian.
+      (Closes: #979431)
+  * Clean up the old conffile (Closes: #979436)
+
+ -- Andrej Shadura <andrewsh@debian.org>  Wed, 06 Jan 2021 18:54:17 +0100
+
 resolvconf (1.86) unstable; urgency=medium
 
   [ Michael Biebl ]
